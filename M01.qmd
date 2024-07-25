@@ -42,6 +42,8 @@ editor: visual
 
 ::: fragment
 -   Definition and Examples
+
+In research, variables are characteristics that can be measured and manipulated, such as temperature in a climate study, while constants are factors kept unchanged, like standard atmospheric pressure in the same study" (Creswell & Creswell, 2017).
 :::
 
 ::: fragment
@@ -50,17 +52,39 @@ editor: visual
 
 ## Sets
 
+
 ::: fragment
--   Definition and Types
+- Definition and Types: A set is a collection of distinct objects; types include finite, infinite, empty, and power sets.
 :::
 
 ::: fragment
--   Set Operations
+- Set Operations: Key operations are union (∪), intersection (∩), difference (\), and complement ('); used to combine or compare sets.
+:::
+
+## Sets
+
+::: fragment
+- Venn Diagrams: Visual representations of sets and their relationships; circles or other shapes represent sets, with overlaps showing relationships.
 :::
 
 ::: fragment
--   Venn Diagrams
+- Subsets and Supersets: A is a subset of B (A ⊆ B) if every element of A is also in B; B is then a superset of A.
 :::
+
+## Sets
+
+::: fragment
+- Cardinality: The number of elements in a set, denoted |A| for set A; can be finite or infinite.
+:::
+
+::: fragment
+- Set Builder Notation: A concise way to define sets, e.g., {x | x is an even number} represents all even numbers.
+:::
+
+::: fragment
+- Applications: Used in database queries, probability theory, and as a foundation for many areas of mathematics.
+:::
+
 
 ## Operators
 
