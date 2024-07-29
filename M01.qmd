@@ -1,10 +1,13 @@
 ---
 title: "EPPS Math and Coding Camp"
-subtitle: "Day 1: Fundamentals"
-author: "Karl Ho"
+subtitle: "Day 1_1: Fundamentals"
+author: "Instructor: Azharul Islam"
 format: 
   revealjs:
-    theme: serif
+    theme: [serif, custom.scss]
+    slide-number: true
+    logo: eppslogo.png
+    css: logo.css
 editor: visual
 ---
 
@@ -42,8 +45,6 @@ editor: visual
 
 ::: fragment
 -   Definition and Examples
-
-In research, variables are characteristics that can be measured and manipulated, such as temperature in a climate study, while constants are factors kept unchanged, like standard atmospheric pressure in the same study" (Creswell & Creswell, 2017).
 :::
 
 ::: fragment
@@ -52,39 +53,17 @@ In research, variables are characteristics that can be measured and manipulated,
 
 ## Sets
 
-
 ::: fragment
-- Definition and Types: A set is a collection of distinct objects; types include finite, infinite, empty, and power sets.
+-   Definition and Types
 :::
 
 ::: fragment
-- Set Operations: Key operations are union (∪), intersection (∩), difference (\), and complement ('); used to combine or compare sets.
-:::
-
-## Sets
-
-::: fragment
-- Venn Diagrams: Visual representations of sets and their relationships; circles or other shapes represent sets, with overlaps showing relationships.
+-   Set Operations
 :::
 
 ::: fragment
-- Subsets and Supersets: A is a subset of B (A ⊆ B) if every element of A is also in B; B is then a superset of A.
+-   Venn Diagrams
 :::
-
-## Sets
-
-::: fragment
-- Cardinality: The number of elements in a set, denoted |A| for set A; can be finite or infinite.
-:::
-
-::: fragment
-- Set Builder Notation: A concise way to define sets, e.g., {x | x is an even number} represents all even numbers.
-:::
-
-::: fragment
-- Applications: Used in database queries, probability theory, and as a foundation for many areas of mathematics.
-:::
-
 
 ## Operators
 
@@ -162,6 +141,10 @@ Consider the following sets of values for $x_i$:
 ::: fragment
 **Summation:** $$ \sum_{i=1}^{3} x_i = 2 + 4 + 6 = 12 $$
 :::
+
+## Examples (continued)
+
+### Summation and Multiplication in Practice
 
 ::: fragment
 **Multiplication:** $$ \prod_{i=1}^{3} x_i = 2 \times 4 \times 6 = 48 $$
@@ -312,6 +295,10 @@ Prove that: 1. The sum of any two even numbers is even. 2. The sum of any two od
     a + b = (2m + 1) + (2n + 1) = 2m + 2n + 2 = 2(m + n + 1)
     $$ Since $m + n + 1$ is an integer, $a + b$ is even.
 
+## Exercise 4: Even and Odd Numbers
+
+### Solution
+
 3.  Let $a$ be an odd number and $b$ be an even number. Then $a = 2m + 1$ and $b = 2n$ for some integers $m$ and $n$. $$
     a + b = (2m + 1) + 2n = 2m + 2n + 1 = 2(m + n) + 1
-    $$ Since $m + n$ is an integer, $a + b$ is odd. :::
+    $$ Since $m + n$ is an integer, $a + b$ is odd.
