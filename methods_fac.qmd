@@ -1,0 +1,47 @@
+---
+title: "Methods Faculty"
+format: 
+  html:
+    css: styles.css
+---
+
+## EPPS Methods Faculty
+
+- ![Patrick Brandt](Headshot_Brandt-medium.jpg){width=100px} [Patrick Brandt](https://profiles.utdallas.edu/pbrandt)
+  - Classes offered:
+    - Regression and Multivariate Analysis
+    - Time Series Analysis
+    - Bayesian Analysis for Social and Behavioral Sciences
+
+- ![Eugenia Gorina](utdallas_57228250-res-(2)-medium.jpg){width=100px} [Eugenia Gorina](https://profiles.utdallas.edu/egorina)
+  - Classes offered:
+    - Introduction to Quantitative Methods
+
+- ![Karl Ho](ho-karl-800-2015-12-medium.jpg){width=100px} [Karl Ho](https://profiles.utdallas.edu/kyho)
+  - Classes offered:
+    - Knowledge Mining
+    - Data Visualization
+    - Data Methods (Methods of Data Collection and Production)
+    - Information Management
+
+- ![Dohyeong Kim](Kim Dohyeong photo-medium.jpg){width=100px} [Dohyeong Kim](https://profiles.utdallas.edu/dohyeong.kim)
+  - Classes offered:
+    - Descriptive and Inferential Statistics
+
+- ![Natalia Lamberova](Headshots-892-medium.jpg){width=100px} [Natalia Lamberova](https://profiles.utdallas.edu/natalia.lamberova)
+  - Classes offered:
+    - Research Design II
+
+- ![Michael Tiefelsdorf](utdallas_57147282_Medium-medium.jpg){width=100px} [Michael Tiefelsdorf](https://profiles.utdallas.edu/tiefelsdorf)
+  - Classes offered:
+    - Geospatial Data Analysis Fundamentals
+    - Spatial Pattern Analysis
+    - Demographic Modeling and Analysis
+    - Advanced Regression Analysis in the Social Sciences
+    - Regression Analysis with Spatial Application
+
+- ![Pengfei Zhang](PengfeiZhang_JM_pic_square-medium.jpg){width=100px} [Pengfei Zhang](https://profiles.utdallas.edu/pengfei.zhang)
+  - Classes offered:
+    - Introduction to Quantitative Methods
+
+[Back to Home](index.html)
