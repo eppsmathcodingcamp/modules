@@ -66,6 +66,7 @@ nav ul li a:hover {
     background-color: #003366;
 }
 
+
 /* Footer styles */
 footer {
     margin-top: 40px;
@@ -74,17 +75,17 @@ footer {
     color: #666;
 }
 
-/* Responsive design */
-@media (max-width: 600px) {
-    body {
-        padding: 10px;
-    }
+footer p {
+    margin: 5px 0;
+}
 
-    main {
-        padding: 20px;
-    }
+footer a {
+    color: #0066cc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
 
-    h1 {
-        font-size: 2em;
-    }
+footer a:hover {
+    color: #003366;
+    text-decoration: underline;
 }
