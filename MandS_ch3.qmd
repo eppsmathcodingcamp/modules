@@ -1,0 +1,306 @@
+---
+title: "EPPS Math and Coding Camp"
+subtitle: "Moore and Siegel Chapter 3"
+author: "Instructor: "
+format: 
+  revealjs:
+    theme: [serif, custom.scss]
+    slide-number: true
+    logo: eppslogo.png
+    css: logo.css
+editor: visual
+---
+
+## 3.1 FUNCTIONS
+
+::: fragment
+-   A relation that assigns one element of the range to each element of the domain is a **function**.
+:::
+
+::: fragment
+-   One that assigns a subset of the range to each element of the domain is a **correspondence**.
+:::
+
+---
+
+### 3.1.1 Equations
+
+::: fragment
+- **implicit** notation
+$$
+y=f(x)
+$$
+:::
+
+::: fragment
+- **explicit** notation
+
+Example: $y=3x$
+
+$y$ is a function of $x$;<br>
+$x$ is the argument of the function
+:::
+
+---
+
+### 3.1.2 Graphs
+
+::: fragment
+```{r}
+plot(NULL, xlim = c(-10, 10), ylim = c(-15, 15), 
+     xlab = "x", ylab = "y", 
+     main = "Graph of y=3x", 
+     asp = 0.25, axes = FALSE)
+abline(h = 0, v = 0, col = "black")
+abline(a = 0, b = 3, col = "black", lwd = 2)
+axis(1, at = seq(-10, 10, 1), labels = seq(-10, 10, 1), pos = 0)
+axis(2, at = seq(-15, 15, 5), labels = seq(-15, 15, 5), las = 1, pos = 0)
+```
+:::
+
+---
+
+### 3.1.3 Some Properties of Functions
+
+::: fragment
+- We define the function $f$ as $f(x) : A \rightarrow B$. This is often read as “$f$ maps $A$ into $B$.” $A$ here is the **domain** of the function, $B$ is known as the **codomain**.
+:::
+
+::: fragment
+- The set of all values actually reached by running each $x \in A$ through $f$ is known as the **image**, or **range**, and it is necessarily a subset of **B**.
+:::
+
+::: fragment
+- **function composition**: $g \circ f(x)$ or $g(f(x))$
+:::
+
+---
+
+#### 3.1.3.1 Identity and Inverse Functions
+
+::: fragment
+| Term | Meaning |
+|-|-|
+| Identity function | Elements in domain are mapped to identical elements in codomain|
+| Inverse function | Function that when composed with original function returns identity function |
+| Surjective (onto) | Every value in codomain produced by value in domain |
+| Injective (one-to-one) | Each value in range comes from only one value in domain |
+| Bijective (invertible) | Both surjective and injective; function has an inverse |
+:::
+
+---
+
+#### 3.1.3.2 Monotonic Functions
+
+::: fragment
+| Term | Meaning |
+|-|-|
+| Increasing | Function increases on subset of domain |
+| Decreasing | Function decreases on subset of domain |
+| Strictly increasing | Function always increases on subset of domain |
+| Strictly decreasing | Function always decreases on subset of domain |
+| Weakly increasing | Function does not decrease on subset of domain |
+| Weakly decreasing | Function does not increase on subset of domain |
+| (Strict) monotonicity | Order preservation; function (strictly) increasing over domain |
+:::
+
+---
+
+### 3.2.1 The Linear Equation (Affine Function)
+
+::: fragment
+- $y=a+bx$
+:::
+
+::: fragment
+- A **linear equation** is an equation that contains only terms of order$x^1$ and $x^0=1$. In other words, only $x$ and $1$, multiplied by constants, may appear on the right-hand side (RHS) of a linear equation.
+:::
+
+::: fragment
+### 3.2.2 Linear Functions
+:::
+
+::: fragment
+- Additivity (aka superposition): $f(x_1+x_2)=f(x_1)+f(x_2)$
+:::
+
+::: fragment
+- Scaling (aka homogeneity):$f(ax)=af(x), \text{for all a}$.
+:::
+
+::: fragment
+- **Linear functions** are not affine functions, e.g., they do not permit a translation(the $x^0$ term).
+:::
+
+---
+
+### 3.2.3 Nonlinear Functions: Exponents, Logarithms, and Radicals
+#### 3.2.3.2 Quadratic Functions
+
+::: fragment
+$$
+y=\alpha +\beta_1x+\beta_2x^2
+$$
+:::
+
+::: fragment
+```{r}
+plot(NULL, xlim = c(-4, 4), ylim = c(0, 20), 
+     xlab = "x", ylab = "y", 
+     main = expression(paste("Graph of ", y == x^2)), 
+     asp = 0.25, axes = FALSE)
+abline(h = 0, v = 0, col = "black")
+x <- seq(-4, 4, length.out = 200)
+y <- x^2
+lines(x, y, lwd = 2)
+axis(1, at = seq(-4, 4, 2), labels = seq(-4, 4, 2), pos = 0)
+axis(2, at = seq(0, 20, 5), labels = seq(0, 20, 5), las = 1, pos = 0)
+```
+:::
+
+---
+
+#### 3.2.3.4 Logarithms (Properties of log)
+
+::: fragment
+- Logarithms: $log_a x$
+:::
+
+::: fragment
+- $a^{log_a x}=x$
+:::
+
+::: fragment
+- $log_a a^x=x$
+:::
+
+::: fragment
+- if $log_a x=b$, then $a^{log_ax}=a^b$, thus $x=a^b$
+:::
+
+---
+
+::: fragment
+- The base for the natural log is the $e \approx 2.7183$
+:::
+
+::: fragment
+```{r}
+plot(NULL, xlim = c(0, 8), ylim = c(0, 6), 
+     xlab = "x", ylab = "y", 
+     main = expression(paste("Graph of ", y == ln(x))), 
+     asp = 0.25, axes = FALSE)
+abline(h = 0, v = 0, col = "black")
+x <- seq(0.01, 10, length.out = 1000)
+y <- log(x) 
+lines(x, y, lwd = 2)
+axis(1, at = seq(0, 8, 2), labels = seq(0, 8, 2), pos = 0)
+axis(2, at = seq(0, 6, 0.5), labels = seq(0, 6, 0.5), las = 1, pos = 0)
+```
+:::
+
+---
+
+::: fragment
+Example:
+:::
+
+::: fragment
+If you suspect that education increases the probability of voting in national elections, but that each additional year of education has a smaller impact on the probability of voting than the preceding year’s, then the log functions are good candidates to represent that conjecture.
+
+if $p_v$ is “probability of voting” and $ed$ is “years of education”:
+:::
+
+::: fragment
+- then $p_v= \alpha + \beta ed$ specifies a linear relationship where an additional year of education has the same impact on the probability of voting regardless of how many years of education one has had.
+:::
+
+::: fragment
+- $p_v= \alpha + \beta ed^2$ represents the claim that the impact of education on the probability of voting rises the more educated one becomes.
+:::
+
+::: fragment
+- We transform the relationship between $p_v$ and $ed$ from a linear one to a nonlinear one where the impact of an additional year of education declines the more educated one becomes: $p_v= \alpha + \beta (\ln(ed))$
+:::
+
+---
+
+::: fragment
+- Algebraic rules for logs
+:::
+
+::: fragment
+$$
+\ln(x_1 \cdot x_2)=\ln(x_1)+\ln(x_2) \text{, for }x_1,x_2>0
+$$
+:::
+
+::: fragment
+$$
+\ln \frac{x_1}{x_2}=\ln(x_1)-\ln(x_2) \text{, for }x_1,x_2>0
+$$
+:::
+
+::: fragment
+$$
+\ln(x_1 + x_2) \neq \ln(x_1)+\ln(l_2) \text{, for }x_1,x_2>0
+$$
+:::
+
+::: fragment
+$$
+\ln(x_1 - x_2) \neq \ln(x_1)-\ln(lx) \text{, for }x_1,x_2>0
+$$
+:::
+
+::: fragment
+$$
+\ln(x^b)=b\ln(x) \text{, for } x>0
+$$
+:::
+
+::: fragment
+$$
+\ln(1+x) \approx x \text{, for } x>0 \text{ and } x \approx 0
+$$
+:::
+
+---
+
+### 3.3.1 Preference Relations
+
+::: fragment
+**Transitivity** states that if $a$ is at least as good as $b$, and $b$ is at least as good as $c$, then a is at least as good as $c$: if $aRb$ and $bRc$, then $aRc$.
+:::
+
+::: fragment
+**Symmetry** states that if $aRb$, then $bRa$ for all $a$ and $b$. In the realm of preference orderings, this implies complete indifference: everything is at least as good as everything else.
+:::
+
+::: fragment
+**Reflexivity**: A relation on a set $A$ is reflexive if for all $a \in A$, $aRa$ is $True$.
+:::
+
+---
+
+### 3.3.2 Utility Functions
+
+::: fragment
+- Integers and the real numbers are complete and transitive for all the usual ordering relations. 
+:::
+
+::: fragment
+- Thus, if we want to represent our "at least as good as" relation with numbers, this relation had better have the same properties. 
+:::
+
+::: fragment
+- we can translate the relation R on any set A to a function u on the same set. 
+:::
+
+::: fragment
+- This u is called a utility function and assigns a value, typically a real number, to each element in A.
+:::
+
+---
+
+

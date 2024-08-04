@@ -1,0 +1,225 @@
+---
+title: "EPPS Math and Coding Camp"
+subtitle: "Moore and Siegel Chapter 1"
+author: "Instructor: "
+format: 
+  revealjs:
+    theme: [serif, custom.scss]
+    slide-number: true
+    logo: eppslogo.png
+    css: logo.css
+editor: visual
+---
+
+## 1.1 VARIABLES AND CONSTANTS
+
+```{=html}
+<style>
+.outline {
+  -webkit-text-stroke: 1px black;
+  color: transparent;
+  font-weight: bold;
+}
+</style>
+```
+| Notation                               | Meaning                                |
+|----------------------------------------|----------------------------------------|
+| [N]{.outline}                          | Natural numbers                        |
+| [Z]{.outline}                          | Integers                               |
+| [Q]{.outline}                          | Rational numbers                       |
+| [R]{.outline}                          | Real (rational and irrational) numbers |
+| [C]{.outline}                          | Complex numbers                        |
+| Subscript: [N]{.outline}<sub>+</sub>   | Positive (negative) values of the set  |
+| Superscript: [N]{.outline}<sup>d</sup> | Dimensionality (number of dimensions)  |
+
+------------------------------------------------------------------------
+
+## 1.2 SETS
+
+-   a set is just a collection of elements,
+-   groups whose members have something in common that is important to the person who has grouped them together.
+
+Example:<br> (0, 1, 2, ...,where ... signifies that this progression goes on indefinitely) belong to the set of natural numbers.
+
+-   The set of all natural numbers is denoted [N]{.outline}, and any variable $n$ that is a natural number must come from this set.
+
+-   If we add negative numbers to the set of natural numbers, i.e., ..., -3, -2, -1, then we get the set of all integers, denoted [Z]{.outline}.
+
+-   All numbers that can be expressed as a ratio of two integers are called rational numbers, and the set of these is denoted [Q]{.outline}.
+
+-   The set of all rational and irrational numbers together is known as the real numbers and is denoted [R]{.outline}.
+
+------------------------------------------------------------------------
+
+-   Population is typically an element of [Z]{.outline}<sub>+</sub>, the set of all positive integers, which is a subset of all integers.
+
+-   Continuous variables are those whose values cannot each be assigned a single integer.
+
+-   We typically assume that continuous variables are drawn from a subset of the real numbers, though this is not necessary.
+
+Example:<br> The set of solutions to the equation $x^2 - 5x + 6 = 0$ is $\{2, 3\}$, a discrete set.
+
+-   We term a sample space a set that contains all of the values that a variable can take in the context of statistical inference.
+
+-   When discussing individuals’ actions in game theory, we use the term 'strategy space' to refer to the same concept.
+
+------------------------------------------------------------------------
+
+-   Sets like [Z]{.outline} and [R]{.outline} have natural metrics.
+
+-   More generally, the superscript indicates the dimensionality of the space.
+
+-   We will frequently use the $d$-dimensional space [R]{.outline}<sup>d</sup> in this book. When $d=3$, this is called Euclidean space
+
+-   Another common multidimensional element is an ordered pair, written $(a,b)$. Unlike elements of [R]{.outline}<sup>3</sup>, in which each of $x, y$, and $z$ is a real number, each member of an ordered pair may be quite different
+
+-   Ordered pairs, or more generally ordered $n$-tuples, which are ordered pairs with $n$ elements, are often formed via Cartesian products.
+
+------------------------------------------------------------------------
+
+-   A **countable set** is one whose elements can be counted, i.e., each one can be associated with a natural number (or an integer).
+
+-   An **uncountable set** does not have this property.
+
+-   A **bounded set** has finite size while an **unbounded set** does not.
+
+-   We say a set has a lower bound if there is a number, $u$, such that every element in the set is no smaller than it, and an upper bound if there is a number, $v$, such that every element in the set is no bigger than it.
+
+-   The greatest lower bound is the largest such lower bound, and the least upper bound is the smallest such upper bound.
+
+------------------------------------------------------------------------
+
+-   Sets contain **elements**, so we need some way to indicate that a given element is a member of a particular set
+
+-   $x \in A$ states that “$x$ is an element of the set $A$” or “$x$ is in $A$.”
+
+-   $x \in \{1, 2, 3\} \text{ or } x \in [0, 1]$ means $x$ can take the value $1, 2,$ or $3$, or $x$ can be any real number from $0$ to $1$, inclusive.
+
+-   $y \in \{0, 1\}$ means that $y$ either can take a value of $0$ or a value of $1$.
+
+-   We use the symbol $\notin$ as in $x \notin A$. This means that x does not take the values 1, 2, or 3 or is not between 0 and 1, if $x \in \{1, 2, 3\} \text{ or } x \in [0, 1]$.
+
+-   Continuous sets use square brackets or parentheses depending on whether they are closed or open, e.g.$[0,1]$ or $(0,1)$
+
+-   The expression $A \subset B$ (read '$A$ is a proper subset of $B$') implies that if all $x$ that are elements in $A$ are also elements in $B$.
+
+------------------------------------------------------------------------
+
+-   The Cartesian product is the set of cardinality four consisting of all possible ordered pairs:<br> $A=\{\text{Female, Male}\}$<br> $B=\{\text{Income over \$50k, Income under \$50k}\}$<br> $$A \times B =\\
+    \{(\text{Female, Income over \$50k}), \\
+    (\text{Female, Income udner \$50k}), \\
+    (\text{Male, Income over \$50k}), \\
+    (\text{Male, Income under \$50k})\}$$
+
+------------------------------------------------------------------------
+
+## 1.4 RELATIONS
+
+-   A **binary relation** can be represented as an ordered pair.
+
+So, if $a \in A$ is greater than $b \in A$, we can write the relation as $(a, b)$
+
+-   If a function transforms an element of $A$ into an element of $B$, we call $A$ the **domain** and $B$ the **range**.
+
+------------------------------------------------------------------------
+
+## 1.6 NOTATION
+
+**Operators**: $$+, -, \times, /, x^n, \sqrt[n]{x}, \sum, \prod, !$$
+
+-   product operator:
+
+$$
+\prod_{i=k}^{l} x_i = x_k \times \ldots \times x_l
+$$
+
+-   Summation operator:
+
+$$
+\sum_{i=k}^{l} x_i = x_k \times \ldots \times x_l
+$$
+
+-   Relations: $<, \leq,=,\geq, >, \neq$
+
+------------------------------------------------------------------------
+
+**Summary of Symbols and Notation**
+
+| Symbol                | Meaning                                        |
+|-----------------------|------------------------------------------------|
+| $+$                   | Addition                                       |
+| $-$                   | Subtraction                                    |
+| $*$ or $x$ or $\cdot$ | Multiplication                                 |
+| $/$ or $\div$         | Division                                       |
+| $\pm$                 | Plus or minus                                  |
+| $x^n$                 | Exponentiation ("to the nth power")            |
+| $\sqrt[n]{x}$         | Radical or nth root                            |
+| $!$                   | Factorial                                      |
+| $\infty$              | Infinity                                       |
+| $\sum_{i=k}^l x_i$    | Sum of $x_i$ from index $i = k$ to $i = l$     |
+| $\prod_{i=k}^l x_i$   | Product of $x_i$ from index $i = k$ to $i = l$ |
+| $\ldots$              | Continued progression                          |
+
+------------------------------------------------------------------------
+
+| Symbol                    | Meaning                                |
+|---------------------------|----------------------------------------|
+| $\frac{d}{dx}$            | Total derivative with respect to $x$   |
+| $\frac{\delta}{\delta x}$ | Partial derivative with respect to $x$ |
+| $\int dx$                 | Integral over $x$                      |
+| $\cup$                    | Set union                              |
+| $\cap$                    | Set intersection                       |
+| $\times$                  | Cartesian product of sets              |
+| $\setminus$               | Set difference                         |
+| $A^c$                     | Complement of set $A$                  |
+| $\emptyset$               | Empty (or null) set                    |
+| $\in$                     | Set membership                         |
+| $\notin$                  | Not member of set                      |
+| $\vert$ or $:$ or $\ni$   | Such that                              |
+| $\subset$                 | Proper subset                          |
+| $\subseteq$               | Subset                                 |
+
+------------------------------------------------------------------------
+
+| Symbol               | Meaning                     |
+|----------------------|-----------------------------|
+| $<$                  | Less than                   |
+| $\leq$               | Less than or equal to       |
+| $=$                  | Equal to                    |
+| $>$                  | Greater than                |
+| $\geq$               | Greater than or equal to    |
+| $\neq$               | Not equal to                |
+| $\equiv$             | Equivalent to or Defined as |
+| $f(x)$ or $f(\cdot)$ | Function                    |
+
+------------------------------------------------------------------------
+
+| Symbol            | Meaning                            |
+|-------------------|------------------------------------|
+| $\{$ $\}$         | Delimiter for discrete set         |
+| $($ $)$           | Delimiter for open set             |
+| $[$ $]$           | Delimiter for closed set           |
+| $\forall$         | For all (or for every or for each) |
+| $\exists$         | There exists                       |
+| $\Rightarrow$     | Implies                            |
+| $\Leftrightarrow$ | If and only if                     |
+| $\neg$ or $\sim$  | Negation (not $C$)                 |
+
+------------------------------------------------------------------------
+
+**Greek Letters**
+
+| Upper-case | Lower-case | English | Upper-case | Lower-case | English |
+|------------|------------|---------|------------|------------|---------|
+| $A$        | $\alpha$   | alpha   | $N$        | $\nu$      | nu      |
+| $B$        | $\beta$    | beta    | $\Xi$      | $\xi$      | xi      |
+| $\Gamma$   | $\gamma$   | gamma   | $O$        | $o$        | omicron |
+| $\Delta$   | $\delta$   | delta   | $\Pi$      | $\pi$      | pi      |
+| $E$        | $\epsilon$ | epsilon | $P$        | $\rho$     | rho     |
+| $Z$        | $\zeta$    | zeta    | $\Sigma$   | $\sigma$   | sigma   |
+| $H$        | $\eta$     | eta     | $T$        | $\tau$     | tau     |
+| $\Theta$   | $\theta$   | theta   | $\Upsilon$ | $\upsilon$ | upsilon |
+| $I$        | $\iota$    | iota    | $\Phi$     | $\phi$     | phi     |
+| $K$        | $\kappa$   | kappa   | $X$        | $\chi$     | chi     |
+| $\Lambda$  | $\lambda$  | lambda  | $\Psi$     | $\psi$     | psi     |
+| $M$        | $\mu$      | mu      | $\Omega$   | $\omega$   | omega   |
