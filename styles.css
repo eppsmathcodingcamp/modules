@@ -5,17 +5,15 @@
     --utd-light-gray: #f4f4f4;
     --utd-dark-gray: #333333;
 }
-
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     color: var(--utd-dark-gray);
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     background-color: var(--utd-light-gray);
 }
-
 header {
     text-align: center;
     margin-bottom: 30px;
@@ -23,76 +21,36 @@ header {
     padding: 20px;
     border-radius: 5px;
 }
-
 .logo {
     max-width: 300px;
     display: block;
     margin: 0 auto 20px;
 }
-
 h1 {
     color: white;
     font-size: 2.5em;
     margin-bottom: 10px;
 }
-
 main {
     background-color: #ffffff;
     padding: 30px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
-
 h2 {
     color: var(--utd-green);
     border-bottom: 2px solid var(--utd-orange);
     padding-bottom: 10px;
     margin-bottom: 20px;
 }
-
-/* Main navigation styles */
-.main-nav {
-    background-color: var(--utd-orange);
-    padding: 10px 0;
-    margin-top: 20px;
-}
-
-.main-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-}
-
-.main-nav ul li {
-    margin: 0 15px;
-}
-
-.main-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 3px;
-    transition: background-color 0.3s;
-}
-
-.main-nav ul li a:hover {
-    background-color: var(--utd-green);
-}
-
-/* Module navigation styles */
-.module-nav ul {
+nav ul {
     list-style-type: none;
     padding: 0;
 }
-
-.module-nav ul li {
+nav ul li {
     margin-bottom: 15px;
 }
-
-.module-nav ul li a {
+nav ul li a {
     text-decoration: none;
     color: var(--utd-green);
     transition: color 0.3s, background-color 0.3s;
@@ -100,12 +58,10 @@ h2 {
     border-radius: 3px;
     display: block;
 }
-
-.module-nav ul li a:hover {
+nav ul li a:hover {
     color: #ffffff;
     background-color: var(--utd-orange);
 }
-
 footer {
     margin-top: 40px;
     text-align: center;
@@ -115,95 +71,29 @@ footer {
     padding: 15px;
     border-radius: 5px;
 }
-
 footer p {
     margin: 5px 0;
 }
-
 footer a {
     color: var(--utd-green);
     text-decoration: none;
     transition: color 0.3s;
 }
-
 footer a:hover {
     color: var(--utd-orange);
     text-decoration: underline;
 }
-
-/* Professor grid styles */
-.professor-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 20px;
-}
-
-.professor {
-    text-align: center;
-    cursor: pointer;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
-    transition: box-shadow 0.3s ease;
-    background-color: #ffffff;
-}
-
-.professor:hover {
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.professor img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 10px;
-}
-
-.professor p {
-    margin: 0;
-    font-weight: bold;
-    color: var(--utd-green);
-}
-
-.popover {
-    max-width: 300px;
-}
-
-.popover-header {
-    background-color: var(--utd-green);
-    color: white;
-}
-
-.popover-body {
-    color: var(--utd-dark-gray);
-}
-
-/* Responsive design */
 @media (max-width: 600px) {
     body {
         padding: 10px;
     }
-
     main {
         padding: 20px;
     }
-
     h1 {
         font-size: 2em;
     }
-
     .logo {
         max-width: 250px;
-    }
-
-    .professor-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    }
-
-    .professor img {
-        width: 120px;
-        height: 120px;
     }
 }
