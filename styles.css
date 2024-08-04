@@ -10,7 +10,7 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     color: var(--utd-dark-gray);
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
     background-color: var(--utd-light-gray);
@@ -25,7 +25,7 @@ header {
 }
 
 .logo {
-    max-width: 300px; /* Increased from 200px */
+    max-width: 300px;
     display: block;
     margin: 0 auto 20px;
 }
@@ -50,16 +50,49 @@ h2 {
     margin-bottom: 20px;
 }
 
-nav ul {
+/* Main navigation styles */
+.main-nav {
+    background-color: var(--utd-orange);
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+.main-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.main-nav ul li {
+    margin: 0 15px;
+}
+
+.main-nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+.main-nav ul li a:hover {
+    background-color: var(--utd-green);
+}
+
+/* Module navigation styles */
+.module-nav ul {
     list-style-type: none;
     padding: 0;
 }
 
-nav ul li {
+.module-nav ul li {
     margin-bottom: 15px;
 }
 
-nav ul li a {
+.module-nav ul li a {
     text-decoration: none;
     color: var(--utd-green);
     transition: color 0.3s, background-color 0.3s;
@@ -68,7 +101,7 @@ nav ul li a {
     display: block;
 }
 
-nav ul li a:hover {
+.module-nav ul li a:hover {
     color: #ffffff;
     background-color: var(--utd-orange);
 }
@@ -98,6 +131,56 @@ footer a:hover {
     text-decoration: underline;
 }
 
+/* Professor grid styles */
+.professor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.professor {
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    transition: box-shadow 0.3s ease;
+    background-color: #ffffff;
+}
+
+.professor:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.professor img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.professor p {
+    margin: 0;
+    font-weight: bold;
+    color: var(--utd-green);
+}
+
+.popover {
+    max-width: 300px;
+}
+
+.popover-header {
+    background-color: var(--utd-green);
+    color: white;
+}
+
+.popover-body {
+    color: var(--utd-dark-gray);
+}
+
+/* Responsive design */
 @media (max-width: 600px) {
     body {
         padding: 10px;
@@ -112,6 +195,15 @@ footer a:hover {
     }
 
     .logo {
-        max-width: 250px; /* Slightly smaller for mobile */
+        max-width: 250px;
+    }
+
+    .professor-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    .professor img {
+        width: 120px;
+        height: 120px;
     }
 }
