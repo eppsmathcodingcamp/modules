@@ -1,7 +1,6 @@
 ---
 title: "EPPS Math and Coding Camp"
-subtitle: "Moore and Siegel Chapter 4"
-author: "Instructor: "
+subtitle: "Limit and sequences"
 format: 
   revealjs:
     theme: [serif, custom.scss]

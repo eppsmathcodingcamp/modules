@@ -1,7 +1,6 @@
 ---
 title: "EPPS Math and Coding Camp"
-subtitle: "Moore and Siegel Chapter 6"
-author: "Instructor: "
+subtitle: "Differentiation"
 format: 
   revealjs:
     theme: [serif, custom.scss]
@@ -48,7 +47,7 @@ $$h(x)=x^3+6x^2+1$$
 :::
 
 ::: fragment
-Let’s work out this last one to see the application of the rule a bit more carefully.
+Let's work out this last one to see the application of the rule a bit more carefully.
 :::
 
 ::: fragment
@@ -349,7 +348,7 @@ In all these cases, $f$ and $g$ are assumed to be differentiable functions, and 
 
 ::: fragment
 |                           |                                                             |
-|---------------------------|-------------------------------------------------------------|
+|------------------------------------|------------------------------------|
 | Sum rule                  | $(f(x)+g(x))'=f'(x)+g'(x)$                                  |
 | Difference rule           | ($f(x)-g(x))'=f'(x)-g'(x)$                                  |
 | Multiply by constant rule | $f'(ax)=af'(x)$                                             |

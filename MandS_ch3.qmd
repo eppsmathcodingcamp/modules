@@ -1,7 +1,6 @@
 ---
 title: "EPPS Math and Coding Camp"
-subtitle: "Moore and Siegel Chapter 3"
-author: "Instructor: "
+subtitle: "Functions and Relations"
 format: 
   revealjs:
     theme: [serif, custom.scss]
@@ -21,27 +20,25 @@ editor: visual
 -   One that assigns a subset of the range to each element of the domain is a **correspondence**.
 :::
 
----
+------------------------------------------------------------------------
 
 ### 3.1.1 Equations
 
 ::: fragment
-- **implicit** notation
-$$
-y=f(x)
-$$
+-   **implicit** notation $$
+    y=f(x)
+    $$
 :::
 
 ::: fragment
-- **explicit** notation
+-   **explicit** notation
 
 Example: $y=3x$
 
-$y$ is a function of $x$;<br>
-$x$ is the argument of the function
+$y$ is a function of $x$;<br> $x$ is the argument of the function
 :::
 
----
+------------------------------------------------------------------------
 
 ### 3.1.2 Graphs
 
@@ -58,62 +55,62 @@ axis(2, at = seq(-15, 15, 5), labels = seq(-15, 15, 5), las = 1, pos = 0)
 ```
 :::
 
----
+------------------------------------------------------------------------
 
 ### 3.1.3 Some Properties of Functions
 
 ::: fragment
-- We define the function $f$ as $f(x) : A \rightarrow B$. This is often read as “$f$ maps $A$ into $B$.” $A$ here is the **domain** of the function, $B$ is known as the **codomain**.
+-   We define the function $f$ as $f(x) : A \rightarrow B$. This is often read as "$f$ maps $A$ into $B$." $A$ here is the **domain** of the function, $B$ is known as the **codomain**.
 :::
 
 ::: fragment
-- The set of all values actually reached by running each $x \in A$ through $f$ is known as the **image**, or **range**, and it is necessarily a subset of **B**.
+-   The set of all values actually reached by running each $x \in A$ through $f$ is known as the **image**, or **range**, and it is necessarily a subset of **B**.
 :::
 
 ::: fragment
-- **function composition**: $g \circ f(x)$ or $g(f(x))$
+-   **function composition**: $g \circ f(x)$ or $g(f(x))$
 :::
 
----
+------------------------------------------------------------------------
 
 #### 3.1.3.1 Identity and Inverse Functions
 
 ::: fragment
-| Term | Meaning |
-|-|-|
-| Identity function | Elements in domain are mapped to identical elements in codomain|
-| Inverse function | Function that when composed with original function returns identity function |
-| Surjective (onto) | Every value in codomain produced by value in domain |
-| Injective (one-to-one) | Each value in range comes from only one value in domain |
-| Bijective (invertible) | Both surjective and injective; function has an inverse |
+| Term                   | Meaning                                                                      |
+|------------------------------------|------------------------------------|
+| Identity function      | Elements in domain are mapped to identical elements in codomain              |
+| Inverse function       | Function that when composed with original function returns identity function |
+| Surjective (onto)      | Every value in codomain produced by value in domain                          |
+| Injective (one-to-one) | Each value in range comes from only one value in domain                      |
+| Bijective (invertible) | Both surjective and injective; function has an inverse                       |
 :::
 
----
+------------------------------------------------------------------------
 
 #### 3.1.3.2 Monotonic Functions
 
 ::: fragment
-| Term | Meaning |
-|-|-|
-| Increasing | Function increases on subset of domain |
-| Decreasing | Function decreases on subset of domain |
-| Strictly increasing | Function always increases on subset of domain |
-| Strictly decreasing | Function always decreases on subset of domain |
-| Weakly increasing | Function does not decrease on subset of domain |
-| Weakly decreasing | Function does not increase on subset of domain |
+| Term                  | Meaning                                                        |
+|------------------------------------|------------------------------------|
+| Increasing            | Function increases on subset of domain                         |
+| Decreasing            | Function decreases on subset of domain                         |
+| Strictly increasing   | Function always increases on subset of domain                  |
+| Strictly decreasing   | Function always decreases on subset of domain                  |
+| Weakly increasing     | Function does not decrease on subset of domain                 |
+| Weakly decreasing     | Function does not increase on subset of domain                 |
 | (Strict) monotonicity | Order preservation; function (strictly) increasing over domain |
 :::
 
----
+------------------------------------------------------------------------
 
 ### 3.2.1 The Linear Equation (Affine Function)
 
 ::: fragment
-- $y=a+bx$
+-   $y=a+bx$
 :::
 
 ::: fragment
-- A **linear equation** is an equation that contains only terms of order$x^1$ and $x^0=1$. In other words, only $x$ and $1$, multiplied by constants, may appear on the right-hand side (RHS) of a linear equation.
+-   A **linear equation** is an equation that contains only terms of order$x^1$ and $x^0=1$. In other words, only $x$ and $1$, multiplied by constants, may appear on the right-hand side (RHS) of a linear equation.
 :::
 
 ::: fragment
@@ -121,20 +118,21 @@ axis(2, at = seq(-15, 15, 5), labels = seq(-15, 15, 5), las = 1, pos = 0)
 :::
 
 ::: fragment
-- Additivity (aka superposition): $f(x_1+x_2)=f(x_1)+f(x_2)$
+-   Additivity (aka superposition): $f(x_1+x_2)=f(x_1)+f(x_2)$
 :::
 
 ::: fragment
-- Scaling (aka homogeneity):$f(ax)=af(x), \text{for all a}$.
+-   Scaling (aka homogeneity):$f(ax)=af(x), \text{for all a}$.
 :::
 
 ::: fragment
-- **Linear functions** are not affine functions, e.g., they do not permit a translation(the $x^0$ term).
+-   **Linear functions** are not affine functions, e.g., they do not permit a translation(the $x^0$ term).
 :::
 
----
+------------------------------------------------------------------------
 
 ### 3.2.3 Nonlinear Functions: Exponents, Logarithms, and Radicals
+
 #### 3.2.3.2 Quadratic Functions
 
 ::: fragment
@@ -158,30 +156,30 @@ axis(2, at = seq(0, 20, 5), labels = seq(0, 20, 5), las = 1, pos = 0)
 ```
 :::
 
----
+------------------------------------------------------------------------
 
 #### 3.2.3.4 Logarithms (Properties of log)
 
 ::: fragment
-- Logarithms: $log_a x$
+-   Logarithms: $log_a x$
 :::
 
 ::: fragment
-- $a^{log_a x}=x$
+-   $a^{log_a x}=x$
 :::
 
 ::: fragment
-- $log_a a^x=x$
+-   $log_a a^x=x$
 :::
 
 ::: fragment
-- if $log_a x=b$, then $a^{log_ax}=a^b$, thus $x=a^b$
+-   if $log_a x=b$, then $a^{log_ax}=a^b$, thus $x=a^b$
 :::
 
----
+------------------------------------------------------------------------
 
 ::: fragment
-- The base for the natural log is the $e \approx 2.7183$
+-   The base for the natural log is the $e \approx 2.7183$
 :::
 
 ::: fragment
@@ -199,34 +197,34 @@ axis(2, at = seq(0, 6, 0.5), labels = seq(0, 6, 0.5), las = 1, pos = 0)
 ```
 :::
 
----
+------------------------------------------------------------------------
 
 ::: fragment
 Example:
 :::
 
 ::: fragment
-If you suspect that education increases the probability of voting in national elections, but that each additional year of education has a smaller impact on the probability of voting than the preceding year’s, then the log functions are good candidates to represent that conjecture.
+If you suspect that education increases the probability of voting in national elections, but that each additional year of education has a smaller impact on the probability of voting than the preceding year's, then the log functions are good candidates to represent that conjecture.
 
-if $p_v$ is “probability of voting” and $ed$ is “years of education”:
+if $p_v$ is "probability of voting" and $ed$ is "years of education":
 :::
 
 ::: fragment
-- then $p_v= \alpha + \beta ed$ specifies a linear relationship where an additional year of education has the same impact on the probability of voting regardless of how many years of education one has had.
+-   then $p_v= \alpha + \beta ed$ specifies a linear relationship where an additional year of education has the same impact on the probability of voting regardless of how many years of education one has had.
 :::
 
 ::: fragment
-- $p_v= \alpha + \beta ed^2$ represents the claim that the impact of education on the probability of voting rises the more educated one becomes.
+-   $p_v= \alpha + \beta ed^2$ represents the claim that the impact of education on the probability of voting rises the more educated one becomes.
 :::
 
 ::: fragment
-- We transform the relationship between $p_v$ and $ed$ from a linear one to a nonlinear one where the impact of an additional year of education declines the more educated one becomes: $p_v= \alpha + \beta (\ln(ed))$
+-   We transform the relationship between $p_v$ and $ed$ from a linear one to a nonlinear one where the impact of an additional year of education declines the more educated one becomes: $p_v= \alpha + \beta (\ln(ed))$
 :::
 
----
+------------------------------------------------------------------------
 
 ::: fragment
-- Algebraic rules for logs
+-   Algebraic rules for logs
 :::
 
 ::: fragment
@@ -265,7 +263,7 @@ $$
 $$
 :::
 
----
+------------------------------------------------------------------------
 
 ### 3.3.1 Preference Relations
 
@@ -281,26 +279,24 @@ $$
 **Reflexivity**: A relation on a set $A$ is reflexive if for all $a \in A$, $aRa$ is $True$.
 :::
 
----
+------------------------------------------------------------------------
 
 ### 3.3.2 Utility Functions
 
 ::: fragment
-- Integers and the real numbers are complete and transitive for all the usual ordering relations. 
+-   Integers and the real numbers are complete and transitive for all the usual ordering relations.
 :::
 
 ::: fragment
-- Thus, if we want to represent our "at least as good as" relation with numbers, this relation had better have the same properties. 
+-   Thus, if we want to represent our "at least as good as" relation with numbers, this relation had better have the same properties.
 :::
 
 ::: fragment
-- we can translate the relation R on any set A to a function u on the same set. 
+-   we can translate the relation R on any set A to a function u on the same set.
 :::
 
 ::: fragment
-- This u is called a utility function and assigns a value, typically a real number, to each element in A.
+-   This u is called a utility function and assigns a value, typically a real number, to each element in A.
 :::
 
----
-
-
+------------------------------------------------------------------------

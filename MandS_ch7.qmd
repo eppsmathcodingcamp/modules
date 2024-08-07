@@ -1,0 +1,310 @@
+---
+title: "EPPS Math and Coding Camp"
+subtitle: "Integral"
+format: 
+  revealjs:
+    theme: [serif, custom.scss]
+    slide-number: true
+    logo: eppslogo.png
+    css: logo.css
+editor: visual
+---
+
+**List of Rules of Integration**
+
+::: fragment
+|                                 |                                                                                |
+|------------------------------------|------------------------------------|
+| Fundamental theorem of calculus | $\int_a^b f(x)\,dx = F(b) - F(a)$                                              |
+| Rules for bounds                | $\int_a^b f(x)\,dx = - \int_b^a f(x)\,dx$                                      |
+|                                 | $\int_a^a f(x)\,dx = 0$                                                        |
+|                                 | $\int_a^b f(x)\,dx = \int_a^c f(x)\,dx + \int_c^b f(x)\,dx$ for $c \in [a, b]$ |
+| Linear rule                     | $\int (a f(x) + b g(x))\,dx = a \int f(x)\,dx + b \int g(x)\,dx$               |
+| Integration by substitution     | $\int_a^b f(g(u))g'(u)\ du = \int_{g(a)}^{g(b)} f(x)\,dx$                      |
+| Integration by parts            | $\int f(x)g'(x)\,dx = f(x)g(x) - \int f'(x)g(x)\,dx$                           |
+:::
+
+------------------------------------------------------------------------
+
+::: fragment
+|                     |                                                          |
+|------------------------------------|------------------------------------|
+| Power rule 1        | $\int x^n \,dx = \frac{x^{n+1}}{n+1} + C$ if $n \neq -1$ |
+| Power rule 2        | $\int x^{-1}\,dx = \ln |x| + C$                          |
+| Exponential rule 1  | $\int e^x\,dx = e^x + C$                                 |
+| Exponential rule 2  | $\int a^x\,dx = \frac{a^x}{\ln(a)} + C$                  |
+| Logarithm rule 1    | $\int \ln(x)\,dx = x \ln(x) - x + C$                     |
+| Logarithm rule 2    | $\int \log_a(x)\,dx = \frac{x \ln(x) - x}{\ln(a)} + C$   |
+| Trigonometric rules | $\int \sin(x)\,dx = -\cos(x) + C$                        |
+|                     | $\int \cos(x)\,dx = \sin(x) + C$                         |
+|                     | $\int \tan(x)\,dx = -\ln |\cos(x)| + C$                  |
+| Piecewise rules     | Split definite integral into corresponding pieces        |
+:::
+
+------------------------------------------------------------------------
+
+### 7.1 THE DEFINITE INTEGRAL AS A LIMIT OF SUMS
+
+::: fragment
+**Use of integration**
+:::
+
+::: fragment
+-   What if instead we were concerned with the area under the curve?
+:::
+
+::: fragment
+-   That is, we want to know what the area is between the curve and the x-axis, from some point $x_1$ to another point $x_2$.
+:::
+
+::: fragment
+-   As we alluded to earlier in this chapter, calculating such areas is central to statistical inference, as we will see in Part III. If we let $x_1 = 1$ and $x_2 = 2$ and use $f(x) = x^2$, then we can visualize this area by dropping lines down from $f(x)$ at the two endpoints of the secant in the figure in Chapter 5. We show this in this figure, in which the shaded area is the area of interest.
+:::
+
+------------------------------------------------------------------------
+
+![Area under $y = x_2$ from $x = 1$ to $x = 2$](fig7.1.png)
+
+------------------------------------------------------------------------
+
+::: fragment
+**Definition**
+
+-   The integral symbol $\int$ looks like an $S$ and is meant to, to remind you that it is in essence a sum.
+
+-   The $dx$ in the integral tells you the variable of integration.
+
+-   It is exactly analogous to the $dx$ in the derivative. The f(x), or more generally, the expression multiplying the $dx$, is known as the **integrand**. The $a$ and $b$ are the bounds (or limits) of integration.
+
+-   They tell you the value of $x$ at which to start and the value at which to stop.
+
+-   Unlike the derivative, which can be represented using a variety of notation, this is the single, common, agreed-upon notation for the integral.
+:::
+
+::: fragment
+-   For our case, $x^2$ is the integrand, $a = 1$ and $b = 2$ are the bounds of integration, and the definite integral is $\int_1^2 x^2 dx$
+:::
+
+------------------------------------------------------------------------
+
+## 7.2 INDEFINITE INTEGRALS AND THE FUNDAMENTAL THEOREM OF CALCULUS
+
+::: fragment
+Well see that the derivative and the **antiderivative** (aka indefinite integral) are similarly related.
+:::
+
+::: fragment
+### 7.2.1 Antiderivatives and the Indefinite Integral
+:::
+
+::: fragment
+-   Take $F(x) = x + 10$. The derivative of that is also one, as is the derivative of $F(x) = x + 1,000$.
+:::
+
+::: fragment
+-   In general, because the derivative of a constant is zero, there are lots (an infinite number, actually) of antiderivatives that all produce the same $f(x)$.
+:::
+
+::: fragment
+-   Luckily, they're all of the same form: $F(x) = x + C$. We call $C$ the constant of integration, and it can be any constant value.
+:::
+
+::: fragment
+-   So, if $f(x) = x$, then we try to figure out what function $F(x)$, when differentiated, yields $x$.
+:::
+
+::: fragment
+-   Well, we know that the derivative of $x^2$ is $2x$, so that's pretty close. We also know that the derivative is linear, so we can divide $x^2$ by $2$ to get a derivative of $x$.
+:::
+
+::: fragment
+-   Thus, the antiderivative of $x$ is $\frac{1}{2}x^2 + C$. (Don't forget the $C$!)
+:::
+
+------------------------------------------------------------------------
+
+::: fragment
+-   For a slightly more complicated example, consider $\frac{1}{x}$.
+:::
+
+::: fragment
+-   There's no polynomial that when differentiated produces this; check for yourself.
+:::
+
+::: fragment
+-   What about other functions? While $e^x$ certainly doesn't work, its inverse function, $\ln(x)$, does.
+:::
+
+::: fragment
+-   Since $(\ln(x))' = \frac{1}{x}$, the antiderivative of $\frac{1}{x}$ is $\ln|x| + C$.
+:::
+
+------------------------------------------------------------------------
+
+::: fragment
+-   We write an indefinite integral as $\int f(x)dx = F(x)$, so it looks the same as a definite integral without the bounds on the integral.
+:::
+
+::: fragment
+-   The difference is that the **definite integral** returns a value, the area under the curve, while the **indefinite integral** returns a function that, when differentiated, reproduces the integrand. In symbols, $\frac{d \int f(x)dx}{dx} = f(x)$.
+:::
+
+------------------------------------------------------------------------
+
+### 7.2.2 The Fundamental Theorem of Calculus
+
+::: fragment
+$$
+\int_a^b f(x)dx=F(b)-F(a)
+$$
+:::
+
+::: fragment
+### 7.3.5 The Integral Is Also a Linear Operator
+:::
+
+::: fragment
+-   More formally, to say that the integral is also a linear operator is to say that $\int(af(x) + bg(x))dx = a\int f(x)dx + b\int g(x)dx$.
+:::
+
+::: fragment
+-   To show this we need to use the definition of the antiderivative. The proof follows from this definition and the linearity of the derivative discussed in the previous chapter.
+:::
+
+------------------------------------------------------------------------
+
+Example:
+
+::: fragment
+-   All polynomials can be tackled with this rule. For instance, consider $f(x) = 4x^5 + 2x^2 + 5$. Linearity implies we can treat each term separately.
+:::
+
+::: fragment
+The integral $\int x^5dx = \frac{x^6}{6} + C$,
+:::
+
+::: fragment
+so $4\int x^5dx = \frac{2x^6}{3} + C$.
+:::
+
+::: fragment
+The integral $\int x^2dx = \frac{x^3}{3} + C$,
+:::
+
+::: fragment
+so $2\int x^2dx = \frac{2x^3}{3} + C$.
+:::
+
+------------------------------------------------------------------------
+
+### 7.3.6 Integration by Substitution
+
+::: fragment
+If $x = g(u)$, then $f(x) = f(g(u))$, which is a composite function. Integration by substitution says that
+
+$$\int_{a}^{b} f(g(u))g'(u)du = \int_{g(a)}^{g(b)} f(x)dx$$
+:::
+
+------------------------------------------------------------------------
+
+::: fragment
+First consider the function $f(x) = \frac{1}{2\pi}xe^{-\frac{x^2}{2}}$. This function is the probability distribution function of a standard normal distribution, multiplied by $x$.
+:::
+
+::: fragment
+Its integral is $\int \left(\frac{1}{2\pi}xe^{-\frac{x^2}{2}}\right)dx$, which happens to be the expected value of $x$ in a standard normal distribution. We'll see this more in Chapter 11.
+:::
+
+::: fragment
+This integral looks complicated, but it turns out that it reduces quite easily via substitution.
+:::
+
+::: fragment
+The composite function here is $e^{-\frac{x^2}{2}}$, which we don't know how to integrate.
+:::
+
+::: fragment
+But we do know how to integrate $e^u$, so let's set $u = g(x) = -\frac{x^2}{2}$ and see what happens.
+:::
+
+::: fragment
+We can use the power rule to see that $g'(x) = -x$, which means we can rewrite the integral as $\int \left(\frac{-1}{2\pi}g'(x)e^{g(x)}\right)dx$.
+:::
+
+::: fragment
+Integration by substitution implies that this integral is the same as $\int \left(\frac{-1}{2\pi}e^u\right)du$, which just equals $\frac{-1}{2\pi}e^u + C = \frac{-1}{2\pi}e^{-\frac{x^2}{2}} + C$. So we've completed our integral.
+:::
+
+------------------------------------------------------------------------
+
+::: fragment
+-   For example, to compute $\int x^4e^{x^5}dx$,
+:::
+
+::: fragment
+we set $u = g(x) = x^5$,
+:::
+
+::: fragment
+so $dx = (g'(x))^{-1}du = \frac{1}{5x^4}dx$,
+:::
+
+::: fragment
+and thus $\int x^4e^{x^5}dx = \int x^4e^{x^5} \frac{1}{5x^4}du = \frac{1}{5}\int e^udu$.
+:::
+
+::: fragment
+This is just $\frac{1}{5}e^u + C = \frac{1}{5}e^{x^5} + C$.
+:::
+
+::: fragment
+-   For example, let's say we had $\int_{1}^{3} 3x^2e^{x^3}dx$, i.e., our recent example made into a definite integral.
+:::
+
+::: fragment
+With $u = g(x) = x^3$, the integral becomes $\int_{g(1)}^{g(3)} e^udu = \int_{1}^{27} e^udu = e^{27} - e^1$.
+:::
+
+------------------------------------------------------------------------
+
+### 7.3.7 Integration by Parts
+
+::: fragment
+**Integration by parts** states that $$
+\int f(x) g'(x) \, dx = f(x) g(x) - \int f'(x) g(x) \, dx.
+$$
+:::
+
+::: fragment
+-   Basically, the rule allows you to change around your functions. If you can't integrate $f(x)g'(x)$ but you can integrate $g'(x)$ and $f'(x)g(x)$, it's very useful.
+:::
+
+::: fragment
+-   Practically, this occurs when $g'(x)$ is something like $e^x$ that does not get more complex when you integrate it, while $f(x)$ is something like $x$ that simplifies when you differentiate it. We'll see this shortly in the examples. First, the proof, which is straightforward.
+:::
+
+::: fragment
+-   The product rule states that $(f(x)g(x))' = f'(x)g(x) + f(x)g'(x)$
+:::
+
+::: fragment
+Now for why we'd use it. Let's start with $\int x e^x dx$.
+:::
+
+::: fragment
+We set $f(x) = x$, $g'(x) = e^x$, and the rule gives us $\int x e^x \, dx = x e^x - \int e^x \, dx = x e^x - e^x + C$.
+:::
+
+------------------------------------------------------------------------
+
+::: fragment
+-   We could in theory do this multiple times for more complicated functions.
+:::
+
+::: fragment
+For example, $\int x^2 e^x \, dx = x^2 e^x - \int 2x e^x \, dx + C$. We can then use our previous example of integration by parts to complete the problem: $\int x^2 e^x \, dx = x^2 e^x - 2(x e^x - e^x) + C$.
+:::
+
+::: fragment
+Another example: $\int x(x+1) \frac{3}{2} \, dx$
+:::

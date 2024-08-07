@@ -1,0 +1,335 @@
+---
+title: "EPPS Math and Coding Camp"
+subtitle: "Probability"
+format: 
+  revealjs:
+    theme: [serif, custom.scss]
+    slide-number: true
+    logo: eppslogo.png
+    css: logo.css
+editor: visual
+---
+
+### 9.1.2 Classical Probability
+
+::: fragment
+-   Classical probability is the theoretical analysis of events in the absence of data. The three key concepts are outcome, event, and sample space.
+:::
+
+::: fragment
+-   **Outcomes are anything that might happen in the world**.
+:::
+
+::: fragment
+-   **Events are composed of one or more outcomes**.
+:::
+
+::: fragment
+-   The canonical example is a die. There are six possible outcomes when one rolls a die. Each of those outcomes can be defined as an event, but we also want to be able to define the event that one rolls *an even number* or *a number greater than three*, etc.
+:::
+
+::: fragment
+-   Events can be divided into two groups with respect to their cause, those that will happen with some probability given certain conditions and those that will happen (or not happen) with certainty given certain conditions.
+:::
+
+::: fragment
+-   The first group of events is known as random events, and the study of probability applies to them.
+:::
+
+::: fragment
+-   The second group of events is known as deterministic events; we do not need probability here because events either always happen or never do, based on the situation.
+:::
+
+------------------------------------------------------------------------
+
+::: fragment
+-   A **sample space** is the set of all possible outcomes: it is a list of each event we *might* observe.
+:::
+
+::: fragment
+-   By convention, the sum of the probabilities that each outcome in the sample space, $o_1, o_2, o_3, \ldots, o_n$, occurs is set equal to 1.
+:::
+
+::: fragment
+-   If we define the event of interest as the sample space, $S$, then the probability of that event is the sum of the probabilities of each outcome, which is 1: $\Pr(S) = \Pr(o_1) + \Pr(o_2) + \Pr(o_3) + \ldots + \Pr(o_n) = 1.0.$
+:::
+
+::: fragment
+With outcome, event, and sample space defined, we can define the classical probability of an event: $$\Pr(e) = \frac{\text{No. of outcomes in event } e}{\text{No. of outcomes in the sample space}}.$$
+:::
+
+::: fragment
+#### 9.1.2.1 Simple and Compound Events
+:::
+
+::: fragment
+-   A **simple event** is a single outcome that we represent as having occurred to an individual or group. That is, we cannot break down a simple event into constituent parts (i.e., multiple outcomes).
+:::
+
+::: fragment
+-   A **compound event**, on the other hand, is composed of two or more simple events; we can break it down into constituent parts (i.e., outcomes).
+:::
+
+------------------------------------------------------------------------
+
+### 9.1.3 Independence, Mutual Exclusivity and Collective Exhaustivity
+
+::: fragment
+-   Two events are **independent** if the probability that one occurs does not change as a consequence of the other event's occurring.
+:::
+
+::: fragment
+-   Two variables are independent if the probability of variable $a$ taking value $i$ is not changed as a result of variable $b$ taking a particular value, $j$.
+:::
+
+::: fragment
+-   Two events are **mutually exclusive** when one cannot occur if the other has occurred.
+:::
+
+::: fragment
+-   **Collective exhaustivity** is the characteristic that each and every event fits into at least one of the categories.
+:::
+
+::: fragment
+-   Collective exhaustivity refers to ensuring that a set of outcomes or events covers the entire sample space, meaning that all possible outcomes are included and accounted for.
+:::
+
+::: fragment
+-   Note that events that are mutually exclusive are not independent. Further, events that are collectively exhaustive are not independent. If one happens, the others cannot happen.
+:::
+
+------------------------------------------------------------------------
+
+### 9.1.4 Joint and Conditional Probabilities
+
+::: fragment
+-   A **joint probability** is the probability of a compound event. If the simple events of a compound event are independent, then their joint probability is the product of the probabilities of each simple event.
+:::
+
+::: fragment
+-   The joint probability of independent events is the probability of both events occurring, and we calculate it as the product of the probabilities of each individual event
+:::
+
+::: fragment
+-   The joint probability of two mutually exclusive events is *not* the product of the simple probabilities. Instead, it is the sum of the simple probabilities: given that $p(y_D) = .4$ and $p(y_R) = .5$, $p(y_D \text{ or } y_R) = 0.4 + 0.5 = 0.9$.
+:::
+
+::: fragment
+-   The probability of one event occurring is affected by whether another event occurs and is referred to as a **conditional probability**: $p(y|x,z)$, which is read "the probability of $y$ given $x$ and $z$."
+:::
+
+------------------------------------------------------------------------
+
+## 9.2 COMPUTING PROBABILITIES
+
+### 9.2.1 Notation and Some Rules
+
+::: fragment
+-   First, consider the probability that an event $A$ occurs. We denote this $Pr(A)$
+:::
+
+::: fragment
+-   All probabilities lie between zero and one, so $Pr(A) \in [0,1]$. We say $A$ is a deterministic event if $Pr(A) \in \{0,1\}$ and a random, probabilistic, or stochastic event otherwise. If $S$ is the sample space containing all events that might happen, then $Pr(S) = 1$. If $Pr(A) = 0$, then $A$ cannot happen.
+:::
+
+::: fragment
+-   $Pr(A|B)$ is the conditional probability of $A$ on $B$. In other words, it is the probability that $A$ occurs given that $B$ has already occurred. If $A$ and $B$ are independent events, then the fact that $B$ has already occurred doesn't influence the probability that $A$ will occur. So, for independent events, $Pr(A|B) = Pr(A)$.
+:::
+
+::: fragment
+-   The symbols for set union ($\cup$) and intersection ($\cap$) also apply to events. $A \cup B$ is the compound event where *either* $A$ or $B$ happens, or both. Thus, we read $A \cup B$ as "$A$ or $B$."
+:::
+
+::: fragment
+-   The idea is roughly that $A \cup B$ contains all the events in $A$ and $B$, so the compound event happens if *any* of the events in $A$ or $B$ happen. $A \cap B$ is the compound event where *both* $A$ and $B$ happen. Thus, we read $A \cap B$ as "$A$ and $B$."
+:::
+
+------------------------------------------------------------------------
+
+::: fragment
+-   The rule for *and* looks like this:
+
+$$Pr(A \cap B) = Pr(B|A)Pr(A) = Pr(A|B)Pr(B)$$
+:::
+
+::: fragment
+-   When $A$ and $B$ are independent, $Pr(A|B) = Pr(A)$ and $Pr(B|A) = Pr(B)$, and this rule reduces to $Pr(A \cap B) = Pr(A)Pr(B)$
+:::
+
+::: fragment
+-   The rule for *or* looks like this:
+
+$$Pr(A \cup B) = Pr(A) + Pr(B) - Pr(A \cap B)$$
+:::
+
+::: fragment
+-   When events are mutually exclusive that overlap is zero, though, so you just get $Pr(A \cup B) = Pr(A) + Pr(B)$.
+:::
+
+------------------------------------------------------------------------
+
+### 9.2.3 Bayes Rule
+
+::: fragment
+-   Let $B$ and $A$ be two events of interest and, to make it simple, we will make $B$ and $A$ the positive values of binary variables such that $\sim B$ (read "not $B$") and $\sim A$ represent the absence of the events.
+:::
+
+::: fragment
+-   Bayes argued that one should update one's prior beliefs about $B$ by comparing the probability that one would observe $A$ given one is correct about $B$ with the joint probability of observing $A$ given one is correct *and* given one is mistaken.
+:::
+
+::: fragment
+-   That is, he suggested that one normalize the probability that one is correct by the probabilities associated with all other possible states of the world (i.e., one is correct *and* one is not correct).
+:::
+
+------------------------------------------------------------------------
+
+::: fragment
+-   More explicitly, Bayes suggested that we examine the ratio of the joint probability of $B$ **and** $A$ (i.e., $Pr(A|B)Pr(B)$) with the joint probability of $B$ and $A$ **or** $\sim B$ and $A$ (i.e., $Pr(A|B)Pr(B) + Pr(A|\sim B)Pr(\sim B)$). We can write Bayes' theorem in this simple case as follows:
+
+$$
+Pr(B|A) = \frac{Pr(A|B)Pr(B)}{Pr(A|B)Pr(B) + Pr(A|\sim B)Pr(\sim B)} 
+$$
+
+One can read equation as follows: *the posterior probability of B given A is the product of the prior probability of B and the probability of A given B divided by the product of the prior probability of B and the probability of A given B plus the product of the prior probability of not B and the probability of A given not B*.
+:::
+
+------------------------------------------------------------------------
+
+Example:
+
+::: fragment
+-   Focusing on economic policies, Stokes provides a table of Latin American leaders between 1982 and 1995 and determines whether the politician who won the election promised to pursue a security-oriented policy, $s$, where wages were indexed to inflation and parastatal corporations remained intact, or an efficiency-oriented policy, $e$, where wage indexing was relaxed and parastatal corporations were privatized.
+:::
+
+::: fragment
+-   She also records whether, once in office, the politician adopted a security-oriented or an efficiency-oriented policy. The data reveal that 33 of 43 Latin American leaders elected between 1982 and 1995 adopted efficiency policies: $Pr(e) = \frac{33}{43} = 0.77$. Given $Pr(e)$, we can calculate the empirical probability that a politician adopted a security-oriented policy: $Pr(s) = 1 - Pr(e) = 1 - 0.77 = 0.23$.
+:::
+
+::: fragment
+-   These prior beliefs suggest that the typical voter in Latin America will expect 77% of candidates to implement efficiency-oriented policies and 23% of candidates to implement security-oriented policies.
+:::
+
+------------------------------------------------------------------------
+
+::: fragment
+-   To use Bayes' rule to update those beliefs in response to a campaign in which candidates make promises, we need to define the situation.
+:::
+
+::: fragment
+-   During the campaign the voter will monitor the promises made by the candidates. Consider a contest with two candidates, one of whom campaigns on an efficiency-oriented platform, the other of whom campaigns on a security-oriented platform.
+:::
+
+::: fragment
+-   If Bayes' rule leads to the conclusion that the voter ought to revise his beliefs about the candidates' probability of implementing the policy on which they campaign then we will conclude that Latin American campaigns are informative and the conventional wisdom is poor.
+:::
+
+::: fragment
+-   In other words, we want to know, for example, whether campaigning on an efficiency-oriented platform increases voters' beliefs that the candidate will adopt an efficiency policy in office.
+:::
+
+------------------------------------------------------------------------
+
+::: fragment
+-   If we let $\epsilon$ indicate a campaign promise of efficiency-oriented economic policy and $e$ indicate the adoption of an efficiency policy in office, then this belief is $Pr(e|\epsilon)$. Bayes' rule lets us calculate this, if we know $Pr(\epsilon|e)$, $Pr(\epsilon)$, and $Pr(e)$.
+:::
+
+::: fragment
+-   We already know that $Pr(e) = 0.77$. Next we need the conditional probability that a candidate campaigned on an efficiency-oriented platform given that he adopted an efficiency policy in office: $Pr(\epsilon|e)$.
+:::
+
+::: fragment
+-   Stokes's table reveals that 16 of the 33 candidates who adopted efficiency policies also campaigned on an efficiency platform: $Pr(\epsilon|e) = \frac{16}{33} = 0.48$. Finally, consider $Pr(\epsilon)$. We expand this as above to get $Pr(\epsilon) = Pr(\epsilon|e)Pr(e) + Pr(\epsilon|\sim e)Pr(\sim e)$.
+:::
+
+::: fragment
+-   We know the first term in the sum already, and also that $Pr(\sim e) = 0.23$. This leaves $Pr(\epsilon|\sim e)$: the conditional probability that a candidate campaigned on an efficiency-oriented platform given that he adopted a security-oriented (i.e., "not efficiency") policy in office.
+:::
+
+::: fragment
+-   It turns out that none of the ten Latin American politicians who enacted security-oriented policies once in office campaigned on efficiency: $Pr(\epsilon|\sim e) = \frac{0}{10} = 0$.
+:::
+
+------------------------------------------------------------------------
+
+::: fragment
+Plugging these into Bayes' rule yields:
+
+$$
+Pr(e|\epsilon) = \frac{Pr(\epsilon|e)Pr(e)}{Pr(\epsilon|e)Pr(e) + Pr(\epsilon|\sim e)Pr(\sim e)} 
+$$
+:::
+
+::: fragment
+$$
+= \frac{0.48(0.77)}{0.48(0.77) + 0(0.23)} = \frac{0.37}{0.37 + 0} = 1
+$$
+:::
+
+::: fragment
+-   The voter's posterior belief is 1.0, which is a considerable increase from 0.77, the voter's prior belief. Thus, the campaign has a substantial impact: on knowing that the candidate is promising to implement efficiency-oriented policies, the voter shifts from being confident that the candidate will do so (0.77 probability) to being certain that the candidate will do so (1.0 probability). Why?
+:::
+
+::: fragment
+-   The zero in the denominator above (i.e., $Pr(\epsilon|\sim e)$) is responsible. If there is no contrary evidence, the voter changes his belief to certainty.
+:::
+
+------------------------------------------------------------------------
+
+::: fragment
+-   Next we turn to the issue of whether a candidate will implement a security-oriented platform, given that he campaigned on a security-oriented policy. Letting $\sigma$ be a security-oriented campaign and $s$ be a security-oriented implementation in office, this conditional probability is $Pr(s|\sigma)$.
+:::
+
+::: fragment
+-   To compute this we'll need to know the conditional probability that a candidate campaigned on a security-oriented policy given that he adopted a security-oriented policy in office, which is $Pr(\sigma|s)$, as well as $Pr(s) = 0.23$ and $Pr(\sigma) = Pr(\sigma|s)Pr(s) + Pr(\sigma|\sim s)Pr(\sim s)$.
+:::
+
+::: fragment
+-   Stokes's data indicate that all ten of the leaders who implemented a security-oriented policy also campaigned on it: $Pr(\sigma|s) = \frac{10}{10} = 1.0$, where $\sigma$ (sigma) represents a candidate who campaigns on a security-oriented policy.
+:::
+
+::: fragment
+-   The final piece of information we need is the number of leaders who campaigned on a security platform but adopted an efficiency-oriented policy. The data reveal that 12 of the 33 leaders who adopted an efficiency-oriented policy campaigned on a security platform: $p(\sigma|\sim s) = \frac{12}{33} = 0.36$.
+:::
+
+------------------------------------------------------------------------
+
+::: fragment
+Plugging these into Bayes' rule yields
+
+$$
+Pr(s|\sigma) = \frac{Pr(\sigma|s)Pr(s)}{Pr(\sigma|s)Pr(s) + Pr(\sigma|\sim s)Pr(\sim s)}
+$$
+:::
+
+::: fragment
+$$
+= \frac{1.0(0.23)}{1.0(0.23) + 0.36(0.77)} = \frac{0.23}{0.23 + 0.28} = \frac{0.23}{0.51} = 0.45
+$$
+:::
+
+::: fragment
+-   The voter's posterior belief after observing the campaign is 0.45.
+:::
+
+------------------------------------------------------------------------
+
+### 9.3.1 Odds and the Odds Ratio
+
+::: fragment
+-   The odds of an event is defined as the ratio of the probability of the event's occurring and the probability that it does not occur: $\frac{Pr(y)}{Pr(\sim y)}$. The odds ratio of two events, $x_1$ and $x_2$, then, is the ratio of the individual odds:
+
+$$\frac{Pr(x_1)/Pr(\sim x_1)}{Pr(x_2)/Pr(\sim x_2)}$$
+:::
+
+::: fragment
+-   The relative risk ratio is the ratio of two probabilities and can be quite useful for comparing relationships.
+:::
+
+::: fragment
+-   Comparing the ratio of those risks gives us a good measure of the relative risks.
+:::
+
+::: fragment
+-   Relative risk ratios have a range from zero to infinity. A value of 1 indicates that the risks are equal across the pair. A value below 1 indicates that the probability in the first part of the ratio is smaller than the probability in the second part, while values greater than 1 represent the opposite.
+:::

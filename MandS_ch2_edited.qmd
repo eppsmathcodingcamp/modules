@@ -1,0 +1,362 @@
+---
+title: "EPPS Math and Coding Camp"
+subtitle: "Algebra review"
+author: "Instructor: Azharul Islam"
+format: 
+  revealjs:
+    theme: [serif, custom.scss]
+    slide-number: true
+    logo: eppslogo.png
+    css: logo.css
+editor: visual
+---
+
+## 2.1 BASIC PROPERTIES OF ARITHMETIC
+
+::: fragment
+-   **associative properties**: $(a+b)+c = a+(b+c)$ and $(a \times b) \times c = a \times (b \times c)$.
+:::
+
+::: fragment
+-   **Commutative properties**: $a+b=b+1$ and $a \times b=b \times a$.
+:::
+
+::: fragment
+-   **Distributive property**: $a(b+c)=ab+ac$.
+:::
+
+::: fragment
+-   **Udentity properties** state that there exists a zero such that $x+0=x$ and that there exists a one such that $x \times 1 =x$.
+:::
+
+::: fragment
+-   **Inverse property** states that there exists a $-x$ such that $(x)+x=0$. An inverse under multiplication, $x^{-1}$, such that $(x^{-1} \times x) = 1$. <br>
+:::
+
+------------------------------------------------------------------------
+
+### 2.1.1 Order of Operations
+
+::: fragment
+parentheses, exponents, multiplication, division, addition, subtraction <br>
+:::
+
+::: fragment
+A common mnemonic device people use to memorize order of operations is <br>
+
+PEMDAS <br>
+:::
+
+::: fragment
+or <u>P</u>lease <u>E</u>xcuse <u>M</u>y <u>D</u>ear <u>A</u>unt <u>S</u>ally.
+:::
+
+------------------------------------------------------------------------
+
+### 2.1.2 Ratios, Proportions, and Percentages
+
+::: fragment
+-   The **ratio** of two quantities is one divided by the other $\frac{x}{y}$ is the ratio of x to y. Ratios are also written as $x:y$. <br>
+:::
+
+::: fragment
+-   Though a ratio may be negative, we typically consider ratio variables that range from $0$ to $\infty$. <br>
+:::
+
+::: fragment
+-   The **proportion** of two variables, on the other hand, is the amount one vari able represents of the sum of itself and a second variable: $|\frac{x}{x+y}|$. A proportion ranges from a minimum of $0$ to a maximum of $1$. <br>
+:::
+
+::: fragment
+-   The proportion of expenditures that is spent in a given category is often interested.
+:::
+
+::: fragment
+-   The **percentage** one variable represents of a total is the proportion represented over the range from $0$ to $100$: $|\frac{x}{x+y}| \times 100 \%$ <br> Many people find a percentage representation more intuitive than a proportion representation.
+:::
+
+::: fragment
+You will also encounter the **percentage change** in a variable, which is calculated as: $\frac{x_{t+1}-x_t}{x_t}$, where the subscript $t$ indicates the first observation and the subscript t + 1 indicates the second observation.
+:::
+
+------------------------------------------------------------------------
+
+## 2.2 ALGEBRA REVIEW
+
+### 2.2.1 Fractions
+
+::: fragment
+$$ 
+\frac{Numerator}{Denominator}
+$$
+:::
+
+------------------------------------------------------------------------
+
+### 2.2.2 Factoring
+
+::: fragment
+-   Factoring involves rearranging the terms in an equation to make further manipulation possible or to reveal something of interest. <br>
+:::
+
+::: fragment
+Example:<br> $$ \delta+\delta^2+4\delta-6\delta^2+18\delta^3$$
+:::
+
+::: fragment
+In this case we combine all the terms that have the same exponent, which gives us $$ 18\delta^3-5\delta^2+5\delta$$
+:::
+
+::: fragment
+#### 2.2.2.1 Factoring Quadratic Polynomials
+:::
+
+::: fragment
+Quadratic polynomials are composed of a constant and a variable that is both squared and raised to the power of one: $x^2-2x+3$, or $7-12x+6x^2$. Quadratic polynomials can be factored into the product of two terms: $(x \pm ?) \times (x \pm ?)$ where you need to determine whether the sign is $+$ or $-$, and then replace the question marks with the proper values.
+:::
+
+------------------------------------------------------------------------
+
+#### 2.2.2.2 Factoring and Fractions
+
+::: fragment
+Consider the fraction $\frac{x^2-1}{x-1}$ <br>
+:::
+
+::: fragment
+We can factor the numerator $x^2-1=(x+1)(x-1)$. We can thus rewrite the fraction as follows:
+:::
+
+::: fragment
+$$
+\frac{x^2-1}{x-1}=
+\frac{(x+1)(x-1)}{x-1}
+$$
+:::
+
+::: fragment
+The term $x-1$ is in both the numerator and the denominator and thus (as long as $x\neq 1$) cancels out, leaving $x+1$ for $x \neq 1$
+:::
+
+------------------------------------------------------------------------
+
+### 2.2.3 Expansion: The FOIL Method
+
+::: fragment
+$$
+(\delta + \gamma)^2 
+$$
+:::
+
+::: fragment
+$$=(\delta + \gamma)(\delta + \gamma)$$
+:::
+
+::: fragment
+$$
+=\delta^2 + 2\delta\gamma + \gamma^2
+$$
+:::
+
+::: fragment
+F: Multiply the first terms: $(\underline{2\pi}+7) (\underline{4}+3\pi)=2 \pi \times 4=8 \pi$ <br>
+:::
+
+::: fragment
+O: Multiply the outer terms: $(\underline{2\pi}+7) (4+\underline{3\pi})=2 \pi \times 3 \pi=6 \pi^2$ <br>
+:::
+
+::: fragment
+I: Multiply the inner terms: $(2\pi+\underline{7}) (\underline{4}+3\pi)=4 \times 7=28$ <br>
+:::
+
+::: fragment
+L: Multiply the last terms: $(2\pi+\underline{7}) (4+\underline{3\pi})=7 \times 3 \pi=21 \pi$ <br>
+:::
+
+::: fragment
+Add terms to get: $8\pi+6\pi^2+28+21\pi$ <br>
+:::
+
+::: fragment
+Finally, group like terms to get: $6\pi^2+29\pi+28$ <br>
+:::
+
+::: fragment
+To test yourself, factor the final expression and show it yields the simplified expression with which we started. This is one way to check your work for any mistakes.
+:::
+
+------------------------------------------------------------------------
+
+#### 2.2.4.1 Solving Quadratics
+
+Example:
+
+::: fragment
+$$
+(x-3)^2=4
+$$
+:::
+
+::: fragment
+$$
+x-3=\pm 2
+$$
+:::
+
+::: fragment
+$$
+x=5 \text{ or } x=1
+$$
+:::
+
+::: fragment
+Note that this quadratic equation will have two solutions in the real numbers, or zero, but not one. In other words, the cardinality of the solution set for a quadratic equation will be zero or two. <br>
+:::
+
+::: fragment
+Example with no solutions in the real numbers: $x^2+1=0$ <br>
+:::
+
+------------------------------------------------------------------------
+
+::: fragment
+Another example: $$
+x^2+8x+6=0
+$$
+:::
+
+------------------------------------------------------------------------
+
+::: fragment
+The general form of a quadratic equation: <br> $$
+ax^2+bx+c=0
+$$
+:::
+
+::: fragment
+The general solutions to this equation: $$
+x=\frac{-b \pm \sqrt{b^2-4ac}}{2a}
+$$
+:::
+
+------------------------------------------------------------------------
+
+### 2.2.5 Inequalities
+
+::: fragment
+-   All pairs of real numbers have exactly one of the following relations: $x=y$, $x>y$, or $x<y$.
+:::
+
+::: fragment
+-   Adding any number to each side of these relations will not change them; this includes the inequalities.<br> That is, inequalities have the same addition and subtraction properties as equalities such that: if $x>y$, then $x+a>y+a$ and $x-a>y-a$
+:::
+
+::: fragment
+-   You flip the $<$ or $>$ sign when multiplying or dividing by a negative. Multiplying or dividing an inequality by zero is not allowed.
+:::
+
+::: fragment
+-   For multiplication, if $a$ is positive and $x>y$, then $ax>ay$. <br> If $a$ is negative and $x>y$, then $ax<ay$. <br>
+-   For division, if $a$ is positive and $x>y$, then $\frac{x}{a}>\frac{y}{a}$. <br> If $a$ is negative and $x>y$, then $\frac{x}{a}<\frac{y}{a}$. <br>
+:::
+
+------------------------------------------------------------------------
+
+::: fragment
+Example: <br> Solve for $y$: <br> $$
+-4y>2x+12
+$$
+:::
+
+::: fragment
+$$
+y<-\frac{x}{2}-3
+$$
+:::
+
+------------------------------------------------------------------------
+
+Exercise:
+
+::: fragment
+$$
+1.4x^2+3.7x+1.1=0   
+$$
+:::
+
+------------------------------------------------------------------------
+
+Answer:
+
+::: fragment
+$$
+a=1.4, b=3.7, c=1.1
+$$
+:::
+
+::: fragment
+$$
+x=\frac{-3.7 \pm \sqrt{3.7^2-4 \times 1.4 \times 1.1}}{2.8}
+$$
+:::
+
+::: fragment
+Using a calculator to solve, we find that $x=-.341 \text{ or } x=-2.301$
+:::
+
+------------------------------------------------------------------------
+
+## Problems
+
+### Problem 1
+
+Complete the following equations
+
+a.  $\prod_{m=6}^9 x_m = \ldots$
+
+b.  $\sqrt[3]{27} = \ldots$
+
+------------------------------------------------------------------------
+
+### Problem 2
+
+Simplify this expression as much as possible: $\frac{2x^2 + 20x + 50}{2x^2 - 50}$
+
+------------------------------------------------------------------------
+
+### Problem 3
+
+FOIL: $(2x - 3)(5x + 7)$
+
+------------------------------------------------------------------------
+
+### Problem 4
+
+Complete the square and solve for y: $\frac{1}{3}y^2 + \frac{2}{3}y - 16 = 0$
+
+------------------------------------------------------------------------
+
+### Problem 5
+
+Solve using the quadratic formula: $2x^2 + 5x - 7 = 0$
+
+------------------------------------------------------------------------
+
+### Problem 6
+
+Solve: $-\frac{5}{8} > \frac{5}{4}$
+
+------------------------------------------------------------------------
+
+### Problem 7
+
+A firm faces the marginal revenue schedule $MR = 80 - 2q$ and the marginal cost schedule $MC = 15 + 0.5q$, where $q$ is the quantity produced. You know that a firm maximizes profit when $MC = MR$. What will the profit-maximizing output be?
+
+------------------------------------------------------------------------
+
+### Problem 8
+
+Derive the quadratic formula by completing the square for the equation $ax^2 + bx + c = 0$.
+
+------------------------------------------------------------------------
