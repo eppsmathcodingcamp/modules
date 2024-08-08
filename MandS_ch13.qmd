@@ -1,6 +1,7 @@
 ---
 title: "EPPS Math and Coding Camp"
 subtitle: "Distributions"
+author: "Instructor: "
 format: 
   revealjs:
     theme: [serif, custom.scss]

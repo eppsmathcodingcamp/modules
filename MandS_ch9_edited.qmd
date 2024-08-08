@@ -1,6 +1,6 @@
 ---
 title: "EPPS Math and Coding Camp"
-subtitle: "Probability - Aug 8"
+subtitle: "Probability"
 author: "Instructor: Prajyna Barua and Azharul Islam"
 format: 
   revealjs:
@@ -10,6 +10,10 @@ format:
     css: logo.css
 editor: visual
 ---
+
+![](check_in.png){fig-align="center" out-width="100%"}
+
+------------------------------------------------------------------------
 
 ### 9.1.2 Classical Probability
 
@@ -328,6 +332,10 @@ $$\frac{Pr(x_1)/Pr(\sim x_1)}{Pr(x_2)/Pr(\sim x_2)}$$
 ::: fragment
 -   Relative risk ratios have a range from zero to infinity. A value of 1 indicates that the risks are equal across the pair. A value below 1 indicates that the probability in the first part of the ratio is smaller than the probability in the second part, while values greater than 1 represent the opposite.
 :::
+
+------------------------------------------------------------------------
+
+![](upload_answer){fig-align="center" out-width="100%"}
 
 ------------------------------------------------------------------------
 
