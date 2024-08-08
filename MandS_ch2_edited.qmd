@@ -14,7 +14,7 @@ editor: visual
 ## 2.1 BASIC PROPERTIES OF ARITHMETIC
 
 ::: fragment
--   **associative properties**: $(a+b)+c = a+(b+c)$ and $(a \times b) \times c = a \times (b \times c)$.
+-   **Associative properties**: $(a+b)+c = a+(b+c)$ and $(a \times b) \times c = a \times (b \times c)$.
 :::
 
 ::: fragment
@@ -26,7 +26,7 @@ editor: visual
 :::
 
 ::: fragment
--   **Udentity properties** state that there exists a zero such that $x+0=x$ and that there exists a one such that $x \times 1 =x$.
+-   **Identity properties** state that there exists a zero such that $x+0=x$ and that there exists a one such that $x \times 1 =x$.
 :::
 
 ::: fragment
@@ -317,19 +317,13 @@ a.  $\prod_{m=6}^9 x_m = \ldots$
 
 b.  $\sqrt[3]{27} = \ldots$
 
-------------------------------------------------------------------------
-
 ### Problem 2
 
 Simplify this expression as much as possible: $\frac{2x^2 + 20x + 50}{2x^2 - 50}$
 
-------------------------------------------------------------------------
-
 ### Problem 3
 
 FOIL: $(2x - 3)(5x + 7)$
-
-------------------------------------------------------------------------
 
 ### Problem 4
 
@@ -341,22 +335,20 @@ Complete the square and solve for y: $\frac{1}{3}y^2 + \frac{2}{3}y - 16 = 0$
 
 Solve using the quadratic formula: $2x^2 + 5x - 7 = 0$
 
-------------------------------------------------------------------------
-
 ### Problem 6
 
 Solve: $-\frac{5}{8} > \frac{5}{4}$
 
-------------------------------------------------------------------------
-
 ### Problem 7
 
 A firm faces the marginal revenue schedule $MR = 80 - 2q$ and the marginal cost schedule $MC = 15 + 0.5q$, where $q$ is the quantity produced. You know that a firm maximizes profit when $MC = MR$. What will the profit-maximizing output be?
-
-------------------------------------------------------------------------
 
 ### Problem 8
 
 Derive the quadratic formula by completing the square for the equation $ax^2 + bx + c = 0$.
 
 ------------------------------------------------------------------------
+
+**Any Questions?**
+
+[Home](index.html)

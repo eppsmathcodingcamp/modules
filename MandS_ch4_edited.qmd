@@ -404,19 +404,13 @@ Rewrite the following by taking the log of both sides. Is the result a linear (a
 
 $$y = \alpha + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3$$
 
-------------------------------------------------------------------------
-
 ### Problem 2
 
 Rewrite the following by taking the log of both sides. Is the result a linear (affine) function? $$y = \alpha \times x_1^{\beta_1} \times x_2^{\beta_2} / x_3^{\beta_3}$$
 
-------------------------------------------------------------------------
-
 ### Problem 3
 
 Draw a graph to show that the sequence $\{1, -1, 1, -1, 1, -1, \ldots\}$ is divergent.
-
-------------------------------------------------------------------------
 
 ### Problem 4
 
@@ -428,19 +422,13 @@ Show whether $f(x) = x + x^3$ has a limit at $x = 3$ and, if so, find the value 
 
 Show whether $f(x) = (x - 3)(x + 5)$ has a limit at $x = 4$ and, if so, find the value of the limit.
 
-------------------------------------------------------------------------
-
 ### Problem 6
 
 Show whether $f(x) = \frac{3x^2 - 12}{x - 2}$ has a limit at $x = 2$ and, if so, find the value of the limit.
 
-------------------------------------------------------------------------
-
 ### Problem 7
 
 Show whether $f(x) = \frac{x^3 - 4}{x - 2}$ has a limit at $x = 2$ and, if so, find the value of the limit.
-
-------------------------------------------------------------------------
 
 ### Problem 8
 
@@ -472,11 +460,15 @@ For each of the following sets, state whether they are (a) open, closed, both, o
 
 Is the function $f(x) = \frac{\ln(x)}{x}$ continuous for $x \in [2, \infty)$?
 
-------------------------------------------------------------------------
-
 ### Problem 10
 
 Is the function $$f(x) = \begin{cases} 
 x^3 - 3x + 4 & \text{if } x < 3 \\
 \frac{x^2}{2} & \text{if } x > 3 
 \end{cases}$$ continuous? If so, why? If not, what changes would make it continuous?
+
+------------------------------------------------------------------------
+
+**Any Questions?**
+
+[Home](index.html)

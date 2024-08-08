@@ -313,13 +313,9 @@ $$
 
 If the domain of the function $y = 5 + 3x$ is the set $\{x \mid 1 < x < 4\}$, find the range of the function and express it as a set.
 
-------------------------------------------------------------------------
-
 ### Problem 2
 
 For the function $y = -x^2$, if the domain is the set of all nonnegative real numbers, what will its range be?
-
-------------------------------------------------------------------------
 
 ### Problem 3
 
@@ -337,28 +333,24 @@ with the set of values $-5 < x < 5$ as the domain. It is well known that the sig
 
 Graph the function $y = \frac{36}{x}$, assuming that $x$ and $y$ can take positive values only. Next, suppose that both variables can take negative values as well; how must the graph be modified to reflect this change in assumption?
 
-------------------------------------------------------------------------
-
 ### Problem 5
 
 Simplify $\frac{x^3}{x-3}$.
-
-------------------------------------------------------------------------
 
 ### Problem 6
 
 Show that $x^{m/n} = \sqrt[n]{x^m} = (\sqrt[n]{x})^m$.
 
-------------------------------------------------------------------------
-
 ### Problem 7
 
 Simplify $h(x) = g(f(x))$, where $f(x) = x^2 + 2$ and $g(x) = px - 4$.
-
-------------------------------------------------------------------------
 
 ### Problem 8
 
 Simplify $h(x) = f(g(x))$ with the same $f$ and $g$. Is it the same as your previous answer?
 
 ------------------------------------------------------------------------
+
+**Any Questions?**
+
+[Home](index.html)

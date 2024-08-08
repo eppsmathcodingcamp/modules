@@ -182,7 +182,7 @@ $$
 
 ::: fragment
 $$
-\sum_{i=k}^{l} x_i = x_k \times \ldots \times x_l
+\sum_{i=k}^{l} x_i = x_k + \ldots + x_l
 $$
 :::
 
@@ -394,8 +394,6 @@ g.  The complement of $A$ is $A$
 
 Write an element of the Cartesian product $[0, 1) \times (1, 2)$.
 
-------------------------------------------------------------------------
-
 ### Problem 5
 
 Given $S_1 = \{3, 6, 9\}$, $S_2 = \{a, b\}$, and $S_3 = \{m, n\}$, find the Cartesian products:
@@ -406,4 +404,6 @@ b.  $S_1 \times S_2 \times S_3$
 
 ------------------------------------------------------------------------
 
-[home](home.html)
+**Any Questions?**
+
+[Home](index.html)

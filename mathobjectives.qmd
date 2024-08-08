@@ -1,0 +1,86 @@
+---
+title: "EPPS Math and Coding Camp"
+subtitle: "Moore and Siegel Chapter 3"
+author: "Instructor: Azharul Islam  "
+format: 
+  revealjs:
+    theme: [serif, custom.scss]
+    slide-number: true
+    logo: eppslogo.png
+    css: logo.css
+editor: visual
+---
+
+### Chapter 1: Preliminaries
+
+1.  Understand and apply the basic concepts of set theory, including operations such as union, intersection, and complement.
+2.  Develop the ability to construct and interpret logical statements using formal logic, including truth tables and logical equivalences.
+3.  Gain proficiency in mathematical proof techniques, including direct proofs, proof by contradiction, and proof by induction.
+
+### Chapter 2: Algebra Review
+
+1.  Review and master algebraic operations involving polynomials, including addition, subtraction, multiplication, division, and factoring.
+2.  Solve a variety of linear and quadratic equations, including those with complex roots, and understand their geometric interpretations.
+3.  Apply the properties of exponents and logarithms to simplify and solve exponential and logarithmic equations.
+
+### Chapter 3: Functions and Relations
+
+1.  Define and identify different types of functions, including linear, quadratic, and polynomial functions, and understand their properties.
+2.  Explore the concepts of domain, range, and inverse functions, and learn to graph these functions accurately.
+3.  Analyze and interpret the relationships between functions and their graphical representations, including understanding how transformations affect function graphs.
+
+### Chapter 4: Introduction to Calculus and the Derivative
+
+1.  Understand the fundamental concepts of limits and continuity, and how they relate to the definition of a derivative.
+2.  Learn to compute the derivative of various functions, including polynomial, exponential, and trigonometric functions, using first principles and differentiation rules.
+3.  Apply the concept of the derivative to analyze rates of change in real-world contexts, including velocity and marginal analysis in economics.
+
+### Chapter 5: Differentiation
+
+1.  Master the rules of differentiation, including the product rule, quotient rule, and chain rule, and apply them to differentiate complex functions.
+2.  Explore higher-order derivatives and their significance in analyzing the concavity and inflection points of functions.
+3.  Apply differentiation techniques to solve practical problems in optimization, including finding the maxima and minima of functions.
+
+### Chapter 6: Integral
+
+1.  Understand the concept of integration as the inverse process of differentiation and the accumulation of quantities.
+2.  Learn to compute definite and indefinite integrals of functions using techniques such as substitution and integration by parts.
+3.  Apply integration to solve problems involving areas under curves, volumes of solids of revolution, and other physical and economic applications.
+
+### Chapter 7: Probability
+
+1.  Develop a solid understanding of basic probability concepts, including the definitions of probability, conditional probability, and independence.
+2.  Learn to apply the rules of probability, including the addition and multiplication rules, to solve problems involving multiple events.
+3.  Explore and solve problems related to discrete probability distributions, including the binomial and geometric distributions.
+
+### Chapter 8: Distributions
+
+1.  Understand the differences between discrete and continuous probability distributions, and learn to calculate and interpret probability mass functions (PMFs) and probability density functions (PDFs).
+2.  Gain proficiency in working with common continuous distributions, such as the normal, exponential, and uniform distributions.
+3.  Apply the concept of expected value and variance to analyze the properties of probability distributions and make informed predictions.
+
+### Chapter 9: Continuous Distribution
+
+1.  Explore the properties of continuous probability distributions, focusing on the normal distribution and its importance in statistical inference.
+2.  Learn to use the standard normal distribution (z-scores) to calculate probabilities and percentiles for normally distributed data.
+3.  Apply the concepts of central limit theorem and law of large numbers to understand the behavior of sample means and their distributions.
+
+### Chapter 10: Vector and Matrices
+
+1.  Understand the fundamental concepts of vectors and matrices, including operations such as addition, subtraction, and scalar multiplication.
+2.  Learn to perform matrix operations, including matrix multiplication, finding determinants, and computing inverses.
+3.  Apply vector and matrix techniques to solve systems of linear equations and explore their applications in various fields.
+
+### Chapter 11: Optimization
+
+1.  Understand the principles of optimization, including the identification of local and global maxima and minima of functions.
+2.  Learn to apply techniques such as the method of Lagrange multipliers to solve constrained optimization problems.
+3.  Explore real-world applications of optimization in economics, finance, and other fields, including profit maximization and cost minimization.
+
+### Chapter 12: Regression
+
+1.  Develop an understanding of simple and multiple linear regression models, including the interpretation of coefficients and goodness-of-fit measures.
+2.  Learn to estimate regression models using ordinary least squares (OLS) and understand the assumptions underlying OLS estimation.
+3.  Apply regression analysis to real-world data, including hypothesis testing, prediction, and the evaluation of model performance.
+
+These objectives provide a clear and focused path for students to follow as they progress through the material in each chapter.
