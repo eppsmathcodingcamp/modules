@@ -1,6 +1,6 @@
 ---
 title: "EPPS Math and Coding Camp"
-subtitle: "Algebra review - Aug 8"
+subtitle: "Algebra review"
 author: "Instructor: Azharul Islam"
 format: 
   revealjs:
@@ -337,7 +337,7 @@ Solve using the quadratic formula: $2x^2 + 5x - 7 = 0$
 
 ### Problem 6
 
-Solve: $-\frac{5}{8} > \frac{5}{4}$
+Solve: $-\delta > \frac{\delta+4}{7}$
 
 ### Problem 7
 
