@@ -83,13 +83,13 @@ $$
 
 ::: fragment
 $$
-\ln(x_1 + x_2) \neq \ln(x_1)+\ln(l_2) \text{, for }x_1,x_2>0
+\ln(x_1 + x_2) \neq \ln(x_1)+\ln(x_2) \text{, for }x_1,x_2>0
 $$
 :::
 
 ::: fragment
 $$
-\ln(x_1 - x_2) \neq \ln(x_1)-\ln(lx) \text{, for }x_1,x_2>0
+\ln(x_1 - x_2) \neq \ln(x_1)-\ln(x_2) \text{, for }x_1,x_2>0
 $$
 :::
 

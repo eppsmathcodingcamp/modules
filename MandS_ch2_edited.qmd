@@ -30,7 +30,7 @@ editor: visual
 :::
 
 ::: fragment
--   **Inverse property** states that there exists a $-x$ such that $(x)+x=0$. An inverse under multiplication, $x^{-1}$, such that $(x^{-1} \times x) = 1$. <br>
+-   **Inverse property** states that there exists a $-x$ such that $(-x)+x=0$. An inverse under multiplication, $x^{-1}$, such that $(x^{-1} \times x) = 1$. <br>
 :::
 
 ------------------------------------------------------------------------
