@@ -97,4 +97,26 @@ footer a:hover {
         max-width: 250px;
     }
 }
+.main-site-link {
+    display: inline-block;
+    background-color: var(--utd-orange);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 15px;
+}
 
+.main-site-link:hover {
+    background-color: #ff8c1a;
+    transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+    .main-site-link {
+        padding: 8px 16px;
+        font-size: 0.9em;
+    }
+}
