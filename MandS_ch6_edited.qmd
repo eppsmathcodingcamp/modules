@@ -1,6 +1,6 @@
 ---
 title: "EPPS Math and Coding Camp"
-subtitle: "Differentiation"
+subtitle: "Differentiation - Aug 8"
 author: "Instructor: Prajyna Barua and Azharul Islam"
 format: 
   revealjs:
@@ -363,7 +363,7 @@ In all these cases, $f$ and $g$ are assumed to be differentiable functions, and 
 
 ::: fragment
 |                           |                                                             |
-|---------------------------|-------------------------------------------------------------|
+|-----------------------|-------------------------------------------------|
 | Sum rule                  | $(f(x)+g(x))'=f'(x)+g'(x)$                                  |
 | Difference rule           | ($f(x)-g(x))'=f'(x)-g'(x)$                                  |
 | Multiply by constant rule | $f'(ax)=af'(x)$                                             |

@@ -1,6 +1,6 @@
 ---
 title: "EPPS Math and Coding Camp"
-subtitle: "Probability"
+subtitle: "Probability - Aug 8"
 author: "Instructor: Prajyna Barua and Azharul Islam"
 format: 
   revealjs:

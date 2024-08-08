@@ -1,0 +1,92 @@
+---
+title: "Group Assignments"
+format:
+  beamer:
+    theme: Madrid
+    colortheme: dolphin
+---
+
+## Group 1 - Quanta Crew
+
+- Eustace Chidozie
+- Md. Al Hasib
+- Emily Stern
+- Alesia Cate
+- Allie Chamis
+
+## Group 2 - Cosmic Chameleons
+
+- Andrew Bray
+- Reza Ansari
+- John Glendenning
+- M Shahriar Sonet
+
+## Group 3 - Neon Narwhals
+
+- Samiul Haque
+- Mahbubur Rahman
+- Shiu-Ting Ling
+- Jalil H Fathullah
+
+## Group 4 - Techno Toucans
+
+- Kayleigh Tompkins
+- Ayesha Tasnim
+- Monica Campos
+- Sabina Ampon-Wireko
+
+## Group 5 - Cyber Coyotes
+
+- Ariel Wang
+- Rafsanul Hoque
+- Ava Garrett
+- Christina da Silva
+
+## Group 6 - Pixel Pandas
+
+- Huiyan Yin
+- Gurmessa Jiru
+- Bahareh Hedayat
+- Joy Tapia
+
+## Group 7 - Data Dolphins
+
+- Avinash Singh
+- Gurmessa Jiru
+- Ajoke . H Shuaib-Adeniyi
+- Nichole Arledge
+
+## Group 8 - Binary Badgers
+
+- Steven Jones
+- Deena Essa
+- Riviere Addams
+- Warren Cox
+
+## Group 9 - Algo Alpacas
+
+- Nicholas Aboagye
+- Meeghan Gross
+- Maha Awan
+- Jeremy Lopes
+
+## Group 10 - Matrix Squad
+
+- Richard Dunks
+- Marco Rodriguez
+- Amy Arias
+- Debra Hernandez
+
+## Group 11 - Vector Team
+
+- Brandy Wicker
+- Tom Cowart
+- Jaeyoung Choi
+- Susan Mohammad
+
+## Group 12 - Fractal Foxes
+
+- Ushaswi Rayala
+- Matthew Owens
+- Joshua Buchanan
+- Raquel Dunman

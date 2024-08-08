@@ -1,6 +1,6 @@
 ---
 title: "EPPS Math and Coding Camp"
-subtitle: "Functions and Relations"
+subtitle: "Functions and Relations - Aug 8"
 author: "Instructor: Prajyna Barua and Azharul Islam"
 format: 
   revealjs:
@@ -89,7 +89,7 @@ $y$ is a function of $x$;<br> $x$ is the argument of the function
 
 ::: fragment
 | Term                   | Meaning                                                                      |
-|------------------------|------------------------------------------------------------------------------|
+|------------------|------------------------------------------------------|
 | Identity function      | Elements in domain are mapped to identical elements in codomain              |
 | Inverse function       | Function that when composed with original function returns identity function |
 | Surjective (onto)      | Every value in codomain produced by value in domain                          |
@@ -111,7 +111,7 @@ $y$ is a function of $x$;<br> $x$ is the argument of the function
 
 ::: fragment
 | Term                  | Meaning                                                        |
-|-----------------------|----------------------------------------------------------------|
+|--------------------|----------------------------------------------------|
 | Increasing            | Function increases on subset of domain                         |
 | Decreasing            | Function decreases on subset of domain                         |
 | Strictly increasing   | Function always increases on subset of domain                  |
