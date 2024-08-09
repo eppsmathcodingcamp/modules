@@ -1,6 +1,7 @@
 ---
 title: "EPPS Math and Coding Camp"
 subtitle: "Integral"
+author: "Instructor: Prajyna Barua and Azharul Islam"
 format: 
   revealjs:
     theme: [serif, custom.scss]
@@ -14,7 +15,7 @@ editor: visual
 
 ::: fragment
 |                                 |                                                                                |
-|------------------------------------|------------------------------------|
+|---------------------------------|--------------------------------------------------------------------------------|
 | Fundamental theorem of calculus | $\int_a^b f(x)\,dx = F(b) - F(a)$                                              |
 | Rules for bounds                | $\int_a^b f(x)\,dx = - \int_b^a f(x)\,dx$                                      |
 |                                 | $\int_a^a f(x)\,dx = 0$                                                        |
@@ -28,7 +29,7 @@ editor: visual
 
 ::: fragment
 |                     |                                                          |
-|------------------------------------|------------------------------------|
+|---------------------|----------------------------------------------------------|
 | Power rule 1        | $\int x^n \,dx = \frac{x^{n+1}}{n+1} + C$ if $n \neq -1$ |
 | Power rule 2        | $\int x^{-1}\,dx = \ln |x| + C$                          |
 | Exponential rule 1  | $\int e^x\,dx = e^x + C$                                 |

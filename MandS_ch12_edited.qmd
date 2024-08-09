@@ -1,6 +1,7 @@
 ---
 title: "EPPS Math and Coding Camp"
 subtitle: "Vector and Matrices"
+author: "Instructor: Prajyna Barua and Azharul Islam"
 format: 
   revealjs:
     theme: [serif, custom.scss]
@@ -812,6 +813,28 @@ $$
 ::: fragment
 -   We thus have an OLS estimate of 50.228 for $\beta$ and -0.079 for $\alpha$.
 :::
+
+------------------------------------------------------------------------
+
+## Problems
+
+### Problem 1
+
+Given the matrices:
+
+$$
+A = \begin{bmatrix} 2 & 8 \\ 3 & 0 \\ 5 & 1 \end{bmatrix}, \quad B = \begin{bmatrix} 2 & 0 \\ 3 & 8 \end{bmatrix}
+$$
+
+-   **Is** $AB$ defined?
+-   **Calculate** $AB$.
+-   **Can you calculate** $BA$? Why or why not?
+
+------------------------------------------------------------------------
+
+### Problem 2
+
+Find the inverse of the matrix $B = \begin{bmatrix} 4 & 1 & -1 \\ 0 & 3 & 2 \\ 3 & 0 & 7 \end{bmatrix}$.
 
 ------------------------------------------------------------------------
 

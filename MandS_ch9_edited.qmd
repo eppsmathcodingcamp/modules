@@ -13,7 +13,7 @@ editor: visual
 
 ![](check_in.png){fig-align="center" out-width="100%"}
 
-------------------------------------------------------------------------
+---
 
 ### 9.1.2 Classical Probability
 
@@ -29,7 +29,7 @@ editor: visual
 -   **Events are composed of one or more outcomes**.
 :::
 
-------------------------------------------------------------------------
+---
 
 ::: fragment
 -   Events can be divided into two groups with respect to their cause, those that will happen with some probability given certain conditions and those that will happen (or not happen) with certainty given certain conditions.
@@ -43,7 +43,7 @@ editor: visual
 -   The second group of events is known as deterministic events; we do not need probability here because events either always happen or never do.
 :::
 
-------------------------------------------------------------------------
+---
 
 ![](ch9s3.png){fig-align="center" out-width="100%"}
 
@@ -65,7 +65,7 @@ editor: visual
 With outcome, event, and sample space defined, we can define the classical probability of an event: $$\Pr(e) = \frac{\text{No. of outcomes in event } e}{\text{No. of outcomes in the sample space}}.$$
 :::
 
-------------------------------------------------------------------------
+---
 
 ::: fragment
 #### 9.1.2.1 Simple and Compound Events
@@ -103,7 +103,7 @@ With outcome, event, and sample space defined, we can define the classical proba
 -   The joint probability of independent events is the probability of both events occurring, and we calculate it as the product of the probabilities of each individual event
 :::
 
-------------------------------------------------------------------------
+---
 
 ::: fragment
 -   The joint probability of two mutually exclusive events is *not* the product of the simple probabilities. Instead, it is the sum of the simple probabilities: given that $p(y_D) = .4$ and $p(y_R) = .5$, $p(y_D \text{ or } y_R) = 0.4 + 0.5 = 0.9$.
@@ -127,7 +127,7 @@ With outcome, event, and sample space defined, we can define the classical proba
 -   All probabilities lie between zero and one, so $Pr(A) \in [0,1]$. We say $A$ is a deterministic event if $Pr(A) \in \{0,1\}$ and a random, probabilistic, or stochastic event otherwise. If $S$ is the sample space containing all events that might happen, then $Pr(S) = 1$. If $Pr(A) = 0$, then $A$ cannot happen.
 :::
 
-------------------------------------------------------------------------
+---
 
 ::: fragment
 -   $Pr(A|B)$ is the conditional probability of $A$ on $B$. In other words, it is the probability that $A$ occurs given that $B$ has already occurred. If $A$ and $B$ are independent events, then the fact that $B$ has already occurred doesn't influence the probability that $A$ will occur. So, for independent events, $Pr(A|B) = Pr(A)$.
@@ -183,7 +183,7 @@ $$
 One can read equation as follows: *the posterior probability of B given A is the product of the prior probability of B and the probability of A given B divided by the product of the prior probability of B and the probability of A given B plus the product of the prior probability of not B and the probability of A given not B*.
 :::
 
-------------------------------------------------------------------------
+---
 
 ![](ch9s12.png){fig-align="center" out-width="100%"}
 
@@ -210,7 +210,7 @@ Example:
 :::
 
 ::: fragment
--   Consider a contest with two candidates, one of whom campaigns on an efficiency-oriented platform, the other of whom campaigns on a security-oriented platform.
+-  Consider a contest with two candidates, one of whom campaigns on an efficiency-oriented platform, the other of whom campaigns on a security-oriented platform.
 :::
 
 ::: fragment
@@ -235,7 +235,7 @@ Example:
 -   Stokes's table reveals that 16 of the 33 candidates who adopted efficiency policies also campaigned on an efficiency platform: $Pr(\epsilon|e) = \frac{16}{33} = 0.48$. Finally, consider $Pr(\epsilon)$. We expand this as above to get $Pr(\epsilon) = Pr(\epsilon|e)Pr(e) + Pr(\epsilon|\sim e)Pr(\sim e)$.
 :::
 
-------------------------------------------------------------------------
+---
 
 ::: fragment
 -   We know the first term in the sum already, and also that $Pr(\sim e) = 0.23$. This leaves $Pr(\epsilon|\sim e)$: the conditional probability that a candidate campaigned on an efficiency-oriented platform given that he adopted a security-oriented (i.e., "not efficiency") policy in office.
@@ -245,7 +245,7 @@ Example:
 -   It turns out that none of the ten Latin American politicians who enacted security-oriented policies once in office campaigned on efficiency: $Pr(\epsilon|\sim e) = \frac{0}{10} = 0$.
 :::
 
-------------------------------------------------------------------------
+---
 
 ![](ch9s12.png){fig-align="center" out-width="100%"}
 
@@ -279,7 +279,7 @@ $$
 -   To compute this we'll need to know the conditional probability that a candidate campaigned on a security-oriented policy given that he adopted a security-oriented policy in office, which is $Pr(\sigma|s)$, as well as $Pr(s) = 0.23$ and $Pr(\sigma) = Pr(\sigma|s)Pr(s) + Pr(\sigma|\sim s)Pr(\sim s)$.
 :::
 
-------------------------------------------------------------------------
+---
 
 ::: fragment
 -   Stokes's data indicate that all ten of the leaders who implemented a security-oriented policy also campaigned on it: $Pr(\sigma|s) = \frac{10}{10} = 1.0$, where $\sigma$ (sigma) represents a candidate who campaigns on a security-oriented policy.
@@ -323,7 +323,7 @@ $$\frac{Pr(x_1)/Pr(\sim x_1)}{Pr(x_2)/Pr(\sim x_2)}$$
 -   The relative risk ratio is the ratio of two probabilities and can be quite useful for comparing relationships.
 :::
 
-------------------------------------------------------------------------
+---
 
 ::: fragment
 -   Comparing the ratio of those risks gives us a good measure of the relative risks.
@@ -333,11 +333,50 @@ $$\frac{Pr(x_1)/Pr(\sim x_1)}{Pr(x_2)/Pr(\sim x_2)}$$
 -   Relative risk ratios have a range from zero to infinity. A value of 1 indicates that the risks are equal across the pair. A value below 1 indicates that the probability in the first part of the ratio is smaller than the probability in the second part, while values greater than 1 represent the opposite.
 :::
 
-------------------------------------------------------------------------
+---
+
+## Problems
+
+### Problem 1
+
+Characterize the following as independent, mutually exclusive, and/or collectively exhaustive:
+
+a) 33 year-old, middle income, Asian American, male.
+
+b) Strongly disagree, neutral, agree.
+
+c) Vote share, size of the economy, education level.
+
+d) War, not war.
+
+e) Less, same, more.
+
+---
+
+### Problem 2
+
+If $a$ and $b$ are independent events, are the following true or false?
+
+a) $\Pr(a \cap b) = \Pr(a)\Pr(b)$
+
+b) $\Pr(a|b) = \Pr(a)+\Pr(a)\Pr(b)$
+
+c) $\Pr(b|a) = \Pr(b)$
+
+
+### Problem 3
+
+If $a,b, c$ and $d$ are mutually exclusive and collectively exhaustive, and $Pr(a = 0.23)$, $Pr(b = 0.15)$, and $Pr(c = 0.46)$, then what is the joint probability of ($a$ or $d$)?
+
+### Problem 4
+
+Let $P(A) = 0.4$ and $P(A \cup B) = 0.7$. Find $P(B)$, assuming both events are independent.
+
+---
 
 ![](upload_answer){fig-align="center" out-width="100%"}
 
-------------------------------------------------------------------------
+---
 
 **Any Questions?**
 
