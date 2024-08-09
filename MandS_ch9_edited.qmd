@@ -13,6 +13,8 @@ editor: visual
 
 ![](check_in.png){fig-align="center" out-width="100%"}
 
+https://forms.gle/uLaMnx5amMzwCKav9 
+
 ---
 
 ### 9.1.2 Classical Probability
@@ -375,6 +377,8 @@ Let $P(A) = 0.4$ and $P(A \cup B) = 0.7$. Find $P(B)$, assuming both events are 
 ---
 
 ![](upload_answer){fig-align="center" out-width="100%"}
+
+https://forms.gle/Uf3aQsEQPCiNX1EDA 
 
 ---
 

@@ -13,6 +13,8 @@ editor: visual
 
 ![](check_in.png){fig-align="center" out-width="100%"}
 
+https://forms.gle/uLaMnx5amMzwCKav9 
+
 ------------------------------------------------------------------------
 
 **12.1 SCALARS**
@@ -839,6 +841,9 @@ Find the inverse of the matrix $B = \begin{bmatrix} 4 & 1 & -1 \\ 0 & 3 & 2 \\ 3
 ------------------------------------------------------------------------
 
 ![](upload_answer){fig-align="center" out-width="100%"}
+
+https://forms.gle/Uf3aQsEQPCiNX1EDA 
+
 
 ------------------------------------------------------------------------
 

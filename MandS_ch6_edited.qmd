@@ -13,6 +13,8 @@ editor: visual
 
 ![](check_in.png){fig-align="center" out-width="100%"}
 
+https://forms.gle/uLaMnx5amMzwCKav9 
+
 ------------------------------------------------------------------------
 
 ![](ch6s1.png){fig-align="center" out-width="100%"}
@@ -471,6 +473,8 @@ $$
 ------------------------------------------------------------------------
 
 ![](upload_answer){fig-align="center" out-width="100%"}
+
+https://forms.gle/Uf3aQsEQPCiNX1EDA 
 
 ------------------------------------------------------------------------
 
