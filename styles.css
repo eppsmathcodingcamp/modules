@@ -120,3 +120,24 @@ footer a:hover {
         font-size: 0.9em;
     }
 }
+
+.survey-link {
+    display: inline-block;
+    background-color: var(--utd-orange);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 20px 0;
+    transition: background-color 0.3s;
+}
+
+.survey-link:hover {
+    background-color: var(--utd-green);
+}
+
+.qr-code {
+    max-width: 200px;
+    margin: 20px 0;
+}

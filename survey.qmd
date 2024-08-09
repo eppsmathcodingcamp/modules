@@ -1,0 +1,21 @@
+---
+title: "EPPS Math & Coding Camp Survey"
+format: 
+  html:
+    css: styles.css
+---
+
+```{=html}
+<header>
+  <img src="eppslogo.png" alt="EPPS Logo" class="logo">
+  <a href="index.html" class="main-site-link">Back to Main Page</a>
+</header>
+
+<main>
+  <h2>Please Take Our Survey</h2>
+  <p>We value your feedback! Please take a moment to complete our survey.</p>
+  <a href="https://forms.gle/Y17vb7zfQH89uCfi8" class="survey-link" target="_blank">Click here to take the survey</a>
+  
+  <h3>Or scan this QR code:</h3>
+  <img src="Survey_DrHo.png" alt="Survey QR Code" class="qr-code">
+</main>
