@@ -1,0 +1,387 @@
+---
+title: "Introduction to ggplot2"
+subtitle: "Building Complex Graphs Layer by Layer"
+author: "Shreyas Meher"
+date: "August 13, 2024"
+format: 
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: show
+    code-tools: true
+    highlight-style: github
+---
+
+## Introduction
+
+In this lesson, we'll explore the power and flexibility of the `ggplot2` package in R for creating complex and informative visualizations. `ggplot2` is based on the Grammar of Graphics, a layered approach to graph creation that allows for incredible customization and depth.
+
+::: {.callout-tip}
+## Key Concept
+
+`ggplot2` builds graphs in layers, allowing for great flexibility and customization. This layered approach means you can start simple and progressively add complexity to your visualizations.
+:::
+
+## Setting Up
+
+First, let's load the necessary data and create an additional variable.
+
+In this setup phase, we're doing three crucial things:
+
+- Loading the ggplot2 library, which provides all the functions we'll use for plotting.
+- Importing our dataset. This dataset contains information about medical insurance costs and related factors.
+- Creating a new variable obese based on the BMI (Body Mass Index) of individuals. This will allow us to explore how obesity might influence insurance costs.
+
+```{r setup, message=FALSE}
+# Load required libraries
+library(ggplot2)
+
+# Load the data
+url <- "https://tinyurl.com/mtktm8e5"
+insurance <- read.csv(url)
+
+# Create an obesity variable
+insurance$obese <- ifelse(insurance$bmi >= 30, "obese", "not obese")
+
+```
+
+## Building the Graph
+### The ggplot() Function
+We start with the ggplot() function to specify our dataset and variable mappings.
+
+```{r, message=FALSE}
+ggplot(data = insurance,
+       mapping = aes(x = age, y = expenses))
+```
+
+::: {.callout-note}
+The graph is empty because we haven't specified what to plot yet!
+:::
+
+This function does two main things:
+
+- It specifies the dataset we're using (insurance).
+- It defines the main variables we want to plot (age on the x-axis and expenses on the y-axis).
+
+However, at this stage, we haven't told R what kind of plot to create, which is why the output is an empty graph. Think of this as setting up a blank canvas and defining the coordinate system.
+
+### Adding Geometric Objects (geoms)
+
+Let's add points to create a scatterplot
+
+```{r, message=FALSE}
+ggplot(data = insurance,
+       mapping = aes(x = age, y = expenses)) +
+  geom_point(color = "cornflowerblue",
+             alpha = .7,
+             size = 2)
+```
+
+::: {.callout-tip}
+Experiment with different colors, alpha values, and sizes to see how they affect the plot.
+:::
+
+Here, we've added geom_point(), which tells R to represent each data point as a dot on our graph. This creates a scatterplot, allowing us to see the relationship between age and medical expenses.
+
+The color, alpha, and size parameters within geom_point() allow us to customize the appearance of our points:
+
+- color sets the color of the points
+- alpha controls transparency (0 is fully transparent, 1 is fully opaque)
+- size determines how large each point appears
+
+Experiment with these values to see how they affect the plot's appearance and readability.
+
+### Adding a Trend Line
+We can add a line of best fit using geom_smooth().
+
+```{r, message=FALSE}
+ggplot(data = insurance,
+       mapping = aes(x = age, y = expenses)) +
+  geom_point(color = "cornflowerblue",
+             alpha = .5,
+             size = 2) +
+  geom_smooth(method = "lm")
+```
+
+The geom_smooth() function adds a smoothed conditional mean. By specifying method = "lm", we're telling R to use a linear model, effectively adding a straight line of best fit to our scatter plot.
+
+This line helps us visualize the general trend: as age increases, medical expenses tend to increase as well.
+
+### Grouping Data
+Let's differentiate smokers and non-smokers using color.
+
+```{r, message=FALSE}
+ggplot(data = insurance,
+       mapping = aes(x = age, 
+                     y = expenses,
+                     color = smoker)) +
+  geom_point(alpha = .5,
+             size = 2) +
+  geom_smooth(method = "lm", 
+              se = FALSE, 
+              size = 1.5)
+```
+
+By adding color = smoker to our aesthetic mapping, we're telling ggplot to use different colors for smokers and non-smokers. This allows us to see not only how age relates to expenses, but also how smoking status influences this relationship.
+
+Notice how ggplot automatically creates a legend for us, explaining what the colors represent.
+
+### Customizing Scales
+We can modify axis scales and color schemes.
+
+```{r, message=FALSE}
+ggplot(data = insurance,
+       mapping = aes(x = age, 
+                     y = expenses,
+                     color = smoker)) +
+  geom_point(alpha = .5,
+             size = 2) +
+  geom_smooth(method = "lm", 
+              se = FALSE, 
+              size = 1.5) +
+  scale_x_continuous(breaks = seq(0, 70, 10)) +
+  scale_y_continuous(breaks = seq(0, 60000, 20000),
+                     label = scales::dollar) +
+  scale_color_manual(values = c("indianred3", 
+                                "cornflowerblue"))
+```
+
+Here, we've made several improvements:
+
+- We've adjusted the x-axis to show age in 10-year increments, making it easier to read.
+- We've formatted the y-axis to show expenses in dollars and in $20,000 increments.
+- We've manually specified colors for smokers and non-smokers, choosing colors that are distinct and colorblind-friendly.
+
+These customizations make our graph more accessible and easier to interpret at a glance.
+
+### Faceting
+We can create separate plots for obese and non-obese individuals.
+
+```{r, message=FALSE}
+ggplot(data = insurance,
+       mapping = aes(x = age, 
+                     y = expenses,
+                     color = smoker)) +
+  geom_point(alpha = .5) +
+  geom_smooth(method = "lm", 
+              se = FALSE) +
+  scale_x_continuous(breaks = seq(0, 70, 10)) +
+  scale_y_continuous(breaks = seq(0, 60000, 20000),
+                     label = scales::dollar) +
+  scale_color_manual(values = c("indianred3", 
+                                "cornflowerblue")) +
+  facet_wrap(~obese)
+```
+
+The facet_wrap(~obese) function splits our plot into two based on obesity status. This allows us to compare the age-expense relationship and the impact of smoking across obese and non-obese groups.
+
+This is a powerful way to visualize interactions between multiple variables.
+
+### Adding Labels
+Clear labels make our graph more informative.
+
+```{r, message=FALSE}
+ggplot(data = insurance,
+       mapping = aes(x = age, 
+                     y = expenses,
+                     color = smoker)) +
+  geom_point(alpha = .5) +
+  geom_smooth(method = "lm", 
+              se = FALSE) +
+  scale_x_continuous(breaks = seq(0, 70, 10)) +
+  scale_y_continuous(breaks = seq(0, 60000, 20000),
+                     label = scales::dollar) +
+  scale_color_manual(values = c("indianred3", 
+                                "cornflowerblue")) +
+  facet_wrap(~obese) +
+  labs(title = "Relationship between patient demographics and medical costs",
+       subtitle = "US Census Bureau 2013",
+       caption = "source: http://mosaic-web.org/",
+       x = " Age (years)",
+       y = "Annual expenses",
+       color = "Smoker?")
+
+```
+
+The labs() function allows us to add a title, subtitle, caption, and axis labels. Good labels should explain what the graph is showing and provide context about the data source.
+
+## Applying a Theme
+Finally, we can change the overall look of our plot with a theme.
+
+```{r, message=FALSE}
+ggplot(data = insurance,
+       mapping = aes(x = age, 
+                     y = expenses,
+                     color = smoker)) +
+  geom_point(alpha = .5) +
+  geom_smooth(method = "lm", 
+              se = FALSE) +
+  scale_x_continuous(breaks = seq(0, 70, 10)) +
+  scale_y_continuous(breaks = seq(0, 60000, 20000),
+                     label = scales::dollar) +
+  scale_color_manual(values = c("indianred3", 
+                                "cornflowerblue")) +
+  facet_wrap(~obese) +
+  labs(title = "Relationship between age and medical expenses",
+       subtitle = "US Census Data 2013",
+       caption = "source: https://github.com/dataspelunking/MLwR",
+       x = " Age (years)",
+       y = "Medical Expenses",
+       color = "Smoker?") +
+  theme_minimal()
+
+```
+
+Themes control the non-data elements of the plot, like background color, gridlines, and font sizes. Here, we've used theme_minimal() for a clean, modern look. ggplot2 comes with several built-in themes, and you can even create your own custom themes.
+
+## Alternative Approaches
+### Placing Mappings in Geoms
+We can place mappings in specific geoms instead of the main ggplot() function.
+
+```{r, message=FALSE}
+ggplot(insurance,
+       aes(x = age, 
+           y = expenses)) +
+  geom_point(aes(color = smoker),
+             alpha = .5,
+             size = 2) +
+  geom_smooth(method = "lm",
+              se = FALSE, 
+              size = 1.5)
+```
+
+
+In this example, we've moved the color = smoker mapping into geom_point(). This means the color mapping only applies to the points, not to the trend line. This can be useful when you want different aesthetics for different parts of your plot.
+
+### Graphs as Objects
+We can save graphs as objects for later modification.
+
+```{r, message=FALSE}
+# Create and save a basic plot
+myplot <- ggplot(data = insurance,
+                  aes(x = age, y = expenses)) +
+             geom_point()
+
+# Modify and print the plot
+myplot <- myplot + geom_point(size = 2, color = "blue")
+print(myplot)
+
+# Add elements without saving
+myplot + geom_smooth(method = "lm") +
+  labs(title = "Age vs. Expenses")
+```
+
+## Creating the Famous Gapminder Plot
+
+One of the most iconic visualizations in data science is the Gapminder plot, popularized by Hans Rosling. This dynamic plot shows the relationship between GDP per capita and life expectancy across different countries over time. Let's create this plot step by step, learning some important data visualization concepts along the way.
+
+### Setting Up
+
+First, we need to install and load the necessary packages. We'll use `gapminder` for the dataset, `ggplot2` for creating the base plot, and `plotly` to make it interactive.
+
+```{r}
+#| message: false
+#| warning: false
+# Load required packages
+pacman::p_load(gapminder, ggplot2, plotly, scales)
+
+# Take a look at the data
+head(gapminder)
+```
+
+Let's examine what this dataset contains:
+
+- country: Name of the country
+- continent: Continent the country belongs to
+- year: Year of observation
+- lifeExp: Life expectancy in years
+- pop: Population
+- gdpPercap: GDP per capita
+
+### Creating the Base Plot
+
+```{r}
+#| message: false
+#| warning: false
+# Create the base plot
+gg <- ggplot(gapminder, aes(gdpPercap, lifeExp, color = continent)) +
+    geom_point(aes(size = pop, frame = year, ids = country))
+
+# Display the static plot
+gg
+```
+
+Let's break down what's happening here:
+
+ggplot(gapminder, aes(gdpPercap, lifeExp, color = continent)): This sets up the base plot. We're using GDP per capita for the x-axis, life expectancy for the y-axis, and coloring the points by continent.
+
+geom_point(): This adds points to our plot. Inside aes(), we're setting:
+
+- size = pop: The size of each point represents the population.
+- frame = year: This will be used by plotly to create animation frames for each year.
+- ids = country: This ensures that each country is tracked consistently across frames.
+
+### Enhancing the Plot
+
+Now, let's enhance our plot with some additional features:
+
+```{r}
+#| message: false
+#| warning: false
+# Enhance the plot
+gg <- ggplot(gapminder, aes(gdpPercap, lifeExp, color = continent)) +
+    geom_point(aes(size = pop, frame = year, ids = country, alpha = 0.3)) +
+    scale_x_log10(labels = scales::dollar_format()) +
+    labs(title = "Gapminder: GDP per capita vs Life Expectancy",
+         x = "GDP per capita", 
+         y = "Life Expectancy",
+         color = "Continent",
+         size = "Population") +
+    theme_minimal()
+
+# Display the enhanced static plot
+gg  
+```
+
+Here's what we've added:
+
+- alpha = 0.3: This sets the transparency of the points, making it easier to see overlapping data.
+- scale_x_log10(): This applies a logarithmic scale to the x-axis, which is useful for data with a wide range of values.
+- labels = scales::dollar_format(): This formats the x-axis labels as currency.
+- labs(): This adds labels to our plot, including a title and axis labels.
+- theme_minimal(): This applies a clean, minimal theme to our plot.
+
+### Making the Plot Interactive
+
+Finally, let's use plotly to make our plot interactive:
+
+```{r}
+#| message: false
+#| warning: false
+# Create the interactive plot
+interactive_plot <- ggplotly(gg)
+
+# Display the interactive plot
+interactive_plot  
+```  
+
+ggplotly() converts our ggplot object into an interactive plotly object. This allows us to:
+
+- Hover over points to see detailed information
+- Zoom in and out
+- Pan across the plot
+- Play an animation showing how the data changes over time
+
+## Conclusion
+
+In this lesson, we've walked through the process of creating a complex, informative visualization using ggplot2. We started with a simple scatterplot and progressively added layers of complexity and information.
+
+Remember, the key to mastering ggplot2 is practice and experimentation. Try recreating this plot with different datasets, or explore other geoms and aesthetic mappings. The more you experiment, the more comfortable you'll become with the grammar of graphics approach.
+
+::: {.callout-note}
+Exercise - 
+Take another dataset you're familiar with and try to create a multi-layered plot like the one we've built here. Consider what story you want to tell with your data and how you can best visualize that story using the techniques we've learned.
+:::
+
+By breaking down our graph creation process into these discrete steps, we can create highly customized, publication-quality visualizations that effectively communicate complex data relationships. Happy plotting!
+

@@ -1,0 +1,261 @@
+---
+title: "Getting Started with R and RStudio"
+subtitle: "A Beginner's Guide to Setting Up Your Data Science Environment"
+author: "Shreyas Meher"
+date: "August 12, 2024"
+format: 
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: show
+    code-tools: true
+    highlight-style: github
+---
+
+## 1. Introduction
+
+Welcome to the world of data science! This guide will walk you through the process of setting up your data science environment using R and RStudio. By the end of this tutorial, you'll have a fully functional setup ready for your data science journey.
+
+## 2. Installing R
+
+R is the programming language we'll be using for data analysis. Let's start by installing it on your system.
+
+### For Windows:
+
+1. Go to the [R Project website](https://cran.r-project.org/).
+2. Click on "Download R for Windows".
+3. Click on "base".
+4. Click on the download link for the latest version of R.
+5. Once downloaded, run the installer and follow the prompts.
+
+### For Mac:
+
+1. Go to the [R Project website](https://cran.r-project.org/).
+2. Click on "Download R for macOS".
+3. Click on the `.pkg` file appropriate for your macOS version.
+4. Once downloaded, open the `.pkg` file and follow the installation instructions.
+
+::: {.callout-important}
+**Exercise 1:** After installation, open your terminal (Mac) or command prompt (Windows) and type `R --version`. What version of R did you install?
+:::
+
+## 3. Installing RStudio
+
+RStudio is an Integrated Development Environment (IDE) that makes working with R much easier and more efficient.
+
+### For both Windows and Mac:
+
+1. Go to the [RStudio download page](https://www.rstudio.com/products/rstudio/download/).
+2. Under the "RStudio Desktop" section, click on "Download".
+3. Select the appropriate installer for your operating system.
+4. Once downloaded, run the installer and follow the prompts.
+
+::: {.callout-important}
+**Exercise 2:** Open RStudio. In the console pane (usually at the bottom-left), type `1 + 1` and press Enter. What result do you get?
+:::
+
+
+## 4. Configuring RStudio
+
+Let's set up some basic configurations in RStudio to enhance your workflow.
+
+1. In RStudio, go to Tools > Global Options.
+2. Under the "General" tab:
+   - Uncheck "Restore .RData into workspace at startup"
+   - Set "Save workspace to .RData on exit" to "Never"
+3. Under the "Code" tab:
+   - Check "Soft-wrap R source files"
+4. Click "Apply" and then "OK".
+
+::: {.callout-important}
+**Exercise 3:** Create a new R script (File > New File > R Script). Type `print("Hello, Data Science!")` and run the code. What output do you see in the console?
+:::
+
+
+
+## 5. Installing a Package Manager (pacman)
+
+Pacman is a convenient package manager for R. Let's install it and learn how to use it.
+
+In the RStudio console, type:
+
+```{r}
+#| eval: false
+install.packages("pacman")
+```
+
+Once installed, you can load pacman and use it to install and load other packages:
+
+```{r}
+#| eval: false
+library(pacman)
+p_load(dplyr, ggplot2)
+```
+
+This installs (if necessary) and loads the dplyr and ggplot2 packages.
+
+::: {.callout-important}
+**Exercise 4:** Use pacman to install and load the tidyr package. Then, use p_functions() to list all functions in the tidyr package.
+:::
+
+## Setting Up Your Working Directory
+
+Setting up a proper working directory is crucial for organizing your projects.
+
+For Windows:
+
+- In RStudio, go to Session > Set Working Directory > Choose Directory
+
+For Mac:
+
+- In RStudio, go to Session > Set Working Directory > Choose Directory
+
+### Alternatively, you can set the working directory using code:
+
+```{r}
+#| eval: false
+setwd("/path/to/your/directory")
+```
+
+::: {.callout-important}
+**Exercise 5:** Create a new folder on your computer called "DataScience". Set this as your working directory in RStudio. Then, use getwd() to confirm it's set correctly.
+:::
+
+## 7. Essential R Commands and Packages
+
+Let's familiarize ourselves with some essential R commands and set up the main packages you'll need for data science work.
+
+### 7.1 Basic R Commands
+
+
+```{r}
+#| eval: false
+# Creating variables
+x <- 5
+y <- 10
+
+# Basic arithmetic
+z <- x + y
+
+# Creating vectors
+numbers <- c(1, 2, 3, 4, 5)
+names <- c("Alice", "Bob", "Charlie")
+
+# Creating a data frame
+df <- data.frame(
+  name = names,
+  age = c(25, 30, 35)
+)
+
+# Viewing data
+View(df)
+head(df)
+str(df)
+summary(df)
+
+# Indexing
+numbers[2]  # Second element
+df$name     # Name column
+
+# Basic functions
+mean(numbers)
+sum(numbers)
+length(numbers)
+
+# Logical operators
+x > y
+x == y
+x != y
+
+# Control structures
+if (x > y) {
+  print("x is greater than y")
+} else {
+  print("x is not greater than y")
+}
+
+# Loops
+for (i in 1:5) {
+  print(i^2)
+}
+
+# Creating a function
+square <- function(x) {
+  return(x^2)
+}
+square(4)
+
+# Getting help
+?mean
+```
+
+
+::: {.callout-important}
+**Exercise 7:** Create a vector of 10 random numbers between 1 and 100 using the sample() function. Then, use the max() and min() functions to find the highest and lowest numbers in your vector.
+:::
+
+## Installing and Loading Essential Packages
+
+Let's install and load some of the most commonly used packages in data science:
+
+```{r}
+#| eval: false
+
+# Install and load essential packages
+p_load(
+  tidyverse,  # for data manipulation and visualization
+  readxl,     # for reading Excel files
+  lubridate,  # for working with dates
+  ggplot2,    # for creating graphs
+  caret,      # for machine learning
+  rmarkdown,  # for creating dynamic documents
+  shiny,      # for building interactive web apps
+  plotly,     # for creating interactive plots
+  knitr       # for dynamic report generation
+)
+```
+
+## Reading and Writing Data
+Learning to read and write data is crucial for any data science project:
+
+```{r}
+#| eval: false
+# Writing data to CSV
+write.csv(data, "employee_data.csv", row.names = FALSE)
+
+# Reading data from CSV
+read_data <- read.csv("employee_data.csv")
+
+# Writing data to Excel (requires writexl package)
+p_load(writexl)
+write_xlsx(data, "employee_data.xlsx")
+
+# Reading data from Excel
+excel_data <- read_excel("employee_data.xlsx")
+
+# Writing R objects to RDS (R's native format)
+saveRDS(data, "employee_data.rds")
+
+# Reading RDS files
+rds_data <- readRDS("employee_data.rds")
+```
+
+
+## Next Steps
+
+Now that you have a solid foundation in R and have set up your environment with essential packages, you're ready to start your data science journey! Here are some suggestions for next steps:
+
+- Practice data manipulation with larger datasets
+- Explore more advanced visualizations with ggplot2
+- Learn about statistical tests and their implementation in R
+- Start exploring machine learning with the caret package
+- Create your first R Markdown document to share your analysis
+
+Remember, the key to mastering R and data science is consistent practice and curiosity. Don't hesitate to explore the vast resources available online, including R documentation, tutorials, and community forums.
+
+## Conclusion
+
+Congratulations! You've now set up your data science environment with R and RStudio, learned essential R commands, and gotten familiar with some of the most important packages in the R ecosystem. This foundation will serve you well as you continue your data science journey.
+Keep practicing, stay curious, and happy data sciencing!
+
+
