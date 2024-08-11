@@ -1,0 +1,418 @@
+---
+title: "EPPS Math Coding Camp"
+subtitle: "Basic Operations and Functions"
+author: "Karl Ho"
+date: "August 12, 2024"
+format: 
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: show
+    code-tools: true
+    highlight-style: github
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Session 1: Basic Operations and Functions
+<br>
+
+## 1.1 Arithmetic Operations
+<br>
+Arithmetic operations in R include addition, subtraction, multiplication, division, and exponentiation. These fundamental operations form the basis of more complex calculations in data analysis.
+<br>
+
+#### Detailed Explanation:
+
+- **Addition (`+`)**: Adds two or more numbers. Can be used for summing elements in a vector. <br>
+- **Subtraction (`-`)**: Subtracts one number from another. Useful for calculating differences. <br>
+- **Multiplication (`*`)**: Multiplies numbers. Can be used element-wise in vectors. <br>
+- **Division (`/`)**: Divides one number by another. Handles both integer and floating-point numbers. <br>
+- **Exponentiation (`^`)**: Raises a number to the power of another. <br>
+
+```{r}
+# Basic arithmetic operations
+addition <- 5 + 3          # Adding 5 and 3
+subtraction <- 10 - 4      # Subtracting 4 from 10
+multiplication <- 2 * 6    # Multiplying 2 and 6
+division <- 8 / 2          # Dividing 8 by 2
+exponentiation <- 3^2      # 3 raised to the power of 2
+```
+
+::: {.callout-note}
+The above basic operations are essential tools in data analysis. In R, you can use these operations repeatedly to manipulate data effectively.
+:::
+
+
+```{r}
+# Modulus and Integer Division
+modulus <- 10 %% 3      # Modulus: remainder of 10 divided by 3
+int_div <- 10 %/% 3     # Integer Division: quotient of 10 divided by 3
+
+modulus
+int_div
+```
+
+```{r}
+# Vector operations
+vec1 <- c(1, 2, 3)
+vec2 <- c(4, 5, 6)
+
+vec1
+vec2
+```
+
+```{r}
+vec_add <- vec1 + vec2    # Element-wise addition of vectors
+vec_add
+
+vec_sub <- vec1 - vec2    # Element-wise subtraction of vectors
+vec_sub
+
+vec_mul <- vec1 * vec2    # Element-wise multiplication of vectors
+vec_mul
+
+vec_div <- vec1 / vec2    # Element-wise division of vectors
+vec_div
+
+vec_exp <- vec1^2         # Element-wise exponentiation of vectors
+vec_exp
+```
+<br>
+
+::: {.callout-note}
+The modulus operation (%%) is useful for determining whether a number is even or odd, while integer division (%/%) is helpful in splitting data into equal parts.
+:::
+
+Vector operations are powerful tools in R. They allow you to process multiple elements at once, making data manipulation more efficient.
+
+```{r}
+# Complex number arithmetic
+complex_add <- 2 + 3i + 1 - 2i  # Addition and subtraction of complex numbers
+complex_add
+```
+
+R also supports complex number operations. In complex numbers, i represents the imaginary unit.
+
+Experiment with different types of numbers, including complex numbers, to understand these operations fully.
+<br>
+
+## 1.2 Basic Statistical Functions
+Statistical functions in R allow for quick and efficient summary statistics, providing insights into datasets.
+<br>
+
+#### Detailed Explanation:
+- **mean(x)**: Computes the average value of vector x. Useful for understanding the central tendency. <br>
+- **median(x)**: Identifies the middle value of vector x when ordered. Helpful for skewed data. <br>
+- **sd(x)**: Calculates the standard deviation of vector x, indicating the spread of the data. <br>
+- **var(x)**: Computes the variance, a measure of the data's spread around the mean. <br>
+- **min(x) and max(x)**: Determine the smallest and largest values in x, respectively. <br>
+- **range(x)**: Provides the minimum and maximum of x, offering a quick range overview. <br>
+
+```{r}
+# Example data: Scores of superheroes
+scores <- c(85, 90, 78, 92, 88)
+
+# Basic statistical functions
+mean_score <- mean(scores)
+mean_score
+
+median_score <- median(scores)
+median_score
+
+sd_score <- sd(scores)
+sd_score
+
+variance_score <- var(scores)
+variance_score
+```
+
+This example applies statistical functions to a dataset of superhero scores. By comparing the mean and median, you can gain insight into the data’s distribution.
+
+
+```{r}
+# Additional statistical functions
+range_scores <- range(scores)  # Minimum and maximum
+min_score <- min(scores)       # Minimum score
+max_score <- max(scores)       # Maximum score
+
+# Summary statistics
+summary_scores <- summary(scores)  # Comprehensive summary statistics
+summary_scores
+```
+
+```{r}
+# Quantile calculation
+quantiles <- quantile(scores, probs = c(0.25, 0.5, 0.75))  # 25th, 50th, and 75th percentiles
+quantiles
+```
+
+The summary() function is a very useful tool for quickly getting an overview of key statistics in your data. Use it frequently to analyze your datasets efficiently.
+
+<br>
+
+#### Getting Help with Functions:
+To explore the functionality and parameters of R's built-in functions, use:
+<br>
+```{r}
+# Accessing help documentation
+# ?mean
+# help(sum)
+```
+<br>
+
+::: {.callout-tip}
+The ? or help() functions in R are invaluable resources for learning how to use functions. Regularly explore and experiment with new functions to expand your skills.
+:::
+<br>
+
+
+## 1.3 Matrix Operations
+
+Matrices are a fundamental data structure in R, useful for representing data in two dimensions. Understanding how to create and manipulate matrices is crucial for more advanced data analysis.
+
+#### Matrix Arithmetic:
+
+```{r}
+# Creating a matrix
+matrix1 <- matrix(1:9, nrow = 3, ncol = 3)  # Creating a 3x3 matrix with numbers 1 to 9
+matrix1
+```
+```{r}
+# Transposing a matrix
+transpose_matrix1 <- t(matrix1)  # Transposing the matrix (swapping rows and columns)
+transpose_matrix1
+```
+
+When creating matrices, use the matrix() function and specify the number of rows and columns with the nrow and ncol arguments. The t() function is used to compute the transpose of a matrix.
+
+```{r}
+# Matrix addition and subtraction
+matrix2 <- matrix(9:1, nrow = 3, ncol = 3)  # Creating a second matrix with numbers 9 to 1
+matrix2
+
+matrix_add <- matrix1 + matrix2             # Matrix addition
+matrix_add
+
+matrix_sub <- matrix1 - matrix2             # Matrix subtraction
+matrix_sub
+```
+
+```{r}
+# Matrix multiplication
+matrix_mul <- matrix1 %*% matrix2  # Matrix multiplication (linear algebra multiplication)
+matrix_mul
+```
+```{r}
+# Element-wise multiplication
+element_mul <- matrix1 * matrix2   # Element-wise multiplication (multiplying corresponding elements)
+element_mul
+```
+
+#### Solving Linear Equations:
+
+```{r}
+# Solving Ax = b where A is a matrix and b is a vector
+A <- matrix(c(2, 1, 1, 3), nrow = 2)  # Creating a 2x2 matrix A
+b <- c(1, 2)                          # Creating vector b
+
+solution <- solve(A, b)  # Finding the solution x to the equation Ax = b
+solution 
+```
+
+The solve() function is used to solve systems of linear equations, which is fundamental in linear algebra. This can be particularly useful in data analysis and modeling.
+
+## 1.4 Creating and Executing Functions in R
+
+Creating custom functions allows you to encapsulate code for reuse and better organization. This is especially useful when performing complex analyses.
+
+
+#### Creating a Simple Function:
+
+```{r}
+# Function to calculate the square of a number
+square <- function(x) {
+  return(x^2)  # Returns the square of the given number
+}
+
+# Using the function
+result <- square(4)  # Executing the function: calculates the square of 4
+result
+```
+
+::: {.callout-tip}
+When creating a function, use the function() keyword to define inputs, and return() to specify the output. The example above is a simple function that squares a number.
+:::
+
+#### More Complex Function Example:
+
+```{r}
+# Function to calculate the mean and standard deviation of a vector
+mean_sd <- function(x) {
+  m <- mean(x)  # Calculate mean
+  s <- sd(x)    # Calculate standard deviation
+  return(list(mean = m, sd = s))  # Return both mean and standard deviation as a list
+}
+```
+```{r}
+# Using the function
+stats <- mean_sd(scores)  # Execute the function: calculates mean and standard deviation for scores
+stats
+```
+
+This function simultaneously calculates the mean and standard deviation and returns them as a list. Lists are useful for returning multiple results from a function.
+
+#### Function with Conditional Logic:
+
+```{r}
+# Function to check if a number is even or odd
+even_or_odd <- function(num) {
+  if (num %% 2 == 0) {         # Conditional statement: checks if the number is even
+    return("Even")             # Returns "Even" if the number is even
+  } else {                     # If the number is odd
+    return("Odd")              # Returns "Odd"
+  }
+}
+
+# Testing the function
+test_number <- 7
+even_or_odd_result <- even_or_odd(test_number)  # Execute the function: checks if 7 is even or odd
+even_or_odd_result
+```
+
+
+#### Function with Default Arguments:
+
+```{r}
+# Function to calculate the power of a number with a default exponent
+power <- function(base, exponent = 2) {
+  return(base^exponent)  # Calculates the power using the default exponent
+}
+
+# Using the function with default and custom exponent
+default_power <- power(3)        # Uses default exponent of 2 to calculate 3^2
+default_power
+
+custom_power <- power(3, 3)      # Raises 3 to the power of 3
+custom_power
+```
+
+Using default arguments allows for more flexible function calls, where certain parameters can be omitted for simplicity. In this example, the default exponent is 2, but it can be changed as needed.
+
+
+# Session 2: Hands-on Exercises
+<br>
+
+## 2.1 Basic Statistical Functions
+### Q1
+1) Create a vector data with the following values: c(12, 17, 14, 22, 15, 19, 16). <br>
+2) Calculate the mean, median, standard deviation, and variance of data. <br>
+3) Determine the minimum, maximum, and range of the data. <br>
+4) Generate a summary of data. <br>
+<br>
+
+#### Solution
+```{r}
+# Step 1: Creating the vector
+data <- c(12, 17, 14, 22, 15, 19, 16)
+
+# Step 2: Basic statistical functions
+mean_data <- mean(data)
+median_data <- median(data)
+sd_data <- sd(data)
+var_data <- var(data)
+
+# Step 3: Min, Max, and Range
+min_data <- min(data)
+max_data <- max(data)
+range_data <- range(data)
+
+# Step 4: Summary statistics
+summary_data <- summary(data)
+```
+<br>
+
+## 2.2 Matrix Operations
+### Q2 
+1) Create a 2x3 matrix matrix_A with the values c(1, 2, 3, 4, 5, 6). <br>
+2) Create another 2x3 matrix matrix_B with the values c(6, 5, 4, 3, 2, 1). <br>
+3) Perform element-wise addition and subtraction on matrix_A and matrix_B. <br>
+4) Transpose matrix_A to create matrix_A_T. <br>
+5) Multiply matrix_A_T by matrix_B (after ensuring their dimensions match). <br>
+<br>
+
+#### Soultion
+
+```{r}
+# Step 1: Creating matrices
+matrix_A <- matrix(c(1, 2, 3, 4, 5, 6), nrow = 2, ncol = 3)
+matrix_B <- matrix(c(6, 5, 4, 3, 2, 1), nrow = 2, ncol = 3)
+
+# Step 2: Element-wise operations
+matrix_add <- matrix_A + matrix_B
+matrix_sub <- matrix_A - matrix_B
+
+# Step 3: Transposing matrix_A
+matrix_A_T <- t(matrix_A)
+
+# Step 4: Multiplying matrix_A_T by the original matrix_B
+# This will work because matrix_A_T is 3x2 and matrix_B is 2x3
+matrix_mul <- matrix_A_T %*% matrix_B
+```
+<br>
+
+## 2.3 Creating Functions
+### Q3
+1) Write a function cube() that calculates the cube of a number. <br>
+2) Create a vector numbers with the values c(2, 3, 4), and use the cube() function to find the cube of each element in numbers. <br>
+3) Write a function is_positive() that checks if a number is positive, negative, or zero, and returns a corresponding message. <br>
+4) Test the is_positive() function with the numbers 5, -3, and 0. <br>
+<br>
+
+#### Soultion
+
+```{r}
+# Step 1: Function to calculate the cube of a number
+cube <- function(x) {
+  return(x^3)
+}
+
+# Step 2: Using the cube function on a vector
+numbers <- c(2, 3, 4)
+cubes <- sapply(numbers, cube)
+
+# Step 3: Function to check if a number is positive, negative, or zero
+is_positive <- function(num) {
+  if (num > 0) {
+    return("Positive")
+  } else if (num < 0) {
+    return("Negative")
+  } else {
+    return("Zero")
+  }
+}
+
+# Step 4: Testing the is_positive function
+result_1 <- is_positive(5)  # Should return "Positive"
+result_2 <- is_positive(-3) # Should return "Negative"
+result_3 <- is_positive(0)  # Should return "Zero"
+
+```
+<br>
+
+# Session 3: Wrapping Up and Q&A
+In this session, we've delved into the basics of arithmetic operations, statistical functions, and built-in R functions. Mastery of these fundamental concepts is key to leveraging R for data analysis and statistical computation.
+<br>
+
+Practice using these functions with various datasets to build confidence and deepen your understanding.
+<br>
+
+
+**Q&A**: Please share any questions or topics you'd like to explore further. Let's address any uncertainties and discuss the potential applications of these concepts in real-world data analysis scenarios.
+<br>
+
+### Reference
+- https://datageneration.io/dataprogrammingwithr/intro
+- Chicago Harris School Coding Camp

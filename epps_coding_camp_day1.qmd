@@ -1,0 +1,202 @@
+
+---
+title: "EPPS Coding Camp: Day 1"
+author: ""
+output: html_document
+date: "2024-08-12"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Session 1: Data Structures in R
+
+## 1.1 Creating and Manipulating Vectors
+
+Vectors are a fundamental data structure in R, consisting of elements of the same type. They can hold numeric, character, or logical data.
+
+### Creating Vectors
+
+Vectors can be created using the `c()` function or specific functions like `seq()` and `rep()`.
+
+```{r}
+# Character vector of Marvel and DC characters
+characters <- c("Iron Man", "Superman", "Wonder Woman", "Batman", "Hulk")
+
+# Numeric vector for character strengths
+strengths <- c(90, 95, 85, 80, 88)
+
+# Logical vector for whether the character is from Marvel
+is_marvel <- c(TRUE, FALSE, FALSE, FALSE, TRUE)
+
+# Sequence vector
+seq_vec <- seq(1, 10, by = 2)
+
+# Repeated vector
+rep_vec <- rep("Hero", times = 5)
+```
+<br>
+
+#### Vector Operations
+Vectors allow various operations, such as indexing and logical operations:
+<br>
+
+```{r}
+# Accessing elements
+characters[1]   # First character
+strengths[2:4]  # Strengths from the second to the fourth character
+
+# Modifying elements
+strengths[3] <- 87  # Change the strength of Wonder Woman
+
+# Logical operations
+strong_characters <- strengths > 85  # TRUE if strength is greater than 85
+```
+<br>
+Create your own vectors using other Marvel and DC characters and try various operations.
+<br>
+
+## 1.2 Introduction to Matrices
+Matrices are two-dimensional arrays that store data of the same type. They can be useful for storing data in a structured format.
+<br>
+
+### Creating Matrices
+Use the matrix() function to create matrices. You can specify the data, number of rows, and number of columns.
+<br>
+
+```{r}
+# Creating a matrix of character stats
+stats <- matrix(c(90, 95, 85, 80, 88,   # Strengths
+                  70, 95, 90, 85, 75),  # Intelligence
+                nrow = 2, ncol = 5, byrow = TRUE)
+
+# Adding row and column names
+rownames(stats) <- c("Strength", "Intelligence")
+colnames(stats) <- characters
+```
+<br>
+
+#### Matrix Operations
+Matrices support a variety of operations:
+<br>
+```{r}
+# Matrix addition (boosting all stats by 5)
+boosted_stats <- stats + 5
+
+# Accessing elements
+stats[1, 3]       # Strength of the third character (Wonder Woman)
+stats[, "Batman"] # All stats of Batman
+
+# Matrix transposition
+transposed_stats <- t(stats)
+```
+<br>
+Experiment with different matrices and operations using other Marvel and DC character attributes.
+<br>
+
+## 1.3 Introduction to Data Frames
+Data frames are used to store tabular data and can contain columns of different types.
+<br>
+
+#### Creating Data Frames
+Use the data.frame() function to create data frames. Each column can have a different type.
+<br>
+```{r}
+# Creating a data frame of Marvel and DC characters with attributes
+df <- data.frame(
+  Character = characters,
+  Strength = strengths,
+  Intelligence = c(70, 95, 90, 85, 75),
+  IsMarvel = is_marvel
+)
+
+# Adding a new column
+df$Team <- c("Avengers", "Justice League", "Justice League", "Justice League", "Avengers")
+df
+```
+<br>
+
+#### Data Frame Operations
+Data frames support various operations, including accessing, modifying, and summarizing data.
+<br>
+
+```{r}
+# Accessing columns
+character_column <- df$Character          # Access the 'Character' column
+
+# Accessing rows and elements
+second_character <- df[2, ]               # Second row
+character_strength <- df[3, "Strength"]   # Strength of the third character
+
+# Filtering data frames
+strong_heroes <- subset(df, Strength > 85)
+
+# Sorting data frames by Intelligence
+sorted_df <- df[order(df$Intelligence), ]
+```
+<br>
+
+# Session 2: Hands-on Exercises
+<br>
+
+## 2.1 Vector Exercises
+1) Create a numeric vector of Marvel and DC characters' ages. <br>
+2) Find the average age. <br>
+3) Extract the names of characters older than 30. <br>
+<br>
+
+```{r}
+# Your code here
+ages <- c(48, 35, 30, 40, 49)  # Example ages
+average_age <- mean(ages)
+older_characters <- characters[ages > 30]
+```
+```{r}
+average_age
+older_characters
+```
+<br>
+
+## 2.2 Matrix Exercises
+<br>
+1) Create a 2x3 matrix with strengths and intelligence of three characters. <br>
+2) Calculate the total score (sum of strength and intelligence) for each character. <br>
+3) Extract the strength and intelligence of the first character. <br>
+
+```{r}
+# Your code here
+mini_stats <- matrix(c(90, 95, 85, 70, 95, 90), nrow = 2, ncol = 3, byrow = TRUE)
+total_score <- rowSums(mini_stats)
+first_character_stats <- mini_stats[, 1]
+total_score
+first_character_stats
+```
+
+## 2.3 Data Frame Exercises
+<br>
+1) Add a new column TotalScore to the data frame representing the sum of Strength and Intelligence. <br>
+2) Filter the data frame to show characters with TotalScore greater than 160. <br>
+3) Sort the data frame by the TotalScore column. <br>
+
+```{r}
+# Your code here
+df$TotalScore <- df$Strength + df$Intelligence
+high_total_score_df <- subset(df, TotalScore > 160)
+sorted_df_by_total_score <- df[order(df$TotalScore), ]
+df
+```
+<br>
+
+# Session 3: Wrapping Up and Q&A
+In this session, we've explored the core data structures in R using examples. We covered vectors, matrices, and data frames, including how to create, manipulate, and analyze these structures. Understanding these basics is crucial for data analysis and will be foundational as we dive deeper into R's capabilities.
+<br>
+
+Continue practicing with these data structures and try creating your own dataset using different themes or interests.
+<br>
+**Q&A**: If you have any questions or need further clarification, please ask. Let's discuss any challenges you've encountered and any interesting insights you've gained!
+<br>
+
+### Reference
+- https://datageneration.io/dataprogrammingwithr/intro
+- Chicago Harris School Coding Camp
