@@ -1,0 +1,421 @@
+---
+title: "Basic R Syntax and Data Types"
+author: "Shreyas Meher"
+date: "August 12, 2024"
+format: 
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: show
+    code-tools: true
+    highlight-style: github
+---
+
+## 1. Introduction 
+
+Welcome to this introduction to basic R syntax and data types! In the next 30 minutes, we'll explore the fundamental building blocks of R programming. By the end of this session, you'll be familiar with R's basic syntax and its primary data types.
+
+::: {.callout-tip}
+## Learning Tip
+Don't worry if you don't memorize everything immediately. Programming is about practice and repetition. The more you use these concepts, the more natural they'll become.
+:::
+
+## 2. Basic R Syntax 
+
+R is a powerful language for statistical computing and data analysis. Let's start with its basic syntax.
+
+### Assignment Operator
+
+In R, we use `<-` to assign values to variables. The `=` sign can also be used, but `<-` is more common in R.
+
+```{r}
+x <- 5
+y = 10
+```
+
+
+::: {.callout-note}
+The <- operator is preferred in R because it's more flexible and can be used in more contexts than =.
+:::
+
+## 3. Comments
+
+Comments in R start with #. Everything after # on a line is ignored by R.
+
+```{r}
+# This is a comment
+x <- 5  # This is also a comment
+```
+
+## 4. Basic Arithmetic
+
+R can perform all standard arithmetic operations:
+
+```{r}
+a <- 10
+b <- 3
+
+sum <- a + b
+difference <- a - b
+product <- a * b
+quotient <- a / b
+power <- a ^ b
+modulus <- a %% b
+
+print(sum)
+print(difference)
+print(product)
+print(quotient)
+print(power)
+print(modulus)
+```
+
+::: {.callout-important}
+**Exercise 1:** - Create two variables c and d with values of your choice. Perform all the above operations on these variables and print the results.
+:::
+
+## 5. Functions
+R has many built-in functions. Here are a few examples:
+
+```{r}
+# Absolute value
+abs(-5)
+
+# Square root
+sqrt(16)
+
+# Rounding
+round(3.7)
+```
+
+::: {.callout-note}
+To get help on any function, type ?function_name in the console. For example, ?sqrt will give you information about the square root function.
+:::
+
+## 6. Data Types in R 
+
+R has several basic data types. Let's explore them:
+
+- Numeric: Numeric data types include both integers and floating-point numbers.
+
+```{r}
+x <- 5    # integer
+y <- 5.5  # double
+
+class(x)
+class(y)
+```
+
+- Character: Character data types are used for text.
+
+```{r}
+name <- "Alice"
+class(name)
+```
+
+- Logical: Logical data types can be either TRUE or FALSE.
+
+```{r}
+is_student <- TRUE
+class(is_student)
+```
+
+::: {.callout-important}
+**Exercise 2**: - Create variables of each data type we've discussed so far (numeric, character, logical). Use the class() function to verify their types.
+:::
+
+- Vectors: Vectors are one-dimensional arrays that can hold data of the same type.
+
+```{r}
+numeric_vector <- c(1, 2, 3, 4, 5)
+character_vector <- c("apple", "banana", "cherry")
+logical_vector <- c(TRUE, FALSE, TRUE, TRUE)
+
+print(numeric_vector)
+print(character_vector)
+print(logical_vector)
+```
+
+::: {.callout-note}
+The c() function is used to create vectors in R.
+:::
+
+- Factors: Factors are used to represent categorical data.
+
+```{r}
+colors <- factor(c("red", "blue", "green", "red", "green"))
+print(colors)
+levels(colors)
+```
+
+- Lists: Lists can contain elements of different types.
+
+```{r}
+my_list <- list(name = "Bob", age = 30, is_student = FALSE)
+print(my_list)
+```
+
+- Data Frames: Data frames are table-like structures that can hold different types of data.
+
+```{r}
+df <- data.frame(
+  name = c("Alice", "Bob", "Charlie"),
+  age = c(25, 30, 35),
+  is_student = c(TRUE, FALSE, TRUE)
+)
+print(df)
+```
+
+
+## 7. Checking and Converting Data Types
+
+You can check the type of any object using the class() function:
+
+```{r}
+x <- 5
+class(x)
+```
+
+To convert between types, R provides several functions:
+
+```{r}
+# Convert to numeric
+as.numeric("5")
+
+# Convert to character
+as.character(5)
+
+# Convert to logical
+as.logical(1)
+```
+
+::: {.callout-tip}
+Next Steps - Practice creating and manipulating different data types. Try combining them in various ways. The more you experiment, the more comfortable you'll become with R's syntax and data structures.
+:::
+
+
+## 8. Basic Data Manipulation
+
+Now that we understand basic data types, let's look at some simple ways to manipulate them.
+
+### Indexing Vectors
+
+In R, we use square brackets `[]` to access elements of a vector. Remember, R uses 1-based indexing (the first element is at position 1, not 0).
+
+```{r}
+fruits <- c("apple", "banana", "cherry", "date")
+print(fruits[2])  # Access the second element
+print(fruits[c(1, 3)])  # Access first and third elements
+print(fruits[-2])  # All elements except the second
+```
+
+- Indexing Lists: For lists, we can use [] to get a sublist, or [[]] to extract an element.
+
+```{r}
+my_list <- list(name = "Alice", age = 30, scores = c(85, 90, 95))
+print(my_list["name"])  # Returns a list
+print(my_list[["name"]])  # Returns the value
+print(my_list$name)  # Another way to access elements
+```
+
+- Indexing Data Frames: Data frames can be indexed like lists (to access columns) or like matrices (to access specific cells).
+
+```{r}
+df <- data.frame(
+  name = c("Alice", "Bob", "Charlie"),
+  age = c(25, 30, 35)
+)
+print(df$name)  # Access a column
+print(df[1, 2])  # Access a specific cell (row 1, column 2)
+print(df[1, ])  # Access the first row
+```
+
+::: {.callout-important}
+**Exercise 4:** - Create a vector of numbers from 1 to 10. Then, use indexing to:
+
+- Extract the 5th element
+- Extract all elements except the 3rd
+- Extract the 2nd, 4th, and 6th elements
+:::
+
+## 9. Useful Built-in Functions 
+
+R has many built-in functions that are incredibly useful for data manipulation and analysis. 
+
+
+### Statistical Functions
+
+```{r}
+numbers <- c(10, 20, 30, 40, 50)
+print(mean(numbers))  # Average
+print(median(numbers))  # Median
+print(sd(numbers))  # Standard deviation
+print(sum(numbers))  # Sum
+print(max(numbers))  # Maximum value
+print(min(numbers))  # Minimum value
+```
+
+- String Functions
+
+```{r}
+text <- "Hello, World!"
+print(toupper(text))  # Convert to uppercase
+print(tolower(text))  # Convert to lowercase
+print(nchar(text))  # Number of characters
+print(substr(text, 1, 5))  # Extract substring
+```
+
+- Utility Functions
+
+```{r}
+print(length(numbers))  # Number of elements
+print(seq(1, 10, by = 2))  # Generate a sequence
+print(rep("A", 5))  # Repeat a value
+```
+
+::: {.callout-note}
+These are just a few of the many built-in functions in R. As you progress, you'll discover many more that can help you in your data analysis tasks.
+:::
+
+### Conditional Statements 
+
+Conditional statements allow you to execute code based on certain conditions. The most common is the if-else statement:
+
+```{r}
+x <- 10
+
+if (x > 5) {
+  print("x is greater than 5")
+} else if (x == 5) {
+  print("x is equal to 5")
+} else {
+  print("x is less than 5")
+}
+```
+
+::: {.callout-important}
+**Exercise 5:** - Write a conditional statement that checks if a number is positive, negative, or zero, and prints an appropriate message for each case.
+:::
+
+
+## 10. Matrices in R
+
+### Creating Matrices
+
+Matrices are two-dimensional arrays that can hold elements of the same type. You can create a matrix in R using the `matrix()` function.
+
+```{r}
+# Create a 2x3 matrix
+matrix_data <- matrix(c(1, 2, 3, 4, 5, 6), nrow = 2, ncol = 3)
+print(matrix_data)
+```
+
+The matrix() function takes a vector of data and organizes it into a matrix with a specified number of rows (nrow) and columns (ncol). The data is filled column-wise by default.
+
+### Matrix Operations
+
+You can perform various operations on matrices, including arithmetic and element-wise operations.
+
+```{r}
+# Create another matrix of the same dimensions
+matrix_data2 <- matrix(c(6, 5, 4, 3, 2, 1), nrow = 2, ncol = 3)
+
+# Matrix addition
+sum_matrix <- matrix_data + matrix_data2
+print(sum_matrix)
+
+# Element-wise multiplication
+prod_matrix <- matrix_data * matrix_data2
+print(prod_matrix)
+```
+
+Matrices can be added or multiplied element-wise if they have the same dimensions. The + operator adds corresponding elements, and the * operator multiplies them.
+
+### Accessing Elements in a Matrix
+
+You can access specific elements in a matrix using square brackets [], specifying the row and column indices.
+
+```{r}
+# Access the element in the first row and second column
+element <- matrix_data[1, 2]
+print(element)
+
+# Access the entire first row
+first_row <- matrix_data[1, ]
+print(first_row)
+
+# Access the entire second column
+second_column <- matrix_data[, 2]
+print(second_column)
+```
+
+Use matrix[row, column] to access specific elements. You can omit the row or column index to select an entire row or column.
+
+## 11. Loops in R
+
+### For Loops
+
+Loops are used to repeat a block of code multiple times. The for loop is commonly used to iterate over elements in a vector or a sequence.
+
+```{r}
+# Create a vector of numbers
+numbers <- c(1, 2, 3, 4, 5)
+
+# Initialize a variable to store the sum
+total_sum <- 0
+
+# Loop over each element in the vector
+for (number in numbers) {
+  total_sum <- total_sum + number  # Add each number to the total_sum
+}
+
+print(total_sum)  # Output the total sum
+```
+
+The for loop iterates over each element in the numbers vector. The loop variable (number) takes the value of each element, and the code inside the loop is executed for each iteration.
+
+### While Loop
+
+The while loop repeats a block of code as long as a specified condition is TRUE.
+
+```{r}
+# Initialize a counter variable
+counter <- 1
+
+# Loop until the counter reaches 5
+while (counter <= 5) {
+  print(paste("Counter is:", counter))  # Print the current value of counter
+  counter <- counter + 1  # Increment the counter
+}
+```
+
+The while loop continues to execute as long as the condition (counter <= 5) is TRUE. After each iteration, the counter is incremented until the condition becomes FALSE.
+
+::: {.callout-important}
+**Exercise 6:** Create a vector of 5 numbers and a vector of 5 names. Combine them into a data frame where each number corresponds to an age and each name corresponds to a person. Then, calculate the mean age and display a summary of the data frame.
+::: 
+
+
+::: {.callout-important}
+**Advanced Exercise:** Create a custom function that takes a vector of numbers as input and returns a list containing the following:
+1. The square of each number in the vector.
+2. A count of how many numbers in the vector are greater than a specified threshold.
+3. The mean of the numbers in the vector, but only include numbers greater than a specified threshold in the calculation.
+
+Test your function with a vector of random numbers, using a threshold of your choice.
+
+**Hint:** 
+
+- **Squaring Numbers:** Remember that you can square all elements in a vector at once using vectorization (e.g., `numbers^2`). There's no need to loop through each element individually, though you can if you want to practice using loops.
+
+- **Counting Elements:** To count how many numbers are greater than the threshold, use a logical comparison (e.g., `numbers > threshold`). This will return a logical vector (`TRUE` or `FALSE`), and you can sum it up with the `sum()` function, since `TRUE` is treated as 1 in R.
+
+- **Filtering for Mean Calculation:** Use the logical comparison to filter your vector before calculating the mean (e.g., `numbers[numbers > threshold]`).
+::: 
+
+## Conclusion
+
+Congratulations! You've now been introduced to the basic syntax of R, its primary data types, and some fundamental operations for data manipulation. This knowledge forms the foundation for your journey into data analysis and statistical computing with R.
+
+Remember, the key to mastering R is practice. Try to use these concepts in real-world scenarios, experiment with different data types and functions, and don't hesitate to consult R's extensive documentation and online resources when you encounter challenges.
+

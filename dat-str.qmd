@@ -1,0 +1,292 @@
+---
+title: "Data Structures"
+author: "Karl Ho"
+date: "August 12, 2024"
+format: 
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: show
+    code-tools: true
+    highlight-style: github
+---
+
+
+# Data Structures in R
+
+::: {.callout-tip}
+## Why Data Structures Matter
+Understanding data structures is crucial because they determine how we can interact with our data. Different structures are suited for different tasks, and knowing which to use can make your code more efficient and easier to read.
+:::
+
+## Creating and Manipulating Vectors
+
+Vectors are a fundamental data structure in R, consisting of elements of the same type. They can hold numeric, character, or logical data.
+
+
+### Creating Vectors
+
+Vectors can be created using the `c()` function or specific functions like `seq()` and `rep()`.
+
+```{r}
+#| warning: false
+#| output: false
+
+# Using c() function
+characters <- c("Iron Man", "Superman", "Wonder Woman", "Batman", "Hulk")
+
+# Using : operator for sequences
+numbers <- 1:5
+
+# Using seq() function
+even_numbers <- seq(2, 10, by=2)
+
+# Using rep() function
+repeated_hero <- rep("Spider-Man", times=3)
+
+print(characters)
+print(numbers)
+print(even_numbers)
+print(repeated_hero)
+```
+
+::: {.callout-note}
+The c() function is versatile and can create vectors of any type. The : operator is a quick way to create integer sequences. seq() offers more control over sequences, and rep() is useful for creating vectors with repeated elements.
+:::
+
+### Vector Operations
+Vectors allow various operations, such as indexing and logical operations:
+
+```{r}
+#| warning: false
+#| output: false
+
+# Arithmetic operations
+strengths <- c(90, 95, 85, 80, 88)
+boosted_strengths <- strengths + 5
+print(boosted_strengths)
+
+# Logical operations
+is_strong <- strengths > 85
+print(is_strong)
+
+# Indexing
+print(characters[2])  # Access second element
+print(characters[c(1,3,5)])  # Access multiple elements
+
+# Vector recycling
+short_vector <- c(1, 2)
+long_vector <- 1:10
+result <- short_vector + long_vector
+print(result)
+```
+
+::: {.callout-important}
+**Exercise 1:** Vector Manipulation
+
+- Create a vector of 5 superhero ages.
+- Increase all ages by 2 years.
+- Find which heroes are older than 40 after the increase.
+- Create a logical vector indicating if each hero is from DC (assume the first 3 are from DC).
+:::
+
+
+## Introduction to Matrices
+Matrices are two-dimensional arrays that store data of the same type. They can be useful for storing data in a structured format.
+
+### Creating Matrices
+Use the matrix() function to create matrices. You can specify the data, number of rows, and number of columns.
+
+```{r}
+#| warning: false
+#| output: false
+
+hero_stats <- matrix(
+  c(90, 95, 85, 80, 88,   # Strength
+    70, 95, 90, 85, 75),  # Intelligence
+  nrow = 2, 
+  ncol = 5, 
+  byrow = TRUE
+)
+
+# Add row and column names
+rownames(hero_stats) <- c("Strength", "Intelligence")
+colnames(hero_stats) <- characters
+
+print(hero_stats)
+```
+
+::: {.callout-note}
+The byrow = TRUE argument fills the matrix by rows. If omitted, it fills by columns.
+:::
+
+### Matrix Operations
+Matrices support a variety of operations:
+
+```{r}
+#| warning: false
+#| output: false
+
+# Element-wise addition
+boosted_stats <- hero_stats + 5
+print(boosted_stats)
+
+# Matrix multiplication
+scaled_stats <- hero_stats %*% diag(5)
+print(scaled_stats)
+
+# Transpose
+transposed_stats <- t(hero_stats)
+print(transposed_stats)
+
+# Accessing elements
+print(hero_stats[1, 3])  # Strength of Wonder Woman
+print(hero_stats[, "Batman"])  # All stats for Batman
+```
+
+
+::: {.callout-important}
+**Exercise 2:** Matrix Manipulation
+
+- Create a 3x3 matrix of hero power levels (strength, speed, intelligence) for three new heroes.
+- Calculate the average power level for each hero.
+- Find which hero has the highest strength.
+- Scale all power levels by 1.5 and round to the nearest integer.
+:::
+
+## Introduction to Data Frames
+Data frames are used to store tabular data and can contain columns of different types.
+
+### Creating Data Frames
+Use the data.frame() function to create data frames. Each column can have a different type.
+
+```{r}
+#| warning: false
+#| output: false
+
+# Create a data frame
+hero_df <- data.frame(
+  Name = characters,
+  Strength = strengths,
+  Intelligence = c(70, 95, 90, 85, 75),
+  IsMarvel = c(TRUE, FALSE, FALSE, FALSE, TRUE)
+)
+
+print(hero_df)
+```
+
+### Data Frame Operations
+Data frames support various operations, including accessing, modifying, and summarizing data.
+
+```{r}
+#| warning: false
+#| output: false
+
+# Adding a new column
+hero_df$Speed <- c(85, 100, 90, 75, 70)
+
+# Accessing columns
+print(hero_df$Name)
+print(hero_df[["Strength"]])
+
+# Filtering rows
+marvel_heroes <- hero_df[hero_df$IsMarvel, ]
+print(marvel_heroes)
+
+# Using subset()
+strong_heroes <- subset(hero_df, Strength > 85)
+print(strong_heroes)
+
+# Sorting
+sorted_heroes <- hero_df[order(hero_df$Intelligence, decreasing = TRUE), ]
+print(sorted_heroes)
+```
+
+::: {.callout-note}
+Data frames combine the best of both worlds: they can store different types of data (like lists) but in a tabular format (like matrices).
+:::
+
+::: {.callout-important}
+**Exercise 3:** Data Frame Manipulation
+
+- Add a "PowerLevel" column that's the average of Strength, Intelligence, and Speed.
+- Filter the data frame to show only heroes with a PowerLevel above 85.
+- Sort the heroes by PowerLevel in descending order.
+- Create a new data frame with only the Name and PowerLevel columns for non-Marvel heroes.
+:::
+
+```{r}
+#| warning: false
+#| output: false
+
+ages <- c(48, 35, 30, 40, 49)  # Example ages
+average_age <- mean(ages)
+older_characters <- characters[ages > 30]
+
+average_age
+older_characters
+```
+
+## Advanced Topics and Best Practices
+
+### Factors
+Factors are used for categorical data and can be ordered or unordered.
+
+```{r}
+#| warning: false
+#| output: false
+
+hero_types <- factor(c("Mutant", "Alien", "Human", "God", "Mutant"),
+                     levels = c("Human", "Mutant", "Alien", "God"),
+                     ordered = TRUE)
+print(hero_types)
+```
+
+
+### Lists
+Lists can contain elements of different types, including other lists.
+
+```{r}
+#| warning: false
+#| output: false
+
+hero_list <- list(
+  name = "Iron Man",
+  stats = c(Strength = 85, Intelligence = 95, Speed = 70),
+  equipment = c("Arc Reactor", "Iron Suit")
+)
+print(hero_list)
+```
+
+
+::: {.callout-important}
+**Final Exercise:** Create a comprehensive hero database:
+
+- Make a data frame with at least 10 heroes, including columns for Name, Type (factor), Strength, Intelligence, and Speed.
+- Add a PowerLevel column as before.
+- Create a list for each hero with their stats and a vector of their superpowers.
+
+Use this data to answer questions like:
+
+- Who is the strongest hero of each type?
+- What's the average PowerLevel by hero type?
+- Which hero has the most superpowers?
+
+This exercise will test your ability to work with multiple data structures and perform various operations on them.
+:::
+
+# Wrapping Up and Q&A
+
+We've covered the fundamental data structures in R: vectors, matrices, and data frames. We've also touched on some advanced topics like factors and lists. Remember:
+
+- Vectors are one-dimensional and hold elements of the same type.
+- Matrices are two-dimensional and also hold elements of the same type.
+- Data frames are two-dimensional but can hold different types in each column.
+- Proper use of data structures can make your code more efficient and readable.
+
+**Q&A**: If you have any questions or need further clarification, please ask. Let's discuss any challenges you've encountered and any interesting insights you've gained!
+
+
+### Reference
+- https://datageneration.io/dataprogrammingwithr/intro
+- Chicago Harris School Coding Camp
