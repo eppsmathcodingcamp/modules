@@ -36,12 +36,16 @@ R is the programming language we'll be using for data analysis. Let's start by i
 4. Once downloaded, open the `.pkg` file and follow the installation instructions.
 
 ::: {.callout-important}
-**Exercise 1:** After installation, open your terminal (Mac) or command prompt (Windows) and type `R --version`. What version of R did you install?
+**Exercise 1:** After installation, type `R.version`. What version of R did you install? What is the nickname of that particular software build? 
 :::
 
 ## 3. Installing RStudio
 
 RStudio is an Integrated Development Environment (IDE) that makes working with R much easier and more efficient.
+
+::: {.callout-tip}
+An integrated development environment (IDE) is a software application that helps programmers develop software code more efficiently. IDEs combine capabilities like software editing, building, testing, and packaging into a single, easy-to-use application. When choosing an IDE, you can consider things like cost, supported languages, and extensibility. For example, if you're currently a Python developer but might start learning Ruby in the future, you might want to find an IDE that supports both languages.
+:::
 
 ### For both Windows and Mac:
 
@@ -53,7 +57,6 @@ RStudio is an Integrated Development Environment (IDE) that makes working with R
 ::: {.callout-important}
 **Exercise 2:** Open RStudio. In the console pane (usually at the bottom-left), type `1 + 1` and press Enter. What result do you get?
 :::
-
 
 ## 4. Configuring RStudio
 
@@ -72,8 +75,11 @@ Let's set up some basic configurations in RStudio to enhance your workflow.
 :::
 
 
-
 ## 5. Installing a Package Manager (pacman)
+
+::: {.callout-tip}
+In R, a package is a collection of R functions, data, and compiled code that's organized in a standard format.
+:::
 
 Pacman is a convenient package manager for R. Let's install it and learn how to use it.
 
@@ -94,11 +100,12 @@ p_load(dplyr, ggplot2)
 
 This installs (if necessary) and loads the dplyr and ggplot2 packages.
 
+
 ::: {.callout-important}
 **Exercise 4:** Use pacman to install and load the tidyr package. Then, use p_functions() to list all functions in the tidyr package.
 :::
 
-## Setting Up Your Working Directory
+## 6. Setting Up Your Working Directory
 
 Setting up a proper working directory is crucial for organizing your projects.
 
@@ -125,7 +132,7 @@ setwd("/path/to/your/directory")
 
 Let's familiarize ourselves with some essential R commands and set up the main packages you'll need for data science work.
 
-### 7.1 Basic R Commands
+### Basic R Commands
 
 
 ```{r}
@@ -190,11 +197,8 @@ square(4)
 ```
 
 
-::: {.callout-important}
-**Exercise 7:** Create a vector of 10 random numbers between 1 and 100 using the sample() function. Then, use the max() and min() functions to find the highest and lowest numbers in your vector.
-:::
 
-## Installing and Loading Essential Packages
+## 8. Installing and Loading Essential Packages
 
 Let's install and load some of the most commonly used packages in data science:
 
@@ -203,45 +207,110 @@ Let's install and load some of the most commonly used packages in data science:
 
 # Install and load essential packages
 p_load(
-  tidyverse,  # for data manipulation and visualization
-  readxl,     # for reading Excel files
-  lubridate,  # for working with dates
-  ggplot2,    # for creating graphs
-  caret,      # for machine learning
-  rmarkdown,  # for creating dynamic documents
-  shiny,      # for building interactive web apps
-  plotly,     # for creating interactive plots
-  knitr       # for dynamic report generation
+  tidyverse,   # a collection of packages for data science, including ggplot2, dplyr, tidyr, readr, and more
+  readxl,      # for reading Excel files
+  lubridate,   # for working with dates (technically part of tidyverse, but not loaded automatically)
+  haven,       # for reading and writing data from SPSS, Stata, and SAS
+  survey,      # for complex survey analysis
+  lme4,        # for linear and generalized linear mixed models
+  stargazer,   # for creating well-formatted regression tables and summary statistics
+  RColorBrewer,# for creating color palettes
+  rmarkdown,   # for creating dynamic documents
+  shiny,       # for building interactive web apps
+  plotly,      # for creating interactive plots
+  knitr        # for dynamic report generation
 )
 ```
 
-## Reading and Writing Data
+::: {.callout-tip}
+### Explore the Power of the `tidyverse`!
+
+The `tidyverse` is a collection of R packages that are designed for data science. These packages share an underlying design philosophy, grammar, and data structures, making it easier to learn and apply them together. Here's why you should consider exploring the `tidyverse`:
+
+- **Core Packages Included:**
+  - `ggplot2`: Create stunning and customizable visualizations.
+  - `dplyr`: Efficiently manipulate and transform data frames with intuitive syntax.
+  - `tidyr`: Tidy your data into a format that’s easy to work with and visualize.
+  - `readr`: Fast and friendly tools for reading rectangular data like CSV files.
+  - `purrr`: Functional programming tools to iterate over elements and apply functions consistently.
+  - `tibble`: Enhanced data frames with better printing and subsetting capabilities.
+  - `stringr`: Simplified string operations for manipulating text data.
+  - `forcats`: Tools for handling categorical data or factors.
+
+- **Consistent Grammar:**
+  - The `tidyverse` packages follow a consistent grammar (e.g., using verbs like `select`, `filter`, `mutate` in `dplyr`), making it easier to learn and apply different packages together.
+  
+- **Interoperability:**
+  - These packages are designed to work seamlessly together, reducing the complexity of data analysis workflows. For example, you can use `dplyr` to manipulate data and `ggplot2` to visualize it in a single, coherent workflow.
+
+- **Community and Resources:**
+  - The `tidyverse` is widely adopted, meaning there's a rich community, extensive documentation, and numerous tutorials available to help you master these tools.
+
+- **Improved Efficiency:**
+  - Using the `tidyverse` can make your code more readable, concise, and faster to write, allowing you to focus more on analysis and less on code mechanics.
+
+By incorporating the `tidyverse` into your R programming toolkit, you'll streamline your data science journey and be able to tackle complex tasks with greater ease and efficiency. Happy coding!
+:::
+
+
+## 9. Reading and Writing Data
 Learning to read and write data is crucial for any data science project:
 
 ```{r}
 #| eval: false
+# Creating employee data
+employee_data <- data.frame(
+  EmployeeID = c(101, 102, 103, 104, 105),
+  Name = c("John Doe", "Jane Smith", "Jim Brown", "Jake White", "Jill Black"),
+  Department = c("HR", "Finance", "IT", "Marketing", "Sales"),
+  Salary = c(60000, 65000, 70000, 55000, 72000),
+  HireDate = as.Date(c("2015-03-15", "2016-07-20", "2017-05-22", "2018-11-12", "2019-09-30"))
+)
+
 # Writing data to CSV
-write.csv(data, "employee_data.csv", row.names = FALSE)
+write.csv(employee_data, "employee_data.csv", row.names = FALSE)
 
 # Reading data from CSV
 read_data <- read.csv("employee_data.csv")
 
 # Writing data to Excel (requires writexl package)
 p_load(writexl)
-write_xlsx(data, "employee_data.xlsx")
+write_xlsx(employee_data, "employee_data.xlsx")
 
 # Reading data from Excel
 excel_data <- read_excel("employee_data.xlsx")
 
 # Writing R objects to RDS (R's native format)
-saveRDS(data, "employee_data.rds")
+saveRDS(employee_data, "employee_data.rds")
 
 # Reading RDS files
 rds_data <- readRDS("employee_data.rds")
 ```
 
 
-## Next Steps
+::: {.callout-important}
+**Exercise 6:** Create a vector of 5 numbers and a vector of 5 names. Combine them into a data frame where each number corresponds to an age and each name corresponds to a person. Then, calculate the mean age and display a summary of the data frame.
+::: 
+
+
+::: {.callout-important}
+**Advanced Exercise:** Create a custom function that takes a vector of numbers as input and returns a list containing the following:
+1. The square of each number in the vector.
+2. A count of how many numbers in the vector are greater than a specified threshold.
+3. The mean of the numbers in the vector, but only include numbers greater than a specified threshold in the calculation.
+
+Test your function with a vector of random numbers, using a threshold of your choice.
+
+**Hint:** 
+
+- **Squaring Numbers:** Remember that you can square all elements in a vector at once using vectorization (e.g., `numbers^2`). There's no need to loop through each element individually, though you can if you want to practice using loops.
+
+- **Counting Elements:** To count how many numbers are greater than the threshold, use a logical comparison (e.g., `numbers > threshold`). This will return a logical vector (`TRUE` or `FALSE`), and you can sum it up with the `sum()` function, since `TRUE` is treated as 1 in R.
+
+- **Filtering for Mean Calculation:** Use the logical comparison to filter your vector before calculating the mean (e.g., `numbers[numbers > threshold]`).
+::: 
+
+## 10. Next Steps
 
 Now that you have a solid foundation in R and have set up your environment with essential packages, you're ready to start your data science journey! Here are some suggestions for next steps:
 
@@ -253,7 +322,7 @@ Now that you have a solid foundation in R and have set up your environment with 
 
 Remember, the key to mastering R and data science is consistent practice and curiosity. Don't hesitate to explore the vast resources available online, including R documentation, tutorials, and community forums.
 
-## Conclusion
+## 11. Conclusion
 
 Congratulations! You've now set up your data science environment with R and RStudio, learned essential R commands, and gotten familiar with some of the most important packages in the R ecosystem. This foundation will serve you well as you continue your data science journey.
 Keep practicing, stay curious, and happy data sciencing!
