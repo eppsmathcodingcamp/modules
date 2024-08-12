@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.553">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Xingyuan Zhao">
+<meta name="dcterms.date" content="2024-08-12">
+
+<title>EPPS Math Coding Camp</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="d1_6_files/libs/clipboard/clipboard.min.js"></script>
+<script src="d1_6_files/libs/quarto-html/quarto.js"></script>
+<script src="d1_6_files/libs/quarto-html/popper.min.js"></script>
+<script src="d1_6_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="d1_6_files/libs/quarto-html/anchor.min.js"></script>
+<link href="d1_6_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="d1_6_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="d1_6_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="d1_6_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="d1_6_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#session-1-basic-data-manipulation" id="toc-session-1-basic-data-manipulation" class="nav-link active" data-scroll-target="#session-1-basic-data-manipulation">Session 1: Basic Data Manipulation</a>
+  <ul class="collapse">
+  <li><a href="#slicingindex" id="toc-slicingindex" class="nav-link" data-scroll-target="#slicingindex">1.1.1 Slicing/Index</a>
+  <ul class="collapse">
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples:</a></li>
+  </ul></li>
+  <li><a href="#using-variable-names" id="toc-using-variable-names" class="nav-link" data-scroll-target="#using-variable-names">1.1.2 Using Variable Names</a></li>
+  <li><a href="#subsetting-data-with-condition" id="toc-subsetting-data-with-condition" class="nav-link" data-scroll-target="#subsetting-data-with-condition">1.1.3 Subsetting Data With condition</a>
+  <ul class="collapse">
+  <li><a href="#detailed-explanation" id="toc-detailed-explanation" class="nav-link" data-scroll-target="#detailed-explanation">Detailed Explanation:</a></li>
+  <li><a href="#examples-1" id="toc-examples-1" class="nav-link" data-scroll-target="#examples-1">Examples:</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#using-logic-operator-to-do-complicated-selection" id="toc-using-logic-operator-to-do-complicated-selection" class="nav-link" data-scroll-target="#using-logic-operator-to-do-complicated-selection">Using logic operator to do complicated selection</a>
+  <ul class="collapse">
+  <li><a href="#basic-data-transformation" id="toc-basic-data-transformation" class="nav-link" data-scroll-target="#basic-data-transformation">1.2 Basic Data Transformation</a></li>
+  <li><a href="#missing-values" id="toc-missing-values" class="nav-link" data-scroll-target="#missing-values">1.3 Missing Values</a></li>
+  <li><a href="#introduction-to-the-dplyr-package" id="toc-introduction-to-the-dplyr-package" class="nav-link" data-scroll-target="#introduction-to-the-dplyr-package">1.4 Introduction to the dplyr Package</a></li>
+  </ul></li>
+  <li><a href="#session-2-hands-on-exercises" id="toc-session-2-hands-on-exercises" class="nav-link" data-scroll-target="#session-2-hands-on-exercises">Session 2: Hands-on Exercises</a>
+  <ul class="collapse">
+  <li><a href="#subsetting-and-filtering-data" id="toc-subsetting-and-filtering-data" class="nav-link" data-scroll-target="#subsetting-and-filtering-data">2.1 Subsetting and Filtering Data</a></li>
+  <li><a href="#data-transformation" id="toc-data-transformation" class="nav-link" data-scroll-target="#data-transformation">2.2 Data Transformation</a></li>
+  <li><a href="#using-dplyr-for-data-manipulation" id="toc-using-dplyr-for-data-manipulation" class="nav-link" data-scroll-target="#using-dplyr-for-data-manipulation">2.3 Using dplyr for Data Manipulation</a></li>
+  </ul></li>
+  <li><a href="#session-3-wrapping-up-and-qa" id="toc-session-3-wrapping-up-and-qa" class="nav-link" data-scroll-target="#session-3-wrapping-up-and-qa">Session 3: Wrapping Up and Q&amp;A</a>
+  <ul class="collapse">
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">EPPS Math Coding Camp</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<p class="subtitle lead">Basic Data Manipulation</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Xingyuan Zhao </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 12, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="session-1-basic-data-manipulation" class="level1">
+<h1>Session 1: Basic Data Manipulation</h1>
+<section id="slicingindex" class="level2">
+<h2 class="anchored" data-anchor-id="slicingindex">1.1.1 Slicing/Index</h2>
+<p>We learned access elements of matrix and vectors in the previous sessions. Indexing in Dataframes is similar. Remember, R uses 1-based indexing (the first element is at position 1, not 0).</p>
+<section id="examples" class="level3">
+<h3 class="anchored" data-anchor-id="examples">Examples:</h3>
+<p>A quick review of the DataFrame</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  ev_data <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"Electric_Vehicle_Population_Data.xlsx"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ev_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 17
+  `VIN (1-10)` County    City         State Postal_Code Model_Year Make    Model
+  &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;       &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;
+1 1C4RJXN66R   Snohomish Everett      WA          98204       2024 JEEP    WRAN…
+2 KNDJX3AEXG   King      Renton       WA          98058       2016 KIA     SOUL 
+3 5YJ3E1EA3L   King      Seattle      WA          98125       2020 TESLA   MODE…
+4 1G1RC6S5XH   Kitsap    Port Orchard WA          98367       2017 CHEVRO… VOLT 
+5 5UXTA6C09P   Snohomish Monroe       WA          98272       2023 BMW     X5   
+6 1FMCU0EZXN   Yakima    Moxee        WA          98936       2022 FORD    ESCA…
+# ℹ 9 more variables: `Electric Vehicle Type` &lt;chr&gt;,
+#   `Clean Alternative Fuel Vehicle (CAFV) Eligibility` &lt;chr&gt;,
+#   Electric_Range &lt;dbl&gt;, `Base MSRP` &lt;dbl&gt;, `Legislative District` &lt;dbl&gt;,
+#   `DOL Vehicle ID` &lt;dbl&gt;, `Vehicle Location` &lt;chr&gt;, `Electric Utility` &lt;chr&gt;,
+#   `2020 Census Tract` &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>Observe what is the return of the following codes:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ev_data[<span class="dv">1</span>, <span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  `VIN (1-10)`
+  &lt;chr&gt;       
+1 1C4RJXN66R  </code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ev_data[, <span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 194,232 × 1
+   County   
+   &lt;chr&gt;    
+ 1 Snohomish
+ 2 King     
+ 3 King     
+ 4 Kitsap   
+ 5 Snohomish
+ 6 Yakima   
+ 7 Thurston 
+ 8 Snohomish
+ 9 Snohomish
+10 Snohomish
+# ℹ 194,222 more rows</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ev_data[, <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 194,232 × 2
+   County    City        
+   &lt;chr&gt;     &lt;chr&gt;       
+ 1 Snohomish Everett     
+ 2 King      Renton      
+ 3 King      Seattle     
+ 4 Kitsap    Port Orchard
+ 5 Snohomish Monroe      
+ 6 Yakima    Moxee       
+ 7 Thurston  Olympia     
+ 8 Snohomish Monroe      
+ 9 Snohomish Everett     
+10 Snohomish Everett     
+# ℹ 194,222 more rows</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ev_data[<span class="dv">1</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 17
+  `VIN (1-10)` County    City    State Postal_Code Model_Year Make  Model   
+  &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   
+1 1C4RJXN66R   Snohomish Everett WA          98204       2024 JEEP  WRANGLER
+# ℹ 9 more variables: `Electric Vehicle Type` &lt;chr&gt;,
+#   `Clean Alternative Fuel Vehicle (CAFV) Eligibility` &lt;chr&gt;,
+#   Electric_Range &lt;dbl&gt;, `Base MSRP` &lt;dbl&gt;, `Legislative District` &lt;dbl&gt;,
+#   `DOL Vehicle ID` &lt;dbl&gt;, `Vehicle Location` &lt;chr&gt;, `Electric Utility` &lt;chr&gt;,
+#   `2020 Census Tract` &lt;dbl&gt;</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ev_data[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 17
+  `VIN (1-10)` County    City    State Postal_Code Model_Year Make  Model   
+  &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   
+1 1C4RJXN66R   Snohomish Everett WA          98204       2024 JEEP  WRANGLER
+2 KNDJX3AEXG   King      Renton  WA          98058       2016 KIA   SOUL    
+3 5YJ3E1EA3L   King      Seattle WA          98125       2020 TESLA MODEL 3 
+# ℹ 9 more variables: `Electric Vehicle Type` &lt;chr&gt;,
+#   `Clean Alternative Fuel Vehicle (CAFV) Eligibility` &lt;chr&gt;,
+#   Electric_Range &lt;dbl&gt;, `Base MSRP` &lt;dbl&gt;, `Legislative District` &lt;dbl&gt;,
+#   `DOL Vehicle ID` &lt;dbl&gt;, `Vehicle Location` &lt;chr&gt;, `Electric Utility` &lt;chr&gt;,
+#   `2020 Census Tract` &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>Mind the type of the output. Observe what is the return of the following codes and see the difference:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ev_data[[<span class="dv">1</span>, <span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1C4RJXN66R"</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(ev_data[[<span class="dv">1</span>, <span class="dv">1</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(ev_data[<span class="dv">1</span>, <span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "tbl_df"     "tbl"        "data.frame"</code></pre>
+</div>
+</div>
+<p>What will happen if you run this line and why?</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ev_data[[, 2]]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
+<section id="using-variable-names" class="level2">
+<h2 class="anchored" data-anchor-id="using-variable-names">1.1.2 Using Variable Names</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ev_data<span class="sc">$</span>Make)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "JEEP"      "KIA"       "TESLA"     "CHEVROLET" "BMW"       "FORD"     </code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>ev_data[, <span class="fu">c</span>(<span class="st">"Make"</span>, <span class="st">"Model"</span>, <span class="st">"Electric_Range"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 194,232 × 3
+   Make      Model    Electric_Range
+   &lt;chr&gt;     &lt;chr&gt;             &lt;dbl&gt;
+ 1 JEEP      WRANGLER             21
+ 2 KIA       SOUL                 93
+ 3 TESLA     MODEL 3             266
+ 4 CHEVROLET VOLT                 53
+ 5 BMW       X5                   30
+ 6 FORD      ESCAPE               38
+ 7 TESLA     MODEL S             208
+ 8 NISSAN    LEAF                 84
+ 9 PORSCHE   CAYENNE              14
+10 NISSAN    LEAF                  0
+# ℹ 194,222 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="subsetting-data-with-condition" class="level2">
+<h2 class="anchored" data-anchor-id="subsetting-data-with-condition">1.1.3 Subsetting Data With condition</h2>
+<p>Subsetting is the process of extracting a portion of a dataset based on specific conditions. This can be useful for focusing on particular groups or conditions within your data.</p>
+<section id="detailed-explanation" class="level3">
+<h3 class="anchored" data-anchor-id="detailed-explanation">Detailed Explanation:</h3>
+<ul>
+<li><strong>Row and Column Subsetting</strong>: Use indexing to subset specific rows and columns.</li>
+<li><strong>Logical Conditions</strong>: Subset based on logical conditions using operators like <code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&amp;</code>, <code>|</code>.</li>
+</ul>
+</section>
+<section id="examples-1" class="level3">
+<h3 class="anchored" data-anchor-id="examples-1">Examples:</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>ev_data <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"Electric_Vehicle_Population_Data.xlsx"</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Subsetting rows based on a condition</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>ev_subset <span class="ot">&lt;-</span> ev_data[ev_data<span class="sc">$</span>Model_Year <span class="sc">==</span> <span class="dv">2020</span>, ]</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Subsetting specific columns</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>ev_columns_subset <span class="ot">&lt;-</span> ev_data[, <span class="fu">c</span>(<span class="st">"Make"</span>, <span class="st">"Model"</span>, <span class="st">"Electric_Range"</span>)]</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Subsetting rows and columns</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>ev_subset_cols <span class="ot">&lt;-</span> ev_data[ev_data<span class="sc">$</span>Model_Year <span class="sc">==</span> <span class="dv">2020</span>, <span class="fu">c</span>(<span class="st">"Make"</span>, <span class="st">"Electric_Range"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
+</section>
+<section id="using-logic-operator-to-do-complicated-selection" class="level1">
+<h1>Using logic operator to do complicated selection</h1>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find new cars with high electric range</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>ev_data[ev_data<span class="sc">$</span>Model_Year <span class="sc">&gt;</span> <span class="dv">2018</span> <span class="sc">&amp;</span> ev_data<span class="sc">$</span>Electric_Range <span class="sc">&gt;=</span> <span class="dv">100</span> , <span class="fu">c</span>(<span class="st">"Make"</span>, <span class="st">"Model"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 19,761 × 2
+   Make      Model  
+   &lt;chr&gt;     &lt;chr&gt;  
+ 1 TESLA     MODEL 3
+ 2 TESLA     MODEL 3
+ 3 TESLA     MODEL Y
+ 4 CHEVROLET BOLT EV
+ 5 TESLA     MODEL 3
+ 6 TESLA     MODEL 3
+ 7 TESLA     MODEL 3
+ 8 NISSAN    LEAF   
+ 9 TESLA     MODEL 3
+10 TESLA     MODEL 3
+# ℹ 19,751 more rows</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find cars that is near me (Richardson is a city in Dallas and Collin counties)</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>ev_data[(ev_data<span class="sc">$</span>County <span class="sc">==</span> <span class="st">'Collin'</span> <span class="sc">|</span> ev_data<span class="sc">$</span>County <span class="sc">==</span> <span class="st">'Dallas'</span>), <span class="fu">c</span>(<span class="st">"Make"</span>, <span class="st">"Model"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 2
+   Make  Model  
+   &lt;chr&gt; &lt;chr&gt;  
+ 1 &lt;NA&gt;  &lt;NA&gt;   
+ 2 &lt;NA&gt;  &lt;NA&gt;   
+ 3 &lt;NA&gt;  &lt;NA&gt;   
+ 4 &lt;NA&gt;  &lt;NA&gt;   
+ 5 &lt;NA&gt;  &lt;NA&gt;   
+ 6 TESLA MODEL 3
+ 7 &lt;NA&gt;  &lt;NA&gt;   
+ 8 &lt;NA&gt;  &lt;NA&gt;   
+ 9 &lt;NA&gt;  &lt;NA&gt;   
+10 &lt;NA&gt;  &lt;NA&gt;   </code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find cars outside TX that are made by Tesla or is expensive</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>ev_data[ev_data<span class="sc">$</span>State <span class="sc">!=</span> <span class="st">'TX'</span> <span class="sc">&amp;</span> (ev_data<span class="sc">$</span>Make <span class="sc">==</span> <span class="st">'TESLA'</span> <span class="sc">|</span> ev_data<span class="sc">$</span><span class="st">`</span><span class="at">Base MSRP</span><span class="st">`</span> <span class="sc">&gt;=</span> <span class="dv">10000</span>), <span class="fu">c</span>(<span class="st">"Make"</span>, <span class="st">"Model"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 87,104 × 2
+   Make  Model  
+   &lt;chr&gt; &lt;chr&gt;  
+ 1 KIA   SOUL   
+ 2 TESLA MODEL 3
+ 3 TESLA MODEL S
+ 4 TESLA MODEL 3
+ 5 TESLA MODEL S
+ 6 TESLA MODEL 3
+ 7 TESLA MODEL Y
+ 8 TESLA MODEL X
+ 9 TESLA MODEL S
+10 TESLA MODEL 3
+# ℹ 87,094 more rows</code></pre>
+</div>
+</div>
+<p><br></p>
+<ul>
+<li>ev_data$Model_Year == 2020: Subsets rows where the year is 2020. <br></li>
+<li><br> Try subsetting the data using different conditions and explore the resulting subsets. <br></li>
+</ul>
+<section id="basic-data-transformation" class="level2">
+<h2 class="anchored" data-anchor-id="basic-data-transformation">1.2 Basic Data Transformation</h2>
+<p>Data transformation involves modifying data to fit a certain format or to prepare it for analysis. This includes operations like renaming columns, creating new variables, and changing data types. <br></p>
+<section id="detailed-explanation-1" class="level4">
+<h4 class="anchored" data-anchor-id="detailed-explanation-1">Detailed Explanation:</h4>
+<ul>
+<li><strong>Renaming Columns</strong>: Use the names() function or dplyr::rename(). <br></li>
+<li><strong>Creating New Variables</strong>: Add new columns based on calculations or conditions. <br></li>
+<li><strong>Changing Data Types</strong>: Convert columns to appropriate data types using functions like as.numeric(), as.factor(), etc. <br></li>
+</ul>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Renaming columns</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ev_data)[<span class="fu">names</span>(ev_data) <span class="sc">==</span> <span class="st">"Postal_Code"</span>] <span class="ot">&lt;-</span> <span class="st">"Zip_Code"</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating new variables</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>ev_data<span class="sc">$</span>Vehicle_Age <span class="ot">&lt;-</span> <span class="dv">2025</span> <span class="sc">-</span> ev_data<span class="sc">$</span>Model_Year</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Changing data types</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>ev_data<span class="sc">$</span>Make <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(ev_data<span class="sc">$</span>Make)</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ev_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  VIN (1-10)           County              City              State          
+ Length:194232      Length:194232      Length:194232      Length:194232     
+ Class :character   Class :character   Class :character   Class :character  
+ Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+    Zip_Code       Model_Year          Make          Model          
+ Min.   : 1731   Min.   :1997   TESLA    :85320   Length:194232     
+ 1st Qu.:98052   1st Qu.:2019   CHEVROLET:14578   Class :character  
+ Median :98125   Median :2022   NISSAN   :14360   Mode  :character  
+ Mean   :98176   Mean   :2021   FORD     :10266                     
+ 3rd Qu.:98372   3rd Qu.:2023   KIA      : 8497                     
+ Max.   :99577   Max.   :2025   BMW      : 8150                     
+ NA's   :9                      (Other)  :53061                     
+ Electric Vehicle Type Clean Alternative Fuel Vehicle (CAFV) Eligibility
+ Length:194232         Length:194232                                    
+ Class :character      Class :character                                 
+ Mode  :character      Mode  :character                                 
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+ Electric_Range     Base MSRP        Legislative District DOL Vehicle ID     
+ Min.   :  0.00   Min.   :     0.0   Min.   : 1.00        Min.   :     4385  
+ 1st Qu.:  0.00   1st Qu.:     0.0   1st Qu.:17.00        1st Qu.:187225086  
+ Median :  0.00   Median :     0.0   Median :33.00        Median :233940241  
+ Mean   : 54.84   Mean   :   978.7   Mean   :29.01        Mean   :224892309  
+ 3rd Qu.: 68.00   3rd Qu.:     0.0   3rd Qu.:42.00        3rd Qu.:260115926  
+ Max.   :337.00   Max.   :845000.0   Max.   :49.00        Max.   :479254772  
+ NA's   :2        NA's   :2          NA's   :432                             
+ Vehicle Location   Electric Utility   2020 Census Tract    Vehicle_Age    
+ Length:194232      Length:194232      Min.   :1.001e+09   Min.   : 0.000  
+ Class :character   Class :character   1st Qu.:5.303e+10   1st Qu.: 2.000  
+ Mode  :character   Mode  :character   Median :5.303e+10   Median : 3.000  
+                                       Mean   :5.298e+10   Mean   : 4.218  
+                                       3rd Qu.:5.305e+10   3rd Qu.: 6.000  
+                                       Max.   :5.602e+10   Max.   :28.000  
+                                       NA's   :9                           </code></pre>
+</div>
+</div>
+<p><br> - <strong>names()</strong>: Retrieves or sets the names of an object’s elements. <br> - <strong>as.factor()</strong>: Converts a variable to factor<br> <br></p>
+</section>
+</section>
+<section id="missing-values" class="level2">
+<h2 class="anchored" data-anchor-id="missing-values">1.3 Missing Values</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count na of df</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(ev_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 494</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count na of each col</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(ev_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                       VIN (1-10) 
+                                                0 
+                                           County 
+                                                9 
+                                             City 
+                                                9 
+                                            State 
+                                                0 
+                                         Zip_Code 
+                                                9 
+                                       Model_Year 
+                                                0 
+                                             Make 
+                                                0 
+                                            Model 
+                                                0 
+                            Electric Vehicle Type 
+                                                0 
+Clean Alternative Fuel Vehicle (CAFV) Eligibility 
+                                                0 
+                                   Electric_Range 
+                                                2 
+                                        Base MSRP 
+                                                2 
+                             Legislative District 
+                                              432 
+                                   DOL Vehicle ID 
+                                                0 
+                                 Vehicle Location 
+                                               13 
+                                 Electric Utility 
+                                                9 
+                                2020 Census Tract 
+                                                9 
+                                      Vehicle_Age 
+                                                0 </code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Indicates which elements are missing within a specific column</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>ev_data[<span class="fu">is.na</span>(ev_data<span class="sc">$</span>County ),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 9 × 18
+  `VIN (1-10)` County City  State Zip_Code Model_Year Make      Model  
+  &lt;chr&gt;        &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt;      &lt;dbl&gt; &lt;fct&gt;     &lt;chr&gt;  
+1 1G1RB6S53J   &lt;NA&gt;   &lt;NA&gt;  BC          NA       2018 CHEVROLET VOLT   
+2 7SAYGDEE4N   &lt;NA&gt;   &lt;NA&gt;  CA          NA       2022 TESLA     MODEL Y
+3 7SAYGAEE3P   &lt;NA&gt;   &lt;NA&gt;  CA          NA       2023 TESLA     MODEL Y
+4 3FA6P0PU8H   &lt;NA&gt;   &lt;NA&gt;  KS          NA       2017 FORD      FUSION 
+5 5YJXCAE24H   &lt;NA&gt;   &lt;NA&gt;  BC          NA       2017 TESLA     MODEL X
+6 5YJ3E1EA5K   &lt;NA&gt;   &lt;NA&gt;  BC          NA       2019 TESLA     MODEL 3
+7 WBAJA9C50K   &lt;NA&gt;   &lt;NA&gt;  AE          NA       2019 BMW       530E   
+8 YV4H60CL5N   &lt;NA&gt;   &lt;NA&gt;  GA          NA       2022 VOLVO     XC90   
+9 5YJ3E1EA1J   &lt;NA&gt;   &lt;NA&gt;  AL          NA       2018 TESLA     MODEL 3
+# ℹ 10 more variables: `Electric Vehicle Type` &lt;chr&gt;,
+#   `Clean Alternative Fuel Vehicle (CAFV) Eligibility` &lt;chr&gt;,
+#   Electric_Range &lt;dbl&gt;, `Base MSRP` &lt;dbl&gt;, `Legislative District` &lt;dbl&gt;,
+#   `DOL Vehicle ID` &lt;dbl&gt;, `Vehicle Location` &lt;chr&gt;, `Electric Utility` &lt;chr&gt;,
+#   `2020 Census Tract` &lt;dbl&gt;, Vehicle_Age &lt;dbl&gt;</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Indicates which elements are not missing within a specific column</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>ev_data[<span class="sc">!</span><span class="fu">is.na</span>(ev_data<span class="sc">$</span>City ),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 194,223 × 18
+   `VIN (1-10)` County    City         State Zip_Code Model_Year Make      Model
+   &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;    &lt;dbl&gt;      &lt;dbl&gt; &lt;fct&gt;     &lt;chr&gt;
+ 1 1C4RJXN66R   Snohomish Everett      WA       98204       2024 JEEP      WRAN…
+ 2 KNDJX3AEXG   King      Renton       WA       98058       2016 KIA       SOUL 
+ 3 5YJ3E1EA3L   King      Seattle      WA       98125       2020 TESLA     MODE…
+ 4 1G1RC6S5XH   Kitsap    Port Orchard WA       98367       2017 CHEVROLET VOLT 
+ 5 5UXTA6C09P   Snohomish Monroe       WA       98272       2023 BMW       X5   
+ 6 1FMCU0EZXN   Yakima    Moxee        WA       98936       2022 FORD      ESCA…
+ 7 5YJSA1DNXD   Thurston  Olympia      WA       98506       2013 TESLA     MODE…
+ 8 1N4AZ0CP8F   Snohomish Monroe       WA       98272       2015 NISSAN    LEAF 
+ 9 WP1AE2A21J   Snohomish Everett      WA       98208       2018 PORSCHE   CAYE…
+10 1N4BZ1BV4N   Snohomish Everett      WA       98208       2022 NISSAN    LEAF 
+# ℹ 194,213 more rows
+# ℹ 10 more variables: `Electric Vehicle Type` &lt;chr&gt;,
+#   `Clean Alternative Fuel Vehicle (CAFV) Eligibility` &lt;chr&gt;,
+#   Electric_Range &lt;dbl&gt;, `Base MSRP` &lt;dbl&gt;, `Legislative District` &lt;dbl&gt;,
+#   `DOL Vehicle ID` &lt;dbl&gt;, `Vehicle Location` &lt;chr&gt;, `Electric Utility` &lt;chr&gt;,
+#   `2020 Census Tract` &lt;dbl&gt;, Vehicle_Age &lt;dbl&gt;</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Removes missing values of a specific column by subsetting</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>ev_data <span class="ot">&lt;-</span> ev_data[<span class="sc">!</span><span class="fu">is.na</span>(ev_data<span class="sc">$</span>City),]</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check na Removal</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(ev_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 431</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Removes ALL missing values in data frame</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">na.omit</span>(ev_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 193,794 × 18
+   `VIN (1-10)` County    City         State Zip_Code Model_Year Make      Model
+   &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;    &lt;dbl&gt;      &lt;dbl&gt; &lt;fct&gt;     &lt;chr&gt;
+ 1 1C4RJXN66R   Snohomish Everett      WA       98204       2024 JEEP      WRAN…
+ 2 KNDJX3AEXG   King      Renton       WA       98058       2016 KIA       SOUL 
+ 3 5YJ3E1EA3L   King      Seattle      WA       98125       2020 TESLA     MODE…
+ 4 1G1RC6S5XH   Kitsap    Port Orchard WA       98367       2017 CHEVROLET VOLT 
+ 5 5UXTA6C09P   Snohomish Monroe       WA       98272       2023 BMW       X5   
+ 6 1FMCU0EZXN   Yakima    Moxee        WA       98936       2022 FORD      ESCA…
+ 7 5YJSA1DNXD   Thurston  Olympia      WA       98506       2013 TESLA     MODE…
+ 8 1N4AZ0CP8F   Snohomish Monroe       WA       98272       2015 NISSAN    LEAF 
+ 9 WP1AE2A21J   Snohomish Everett      WA       98208       2018 PORSCHE   CAYE…
+10 1N4BZ1BV4N   Snohomish Everett      WA       98208       2022 NISSAN    LEAF 
+# ℹ 193,784 more rows
+# ℹ 10 more variables: `Electric Vehicle Type` &lt;chr&gt;,
+#   `Clean Alternative Fuel Vehicle (CAFV) Eligibility` &lt;chr&gt;,
+#   Electric_Range &lt;dbl&gt;, `Base MSRP` &lt;dbl&gt;, `Legislative District` &lt;dbl&gt;,
+#   `DOL Vehicle ID` &lt;dbl&gt;, `Vehicle Location` &lt;chr&gt;, `Electric Utility` &lt;chr&gt;,
+#   `2020 Census Tract` &lt;dbl&gt;, Vehicle_Age &lt;dbl&gt;</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check na Removal</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(ev_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 431</code></pre>
+</div>
+</div>
+</section>
+<section id="introduction-to-the-dplyr-package" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-the-dplyr-package">1.4 Introduction to the dplyr Package</h2>
+<p>dplyr is a powerful package for data manipulation in R. It provides a set of functions (verbs) that help in transforming and summarizing data easily. <br></p>
+<section id="key-verbs" class="level4">
+<h4 class="anchored" data-anchor-id="key-verbs">Key Verbs:</h4>
+<ul>
+<li><strong>filter()</strong>: Select rows based on conditions. <br></li>
+<li><strong>select()</strong>: Choose specific columns. <br></li>
+<li><strong>mutate()</strong>: Create new columns. <br></li>
+<li><strong>arrange()</strong>: Order rows by columns. <br></li>
+<li><strong>summarize() and group_by()</strong>: Aggregate data by groups. <br></li>
+</ul>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Loading dplyr</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("dplyr")</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering data</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>ev_recent <span class="ot">&lt;-</span> ev_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Model_Year <span class="sc">&gt;=</span> <span class="dv">2018</span>)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting columns</span></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>ev_selected <span class="ot">&lt;-</span> ev_recent <span class="sc">%&gt;%</span> <span class="fu">select</span>(Make, Model, Model_Year)</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ev_selected)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Make          Model             Model_Year  
+ TESLA    :79461   Length:164899      Min.   :2018  
+ CHEVROLET: 8887   Class :character   1st Qu.:2021  
+ KIA      : 7910   Mode  :character   Median :2022  
+ FORD     : 7126                      Mean   :2022  
+ NISSAN   : 6848                      3rd Qu.:2023  
+ BMW      : 6265                      Max.   :2025  
+ (Other)  :48402                                    </code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a new variable</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>ev_selected <span class="ot">&lt;-</span> ev_selected <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Age =</span> <span class="dv">2025</span> <span class="sc">-</span> Model_Year)</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Arranging data</span></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>ev_sorted <span class="ot">&lt;-</span> ev_selected <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(Model_Year))</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ev_sorted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Make          Model             Model_Year        Age       
+ TESLA    :79461   Length:164899      Min.   :2018   Min.   :0.000  
+ CHEVROLET: 8887   Class :character   1st Qu.:2021   1st Qu.:2.000  
+ KIA      : 7910   Mode  :character   Median :2022   Median :3.000  
+ FORD     : 7126                      Mean   :2022   Mean   :3.204  
+ NISSAN   : 6848                      3rd Qu.:2023   3rd Qu.:4.000  
+ BMW      : 6265                      Max.   :2025   Max.   :7.000  
+ (Other)  :48402                                                    </code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarizing data</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>ev_summary <span class="ot">&lt;-</span> ev_data <span class="sc">%&gt;%</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Make) <span class="sc">%&gt;%</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Total_Electric_Range =</span> <span class="fu">sum</span>(Electric_Range, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ev_summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  Make           Total_Electric_Range
+  &lt;fct&gt;                         &lt;dbl&gt;
+1 ACURA                             0
+2 ALFA ROMEO                     1947
+3 AUDI                         185363
+4 AZURE DYNAMICS                  280
+5 BENTLEY                          87
+6 BMW                          267914</code></pre>
+</div>
+</div>
+<p><br></p>
+<ul>
+<li><strong>%&gt;% (pipe operator)</strong>: Passes the result from the left-hand side to the function on the right-hand side. <br></li>
+<li><strong>filter()</strong>: Filters rows based on a logical condition. <br></li>
+<li><strong>select()</strong>: Selects specific columns. <br></li>
+<li><strong>mutate()</strong>: Adds new columns or transforms existing ones. <br></li>
+<li><strong>arrange()</strong>: Orders rows by specified columns. <br></li>
+<li><strong>summarize() and group_by()</strong>: Aggregates data by grouping variables. <br></li>
+</ul>
+<p><br> Utilize dplyr to perform complex data manipulations succinctly and efficiently. <br></p>
+</section>
+</section>
+</section>
+<section id="session-2-hands-on-exercises" class="level1">
+<h1>Session 2: Hands-on Exercises</h1>
+<section id="subsetting-and-filtering-data" class="level2">
+<h2 class="anchored" data-anchor-id="subsetting-and-filtering-data">2.1 Subsetting and Filtering Data</h2>
+<ol type="1">
+<li>Subset the US_Life_expectancy data for a specific state and year.</li>
+<li>Select only the columns “Year” and “Age_adjusted_Death_Rate” from US_Life_expectancy data. <br></li>
+</ol>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>life_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"US_Life_expectancy.csv"</span>)</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="co">#life_data &lt;- read.csv("D:/2024Fall/DataCamp/US_Life_expectancy.csv")</span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>life_gender_year <span class="ot">&lt;-</span> life_data[life_data<span class="sc">$</span>Gender <span class="sc">==</span> <span class="st">"Gender"</span> <span class="sc">&amp;</span> life_data<span class="sc">$</span>Year <span class="sc">==</span> <span class="dv">2000</span>, ]</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>life_make_model <span class="ot">&lt;-</span> life_data[, <span class="fu">c</span>(<span class="st">"Year"</span>, <span class="st">"Age_adjusted_Death_Rate"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><br></p>
+</section>
+<section id="data-transformation" class="level2">
+<h2 class="anchored" data-anchor-id="data-transformation">2.2 Data Transformation</h2>
+<ol type="1">
+<li>Rename a column in the US_Life_expectancy data. <br></li>
+<li>Create a new column in the Electric Vehicle data representing the vehicle’s age. <br></li>
+</ol>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(life_data)[<span class="fu">names</span>(life_data) <span class="sc">==</span> <span class="st">"Death_Rate"</span>] <span class="ot">&lt;-</span> <span class="st">"Age_adjusted_Death_Rate"</span></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>ev_data<span class="sc">$</span>Vehicle_Age <span class="ot">&lt;-</span> <span class="dv">2025</span> <span class="sc">-</span> ev_data<span class="sc">$</span>Model_Year</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><br></p>
+</section>
+<section id="using-dplyr-for-data-manipulation" class="level2">
+<h2 class="anchored" data-anchor-id="using-dplyr-for-data-manipulation">2.3 Using dplyr for Data Manipulation</h2>
+<ol type="1">
+<li>Use filter() to select rows from the US_Life_expectancy data where the “Gender” is “Female”. <br></li>
+<li>Use mutate() to create a new column indicating whether the case is “Millennium” or “90’s” based on the year 2000. <br></li>
+<li>Use summarize() and group_by() to find the average life expectancy per gender. <br></li>
+</ol>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>Female <span class="ot">&lt;-</span> life_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Gender <span class="sc">==</span> <span class="st">"Female"</span>)</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>life_data_ages <span class="ot">&lt;-</span> life_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Status =</span> <span class="fu">ifelse</span>(Year <span class="sc">&gt;=</span> <span class="dv">2000</span>, <span class="st">"Millennium"</span>, <span class="st">"90's"</span>))</span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(life_data_ages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>      Year         Gender          Average_Life_Expectancy
+ Min.   :1900   Length:238         Min.   :36.60          
+ 1st Qu.:1929   Class :character   1st Qu.:59.92          
+ Median :1959   Mode  :character   Median :67.90          
+ Mean   :1959                      Mean   :67.01          
+ 3rd Qu.:1989                      3rd Qu.:75.08          
+ Max.   :2018                      Max.   :81.30          
+ Age_adjusted_Death_Rate    Status         
+ Min.   : 611.3          Length:238        
+ 1st Qu.: 959.2          Class :character  
+ Median :1436.5          Mode  :character  
+ Mean   :1474.8                            
+ 3rd Qu.:1999.1                            
+ Max.   :2740.5                            </code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>life_data_per_gender <span class="ot">&lt;-</span> life_data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Gender) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Life_expectancy =</span> <span class="fu">mean</span>(Average_Life_Expectancy, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>life_data_per_gender</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  Gender Life_expectancy
+  &lt;chr&gt;            &lt;dbl&gt;
+1 Female            69.6
+2 Male              64.4</code></pre>
+</div>
+</div>
+<p><br></p>
+</section>
+</section>
+<section id="session-3-wrapping-up-and-qa" class="level1">
+<h1>Session 3: Wrapping Up and Q&amp;A</h1>
+<p>In this session, we’ve covered essential data manipulation techniques, including subsetting, transforming data, and using the dplyr package. These skills are critical for preparing and analyzing data effectively. <br></p>
+<p>Continue exploring different data manipulation techniques and apply them to various datasets to enhance your proficiency. <br></p>
+<p><strong>Q&amp;A</strong>: Feel free to ask questions or share your experiences with data manipulation in R. Let’s discuss any challenges or interesting findings from your exercises. <br></p>
+<section id="reference" class="level3">
+<h3 class="anchored" data-anchor-id="reference">Reference</h3>
+<ul>
+<li>https://datageneration.io/dataprogrammingwithr/intro</li>
+<li>Chicago Harris School Coding Camp</li>
+<li>Data.gov, the U.S. government’s open data portal</li>
+</ul>
+<!-- -->
+
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb63" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "EPPS Math Coding Camp"</span></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Basic Data Manipulation"</span></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Xingyuan Zhao"</span></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "August 12, 2024"</span></span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-depth: 3</span></span>
+<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
+<span id="cb63-11"><a href="#cb63-11" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb63-12"><a href="#cb63-12" aria-hidden="true" tabindex="-1"></a><span class="co">    highlight-style: github</span></span>
+<span id="cb63-13"><a href="#cb63-13" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb63-14"><a href="#cb63-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-15"><a href="#cb63-15" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE}</span></span>
+<span id="cb63-16"><a href="#cb63-16" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_chunk$set(echo = TRUE)</span></span>
+<span id="cb63-17"><a href="#cb63-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb63-18"><a href="#cb63-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-19"><a href="#cb63-19" aria-hidden="true" tabindex="-1"></a><span class="fu"># Session 1: Basic Data Manipulation</span></span>
+<span id="cb63-20"><a href="#cb63-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-21"><a href="#cb63-21" aria-hidden="true" tabindex="-1"></a><span class="fu">## 1.1.1 Slicing/Index</span></span>
+<span id="cb63-22"><a href="#cb63-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-23"><a href="#cb63-23" aria-hidden="true" tabindex="-1"></a>We learned access elements of matrix and vectors in the previous sessions. Indexing in Dataframes is similar. Remember, R uses 1-based indexing (the first element is at position 1, not 0).</span>
+<span id="cb63-24"><a href="#cb63-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-25"><a href="#cb63-25" aria-hidden="true" tabindex="-1"></a><span class="fu">### Examples:</span></span>
+<span id="cb63-26"><a href="#cb63-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-27"><a href="#cb63-27" aria-hidden="true" tabindex="-1"></a>A quick review of the DataFrame</span>
+<span id="cb63-28"><a href="#cb63-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-31"><a href="#cb63-31" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb63-32"><a href="#cb63-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
+<span id="cb63-33"><a href="#cb63-33" aria-hidden="true" tabindex="-1"></a>  ev_data <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"Electric_Vehicle_Population_Data.xlsx"</span>)</span>
+<span id="cb63-34"><a href="#cb63-34" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ev_data)</span>
+<span id="cb63-35"><a href="#cb63-35" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb63-36"><a href="#cb63-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-37"><a href="#cb63-37" aria-hidden="true" tabindex="-1"></a>Observe what is the return of the following codes:</span>
+<span id="cb63-38"><a href="#cb63-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-41"><a href="#cb63-41" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb63-42"><a href="#cb63-42" aria-hidden="true" tabindex="-1"></a>ev_data[<span class="dv">1</span>, <span class="dv">1</span>]</span>
+<span id="cb63-43"><a href="#cb63-43" aria-hidden="true" tabindex="-1"></a>ev_data[, <span class="dv">2</span>]</span>
+<span id="cb63-44"><a href="#cb63-44" aria-hidden="true" tabindex="-1"></a>ev_data[, <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)]</span>
+<span id="cb63-45"><a href="#cb63-45" aria-hidden="true" tabindex="-1"></a>ev_data[<span class="dv">1</span>, ]</span>
+<span id="cb63-46"><a href="#cb63-46" aria-hidden="true" tabindex="-1"></a>ev_data[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, ]</span>
+<span id="cb63-47"><a href="#cb63-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-48"><a href="#cb63-48" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb63-49"><a href="#cb63-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-50"><a href="#cb63-50" aria-hidden="true" tabindex="-1"></a>Mind the type of the output. Observe what is the return of the following codes and see the difference:</span>
+<span id="cb63-51"><a href="#cb63-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-54"><a href="#cb63-54" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb63-55"><a href="#cb63-55" aria-hidden="true" tabindex="-1"></a>ev_data[[<span class="dv">1</span>, <span class="dv">1</span>]]</span>
+<span id="cb63-56"><a href="#cb63-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-57"><a href="#cb63-57" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(ev_data[[<span class="dv">1</span>, <span class="dv">1</span>]])</span>
+<span id="cb63-58"><a href="#cb63-58" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(ev_data[<span class="dv">1</span>, <span class="dv">1</span>])</span>
+<span id="cb63-59"><a href="#cb63-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-60"><a href="#cb63-60" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb63-61"><a href="#cb63-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-62"><a href="#cb63-62" aria-hidden="true" tabindex="-1"></a>What will happen if you run this line and why?</span>
+<span id="cb63-63"><a href="#cb63-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-66"><a href="#cb63-66" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb63-67"><a href="#cb63-67" aria-hidden="true" tabindex="-1"></a><span class="co"># ev_data[[, 2]]</span></span>
+<span id="cb63-68"><a href="#cb63-68" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb63-69"><a href="#cb63-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-70"><a href="#cb63-70" aria-hidden="true" tabindex="-1"></a><span class="fu">## 1.1.2 Using Variable Names</span></span>
+<span id="cb63-71"><a href="#cb63-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-74"><a href="#cb63-74" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb63-75"><a href="#cb63-75" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ev_data<span class="sc">$</span>Make)</span>
+<span id="cb63-76"><a href="#cb63-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-77"><a href="#cb63-77" aria-hidden="true" tabindex="-1"></a>ev_data[, <span class="fu">c</span>(<span class="st">"Make"</span>, <span class="st">"Model"</span>, <span class="st">"Electric_Range"</span>)]</span>
+<span id="cb63-78"><a href="#cb63-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-79"><a href="#cb63-79" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb63-80"><a href="#cb63-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-81"><a href="#cb63-81" aria-hidden="true" tabindex="-1"></a><span class="fu">## 1.1.3 Subsetting Data With condition</span></span>
+<span id="cb63-82"><a href="#cb63-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-83"><a href="#cb63-83" aria-hidden="true" tabindex="-1"></a>Subsetting is the process of extracting a portion of a dataset based on specific conditions. This can be useful for focusing on particular groups or conditions within your data.</span>
+<span id="cb63-84"><a href="#cb63-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-85"><a href="#cb63-85" aria-hidden="true" tabindex="-1"></a><span class="fu">### Detailed Explanation:</span></span>
+<span id="cb63-86"><a href="#cb63-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-87"><a href="#cb63-87" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Row and Column Subsetting**: Use indexing to subset specific rows and columns.</span>
+<span id="cb63-88"><a href="#cb63-88" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Logical Conditions**: Subset based on logical conditions using operators like <span class="in">`==`</span>, <span class="in">`!=`</span>, <span class="in">`&lt;`</span>, <span class="in">`&gt;`</span>, <span class="in">`&amp;`</span>, <span class="in">`|`</span>.</span>
+<span id="cb63-89"><a href="#cb63-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-90"><a href="#cb63-90" aria-hidden="true" tabindex="-1"></a><span class="fu">### Examples:</span></span>
+<span id="cb63-91"><a href="#cb63-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-94"><a href="#cb63-94" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb63-95"><a href="#cb63-95" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
+<span id="cb63-96"><a href="#cb63-96" aria-hidden="true" tabindex="-1"></a>ev_data <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"Electric_Vehicle_Population_Data.xlsx"</span>)</span>
+<span id="cb63-97"><a href="#cb63-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-98"><a href="#cb63-98" aria-hidden="true" tabindex="-1"></a><span class="co"># Subsetting rows based on a condition</span></span>
+<span id="cb63-99"><a href="#cb63-99" aria-hidden="true" tabindex="-1"></a>ev_subset <span class="ot">&lt;-</span> ev_data[ev_data<span class="sc">$</span>Model_Year <span class="sc">==</span> <span class="dv">2020</span>, ]</span>
+<span id="cb63-100"><a href="#cb63-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-101"><a href="#cb63-101" aria-hidden="true" tabindex="-1"></a><span class="co"># Subsetting specific columns</span></span>
+<span id="cb63-102"><a href="#cb63-102" aria-hidden="true" tabindex="-1"></a>ev_columns_subset <span class="ot">&lt;-</span> ev_data[, <span class="fu">c</span>(<span class="st">"Make"</span>, <span class="st">"Model"</span>, <span class="st">"Electric_Range"</span>)]</span>
+<span id="cb63-103"><a href="#cb63-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-104"><a href="#cb63-104" aria-hidden="true" tabindex="-1"></a><span class="co"># Subsetting rows and columns</span></span>
+<span id="cb63-105"><a href="#cb63-105" aria-hidden="true" tabindex="-1"></a>ev_subset_cols <span class="ot">&lt;-</span> ev_data[ev_data<span class="sc">$</span>Model_Year <span class="sc">==</span> <span class="dv">2020</span>, <span class="fu">c</span>(<span class="st">"Make"</span>, <span class="st">"Electric_Range"</span>)]</span>
+<span id="cb63-106"><a href="#cb63-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-107"><a href="#cb63-107" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb63-108"><a href="#cb63-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-109"><a href="#cb63-109" aria-hidden="true" tabindex="-1"></a><span class="fu"># Using logic operator to do complicated selection</span></span>
+<span id="cb63-110"><a href="#cb63-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-113"><a href="#cb63-113" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb63-114"><a href="#cb63-114" aria-hidden="true" tabindex="-1"></a><span class="co"># Find new cars with high electric range</span></span>
+<span id="cb63-115"><a href="#cb63-115" aria-hidden="true" tabindex="-1"></a>ev_data[ev_data<span class="sc">$</span>Model_Year <span class="sc">&gt;</span> <span class="dv">2018</span> <span class="sc">&amp;</span> ev_data<span class="sc">$</span>Electric_Range <span class="sc">&gt;=</span> <span class="dv">100</span> , <span class="fu">c</span>(<span class="st">"Make"</span>, <span class="st">"Model"</span>)]</span>
+<span id="cb63-116"><a href="#cb63-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-117"><a href="#cb63-117" aria-hidden="true" tabindex="-1"></a><span class="co"># Find cars that is near me (Richardson is a city in Dallas and Collin counties)</span></span>
+<span id="cb63-118"><a href="#cb63-118" aria-hidden="true" tabindex="-1"></a>ev_data[(ev_data<span class="sc">$</span>County <span class="sc">==</span> <span class="st">'Collin'</span> <span class="sc">|</span> ev_data<span class="sc">$</span>County <span class="sc">==</span> <span class="st">'Dallas'</span>), <span class="fu">c</span>(<span class="st">"Make"</span>, <span class="st">"Model"</span>)]</span>
+<span id="cb63-119"><a href="#cb63-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-120"><a href="#cb63-120" aria-hidden="true" tabindex="-1"></a><span class="co"># Find cars outside TX that are made by Tesla or is expensive</span></span>
+<span id="cb63-121"><a href="#cb63-121" aria-hidden="true" tabindex="-1"></a>ev_data[ev_data<span class="sc">$</span>State <span class="sc">!=</span> <span class="st">'TX'</span> <span class="sc">&amp;</span> (ev_data<span class="sc">$</span>Make <span class="sc">==</span> <span class="st">'TESLA'</span> <span class="sc">|</span> ev_data<span class="sc">$</span><span class="st">`</span><span class="at">Base MSRP</span><span class="st">`</span> <span class="sc">&gt;=</span> <span class="dv">10000</span>), <span class="fu">c</span>(<span class="st">"Make"</span>, <span class="st">"Model"</span>)]</span>
+<span id="cb63-122"><a href="#cb63-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-123"><a href="#cb63-123" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb63-124"><a href="#cb63-124" aria-hidden="true" tabindex="-1"></a>&lt;br&gt;</span>
+<span id="cb63-125"><a href="#cb63-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-126"><a href="#cb63-126" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>ev_data$Model_Year == 2020: Subsets rows where the year is 2020. &lt;br&gt;</span>
+<span id="cb63-127"><a href="#cb63-127" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">, c("Make", "Model", "Electric_Range")</span><span class="co">]</span>: Subsets specific columns by their names. &lt;br&gt;</span>
+<span id="cb63-128"><a href="#cb63-128" aria-hidden="true" tabindex="-1"></a>&lt;br&gt;</span>
+<span id="cb63-129"><a href="#cb63-129" aria-hidden="true" tabindex="-1"></a>Try subsetting the data using different conditions and explore the resulting subsets.</span>
+<span id="cb63-130"><a href="#cb63-130" aria-hidden="true" tabindex="-1"></a>&lt;br&gt;</span>
+<span id="cb63-131"><a href="#cb63-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-132"><a href="#cb63-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-133"><a href="#cb63-133" aria-hidden="true" tabindex="-1"></a><span class="fu">## 1.2 Basic Data Transformation</span></span>
+<span id="cb63-134"><a href="#cb63-134" aria-hidden="true" tabindex="-1"></a>Data transformation involves modifying data to fit a certain format or to prepare it for analysis. This includes operations like renaming columns, creating new variables, and changing data types.</span>
+<span id="cb63-135"><a href="#cb63-135" aria-hidden="true" tabindex="-1"></a>&lt;br&gt;</span>
+<span id="cb63-136"><a href="#cb63-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-137"><a href="#cb63-137" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Detailed Explanation:</span></span>
+<span id="cb63-138"><a href="#cb63-138" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Renaming Columns**: Use the names() function or dplyr::rename(). &lt;br&gt;</span>
+<span id="cb63-139"><a href="#cb63-139" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Creating New Variables**: Add new columns based on calculations or conditions. &lt;br&gt;</span>
+<span id="cb63-140"><a href="#cb63-140" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Changing Data Types**: Convert columns to appropriate data types using functions like as.numeric(), as.factor(), etc. &lt;br&gt;</span>
+<span id="cb63-141"><a href="#cb63-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-144"><a href="#cb63-144" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb63-145"><a href="#cb63-145" aria-hidden="true" tabindex="-1"></a><span class="co"># Renaming columns</span></span>
+<span id="cb63-146"><a href="#cb63-146" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ev_data)[<span class="fu">names</span>(ev_data) <span class="sc">==</span> <span class="st">"Postal_Code"</span>] <span class="ot">&lt;-</span> <span class="st">"Zip_Code"</span></span>
+<span id="cb63-147"><a href="#cb63-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-148"><a href="#cb63-148" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating new variables</span></span>
+<span id="cb63-149"><a href="#cb63-149" aria-hidden="true" tabindex="-1"></a>ev_data<span class="sc">$</span>Vehicle_Age <span class="ot">&lt;-</span> <span class="dv">2025</span> <span class="sc">-</span> ev_data<span class="sc">$</span>Model_Year</span>
+<span id="cb63-150"><a href="#cb63-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-151"><a href="#cb63-151" aria-hidden="true" tabindex="-1"></a><span class="co"># Changing data types</span></span>
+<span id="cb63-152"><a href="#cb63-152" aria-hidden="true" tabindex="-1"></a>ev_data<span class="sc">$</span>Make <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(ev_data<span class="sc">$</span>Make)</span>
+<span id="cb63-153"><a href="#cb63-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-154"><a href="#cb63-154" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ev_data)</span>
+<span id="cb63-155"><a href="#cb63-155" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb63-156"><a href="#cb63-156" aria-hidden="true" tabindex="-1"></a>&lt;br&gt;</span>
+<span id="cb63-157"><a href="#cb63-157" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**names()**: Retrieves or sets the names of an object's elements. &lt;br&gt;</span>
+<span id="cb63-158"><a href="#cb63-158" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**as.factor()**: Converts a variable to factor&lt;br&gt;</span>
+<span id="cb63-159"><a href="#cb63-159" aria-hidden="true" tabindex="-1"></a>&lt;br&gt;</span>
+<span id="cb63-160"><a href="#cb63-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-161"><a href="#cb63-161" aria-hidden="true" tabindex="-1"></a><span class="fu">## 1.3 Missing Values</span></span>
+<span id="cb63-162"><a href="#cb63-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-165"><a href="#cb63-165" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb63-166"><a href="#cb63-166" aria-hidden="true" tabindex="-1"></a><span class="co"># Count na of df</span></span>
+<span id="cb63-167"><a href="#cb63-167" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(ev_data))</span>
+<span id="cb63-168"><a href="#cb63-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-169"><a href="#cb63-169" aria-hidden="true" tabindex="-1"></a><span class="co"># Count na of each col</span></span>
+<span id="cb63-170"><a href="#cb63-170" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(ev_data))</span>
+<span id="cb63-171"><a href="#cb63-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-172"><a href="#cb63-172" aria-hidden="true" tabindex="-1"></a><span class="co"># Indicates which elements are missing within a specific column</span></span>
+<span id="cb63-173"><a href="#cb63-173" aria-hidden="true" tabindex="-1"></a>ev_data[<span class="fu">is.na</span>(ev_data<span class="sc">$</span>County ),]</span>
+<span id="cb63-174"><a href="#cb63-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-175"><a href="#cb63-175" aria-hidden="true" tabindex="-1"></a><span class="co"># Indicates which elements are not missing within a specific column</span></span>
+<span id="cb63-176"><a href="#cb63-176" aria-hidden="true" tabindex="-1"></a>ev_data[<span class="sc">!</span><span class="fu">is.na</span>(ev_data<span class="sc">$</span>City ),]</span>
+<span id="cb63-177"><a href="#cb63-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-178"><a href="#cb63-178" aria-hidden="true" tabindex="-1"></a><span class="co"># Removes missing values of a specific column by subsetting</span></span>
+<span id="cb63-179"><a href="#cb63-179" aria-hidden="true" tabindex="-1"></a>ev_data <span class="ot">&lt;-</span> ev_data[<span class="sc">!</span><span class="fu">is.na</span>(ev_data<span class="sc">$</span>City),]</span>
+<span id="cb63-180"><a href="#cb63-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-181"><a href="#cb63-181" aria-hidden="true" tabindex="-1"></a><span class="co"># Check na Removal</span></span>
+<span id="cb63-182"><a href="#cb63-182" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(ev_data))</span>
+<span id="cb63-183"><a href="#cb63-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-184"><a href="#cb63-184" aria-hidden="true" tabindex="-1"></a><span class="co"># Removes ALL missing values in data frame</span></span>
+<span id="cb63-185"><a href="#cb63-185" aria-hidden="true" tabindex="-1"></a><span class="fu">na.omit</span>(ev_data)</span>
+<span id="cb63-186"><a href="#cb63-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-187"><a href="#cb63-187" aria-hidden="true" tabindex="-1"></a><span class="co"># Check na Removal</span></span>
+<span id="cb63-188"><a href="#cb63-188" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(ev_data))</span>
+<span id="cb63-189"><a href="#cb63-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-190"><a href="#cb63-190" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb63-191"><a href="#cb63-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-192"><a href="#cb63-192" aria-hidden="true" tabindex="-1"></a><span class="fu">## 1.4 Introduction to the dplyr Package</span></span>
+<span id="cb63-193"><a href="#cb63-193" aria-hidden="true" tabindex="-1"></a>dplyr is a powerful package for data manipulation in R. It provides a set of functions (verbs) that help in transforming and summarizing data easily.</span>
+<span id="cb63-194"><a href="#cb63-194" aria-hidden="true" tabindex="-1"></a>&lt;br&gt;</span>
+<span id="cb63-195"><a href="#cb63-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-196"><a href="#cb63-196" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Key Verbs:</span></span>
+<span id="cb63-197"><a href="#cb63-197" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**filter()**: Select rows based on conditions. &lt;br&gt;</span>
+<span id="cb63-198"><a href="#cb63-198" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**select()**: Choose specific columns. &lt;br&gt;</span>
+<span id="cb63-199"><a href="#cb63-199" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**mutate()**: Create new columns. &lt;br&gt;</span>
+<span id="cb63-200"><a href="#cb63-200" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**arrange()**: Order rows by columns. &lt;br&gt;</span>
+<span id="cb63-201"><a href="#cb63-201" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**summarize() and group_by()**: Aggregate data by groups. &lt;br&gt;</span>
+<span id="cb63-202"><a href="#cb63-202" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb63-205"><a href="#cb63-205" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb63-206"><a href="#cb63-206" aria-hidden="true" tabindex="-1"></a><span class="co"># Loading dplyr</span></span>
+<span id="cb63-207"><a href="#cb63-207" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("dplyr")</span></span>
+<span id="cb63-208"><a href="#cb63-208" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb63-209"><a href="#cb63-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-210"><a href="#cb63-210" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering data</span></span>
+<span id="cb63-211"><a href="#cb63-211" aria-hidden="true" tabindex="-1"></a>ev_recent <span class="ot">&lt;-</span> ev_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Model_Year <span class="sc">&gt;=</span> <span class="dv">2018</span>)</span>
+<span id="cb63-212"><a href="#cb63-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-213"><a href="#cb63-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-214"><a href="#cb63-214" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting columns</span></span>
+<span id="cb63-215"><a href="#cb63-215" aria-hidden="true" tabindex="-1"></a>ev_selected <span class="ot">&lt;-</span> ev_recent <span class="sc">%&gt;%</span> <span class="fu">select</span>(Make, Model, Model_Year)</span>
+<span id="cb63-216"><a href="#cb63-216" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ev_selected)</span>
+<span id="cb63-217"><a href="#cb63-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-218"><a href="#cb63-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-219"><a href="#cb63-219" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a new variable</span></span>
+<span id="cb63-220"><a href="#cb63-220" aria-hidden="true" tabindex="-1"></a>ev_selected <span class="ot">&lt;-</span> ev_selected <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Age =</span> <span class="dv">2025</span> <span class="sc">-</span> Model_Year)</span>
+<span id="cb63-221"><a href="#cb63-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-222"><a href="#cb63-222" aria-hidden="true" tabindex="-1"></a><span class="co"># Arranging data</span></span>
+<span id="cb63-223"><a href="#cb63-223" aria-hidden="true" tabindex="-1"></a>ev_sorted <span class="ot">&lt;-</span> ev_selected <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(Model_Year))</span>
+<span id="cb63-224"><a href="#cb63-224" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ev_sorted)</span>
+<span id="cb63-225"><a href="#cb63-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-226"><a href="#cb63-226" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarizing data</span></span>
+<span id="cb63-227"><a href="#cb63-227" aria-hidden="true" tabindex="-1"></a>ev_summary <span class="ot">&lt;-</span> ev_data <span class="sc">%&gt;%</span></span>
+<span id="cb63-228"><a href="#cb63-228" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Make) <span class="sc">%&gt;%</span></span>
+<span id="cb63-229"><a href="#cb63-229" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Total_Electric_Range =</span> <span class="fu">sum</span>(Electric_Range, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb63-230"><a href="#cb63-230" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ev_summary)</span>
+<span id="cb63-231"><a href="#cb63-231" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb63-232"><a href="#cb63-232" aria-hidden="true" tabindex="-1"></a>&lt;br&gt;</span>
+<span id="cb63-233"><a href="#cb63-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-234"><a href="#cb63-234" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**%&gt;% (pipe operator)**: Passes the result from the left-hand side to the function on the right-hand side. &lt;br&gt;</span>
+<span id="cb63-235"><a href="#cb63-235" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**filter()**: Filters rows based on a logical condition. &lt;br&gt;</span>
+<span id="cb63-236"><a href="#cb63-236" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**select()**: Selects specific columns. &lt;br&gt;</span>
+<span id="cb63-237"><a href="#cb63-237" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**mutate()**: Adds new columns or transforms existing ones. &lt;br&gt;</span>
+<span id="cb63-238"><a href="#cb63-238" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**arrange()**: Orders rows by specified columns. &lt;br&gt;</span>
+<span id="cb63-239"><a href="#cb63-239" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**summarize() and group_by()**: Aggregates data by grouping variables. &lt;br&gt;</span>
+<span id="cb63-240"><a href="#cb63-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-241"><a href="#cb63-241" aria-hidden="true" tabindex="-1"></a>&lt;br&gt;</span>
+<span id="cb63-242"><a href="#cb63-242" aria-hidden="true" tabindex="-1"></a>Utilize dplyr to perform complex data manipulations succinctly and efficiently.</span>
+<span id="cb63-243"><a href="#cb63-243" aria-hidden="true" tabindex="-1"></a>&lt;br&gt;</span>
+<span id="cb63-244"><a href="#cb63-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-245"><a href="#cb63-245" aria-hidden="true" tabindex="-1"></a><span class="fu"># Session 2: Hands-on Exercises</span></span>
+<span id="cb63-246"><a href="#cb63-246" aria-hidden="true" tabindex="-1"></a><span class="fu">## 2.1 Subsetting and Filtering Data</span></span>
+<span id="cb63-247"><a href="#cb63-247" aria-hidden="true" tabindex="-1"></a>1) Subset the US_Life_expectancy data for a specific state and year.</span>
+<span id="cb63-248"><a href="#cb63-248" aria-hidden="true" tabindex="-1"></a>2) Select only the columns "Year" and "Age_adjusted_Death_Rate" from US_Life_expectancy data.</span>
+<span id="cb63-249"><a href="#cb63-249" aria-hidden="true" tabindex="-1"></a>&lt;br&gt;</span>
+<span id="cb63-250"><a href="#cb63-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-253"><a href="#cb63-253" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb63-254"><a href="#cb63-254" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
+<span id="cb63-255"><a href="#cb63-255" aria-hidden="true" tabindex="-1"></a>life_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"US_Life_expectancy.csv"</span>)</span>
+<span id="cb63-256"><a href="#cb63-256" aria-hidden="true" tabindex="-1"></a><span class="co">#life_data &lt;- read.csv("D:/2024Fall/DataCamp/US_Life_expectancy.csv")</span></span>
+<span id="cb63-257"><a href="#cb63-257" aria-hidden="true" tabindex="-1"></a>life_gender_year <span class="ot">&lt;-</span> life_data[life_data<span class="sc">$</span>Gender <span class="sc">==</span> <span class="st">"Gender"</span> <span class="sc">&amp;</span> life_data<span class="sc">$</span>Year <span class="sc">==</span> <span class="dv">2000</span>, ]</span>
+<span id="cb63-258"><a href="#cb63-258" aria-hidden="true" tabindex="-1"></a>life_make_model <span class="ot">&lt;-</span> life_data[, <span class="fu">c</span>(<span class="st">"Year"</span>, <span class="st">"Age_adjusted_Death_Rate"</span>)]</span>
+<span id="cb63-259"><a href="#cb63-259" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb63-260"><a href="#cb63-260" aria-hidden="true" tabindex="-1"></a>&lt;br&gt;</span>
+<span id="cb63-261"><a href="#cb63-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-262"><a href="#cb63-262" aria-hidden="true" tabindex="-1"></a><span class="fu">## 2.2 Data Transformation</span></span>
+<span id="cb63-263"><a href="#cb63-263" aria-hidden="true" tabindex="-1"></a>1) Rename a column in the US_Life_expectancy data. &lt;br&gt;</span>
+<span id="cb63-264"><a href="#cb63-264" aria-hidden="true" tabindex="-1"></a>2) Create a new column in the Electric Vehicle data representing the vehicle's age. &lt;br&gt;</span>
+<span id="cb63-265"><a href="#cb63-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-268"><a href="#cb63-268" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb63-269"><a href="#cb63-269" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
+<span id="cb63-270"><a href="#cb63-270" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(life_data)[<span class="fu">names</span>(life_data) <span class="sc">==</span> <span class="st">"Death_Rate"</span>] <span class="ot">&lt;-</span> <span class="st">"Age_adjusted_Death_Rate"</span></span>
+<span id="cb63-271"><a href="#cb63-271" aria-hidden="true" tabindex="-1"></a>ev_data<span class="sc">$</span>Vehicle_Age <span class="ot">&lt;-</span> <span class="dv">2025</span> <span class="sc">-</span> ev_data<span class="sc">$</span>Model_Year</span>
+<span id="cb63-272"><a href="#cb63-272" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb63-273"><a href="#cb63-273" aria-hidden="true" tabindex="-1"></a>&lt;br&gt;</span>
+<span id="cb63-274"><a href="#cb63-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-275"><a href="#cb63-275" aria-hidden="true" tabindex="-1"></a><span class="fu">## 2.3 Using dplyr for Data Manipulation</span></span>
+<span id="cb63-276"><a href="#cb63-276" aria-hidden="true" tabindex="-1"></a>1) Use filter() to select rows from the US_Life_expectancy data where the "Gender" is "Female". &lt;br&gt;</span>
+<span id="cb63-277"><a href="#cb63-277" aria-hidden="true" tabindex="-1"></a>2) Use mutate() to create a new column indicating whether the case is "Millennium" or "90's" based on the year 2000. &lt;br&gt;</span>
+<span id="cb63-278"><a href="#cb63-278" aria-hidden="true" tabindex="-1"></a>3) Use summarize() and group_by() to find the average life expectancy per gender. &lt;br&gt;</span>
+<span id="cb63-279"><a href="#cb63-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-282"><a href="#cb63-282" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb63-283"><a href="#cb63-283" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
+<span id="cb63-284"><a href="#cb63-284" aria-hidden="true" tabindex="-1"></a>Female <span class="ot">&lt;-</span> life_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Gender <span class="sc">==</span> <span class="st">"Female"</span>)</span>
+<span id="cb63-285"><a href="#cb63-285" aria-hidden="true" tabindex="-1"></a>life_data_ages <span class="ot">&lt;-</span> life_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Status =</span> <span class="fu">ifelse</span>(Year <span class="sc">&gt;=</span> <span class="dv">2000</span>, <span class="st">"Millennium"</span>, <span class="st">"90's"</span>))</span>
+<span id="cb63-286"><a href="#cb63-286" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(life_data_ages)</span>
+<span id="cb63-287"><a href="#cb63-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-288"><a href="#cb63-288" aria-hidden="true" tabindex="-1"></a>life_data_per_gender <span class="ot">&lt;-</span> life_data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Gender) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Life_expectancy =</span> <span class="fu">mean</span>(Average_Life_Expectancy, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb63-289"><a href="#cb63-289" aria-hidden="true" tabindex="-1"></a>life_data_per_gender</span>
+<span id="cb63-290"><a href="#cb63-290" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb63-291"><a href="#cb63-291" aria-hidden="true" tabindex="-1"></a>&lt;br&gt;</span>
+<span id="cb63-292"><a href="#cb63-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-293"><a href="#cb63-293" aria-hidden="true" tabindex="-1"></a><span class="fu"># Session 3: Wrapping Up and Q&amp;A</span></span>
+<span id="cb63-294"><a href="#cb63-294" aria-hidden="true" tabindex="-1"></a>In this session, we've covered essential data manipulation techniques, including subsetting, transforming data, and using the dplyr package. These skills are critical for preparing and analyzing data effectively.</span>
+<span id="cb63-295"><a href="#cb63-295" aria-hidden="true" tabindex="-1"></a>&lt;br&gt;</span>
+<span id="cb63-296"><a href="#cb63-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-297"><a href="#cb63-297" aria-hidden="true" tabindex="-1"></a>Continue exploring different data manipulation techniques and apply them to various datasets to enhance your proficiency.</span>
+<span id="cb63-298"><a href="#cb63-298" aria-hidden="true" tabindex="-1"></a>&lt;br&gt;</span>
+<span id="cb63-299"><a href="#cb63-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-300"><a href="#cb63-300" aria-hidden="true" tabindex="-1"></a>**Q&amp;A**: Feel free to ask questions or share your experiences with data manipulation in R. Let's discuss any challenges or interesting findings from your exercises.</span>
+<span id="cb63-301"><a href="#cb63-301" aria-hidden="true" tabindex="-1"></a>&lt;br&gt;</span>
+<span id="cb63-302"><a href="#cb63-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-303"><a href="#cb63-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-304"><a href="#cb63-304" aria-hidden="true" tabindex="-1"></a><span class="fu">### Reference</span></span>
+<span id="cb63-305"><a href="#cb63-305" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>https://datageneration.io/dataprogrammingwithr/intro</span>
+<span id="cb63-306"><a href="#cb63-306" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Chicago Harris School Coding Camp</span>
+<span id="cb63-307"><a href="#cb63-307" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Data.gov, the U.S. government's open data portal</span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

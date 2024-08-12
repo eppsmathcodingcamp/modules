@@ -1,0 +1,288 @@
+---
+title: "EPPS Math Coding Camp"
+subtitle: "Importing and Exporting Data"
+author: "Karl Ho"
+date: "August 12, 2024"
+format: 
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: show
+    code-tools: true
+    highlight-style: github
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Session 1: Importing and Exporting Data
+
+## 1.1 Working directory
+
+The working directory is the folder in which you are currently working.
+
+```{r}
+
+# 1.1.1 Direct import If the data is in the same folder as the current working directory
+
+air_data <- read.csv("Air_Quality.csv")
+
+# 1.1.2 Setting working directory before direct import
+
+#setwd('D:/Summer Coding Camp/Jeong_CodingCamp_draft_code/Jeong_CodingCamp_draft_code')
+air_data <- read.csv("Air_Quality.csv")
+
+# 1.1.3 Reading by giving the absolute address
+
+#air_data <- read.csv('D:/Summer Coding Camp/Jeong_CodingCamp_draft_code/Jeong_CodingCamp_draft_code/Air_Quality.csv')
+
+
+```
+## 1.2 Loading data of various formats
+
+|file type|package|function|
+|-|-|-|
+|.csv|readr|read_csv()|
+|.dta (stata)|haven|read_dta()|
+|.xlsx|readxl|read_xlsx()|
+
+## 1.2.1 Reading CSV Files
+
+CSV (Comma-Separated Values) files are commonly used for storing tabular data. In R, you can use the `read.csv()` function to import CSV files.
+
+### Example: Importing a CSV File
+
+```{r}
+# Reading a CSV file
+
+air_data <- read.csv("Air_Quality.csv")
+#air_data <- read.csv("D:/2024Fall/DataCamp/Air_Quality.csv")
+
+
+
+
+# Viewing the first few rows of the data
+head(air_data)
+```
+<br>
+
+#### Explanation: <br>
+- **read.csv()**: Reads a CSV file into a data frame. Specify the file path and name. <br>
+- **File Path**: The file path can be absolute or relative. Always ensure the correct path format, especially on different operating systems.
+- **head()**: Displays the first few rows of the data, useful for a quick preview. <br>
+
+### Additional Examples:
+
+```{r}
+# Reading a CSV file with additional options
+
+air_data <- read.csv("Air_Quality.csv", 
+                    na.strings = c("", "NA"), 
+                    stringsAsFactors = FALSE)
+
+
+
+# Previewing the data structure
+str(air_data)
+```
+<br>
+- **Handling Missing Data**: By default, `read.csv()` interprets blank cells as `NA` (Not Available). You can control this with the `na.strings` parameter. <br>
+- **stringsAsFactors**: Set to FALSE to prevent automatic conversion of character strings to factors.<br>
+
+## 1.2.2 Reading Excel Files
+Excel files can be read into R using the readxl package, which provides functions like read_excel(). <br>
+
+
+```{r}
+# Installing and loading the readxl package
+# install.packages("readxl")
+library(readxl)
+
+# Reading an Excel file
+ev_data <- read_excel("Electric_Vehicle_Population_Data.xlsx")
+#ev_data <- read_excel("D:/2024Fall/DataCamp/Electric_Vehicle_Population_Data.xlsx")
+
+
+
+# Viewing the first few rows of the data
+head(ev_data)
+```
+<br>
+
+#### Explanation:
+- **library(readxl)**: Loads the readxl package, necessary for reading Excel files.<br>
+- **read_excel()**: Reads an Excel file into a data frame. Specify the file path and name.<br>
+
+
+```{r}
+# Reading specific sheets from an Excel file
+ev_data <- read_excel("Electric_Vehicle_Population_Data.xlsx", 
+                      sheet = "Sheet1")
+
+
+
+# Checking for multiple sheets
+sheets <- excel_sheets("Electric_Vehicle_Population_Data.xlsx")
+#sheets <- excel_sheets("D:/2024Fall/DataCamp/Electric_Vehicle_Population_Data.xlsx")
+sheets
+```
+<br>
+- **Reading Specific Sheets**: Use the sheet parameter in read_excel() to specify which sheet to read. <br>
+- **Handling Excel Formats**: The package supports .xls and .xlsx formats.<br>
+- **excel_sheets()**: Returns a vector of sheet names in the Excel file. <br>
+<br>
+
+## 1.3.1 Exploring the Data Using Basic Statistical Functions
+Once the data is loaded, basic statistical functions can help summarize and understand the data.
+<br>
+
+```{r}
+# Summary statistics for Tuberculosis data
+summary(air_data)
+
+# Summary statistics for Electric Vehicle data
+summary(ev_data)
+
+# Shows the details of data
+# View(air_data)
+
+# show first or last n rows
+head(air_data, 5)
+tail(air_data, 10)
+```
+<br>
+- **summary()**: Provides a summary of each column in the data, including minimum, maximum, mean, and quartiles for numeric data.
+<br>
+
+```{r}
+# Summary statistics for Tuberculosis data
+summary(air_data)
+
+# Checking for missing values
+missing_values <- sum(is.na(air_data))
+
+# Data type conversion if needed
+air_data$Year <- as.factor(air_data$Year)
+
+summary(air_data)
+```
+<br>
+- **Summary Statistics**: Provide insights into the central tendency, spread, and shape of the data distribution. <br>
+- **Checking Data Quality**: Identify missing values, outliers, and incorrect data types. <br>
+- **is.na()**: Identifies NA values in the data.<br>
+- **as.factor()**: Converts a variable to factor if necessary. <br>
+<br>
+
+## 1.3.2 Exploring the Data Using Basic Statistical Functions
+
+names() or colnames(): both show the names of columns of a data frame
+
+dim(): returns the dimensions of data frame (i.e. number of rows and number of columns)
+
+nrow(): number of rows
+
+ncol(): number of columns
+
+```{r}
+names(air_data)
+dim(air_data)
+nrow(air_data)
+ncol(air_data)
+```
+
+
+## 1.4 Writing Data to Files
+R allows you to export data frames to various formats, such as CSV or Excel. The write.csv() function is commonly used to save data as a CSV file.
+<br>
+
+#### Writing csv files
+```{r}
+# Writing data to a CSV file
+write.csv(air_data, "Processed_Air_Quality.csv", 
+          row.names = FALSE)
+```
+<br>
+- **write.csv()**: Writes a data frame to a CSV file. Set row.names = FALSE to avoid including row numbers.
+<br>
+
+#### Writing Excel files
+```{r}
+# Installing and loading writexl package
+# install.packages("writexl")
+library(writexl)
+
+# Writing data to an Excel file
+write_xlsx(ev_data, "Processed_Electric_Vehicle_Data.xlsx")
+```
+<br>
+- **write_xlsx()**: Exports a data frame to an Excel file.
+<br>
+
+# Session 2: Hands-on Exercises
+<br>
+
+## 2.1 Importing and Exploring Data
+#### Q1
+1) Import the Air_Quality data and view the column names. <br>
+2) Calculate the mean of a numeric column of your choice. <br>
+3) Identify the number of unique values in a categorical column. <br>
+<br>
+
+```{r}
+# Your code here
+column_names <- colnames(air_data)
+mean_value <- mean(air_data$Data.Value, na.rm = TRUE)
+unique_values <- length(unique(air_data$Data.Value))
+```
+<br>
+
+#### Q2
+1) Import the Air_Quality data and check the number of rows and columns. <br>
+2) Calculate the median of a numeric column. <br>
+3) Count the number of missing values in the Electric Vehicle data. <br>
+
+```{r}
+# Your code here
+num_rows <- nrow(air_data)
+num_cols <- ncol(air_data)
+median_value <- median(air_data$Data.Value, na.rm = TRUE)
+missing_ev_data <- sum(is.na(ev_data))
+```
+<br>
+
+#### Q3 Writing Data to Files
+1) Export the Electric Vehicle data to a new CSV file. <br>
+2) Modify a column (e.g., replace missing values) and save the modified data.<br>
+
+```{r}
+# Your code here
+# Export to CSV
+write.csv(ev_data, "Processed_Electric_Vehicle_Data.csv", 
+          row.names = FALSE)
+
+# Modify and save data
+ev_data$Postal_Code[is.na(ev_data$Postal_Code)] <- 0
+write.csv(ev_data, "Modified_Electric_Vehicle_Data.csv", 
+          row.names = FALSE)
+
+```
+<br>
+
+
+# Session 3: Wrapping Up and Q&A
+This session covered importing data from CSV and Excel files, exploring the data using basic statistical functions, and exporting data to different formats. Mastering these skills is crucial for data analysis workflows.
+<br>
+
+Continue practicing with different datasets and explore the various functionalities of R for data import/export.
+<br>
+
+**Q&A**: Feel free to ask questions or share your experiences with data import/export in R. Let's discuss any interesting findings or challenges you've encountered.
+<br>
+
+
+### Reference
+- https://datageneration.io/dataprogrammingwithr/intro
+- Chicago Harris School Coding Camp
+- Data.gov, the U.S. government's open data portal
+
