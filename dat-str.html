@@ -102,11 +102,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#factors" id="toc-factors" class="nav-link" data-scroll-target="#factors">Factors</a></li>
   <li><a href="#lists" id="toc-lists" class="nav-link" data-scroll-target="#lists">Lists</a></li>
+  <li><a href="#numeric-single-value-scalar" id="toc-numeric-single-value-scalar" class="nav-link" data-scroll-target="#numeric-single-value-scalar">1. Numeric Single Value (Scalar)</a></li>
+  <li><a href="#character-single-value" id="toc-character-single-value" class="nav-link" data-scroll-target="#character-single-value">2. Character Single Value</a></li>
+  <li><a href="#vector" id="toc-vector" class="nav-link" data-scroll-target="#vector">3. Vector</a></li>
+  <li><a href="#factor" id="toc-factor" class="nav-link" data-scroll-target="#factor">4. Factor</a></li>
+  <li><a href="#matrix" id="toc-matrix" class="nav-link" data-scroll-target="#matrix">5. Matrix</a></li>
+  <li><a href="#array" id="toc-array" class="nav-link" data-scroll-target="#array">6. Array</a></li>
+  <li><a href="#list" id="toc-list" class="nav-link" data-scroll-target="#list">7. List</a></li>
+  <li><a href="#data-frame" id="toc-data-frame" class="nav-link" data-scroll-target="#data-frame">8. Data Frame</a></li>
+  <li><a href="#text-data-objects-e.g.-dfm" id="toc-text-data-objects-e.g.-dfm" class="nav-link" data-scroll-target="#text-data-objects-e.g.-dfm">9. Text Data Objects (e.g., dfm)</a></li>
+  <li><a href="#exercise-1-creating-and-manipulating-vectors" id="toc-exercise-1-creating-and-manipulating-vectors" class="nav-link" data-scroll-target="#exercise-1-creating-and-manipulating-vectors">Exercise 1: Creating and Manipulating Vectors</a></li>
+  <li><a href="#exercise-2-working-with-factors" id="toc-exercise-2-working-with-factors" class="nav-link" data-scroll-target="#exercise-2-working-with-factors">Exercise 2: Working with Factors</a></li>
+  <li><a href="#exercise-3-data-frame-operations" id="toc-exercise-3-data-frame-operations" class="nav-link" data-scroll-target="#exercise-3-data-frame-operations">Exercise 3: Data Frame Operations</a></li>
+  <li><a href="#exercise-4-text-data-manipulation-with-stringr" id="toc-exercise-4-text-data-manipulation-with-stringr" class="nav-link" data-scroll-target="#exercise-4-text-data-manipulation-with-stringr">Exercise 4: Text Data Manipulation with <code>stringr</code></a></li>
+  <li><a href="#exercise-5-creating-and-analyzing-a-document-term-matrix-dtm" id="toc-exercise-5-creating-and-analyzing-a-document-term-matrix-dtm" class="nav-link" data-scroll-target="#exercise-5-creating-and-analyzing-a-document-term-matrix-dtm">Exercise 5: Creating and Analyzing a Document-Term Matrix (DTM)</a></li>
   </ul></li>
-  </ul></li>
-  <li><a href="#wrapping-up-and-qa" id="toc-wrapping-up-and-qa" class="nav-link" data-scroll-target="#wrapping-up-and-qa">Wrapping Up and Q&amp;A</a>
-  <ul class="collapse">
-  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -450,13 +460,13 @@ Important
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(hero_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Important
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -475,27 +485,544 @@ Important
 <p>This exercise will test your ability to work with multiple data structures and perform various operations on them.</p>
 </div>
 </div>
-</section>
-</section>
-</section>
-<section id="wrapping-up-and-qa" class="level1">
-<h1>Wrapping Up and Q&amp;A</h1>
-<p>We’ve covered the fundamental data structures in R: vectors, matrices, and data frames. We’ve also touched on some advanced topics like factors and lists. Remember:</p>
+<p>In R, data can be stored in various forms, each suitable for different types of analysis and operations. Understanding these data object types is fundamental to effectively utilizing R for data manipulation, statistical analysis, and programming.</p>
+<p>This chapter introduces you to the essential data object types in R, providing a foundation for more advanced topics. We will cover the following:</p>
 <ul>
-<li>Vectors are one-dimensional and hold elements of the same type.</li>
-<li>Matrices are two-dimensional and also hold elements of the same type.</li>
-<li>Data frames are two-dimensional but can hold different types in each column.</li>
-<li>Proper use of data structures can make your code more efficient and readable.</li>
+<li><p><strong>Numeric Single Value (Scalar):</strong> A single numeric value, such as an integer or a floating-point number. Scalars are the building blocks of more complex data structures.</p></li>
+<li><p><strong>Character Single Value:</strong> A single character string, which can be used to store text data. Character values are often combined into vectors or used as labels in data frames and factors.</p></li>
+<li><p><strong>Vector:</strong> A sequence of elements of the same type, such as a series of numbers or a collection of character strings. Vectors are one of the most commonly used data structures in R.</p></li>
+<li><p><strong>Factor:</strong> A special type of vector used to represent categorical data. Factors are useful for storing data that takes on a limited number of discrete values, such as gender or education level.</p></li>
+<li><p><strong>Matrix:</strong> A two-dimensional array where each element is of the same type. Matrices are essential for mathematical operations and are often used in linear algebra.</p></li>
+<li><p><strong>Array:</strong> A multi-dimensional generalization of a matrix, allowing for data storage in more than two dimensions. Arrays are useful for complex data representations in fields like image processing and scientific computing.</p></li>
+<li><p><strong>List:</strong> A flexible data structure that can hold elements of different types, including vectors, matrices, and even other lists. Lists are powerful tools for managing diverse data within a single object.</p></li>
+<li><p><strong>Data Frame:</strong> A table-like structure where each column can contain different types of data. Data frames are central to data analysis in R, allowing for organized storage and manipulation of datasets.</p></li>
+<li><p><strong>Text Data Objects (e.g., dfm):</strong> Text data is increasingly important in social sciences and humanities. In R, specialized data structures such as Document-Feature Matrices (dfm) allow for the handling and analysis of text data. These structures enable tasks like text mining, sentiment analysis, and natural language processing.</p></li>
 </ul>
-<p><strong>Q&amp;A</strong>: If you have any questions or need further clarification, please ask. Let’s discuss any challenges you’ve encountered and any interesting insights you’ve gained!</p>
-<section id="reference" class="level3">
-<h3 class="anchored" data-anchor-id="reference">Reference</h3>
+<p>Each of these data object types serves a unique purpose and has specific operations associated with it. Throughout this chapter, we will explore how to create, manipulate, and apply these data structures in real-world scenarios, equipping you with the skills needed to manage diverse data types in your research.</p>
+</section>
+<section id="numeric-single-value-scalar" class="level3">
+<h3 class="anchored" data-anchor-id="numeric-single-value-scalar">1. Numeric Single Value (Scalar)</h3>
+<p>A scalar in R represents a single numeric value, such as an integer or a floating-point number.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a numeric scalar</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>numeric_scalar <span class="ot">&lt;-</span> <span class="dv">42</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>numeric_scalar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 42</code></pre>
+</div>
+</div>
+</section>
+<section id="character-single-value" class="level3">
+<h3 class="anchored" data-anchor-id="character-single-value">2. Character Single Value</h3>
+<p>A character single value in R is used to store text or strings.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a character scalar</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>character_scalar <span class="ot">&lt;-</span> <span class="st">"Hello, R!"</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>character_scalar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Hello, R!"</code></pre>
+</div>
+</div>
+</section>
+<section id="vector" class="level3">
+<h3 class="anchored" data-anchor-id="vector">3. Vector</h3>
+<p>A vector is a sequence of elements of the same type, commonly used for storing a series of numbers or character strings.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a numeric vector</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>numeric_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>numeric_vector</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 3 4 5</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a character vector</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>character_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cherry"</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>character_vector</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "apple"  "banana" "cherry"</code></pre>
+</div>
+</div>
+</section>
+<section id="factor" class="level3">
+<h3 class="anchored" data-anchor-id="factor">4. Factor</h3>
+<p>A factor is a special type of vector used to represent categorical data.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a factor</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>fruit <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"apple"</span>, <span class="st">"cherry"</span>, <span class="st">"banana"</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>factor_fruit <span class="ot">&lt;-</span> <span class="fu">factor</span>(fruit)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>factor_fruit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] apple  banana apple  cherry banana
+Levels: apple banana cherry</code></pre>
+</div>
+</div>
+</section>
+<section id="matrix" class="level3">
+<h3 class="anchored" data-anchor-id="matrix">5. Matrix</h3>
+<p>A matrix is a two-dimensional array where each element is of the same type.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a matrix</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>matrix_data <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>matrix_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3]
+[1,]    1    4    7
+[2,]    2    5    8
+[3,]    3    6    9</code></pre>
+</div>
+</div>
+</section>
+<section id="array" class="level3">
+<h3 class="anchored" data-anchor-id="array">6. Array</h3>
+<p>An array is a multi-dimensional generalization of a matrix.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a 3-dimensional array</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>array_data <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>))</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>array_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>, , 1
+
+     [,1] [,2] [,3]
+[1,]    1    3    5
+[2,]    2    4    6
+
+, , 2
+
+     [,1] [,2] [,3]
+[1,]    7    9   11
+[2,]    8   10   12</code></pre>
+</div>
+</div>
+</section>
+<section id="list" class="level3">
+<h3 class="anchored" data-anchor-id="list">7. List</h3>
+<p>A list is a flexible data structure that can hold elements of different types.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a list</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>my_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">name =</span> <span class="st">"John Doe"</span>, <span class="at">age =</span> <span class="dv">30</span>, <span class="at">scores =</span> <span class="fu">c</span>(<span class="dv">90</span>, <span class="dv">85</span>, <span class="dv">88</span>))</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>my_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>$name
+[1] "John Doe"
+
+$age
+[1] 30
+
+$scores
+[1] 90 85 88</code></pre>
+</div>
+</div>
+</section>
+<section id="data-frame" class="level3">
+<h3 class="anchored" data-anchor-id="data-frame">8. Data Frame</h3>
+<p>A data frame is a table-like structure where each column can contain different types of data.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a data frame</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>data_frame <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Name =</span> <span class="fu">c</span>(<span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Charlie"</span>),</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Score =</span> <span class="fu">c</span>(<span class="dv">85</span>, <span class="dv">92</span>, <span class="dv">88</span>)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>data_frame</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  ID    Name Score
+1  1   Alice    85
+2  2     Bob    92
+3  3 Charlie    88</code></pre>
+</div>
+</div>
+</section>
+<section id="text-data-objects-e.g.-dfm" class="level3">
+<h3 class="anchored" data-anchor-id="text-data-objects-e.g.-dfm">9. Text Data Objects (e.g., dfm)</h3>
+<p>Text data is increasingly important in social sciences and humanities. In R, specialized data structures like Document-Feature Matrices (dfm) are used for text analysis.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example using the quanteda package to create a dfm</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the quanteda package if not already installed</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("quanteda")</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'quanteda' was built under R version 4.3.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in .recacheSubclasses(def@className, def, env): undefined subclass
+"ndiMatrix" of class "replValueSp"; definition not updated</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Package version: 4.0.2
+Unicode version: 15.1
+ICU version: 74.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Parallel computing: 16 of 16 threads used.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>See https://quanteda.io for tutorials and examples.</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample text data</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>texts <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"This is a sample text"</span>, <span class="st">"Text analysis with R"</span>, <span class="st">"Learning R is fun"</span>)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a corpus</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>corpus <span class="ot">&lt;-</span> <span class="fu">dfm</span>(<span class="fu">tokens</span>(texts))</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a Document-Feature Matrix (dfm)</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>dfm_data <span class="ot">&lt;-</span> <span class="fu">dfm</span>(corpus)</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>dfm_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Document-feature matrix of: 3 documents, 10 features (56.67% sparse) and 0 docvars.
+       features
+docs    this is a sample text analysis with r learning fun
+  text1    1  1 1      1    1        0    0 0        0   0
+  text2    0  0 0      0    1        1    1 1        0   0
+  text3    0  1 0      0    0        0    0 1        1   1</code></pre>
+</div>
+</div>
+</section>
+<section id="exercise-1-creating-and-manipulating-vectors" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1-creating-and-manipulating-vectors">Exercise 1: Creating and Manipulating Vectors</h3>
+<p>Objective: Start creating and manipulating vectors in R.</p>
+<p><strong>Instructions:</strong></p>
+<ol type="1">
+<li>Create a numeric vector containing the numbers 10, 20, 30, 40, and 50.</li>
+<li>Create a character vector containing the names “Alice”, “Bob”, “Charlie”, “David”, and “Eve”.</li>
+<li>Use indexing to retrieve the third element from each of these vectors.</li>
+<li>Modify the second element in the numeric vector to be 25.</li>
+<li>Calculate the sum of all elements in the numeric vector.</li>
+</ol>
+<p><strong>Expected Output:</strong></p>
 <ul>
-<li>https://datageneration.io/dataprogrammingwithr/intro</li>
-<li>Chicago Harris School Coding Camp</li>
+<li>Numeric vector: <code>c(10, 25, 30, 40, 50)</code></li>
+<li>Character vector: <code>c("Alice", "Bob", "Charlie", "David", "Eve")</code></li>
+<li>Sum of the numeric vector: <code>155</code></li>
 </ul>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create numeric and character vectors</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>numeric_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>character_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Charlie"</span>, <span class="st">"David"</span>, <span class="st">"Eve"</span>)</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve the third element</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>numeric_vector[<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 30</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>character_vector[<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Charlie"</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modify the second element</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>numeric_vector[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="dv">25</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the sum of all elements</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(numeric_vector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 155</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Try renaming the objects?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="exercise-2-working-with-factors" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2-working-with-factors">Exercise 2: Working with Factors</h3>
+<p><strong>Objective:</strong> Understand how to create and manipulate factors in R.</p>
+<p><strong>Instructions:</strong></p>
+<ol type="1">
+<li>Create a factor variable from the following vector: <code>c("low", "medium", "high", "low", "medium", "high")</code>.</li>
+<li>Display the levels of the factor variable.</li>
+<li>Convert the factor levels to an ordered factor where “low” &lt; “medium” &lt; “high”.</li>
+<li>Create a bar plot to visualize the frequency of each level.</li>
+</ol>
+<p><strong>Expected Output:</strong></p>
+<ul>
+<li>Levels: <code>c("low", "medium", "high")</code></li>
+<li>Ordered factor levels: <code>low &lt; medium &lt; high</code></li>
+</ul>
+<p><strong>R Code:</strong></p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a factor variable</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>factor_variable <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span>, <span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span>))</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the levels</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(factor_variable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "high"   "low"    "medium"</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to an ordered factor</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>ordered_factor <span class="ot">&lt;-</span> <span class="fu">factor</span>(factor_variable, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span>), <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a bar plot</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(ordered_factor))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dat-str_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-3-data-frame-operations" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3-data-frame-operations">Exercise 3: Data Frame Operations</h3>
+<p><strong>Objective:</strong> Learn how to create, access, and manipulate data frames.</p>
+<p><strong>Instructions:</strong></p>
+<ol type="1">
+<li>Create a data frame with the following columns: <code>ID</code> (1, 2, 3), <code>Name</code> (“Alice”, “Bob”, “Charlie”), and <code>Score</code> (85, 90, 88).</li>
+<li>Access the <code>Name</code> column and print it.</li>
+<li>Add a new column <code>Pass</code> that indicates whether the <code>Score</code> is greater than or equal to 90.</li>
+<li>Calculate the average <code>Score</code> for all students.</li>
+</ol>
+<p><strong>Expected Output:</strong></p>
+<ul>
+<li>Data frame with a new <code>Pass</code> column</li>
+<li>Average score: <code>87.67</code></li>
+</ul>
+<p><strong>R Code:</strong></p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a data frame</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>data_frame <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Name =</span> <span class="fu">c</span>(<span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Charlie"</span>),</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Score =</span> <span class="fu">c</span>(<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">88</span>)</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Access the Name column</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>data_frame<span class="sc">$</span>Name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Alice"   "Bob"     "Charlie"</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a new column</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>data_frame<span class="sc">$</span>Pass <span class="ot">&lt;-</span> data_frame<span class="sc">$</span>Score <span class="sc">&gt;=</span> <span class="dv">90</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the average score</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(data_frame<span class="sc">$</span>Score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 87.66667</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="exercise-4-text-data-manipulation-with-stringr" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-4-text-data-manipulation-with-stringr">Exercise 4: Text Data Manipulation with <code>stringr</code></h3>
+<p><strong>Objective:</strong> Practice manipulating text data using the <code>stringr</code> package.</p>
+<p><strong>Instructions:</strong></p>
+<ol type="1">
+<li>Load the <code>stringr</code> package.</li>
+<li>Create a character string: <code>"The quick brown fox jumps over the lazy dog"</code>.</li>
+<li>Count the number of words in the string.</li>
+<li>Extract the word “quick” from the string.</li>
+<li>Replace the word “lazy” with “energetic”.</li>
+</ol>
+<p><strong>Expected Output:</strong></p>
+<ul>
+<li>Number of words: <code>9</code></li>
+<li>Extracted word: <code>"quick"</code></li>
+<li>Modified string: <code>"The quick brown fox jumps over the energetic dog"</code></li>
+</ul>
+<p><strong>R Code:</strong></p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the stringr package</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'stringr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked _by_ '.GlobalEnv':
+
+    fruit</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a character string</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>text_string <span class="ot">&lt;-</span> <span class="st">"The quick brown fox jumps over the lazy dog"</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of words</span></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str_count</span>(text_string, <span class="st">"</span><span class="sc">\\</span><span class="st">w+"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the word "quick"</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(text_string, <span class="st">"quick"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "quick"</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace "lazy" with "crazy"</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(text_string, <span class="st">"lazy"</span>, <span class="st">"crazy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "The quick brown fox jumps over the crazy dog"</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Try the following and count again?</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="co"># text_string &lt;- "The quick brown fox jumps over the lazy dog #"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<hr>
+</section>
+<section id="exercise-5-creating-and-analyzing-a-document-term-matrix-dtm" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-5-creating-and-analyzing-a-document-term-matrix-dtm">Exercise 5: Creating and Analyzing a Document-Term Matrix (DTM)</h3>
+<p><strong>Objective:</strong> Learn how to create and analyze a Document-Term Matrix using text data.</p>
+<p><strong>Instructions:</strong></p>
+<ol type="1">
+<li>Load the <code>tm</code> package.</li>
+<li>Create a small corpus using the following text documents:
+<ul>
+<li>“R is a programming language for data analysis.”</li>
+<li>“Data analysis in R is powerful and flexible.”</li>
+<li>“Learning R can be fun and rewarding.”</li>
+</ul></li>
+<li>Create a Document-Term Matrix (DTM) from the corpus.</li>
+<li>Inspect the DTM to see the term frequency matrix.</li>
+<li>Identify the term with the highest frequency across all documents.</li>
+</ol>
+<p><strong>Expected Output:</strong></p>
+<ul>
+<li>A DTM with term frequencies</li>
+<li>The term with the highest frequency (e.g., “R”)</li>
+</ul>
+<p><strong>R Code:</strong></p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the tm package</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tm' was built under R version 4.3.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: NLP</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'NLP'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:quanteda':
+
+    meta, meta&lt;-</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'tm'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:quanteda':
+
+    stopwords</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a corpus</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>docs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"R is a programming language for data analysis."</span>,</span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Data analysis in R is powerful and flexible."</span>,</span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Learning R can be fun and rewarding."</span>)</span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>corpus <span class="ot">&lt;-</span> <span class="fu">Corpus</span>(<span class="fu">VectorSource</span>(docs))</span>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a Document-Term Matrix</span></span>
+<span id="cb67-8"><a href="#cb67-8" aria-hidden="true" tabindex="-1"></a>dtm <span class="ot">&lt;-</span> <span class="fu">DocumentTermMatrix</span>(corpus)</span>
+<span id="cb67-9"><a href="#cb67-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-10"><a href="#cb67-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect the DTM</span></span>
+<span id="cb67-11"><a href="#cb67-11" aria-hidden="true" tabindex="-1"></a><span class="fu">inspect</span>(dtm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;&lt;DocumentTermMatrix (documents: 3, terms: 13)&gt;&gt;
+Non-/sparse entries: 15/24
+Sparsity           : 62%
+Maximal term length: 11
+Weighting          : term frequency (tf)
+Sample             :
+    Terms
+Docs analysis analysis. and can data flexible. for language powerful
+   1        0         1   0   0    1         0   1        1        0
+   2        1         0   1   0    1         1   0        0        1
+   3        0         0   1   1    0         0   0        0        0
+    Terms
+Docs programming
+   1           1
+   2           0
+   3           0</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the term with the highest frequency</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>term_frequencies <span class="ot">&lt;-</span> <span class="fu">colSums</span>(<span class="fu">as.matrix</span>(dtm))</span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>most_frequent_term <span class="ot">&lt;-</span> <span class="fu">names</span>(term_frequencies[<span class="fu">which.max</span>(term_frequencies)])</span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>most_frequent_term</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "data"</code></pre>
+</div>
+</div>
+<p>Reference:</p>
+<p>Nahhas, Ramzi W. 2024. <a href="https://bookdown.org/rwnahhas/IntroToR/"><em>An Introduction to R for Research</em></a></p>
 <!-- -->
 
+</section>
 </section>
 </section>
 
@@ -961,298 +1488,620 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb10" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Data Structures"</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Karl Ho"</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "August 12, 2024"</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-depth: 3</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co">    highlight-style: github</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="fu"># Data Structures in R</span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## Why Data Structures Matter</span></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>Understanding data structures is crucial because they determine how we can interact with our data. Different structures are suited for different tasks, and knowing which to use can make your code more efficient and easier to read.</span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="fu">## Creating and Manipulating Vectors</span></span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>Vectors are a fundamental data structure in R, consisting of elements of the same type. They can hold numeric, character, or logical data.</span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="fu">### Creating Vectors</span></span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>Vectors can be created using the <span class="in">`c()`</span> function or specific functions like <span class="in">`seq()`</span> and <span class="in">`rep()`</span>.</span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
-<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Using c() function</span></span>
-<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>characters <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Iron Man"</span>, <span class="st">"Superman"</span>, <span class="st">"Wonder Woman"</span>, <span class="st">"Batman"</span>, <span class="st">"Hulk"</span>)</span>
-<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Using : operator for sequences</span></span>
-<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Using seq() function</span></span>
-<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>even_numbers <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">2</span>, <span class="dv">10</span>, <span class="at">by=</span><span class="dv">2</span>)</span>
-<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Using rep() function</span></span>
-<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>repeated_hero <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"Spider-Man"</span>, <span class="at">times=</span><span class="dv">3</span>)</span>
-<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(characters)</span>
-<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(numbers)</span>
-<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(even_numbers)</span>
-<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(repeated_hero)</span>
-<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
-<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>The c() function is versatile and can create vectors of any type. The : operator is a quick way to create integer sequences. seq() offers more control over sequences, and rep() is useful for creating vectors with repeated elements.</span>
-<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a><span class="fu">### Vector Operations</span></span>
-<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a>Vectors allow various operations, such as indexing and logical operations:</span>
-<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
-<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a><span class="co"># Arithmetic operations</span></span>
-<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a>strengths <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">90</span>, <span class="dv">95</span>, <span class="dv">85</span>, <span class="dv">80</span>, <span class="dv">88</span>)</span>
-<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a>boosted_strengths <span class="ot">&lt;-</span> strengths <span class="sc">+</span> <span class="dv">5</span></span>
-<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(boosted_strengths)</span>
-<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a><span class="co"># Logical operations</span></span>
-<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a>is_strong <span class="ot">&lt;-</span> strengths <span class="sc">&gt;</span> <span class="dv">85</span></span>
-<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(is_strong)</span>
-<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a><span class="co"># Indexing</span></span>
-<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(characters[<span class="dv">2</span>])  <span class="co"># Access second element</span></span>
-<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(characters[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)])  <span class="co"># Access multiple elements</span></span>
-<span id="cb10-80"><a href="#cb10-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a><span class="co"># Vector recycling</span></span>
-<span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a>short_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a>long_vector <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> short_vector <span class="sc">+</span> long_vector</span>
-<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(result)</span>
-<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a>::: {.callout-important}</span>
-<span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a>**Exercise 1:** Vector Manipulation</span>
-<span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Create a vector of 5 superhero ages.</span>
-<span id="cb10-92"><a href="#cb10-92" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Increase all ages by 2 years.</span>
-<span id="cb10-93"><a href="#cb10-93" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Find which heroes are older than 40 after the increase.</span>
-<span id="cb10-94"><a href="#cb10-94" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Create a logical vector indicating if each hero is from DC (assume the first 3 are from DC).</span>
-<span id="cb10-95"><a href="#cb10-95" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb10-96"><a href="#cb10-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-97"><a href="#cb10-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-98"><a href="#cb10-98" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction to Matrices</span></span>
-<span id="cb10-99"><a href="#cb10-99" aria-hidden="true" tabindex="-1"></a>Matrices are two-dimensional arrays that store data of the same type. They can be useful for storing data in a structured format.</span>
-<span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a><span class="fu">### Creating Matrices</span></span>
-<span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a>Use the matrix() function to create matrices. You can specify the data, number of rows, and number of columns.</span>
-<span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-106"><a href="#cb10-106" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-107"><a href="#cb10-107" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb10-108"><a href="#cb10-108" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
-<span id="cb10-109"><a href="#cb10-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-110"><a href="#cb10-110" aria-hidden="true" tabindex="-1"></a>hero_stats <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb10-111"><a href="#cb10-111" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">90</span>, <span class="dv">95</span>, <span class="dv">85</span>, <span class="dv">80</span>, <span class="dv">88</span>,   <span class="co"># Strength</span></span>
-<span id="cb10-112"><a href="#cb10-112" aria-hidden="true" tabindex="-1"></a>    <span class="dv">70</span>, <span class="dv">95</span>, <span class="dv">90</span>, <span class="dv">85</span>, <span class="dv">75</span>),  <span class="co"># Intelligence</span></span>
-<span id="cb10-113"><a href="#cb10-113" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">2</span>, </span>
-<span id="cb10-114"><a href="#cb10-114" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">5</span>, </span>
-<span id="cb10-115"><a href="#cb10-115" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
-<span id="cb10-116"><a href="#cb10-116" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb10-117"><a href="#cb10-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-118"><a href="#cb10-118" aria-hidden="true" tabindex="-1"></a><span class="co"># Add row and column names</span></span>
-<span id="cb10-119"><a href="#cb10-119" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(hero_stats) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Strength"</span>, <span class="st">"Intelligence"</span>)</span>
-<span id="cb10-120"><a href="#cb10-120" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(hero_stats) <span class="ot">&lt;-</span> characters</span>
-<span id="cb10-121"><a href="#cb10-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-122"><a href="#cb10-122" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(hero_stats)</span>
-<span id="cb10-123"><a href="#cb10-123" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-124"><a href="#cb10-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-125"><a href="#cb10-125" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
-<span id="cb10-126"><a href="#cb10-126" aria-hidden="true" tabindex="-1"></a>The byrow = TRUE argument fills the matrix by rows. If omitted, it fills by columns.</span>
-<span id="cb10-127"><a href="#cb10-127" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb10-128"><a href="#cb10-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-129"><a href="#cb10-129" aria-hidden="true" tabindex="-1"></a><span class="fu">### Matrix Operations</span></span>
-<span id="cb10-130"><a href="#cb10-130" aria-hidden="true" tabindex="-1"></a>Matrices support a variety of operations:</span>
-<span id="cb10-131"><a href="#cb10-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-134"><a href="#cb10-134" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-135"><a href="#cb10-135" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb10-136"><a href="#cb10-136" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
-<span id="cb10-137"><a href="#cb10-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-138"><a href="#cb10-138" aria-hidden="true" tabindex="-1"></a><span class="co"># Element-wise addition</span></span>
-<span id="cb10-139"><a href="#cb10-139" aria-hidden="true" tabindex="-1"></a>boosted_stats <span class="ot">&lt;-</span> hero_stats <span class="sc">+</span> <span class="dv">5</span></span>
-<span id="cb10-140"><a href="#cb10-140" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(boosted_stats)</span>
-<span id="cb10-141"><a href="#cb10-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-142"><a href="#cb10-142" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrix multiplication</span></span>
-<span id="cb10-143"><a href="#cb10-143" aria-hidden="true" tabindex="-1"></a>scaled_stats <span class="ot">&lt;-</span> hero_stats <span class="sc">%*%</span> <span class="fu">diag</span>(<span class="dv">5</span>)</span>
-<span id="cb10-144"><a href="#cb10-144" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(scaled_stats)</span>
-<span id="cb10-145"><a href="#cb10-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-146"><a href="#cb10-146" aria-hidden="true" tabindex="-1"></a><span class="co"># Transpose</span></span>
-<span id="cb10-147"><a href="#cb10-147" aria-hidden="true" tabindex="-1"></a>transposed_stats <span class="ot">&lt;-</span> <span class="fu">t</span>(hero_stats)</span>
-<span id="cb10-148"><a href="#cb10-148" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(transposed_stats)</span>
-<span id="cb10-149"><a href="#cb10-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-150"><a href="#cb10-150" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing elements</span></span>
-<span id="cb10-151"><a href="#cb10-151" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(hero_stats[<span class="dv">1</span>, <span class="dv">3</span>])  <span class="co"># Strength of Wonder Woman</span></span>
-<span id="cb10-152"><a href="#cb10-152" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(hero_stats[, <span class="st">"Batman"</span>])  <span class="co"># All stats for Batman</span></span>
-<span id="cb10-153"><a href="#cb10-153" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-154"><a href="#cb10-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-155"><a href="#cb10-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-156"><a href="#cb10-156" aria-hidden="true" tabindex="-1"></a>::: {.callout-important}</span>
-<span id="cb10-157"><a href="#cb10-157" aria-hidden="true" tabindex="-1"></a>**Exercise 2:** Matrix Manipulation</span>
-<span id="cb10-158"><a href="#cb10-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-159"><a href="#cb10-159" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Create a 3x3 matrix of hero power levels (strength, speed, intelligence) for three new heroes.</span>
-<span id="cb10-160"><a href="#cb10-160" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Calculate the average power level for each hero.</span>
-<span id="cb10-161"><a href="#cb10-161" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Find which hero has the highest strength.</span>
-<span id="cb10-162"><a href="#cb10-162" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Scale all power levels by 1.5 and round to the nearest integer.</span>
-<span id="cb10-163"><a href="#cb10-163" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb10-164"><a href="#cb10-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-165"><a href="#cb10-165" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction to Data Frames</span></span>
-<span id="cb10-166"><a href="#cb10-166" aria-hidden="true" tabindex="-1"></a>Data frames are used to store tabular data and can contain columns of different types.</span>
-<span id="cb10-167"><a href="#cb10-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-168"><a href="#cb10-168" aria-hidden="true" tabindex="-1"></a><span class="fu">### Creating Data Frames</span></span>
-<span id="cb10-169"><a href="#cb10-169" aria-hidden="true" tabindex="-1"></a>Use the data.frame() function to create data frames. Each column can have a different type.</span>
-<span id="cb10-170"><a href="#cb10-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-173"><a href="#cb10-173" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-174"><a href="#cb10-174" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb10-175"><a href="#cb10-175" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
-<span id="cb10-176"><a href="#cb10-176" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-177"><a href="#cb10-177" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a data frame</span></span>
-<span id="cb10-178"><a href="#cb10-178" aria-hidden="true" tabindex="-1"></a>hero_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb10-179"><a href="#cb10-179" aria-hidden="true" tabindex="-1"></a>  <span class="at">Name =</span> characters,</span>
-<span id="cb10-180"><a href="#cb10-180" aria-hidden="true" tabindex="-1"></a>  <span class="at">Strength =</span> strengths,</span>
-<span id="cb10-181"><a href="#cb10-181" aria-hidden="true" tabindex="-1"></a>  <span class="at">Intelligence =</span> <span class="fu">c</span>(<span class="dv">70</span>, <span class="dv">95</span>, <span class="dv">90</span>, <span class="dv">85</span>, <span class="dv">75</span>),</span>
-<span id="cb10-182"><a href="#cb10-182" aria-hidden="true" tabindex="-1"></a>  <span class="at">IsMarvel =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)</span>
-<span id="cb10-183"><a href="#cb10-183" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb10-184"><a href="#cb10-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-185"><a href="#cb10-185" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(hero_df)</span>
-<span id="cb10-186"><a href="#cb10-186" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-187"><a href="#cb10-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-188"><a href="#cb10-188" aria-hidden="true" tabindex="-1"></a><span class="fu">### Data Frame Operations</span></span>
-<span id="cb10-189"><a href="#cb10-189" aria-hidden="true" tabindex="-1"></a>Data frames support various operations, including accessing, modifying, and summarizing data.</span>
-<span id="cb10-190"><a href="#cb10-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-193"><a href="#cb10-193" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-194"><a href="#cb10-194" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb10-195"><a href="#cb10-195" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
-<span id="cb10-196"><a href="#cb10-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-197"><a href="#cb10-197" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding a new column</span></span>
-<span id="cb10-198"><a href="#cb10-198" aria-hidden="true" tabindex="-1"></a>hero_df<span class="sc">$</span>Speed <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">85</span>, <span class="dv">100</span>, <span class="dv">90</span>, <span class="dv">75</span>, <span class="dv">70</span>)</span>
-<span id="cb10-199"><a href="#cb10-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-200"><a href="#cb10-200" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing columns</span></span>
-<span id="cb10-201"><a href="#cb10-201" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(hero_df<span class="sc">$</span>Name)</span>
-<span id="cb10-202"><a href="#cb10-202" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(hero_df[[<span class="st">"Strength"</span>]])</span>
-<span id="cb10-203"><a href="#cb10-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-204"><a href="#cb10-204" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering rows</span></span>
-<span id="cb10-205"><a href="#cb10-205" aria-hidden="true" tabindex="-1"></a>marvel_heroes <span class="ot">&lt;-</span> hero_df[hero_df<span class="sc">$</span>IsMarvel, ]</span>
-<span id="cb10-206"><a href="#cb10-206" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(marvel_heroes)</span>
-<span id="cb10-207"><a href="#cb10-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-208"><a href="#cb10-208" aria-hidden="true" tabindex="-1"></a><span class="co"># Using subset()</span></span>
-<span id="cb10-209"><a href="#cb10-209" aria-hidden="true" tabindex="-1"></a>strong_heroes <span class="ot">&lt;-</span> <span class="fu">subset</span>(hero_df, Strength <span class="sc">&gt;</span> <span class="dv">85</span>)</span>
-<span id="cb10-210"><a href="#cb10-210" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(strong_heroes)</span>
-<span id="cb10-211"><a href="#cb10-211" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-212"><a href="#cb10-212" aria-hidden="true" tabindex="-1"></a><span class="co"># Sorting</span></span>
-<span id="cb10-213"><a href="#cb10-213" aria-hidden="true" tabindex="-1"></a>sorted_heroes <span class="ot">&lt;-</span> hero_df[<span class="fu">order</span>(hero_df<span class="sc">$</span>Intelligence, <span class="at">decreasing =</span> <span class="cn">TRUE</span>), ]</span>
-<span id="cb10-214"><a href="#cb10-214" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sorted_heroes)</span>
-<span id="cb10-215"><a href="#cb10-215" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-216"><a href="#cb10-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-217"><a href="#cb10-217" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
-<span id="cb10-218"><a href="#cb10-218" aria-hidden="true" tabindex="-1"></a>Data frames combine the best of both worlds: they can store different types of data (like lists) but in a tabular format (like matrices).</span>
-<span id="cb10-219"><a href="#cb10-219" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb10-220"><a href="#cb10-220" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-221"><a href="#cb10-221" aria-hidden="true" tabindex="-1"></a>::: {.callout-important}</span>
-<span id="cb10-222"><a href="#cb10-222" aria-hidden="true" tabindex="-1"></a>**Exercise 3:** Data Frame Manipulation</span>
-<span id="cb10-223"><a href="#cb10-223" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-224"><a href="#cb10-224" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Add a "PowerLevel" column that's the average of Strength, Intelligence, and Speed.</span>
-<span id="cb10-225"><a href="#cb10-225" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Filter the data frame to show only heroes with a PowerLevel above 85.</span>
-<span id="cb10-226"><a href="#cb10-226" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Sort the heroes by PowerLevel in descending order.</span>
-<span id="cb10-227"><a href="#cb10-227" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Create a new data frame with only the Name and PowerLevel columns for non-Marvel heroes.</span>
-<span id="cb10-228"><a href="#cb10-228" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb10-229"><a href="#cb10-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-232"><a href="#cb10-232" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-233"><a href="#cb10-233" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb10-234"><a href="#cb10-234" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
-<span id="cb10-235"><a href="#cb10-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-236"><a href="#cb10-236" aria-hidden="true" tabindex="-1"></a>ages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">48</span>, <span class="dv">35</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">49</span>)  <span class="co"># Example ages</span></span>
-<span id="cb10-237"><a href="#cb10-237" aria-hidden="true" tabindex="-1"></a>average_age <span class="ot">&lt;-</span> <span class="fu">mean</span>(ages)</span>
-<span id="cb10-238"><a href="#cb10-238" aria-hidden="true" tabindex="-1"></a>older_characters <span class="ot">&lt;-</span> characters[ages <span class="sc">&gt;</span> <span class="dv">30</span>]</span>
-<span id="cb10-239"><a href="#cb10-239" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-240"><a href="#cb10-240" aria-hidden="true" tabindex="-1"></a>average_age</span>
-<span id="cb10-241"><a href="#cb10-241" aria-hidden="true" tabindex="-1"></a>older_characters</span>
-<span id="cb10-242"><a href="#cb10-242" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-243"><a href="#cb10-243" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-244"><a href="#cb10-244" aria-hidden="true" tabindex="-1"></a><span class="fu">## Advanced Topics and Best Practices</span></span>
-<span id="cb10-245"><a href="#cb10-245" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-246"><a href="#cb10-246" aria-hidden="true" tabindex="-1"></a><span class="fu">### Factors</span></span>
-<span id="cb10-247"><a href="#cb10-247" aria-hidden="true" tabindex="-1"></a>Factors are used for categorical data and can be ordered or unordered.</span>
-<span id="cb10-248"><a href="#cb10-248" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-251"><a href="#cb10-251" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-252"><a href="#cb10-252" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb10-253"><a href="#cb10-253" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
-<span id="cb10-254"><a href="#cb10-254" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-255"><a href="#cb10-255" aria-hidden="true" tabindex="-1"></a>hero_types <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"Mutant"</span>, <span class="st">"Alien"</span>, <span class="st">"Human"</span>, <span class="st">"God"</span>, <span class="st">"Mutant"</span>),</span>
-<span id="cb10-256"><a href="#cb10-256" aria-hidden="true" tabindex="-1"></a>                     <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Human"</span>, <span class="st">"Mutant"</span>, <span class="st">"Alien"</span>, <span class="st">"God"</span>),</span>
-<span id="cb10-257"><a href="#cb10-257" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb10-258"><a href="#cb10-258" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(hero_types)</span>
-<span id="cb10-259"><a href="#cb10-259" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-260"><a href="#cb10-260" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-261"><a href="#cb10-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-262"><a href="#cb10-262" aria-hidden="true" tabindex="-1"></a><span class="fu">### Lists</span></span>
-<span id="cb10-263"><a href="#cb10-263" aria-hidden="true" tabindex="-1"></a>Lists can contain elements of different types, including other lists.</span>
-<span id="cb10-264"><a href="#cb10-264" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-267"><a href="#cb10-267" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-268"><a href="#cb10-268" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb10-269"><a href="#cb10-269" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
-<span id="cb10-270"><a href="#cb10-270" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-271"><a href="#cb10-271" aria-hidden="true" tabindex="-1"></a>hero_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb10-272"><a href="#cb10-272" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">"Iron Man"</span>,</span>
-<span id="cb10-273"><a href="#cb10-273" aria-hidden="true" tabindex="-1"></a>  <span class="at">stats =</span> <span class="fu">c</span>(<span class="at">Strength =</span> <span class="dv">85</span>, <span class="at">Intelligence =</span> <span class="dv">95</span>, <span class="at">Speed =</span> <span class="dv">70</span>),</span>
-<span id="cb10-274"><a href="#cb10-274" aria-hidden="true" tabindex="-1"></a>  <span class="at">equipment =</span> <span class="fu">c</span>(<span class="st">"Arc Reactor"</span>, <span class="st">"Iron Suit"</span>)</span>
-<span id="cb10-275"><a href="#cb10-275" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb10-276"><a href="#cb10-276" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(hero_list)</span>
-<span id="cb10-277"><a href="#cb10-277" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-278"><a href="#cb10-278" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-279"><a href="#cb10-279" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-280"><a href="#cb10-280" aria-hidden="true" tabindex="-1"></a>::: {.callout-important}</span>
-<span id="cb10-281"><a href="#cb10-281" aria-hidden="true" tabindex="-1"></a>**Final Exercise:** Create a comprehensive hero database:</span>
-<span id="cb10-282"><a href="#cb10-282" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-283"><a href="#cb10-283" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Make a data frame with at least 10 heroes, including columns for Name, Type (factor), Strength, Intelligence, and Speed.</span>
-<span id="cb10-284"><a href="#cb10-284" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Add a PowerLevel column as before.</span>
-<span id="cb10-285"><a href="#cb10-285" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Create a list for each hero with their stats and a vector of their superpowers.</span>
-<span id="cb10-286"><a href="#cb10-286" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-287"><a href="#cb10-287" aria-hidden="true" tabindex="-1"></a>Use this data to answer questions like:</span>
-<span id="cb10-288"><a href="#cb10-288" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-289"><a href="#cb10-289" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Who is the strongest hero of each type?</span>
-<span id="cb10-290"><a href="#cb10-290" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>What's the average PowerLevel by hero type?</span>
-<span id="cb10-291"><a href="#cb10-291" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Which hero has the most superpowers?</span>
-<span id="cb10-292"><a href="#cb10-292" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-293"><a href="#cb10-293" aria-hidden="true" tabindex="-1"></a>This exercise will test your ability to work with multiple data structures and perform various operations on them.</span>
-<span id="cb10-294"><a href="#cb10-294" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb10-295"><a href="#cb10-295" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-296"><a href="#cb10-296" aria-hidden="true" tabindex="-1"></a><span class="fu"># Wrapping Up and Q&amp;A</span></span>
-<span id="cb10-297"><a href="#cb10-297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-298"><a href="#cb10-298" aria-hidden="true" tabindex="-1"></a>We've covered the fundamental data structures in R: vectors, matrices, and data frames. We've also touched on some advanced topics like factors and lists. Remember:</span>
-<span id="cb10-299"><a href="#cb10-299" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-300"><a href="#cb10-300" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Vectors are one-dimensional and hold elements of the same type.</span>
-<span id="cb10-301"><a href="#cb10-301" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Matrices are two-dimensional and also hold elements of the same type.</span>
-<span id="cb10-302"><a href="#cb10-302" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Data frames are two-dimensional but can hold different types in each column.</span>
-<span id="cb10-303"><a href="#cb10-303" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Proper use of data structures can make your code more efficient and readable.</span>
-<span id="cb10-304"><a href="#cb10-304" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-305"><a href="#cb10-305" aria-hidden="true" tabindex="-1"></a>**Q&amp;A**: If you have any questions or need further clarification, please ask. Let's discuss any challenges you've encountered and any interesting insights you've gained!</span>
-<span id="cb10-306"><a href="#cb10-306" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-307"><a href="#cb10-307" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-308"><a href="#cb10-308" aria-hidden="true" tabindex="-1"></a><span class="fu">### Reference</span></span>
-<span id="cb10-309"><a href="#cb10-309" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>https://datageneration.io/dataprogrammingwithr/intro</span>
-<span id="cb10-310"><a href="#cb10-310" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Chicago Harris School Coding Camp</span>
+<div class="sourceCode" id="cb71" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Data Structures"</span></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Karl Ho"</span></span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "August 12, 2024"</span></span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-depth: 3</span></span>
+<span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
+<span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb71-11"><a href="#cb71-11" aria-hidden="true" tabindex="-1"></a><span class="co">    highlight-style: github</span></span>
+<span id="cb71-12"><a href="#cb71-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb71-13"><a href="#cb71-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-14"><a href="#cb71-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-15"><a href="#cb71-15" aria-hidden="true" tabindex="-1"></a><span class="fu"># Data Structures in R</span></span>
+<span id="cb71-16"><a href="#cb71-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-17"><a href="#cb71-17" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb71-18"><a href="#cb71-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## Why Data Structures Matter</span></span>
+<span id="cb71-19"><a href="#cb71-19" aria-hidden="true" tabindex="-1"></a>Understanding data structures is crucial because they determine how we can interact with our data. Different structures are suited for different tasks, and knowing which to use can make your code more efficient and easier to read.</span>
+<span id="cb71-20"><a href="#cb71-20" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb71-21"><a href="#cb71-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-22"><a href="#cb71-22" aria-hidden="true" tabindex="-1"></a><span class="fu">## Creating and Manipulating Vectors</span></span>
+<span id="cb71-23"><a href="#cb71-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-24"><a href="#cb71-24" aria-hidden="true" tabindex="-1"></a>Vectors are a fundamental data structure in R, consisting of elements of the same type. They can hold numeric, character, or logical data.</span>
+<span id="cb71-25"><a href="#cb71-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-26"><a href="#cb71-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-27"><a href="#cb71-27" aria-hidden="true" tabindex="-1"></a><span class="fu">### Creating Vectors</span></span>
+<span id="cb71-28"><a href="#cb71-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-29"><a href="#cb71-29" aria-hidden="true" tabindex="-1"></a>Vectors can be created using the <span class="in">`c()`</span> function or specific functions like <span class="in">`seq()`</span> and <span class="in">`rep()`</span>.</span>
+<span id="cb71-30"><a href="#cb71-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-33"><a href="#cb71-33" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb71-34"><a href="#cb71-34" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb71-35"><a href="#cb71-35" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
+<span id="cb71-36"><a href="#cb71-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-37"><a href="#cb71-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Using c() function</span></span>
+<span id="cb71-38"><a href="#cb71-38" aria-hidden="true" tabindex="-1"></a>characters <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Iron Man"</span>, <span class="st">"Superman"</span>, <span class="st">"Wonder Woman"</span>, <span class="st">"Batman"</span>, <span class="st">"Hulk"</span>)</span>
+<span id="cb71-39"><a href="#cb71-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-40"><a href="#cb71-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Using : operator for sequences</span></span>
+<span id="cb71-41"><a href="#cb71-41" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb71-42"><a href="#cb71-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-43"><a href="#cb71-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Using seq() function</span></span>
+<span id="cb71-44"><a href="#cb71-44" aria-hidden="true" tabindex="-1"></a>even_numbers <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">2</span>, <span class="dv">10</span>, <span class="at">by=</span><span class="dv">2</span>)</span>
+<span id="cb71-45"><a href="#cb71-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-46"><a href="#cb71-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Using rep() function</span></span>
+<span id="cb71-47"><a href="#cb71-47" aria-hidden="true" tabindex="-1"></a>repeated_hero <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"Spider-Man"</span>, <span class="at">times=</span><span class="dv">3</span>)</span>
+<span id="cb71-48"><a href="#cb71-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-49"><a href="#cb71-49" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(characters)</span>
+<span id="cb71-50"><a href="#cb71-50" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(numbers)</span>
+<span id="cb71-51"><a href="#cb71-51" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(even_numbers)</span>
+<span id="cb71-52"><a href="#cb71-52" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(repeated_hero)</span>
+<span id="cb71-53"><a href="#cb71-53" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb71-54"><a href="#cb71-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-55"><a href="#cb71-55" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb71-56"><a href="#cb71-56" aria-hidden="true" tabindex="-1"></a>The c() function is versatile and can create vectors of any type. The : operator is a quick way to create integer sequences. seq() offers more control over sequences, and rep() is useful for creating vectors with repeated elements.</span>
+<span id="cb71-57"><a href="#cb71-57" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb71-58"><a href="#cb71-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-59"><a href="#cb71-59" aria-hidden="true" tabindex="-1"></a><span class="fu">### Vector Operations</span></span>
+<span id="cb71-60"><a href="#cb71-60" aria-hidden="true" tabindex="-1"></a>Vectors allow various operations, such as indexing and logical operations:</span>
+<span id="cb71-61"><a href="#cb71-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-64"><a href="#cb71-64" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb71-65"><a href="#cb71-65" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb71-66"><a href="#cb71-66" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
+<span id="cb71-67"><a href="#cb71-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-68"><a href="#cb71-68" aria-hidden="true" tabindex="-1"></a><span class="co"># Arithmetic operations</span></span>
+<span id="cb71-69"><a href="#cb71-69" aria-hidden="true" tabindex="-1"></a>strengths <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">90</span>, <span class="dv">95</span>, <span class="dv">85</span>, <span class="dv">80</span>, <span class="dv">88</span>)</span>
+<span id="cb71-70"><a href="#cb71-70" aria-hidden="true" tabindex="-1"></a>boosted_strengths <span class="ot">&lt;-</span> strengths <span class="sc">+</span> <span class="dv">5</span></span>
+<span id="cb71-71"><a href="#cb71-71" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(boosted_strengths)</span>
+<span id="cb71-72"><a href="#cb71-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-73"><a href="#cb71-73" aria-hidden="true" tabindex="-1"></a><span class="co"># Logical operations</span></span>
+<span id="cb71-74"><a href="#cb71-74" aria-hidden="true" tabindex="-1"></a>is_strong <span class="ot">&lt;-</span> strengths <span class="sc">&gt;</span> <span class="dv">85</span></span>
+<span id="cb71-75"><a href="#cb71-75" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(is_strong)</span>
+<span id="cb71-76"><a href="#cb71-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-77"><a href="#cb71-77" aria-hidden="true" tabindex="-1"></a><span class="co"># Indexing</span></span>
+<span id="cb71-78"><a href="#cb71-78" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(characters[<span class="dv">2</span>])  <span class="co"># Access second element</span></span>
+<span id="cb71-79"><a href="#cb71-79" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(characters[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)])  <span class="co"># Access multiple elements</span></span>
+<span id="cb71-80"><a href="#cb71-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-81"><a href="#cb71-81" aria-hidden="true" tabindex="-1"></a><span class="co"># Vector recycling</span></span>
+<span id="cb71-82"><a href="#cb71-82" aria-hidden="true" tabindex="-1"></a>short_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb71-83"><a href="#cb71-83" aria-hidden="true" tabindex="-1"></a>long_vector <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb71-84"><a href="#cb71-84" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> short_vector <span class="sc">+</span> long_vector</span>
+<span id="cb71-85"><a href="#cb71-85" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(result)</span>
+<span id="cb71-86"><a href="#cb71-86" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb71-87"><a href="#cb71-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-88"><a href="#cb71-88" aria-hidden="true" tabindex="-1"></a>::: {.callout-important}</span>
+<span id="cb71-89"><a href="#cb71-89" aria-hidden="true" tabindex="-1"></a>**Exercise 1:** Vector Manipulation</span>
+<span id="cb71-90"><a href="#cb71-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-91"><a href="#cb71-91" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Create a vector of 5 superhero ages.</span>
+<span id="cb71-92"><a href="#cb71-92" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Increase all ages by 2 years.</span>
+<span id="cb71-93"><a href="#cb71-93" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Find which heroes are older than 40 after the increase.</span>
+<span id="cb71-94"><a href="#cb71-94" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Create a logical vector indicating if each hero is from DC (assume the first 3 are from DC).</span>
+<span id="cb71-95"><a href="#cb71-95" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb71-96"><a href="#cb71-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-97"><a href="#cb71-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-98"><a href="#cb71-98" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction to Matrices</span></span>
+<span id="cb71-99"><a href="#cb71-99" aria-hidden="true" tabindex="-1"></a>Matrices are two-dimensional arrays that store data of the same type. They can be useful for storing data in a structured format.</span>
+<span id="cb71-100"><a href="#cb71-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-101"><a href="#cb71-101" aria-hidden="true" tabindex="-1"></a><span class="fu">### Creating Matrices</span></span>
+<span id="cb71-102"><a href="#cb71-102" aria-hidden="true" tabindex="-1"></a>Use the matrix() function to create matrices. You can specify the data, number of rows, and number of columns.</span>
+<span id="cb71-103"><a href="#cb71-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-106"><a href="#cb71-106" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb71-107"><a href="#cb71-107" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb71-108"><a href="#cb71-108" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
+<span id="cb71-109"><a href="#cb71-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-110"><a href="#cb71-110" aria-hidden="true" tabindex="-1"></a>hero_stats <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb71-111"><a href="#cb71-111" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">90</span>, <span class="dv">95</span>, <span class="dv">85</span>, <span class="dv">80</span>, <span class="dv">88</span>,   <span class="co"># Strength</span></span>
+<span id="cb71-112"><a href="#cb71-112" aria-hidden="true" tabindex="-1"></a>    <span class="dv">70</span>, <span class="dv">95</span>, <span class="dv">90</span>, <span class="dv">85</span>, <span class="dv">75</span>),  <span class="co"># Intelligence</span></span>
+<span id="cb71-113"><a href="#cb71-113" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">2</span>, </span>
+<span id="cb71-114"><a href="#cb71-114" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">5</span>, </span>
+<span id="cb71-115"><a href="#cb71-115" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
+<span id="cb71-116"><a href="#cb71-116" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb71-117"><a href="#cb71-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-118"><a href="#cb71-118" aria-hidden="true" tabindex="-1"></a><span class="co"># Add row and column names</span></span>
+<span id="cb71-119"><a href="#cb71-119" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(hero_stats) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Strength"</span>, <span class="st">"Intelligence"</span>)</span>
+<span id="cb71-120"><a href="#cb71-120" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(hero_stats) <span class="ot">&lt;-</span> characters</span>
+<span id="cb71-121"><a href="#cb71-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-122"><a href="#cb71-122" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(hero_stats)</span>
+<span id="cb71-123"><a href="#cb71-123" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb71-124"><a href="#cb71-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-125"><a href="#cb71-125" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb71-126"><a href="#cb71-126" aria-hidden="true" tabindex="-1"></a>The byrow = TRUE argument fills the matrix by rows. If omitted, it fills by columns.</span>
+<span id="cb71-127"><a href="#cb71-127" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb71-128"><a href="#cb71-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-129"><a href="#cb71-129" aria-hidden="true" tabindex="-1"></a><span class="fu">### Matrix Operations</span></span>
+<span id="cb71-130"><a href="#cb71-130" aria-hidden="true" tabindex="-1"></a>Matrices support a variety of operations:</span>
+<span id="cb71-131"><a href="#cb71-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-134"><a href="#cb71-134" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb71-135"><a href="#cb71-135" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb71-136"><a href="#cb71-136" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
+<span id="cb71-137"><a href="#cb71-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-138"><a href="#cb71-138" aria-hidden="true" tabindex="-1"></a><span class="co"># Element-wise addition</span></span>
+<span id="cb71-139"><a href="#cb71-139" aria-hidden="true" tabindex="-1"></a>boosted_stats <span class="ot">&lt;-</span> hero_stats <span class="sc">+</span> <span class="dv">5</span></span>
+<span id="cb71-140"><a href="#cb71-140" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(boosted_stats)</span>
+<span id="cb71-141"><a href="#cb71-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-142"><a href="#cb71-142" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrix multiplication</span></span>
+<span id="cb71-143"><a href="#cb71-143" aria-hidden="true" tabindex="-1"></a>scaled_stats <span class="ot">&lt;-</span> hero_stats <span class="sc">%*%</span> <span class="fu">diag</span>(<span class="dv">5</span>)</span>
+<span id="cb71-144"><a href="#cb71-144" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(scaled_stats)</span>
+<span id="cb71-145"><a href="#cb71-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-146"><a href="#cb71-146" aria-hidden="true" tabindex="-1"></a><span class="co"># Transpose</span></span>
+<span id="cb71-147"><a href="#cb71-147" aria-hidden="true" tabindex="-1"></a>transposed_stats <span class="ot">&lt;-</span> <span class="fu">t</span>(hero_stats)</span>
+<span id="cb71-148"><a href="#cb71-148" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(transposed_stats)</span>
+<span id="cb71-149"><a href="#cb71-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-150"><a href="#cb71-150" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing elements</span></span>
+<span id="cb71-151"><a href="#cb71-151" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(hero_stats[<span class="dv">1</span>, <span class="dv">3</span>])  <span class="co"># Strength of Wonder Woman</span></span>
+<span id="cb71-152"><a href="#cb71-152" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(hero_stats[, <span class="st">"Batman"</span>])  <span class="co"># All stats for Batman</span></span>
+<span id="cb71-153"><a href="#cb71-153" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb71-154"><a href="#cb71-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-155"><a href="#cb71-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-156"><a href="#cb71-156" aria-hidden="true" tabindex="-1"></a>::: {.callout-important}</span>
+<span id="cb71-157"><a href="#cb71-157" aria-hidden="true" tabindex="-1"></a>**Exercise 2:** Matrix Manipulation</span>
+<span id="cb71-158"><a href="#cb71-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-159"><a href="#cb71-159" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Create a 3x3 matrix of hero power levels (strength, speed, intelligence) for three new heroes.</span>
+<span id="cb71-160"><a href="#cb71-160" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Calculate the average power level for each hero.</span>
+<span id="cb71-161"><a href="#cb71-161" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Find which hero has the highest strength.</span>
+<span id="cb71-162"><a href="#cb71-162" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Scale all power levels by 1.5 and round to the nearest integer.</span>
+<span id="cb71-163"><a href="#cb71-163" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb71-164"><a href="#cb71-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-165"><a href="#cb71-165" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction to Data Frames</span></span>
+<span id="cb71-166"><a href="#cb71-166" aria-hidden="true" tabindex="-1"></a>Data frames are used to store tabular data and can contain columns of different types.</span>
+<span id="cb71-167"><a href="#cb71-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-168"><a href="#cb71-168" aria-hidden="true" tabindex="-1"></a><span class="fu">### Creating Data Frames</span></span>
+<span id="cb71-169"><a href="#cb71-169" aria-hidden="true" tabindex="-1"></a>Use the data.frame() function to create data frames. Each column can have a different type.</span>
+<span id="cb71-170"><a href="#cb71-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-173"><a href="#cb71-173" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb71-174"><a href="#cb71-174" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb71-175"><a href="#cb71-175" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
+<span id="cb71-176"><a href="#cb71-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-177"><a href="#cb71-177" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a data frame</span></span>
+<span id="cb71-178"><a href="#cb71-178" aria-hidden="true" tabindex="-1"></a>hero_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb71-179"><a href="#cb71-179" aria-hidden="true" tabindex="-1"></a>  <span class="at">Name =</span> characters,</span>
+<span id="cb71-180"><a href="#cb71-180" aria-hidden="true" tabindex="-1"></a>  <span class="at">Strength =</span> strengths,</span>
+<span id="cb71-181"><a href="#cb71-181" aria-hidden="true" tabindex="-1"></a>  <span class="at">Intelligence =</span> <span class="fu">c</span>(<span class="dv">70</span>, <span class="dv">95</span>, <span class="dv">90</span>, <span class="dv">85</span>, <span class="dv">75</span>),</span>
+<span id="cb71-182"><a href="#cb71-182" aria-hidden="true" tabindex="-1"></a>  <span class="at">IsMarvel =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb71-183"><a href="#cb71-183" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb71-184"><a href="#cb71-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-185"><a href="#cb71-185" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(hero_df)</span>
+<span id="cb71-186"><a href="#cb71-186" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb71-187"><a href="#cb71-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-188"><a href="#cb71-188" aria-hidden="true" tabindex="-1"></a><span class="fu">### Data Frame Operations</span></span>
+<span id="cb71-189"><a href="#cb71-189" aria-hidden="true" tabindex="-1"></a>Data frames support various operations, including accessing, modifying, and summarizing data.</span>
+<span id="cb71-190"><a href="#cb71-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-193"><a href="#cb71-193" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb71-194"><a href="#cb71-194" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb71-195"><a href="#cb71-195" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
+<span id="cb71-196"><a href="#cb71-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-197"><a href="#cb71-197" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding a new column</span></span>
+<span id="cb71-198"><a href="#cb71-198" aria-hidden="true" tabindex="-1"></a>hero_df<span class="sc">$</span>Speed <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">85</span>, <span class="dv">100</span>, <span class="dv">90</span>, <span class="dv">75</span>, <span class="dv">70</span>)</span>
+<span id="cb71-199"><a href="#cb71-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-200"><a href="#cb71-200" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing columns</span></span>
+<span id="cb71-201"><a href="#cb71-201" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(hero_df<span class="sc">$</span>Name)</span>
+<span id="cb71-202"><a href="#cb71-202" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(hero_df[[<span class="st">"Strength"</span>]])</span>
+<span id="cb71-203"><a href="#cb71-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-204"><a href="#cb71-204" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering rows</span></span>
+<span id="cb71-205"><a href="#cb71-205" aria-hidden="true" tabindex="-1"></a>marvel_heroes <span class="ot">&lt;-</span> hero_df[hero_df<span class="sc">$</span>IsMarvel, ]</span>
+<span id="cb71-206"><a href="#cb71-206" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(marvel_heroes)</span>
+<span id="cb71-207"><a href="#cb71-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-208"><a href="#cb71-208" aria-hidden="true" tabindex="-1"></a><span class="co"># Using subset()</span></span>
+<span id="cb71-209"><a href="#cb71-209" aria-hidden="true" tabindex="-1"></a>strong_heroes <span class="ot">&lt;-</span> <span class="fu">subset</span>(hero_df, Strength <span class="sc">&gt;</span> <span class="dv">85</span>)</span>
+<span id="cb71-210"><a href="#cb71-210" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(strong_heroes)</span>
+<span id="cb71-211"><a href="#cb71-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-212"><a href="#cb71-212" aria-hidden="true" tabindex="-1"></a><span class="co"># Sorting</span></span>
+<span id="cb71-213"><a href="#cb71-213" aria-hidden="true" tabindex="-1"></a>sorted_heroes <span class="ot">&lt;-</span> hero_df[<span class="fu">order</span>(hero_df<span class="sc">$</span>Intelligence, <span class="at">decreasing =</span> <span class="cn">TRUE</span>), ]</span>
+<span id="cb71-214"><a href="#cb71-214" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sorted_heroes)</span>
+<span id="cb71-215"><a href="#cb71-215" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb71-216"><a href="#cb71-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-217"><a href="#cb71-217" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb71-218"><a href="#cb71-218" aria-hidden="true" tabindex="-1"></a>Data frames combine the best of both worlds: they can store different types of data (like lists) but in a tabular format (like matrices).</span>
+<span id="cb71-219"><a href="#cb71-219" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb71-220"><a href="#cb71-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-221"><a href="#cb71-221" aria-hidden="true" tabindex="-1"></a>::: {.callout-important}</span>
+<span id="cb71-222"><a href="#cb71-222" aria-hidden="true" tabindex="-1"></a>**Exercise 3:** Data Frame Manipulation</span>
+<span id="cb71-223"><a href="#cb71-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-224"><a href="#cb71-224" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Add a "PowerLevel" column that's the average of Strength, Intelligence, and Speed.</span>
+<span id="cb71-225"><a href="#cb71-225" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Filter the data frame to show only heroes with a PowerLevel above 85.</span>
+<span id="cb71-226"><a href="#cb71-226" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Sort the heroes by PowerLevel in descending order.</span>
+<span id="cb71-227"><a href="#cb71-227" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Create a new data frame with only the Name and PowerLevel columns for non-Marvel heroes.</span>
+<span id="cb71-228"><a href="#cb71-228" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb71-229"><a href="#cb71-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-232"><a href="#cb71-232" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb71-233"><a href="#cb71-233" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb71-234"><a href="#cb71-234" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
+<span id="cb71-235"><a href="#cb71-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-236"><a href="#cb71-236" aria-hidden="true" tabindex="-1"></a>ages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">48</span>, <span class="dv">35</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">49</span>)  <span class="co"># Example ages</span></span>
+<span id="cb71-237"><a href="#cb71-237" aria-hidden="true" tabindex="-1"></a>average_age <span class="ot">&lt;-</span> <span class="fu">mean</span>(ages)</span>
+<span id="cb71-238"><a href="#cb71-238" aria-hidden="true" tabindex="-1"></a>older_characters <span class="ot">&lt;-</span> characters[ages <span class="sc">&gt;</span> <span class="dv">30</span>]</span>
+<span id="cb71-239"><a href="#cb71-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-240"><a href="#cb71-240" aria-hidden="true" tabindex="-1"></a>average_age</span>
+<span id="cb71-241"><a href="#cb71-241" aria-hidden="true" tabindex="-1"></a>older_characters</span>
+<span id="cb71-242"><a href="#cb71-242" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb71-243"><a href="#cb71-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-244"><a href="#cb71-244" aria-hidden="true" tabindex="-1"></a><span class="fu">## Advanced Topics and Best Practices</span></span>
+<span id="cb71-245"><a href="#cb71-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-246"><a href="#cb71-246" aria-hidden="true" tabindex="-1"></a><span class="fu">### Factors</span></span>
+<span id="cb71-247"><a href="#cb71-247" aria-hidden="true" tabindex="-1"></a>Factors are used for categorical data and can be ordered or unordered.</span>
+<span id="cb71-248"><a href="#cb71-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-251"><a href="#cb71-251" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb71-252"><a href="#cb71-252" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb71-253"><a href="#cb71-253" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
+<span id="cb71-254"><a href="#cb71-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-255"><a href="#cb71-255" aria-hidden="true" tabindex="-1"></a>hero_types <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"Mutant"</span>, <span class="st">"Alien"</span>, <span class="st">"Human"</span>, <span class="st">"God"</span>, <span class="st">"Mutant"</span>),</span>
+<span id="cb71-256"><a href="#cb71-256" aria-hidden="true" tabindex="-1"></a>                     <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Human"</span>, <span class="st">"Mutant"</span>, <span class="st">"Alien"</span>, <span class="st">"God"</span>),</span>
+<span id="cb71-257"><a href="#cb71-257" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb71-258"><a href="#cb71-258" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(hero_types)</span>
+<span id="cb71-259"><a href="#cb71-259" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb71-260"><a href="#cb71-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-261"><a href="#cb71-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-262"><a href="#cb71-262" aria-hidden="true" tabindex="-1"></a><span class="fu">### Lists</span></span>
+<span id="cb71-263"><a href="#cb71-263" aria-hidden="true" tabindex="-1"></a>Lists can contain elements of different types, including other lists.</span>
+<span id="cb71-264"><a href="#cb71-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-267"><a href="#cb71-267" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb71-268"><a href="#cb71-268" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb71-269"><a href="#cb71-269" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
+<span id="cb71-270"><a href="#cb71-270" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-271"><a href="#cb71-271" aria-hidden="true" tabindex="-1"></a>hero_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb71-272"><a href="#cb71-272" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">"Iron Man"</span>,</span>
+<span id="cb71-273"><a href="#cb71-273" aria-hidden="true" tabindex="-1"></a>  <span class="at">stats =</span> <span class="fu">c</span>(<span class="at">Strength =</span> <span class="dv">85</span>, <span class="at">Intelligence =</span> <span class="dv">95</span>, <span class="at">Speed =</span> <span class="dv">70</span>),</span>
+<span id="cb71-274"><a href="#cb71-274" aria-hidden="true" tabindex="-1"></a>  <span class="at">equipment =</span> <span class="fu">c</span>(<span class="st">"Arc Reactor"</span>, <span class="st">"Iron Suit"</span>)</span>
+<span id="cb71-275"><a href="#cb71-275" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb71-276"><a href="#cb71-276" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(hero_list)</span>
+<span id="cb71-277"><a href="#cb71-277" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb71-278"><a href="#cb71-278" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-279"><a href="#cb71-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-280"><a href="#cb71-280" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb71-281"><a href="#cb71-281" aria-hidden="true" tabindex="-1"></a>**Final Exercise:** Create a comprehensive hero database:</span>
+<span id="cb71-282"><a href="#cb71-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-283"><a href="#cb71-283" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Make a data frame with at least 10 heroes, including columns for Name, Type (factor), Strength, Intelligence, and Speed.</span>
+<span id="cb71-284"><a href="#cb71-284" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Add a PowerLevel column as before.</span>
+<span id="cb71-285"><a href="#cb71-285" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Create a list for each hero with their stats and a vector of their superpowers.</span>
+<span id="cb71-286"><a href="#cb71-286" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-287"><a href="#cb71-287" aria-hidden="true" tabindex="-1"></a>Use this data to answer questions like:</span>
+<span id="cb71-288"><a href="#cb71-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-289"><a href="#cb71-289" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Who is the strongest hero of each type?</span>
+<span id="cb71-290"><a href="#cb71-290" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>What's the average PowerLevel by hero type?</span>
+<span id="cb71-291"><a href="#cb71-291" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Which hero has the most superpowers?</span>
+<span id="cb71-292"><a href="#cb71-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-293"><a href="#cb71-293" aria-hidden="true" tabindex="-1"></a>This exercise will test your ability to work with multiple data structures and perform various operations on them.</span>
+<span id="cb71-294"><a href="#cb71-294" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb71-295"><a href="#cb71-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-296"><a href="#cb71-296" aria-hidden="true" tabindex="-1"></a>In R, data can be stored in various forms, each suitable for different types of analysis and operations. Understanding these data object types is fundamental to effectively utilizing R for data manipulation, statistical analysis, and programming.</span>
+<span id="cb71-297"><a href="#cb71-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-298"><a href="#cb71-298" aria-hidden="true" tabindex="-1"></a>This chapter introduces you to the essential data object types in R, providing a foundation for more advanced topics. We will cover the following:</span>
+<span id="cb71-299"><a href="#cb71-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-300"><a href="#cb71-300" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Numeric Single Value (Scalar):** A single numeric value, such as an integer or a floating-point number. Scalars are the building blocks of more complex data structures.</span>
+<span id="cb71-301"><a href="#cb71-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-302"><a href="#cb71-302" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Character Single Value:** A single character string, which can be used to store text data. Character values are often combined into vectors or used as labels in data frames and factors.</span>
+<span id="cb71-303"><a href="#cb71-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-304"><a href="#cb71-304" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Vector:** A sequence of elements of the same type, such as a series of numbers or a collection of character strings. Vectors are one of the most commonly used data structures in R.</span>
+<span id="cb71-305"><a href="#cb71-305" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-306"><a href="#cb71-306" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Factor:** A special type of vector used to represent categorical data. Factors are useful for storing data that takes on a limited number of discrete values, such as gender or education level.</span>
+<span id="cb71-307"><a href="#cb71-307" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-308"><a href="#cb71-308" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Matrix:** A two-dimensional array where each element is of the same type. Matrices are essential for mathematical operations and are often used in linear algebra.</span>
+<span id="cb71-309"><a href="#cb71-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-310"><a href="#cb71-310" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Array:** A multi-dimensional generalization of a matrix, allowing for data storage in more than two dimensions. Arrays are useful for complex data representations in fields like image processing and scientific computing.</span>
+<span id="cb71-311"><a href="#cb71-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-312"><a href="#cb71-312" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**List:** A flexible data structure that can hold elements of different types, including vectors, matrices, and even other lists. Lists are powerful tools for managing diverse data within a single object.</span>
+<span id="cb71-313"><a href="#cb71-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-314"><a href="#cb71-314" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Data Frame:** A table-like structure where each column can contain different types of data. Data frames are central to data analysis in R, allowing for organized storage and manipulation of datasets.</span>
+<span id="cb71-315"><a href="#cb71-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-316"><a href="#cb71-316" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Text Data Objects (e.g., dfm):** Text data is increasingly important in social sciences and humanities. In R, specialized data structures such as Document-Feature Matrices (dfm) allow for the handling and analysis of text data. These structures enable tasks like text mining, sentiment analysis, and natural language processing.</span>
+<span id="cb71-317"><a href="#cb71-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-318"><a href="#cb71-318" aria-hidden="true" tabindex="-1"></a>Each of these data object types serves a unique purpose and has specific operations associated with it. Throughout this chapter, we will explore how to create, manipulate, and apply these data structures in real-world scenarios, equipping you with the skills needed to manage diverse data types in your research.</span>
+<span id="cb71-319"><a href="#cb71-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-320"><a href="#cb71-320" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1. Numeric Single Value (Scalar)</span></span>
+<span id="cb71-321"><a href="#cb71-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-322"><a href="#cb71-322" aria-hidden="true" tabindex="-1"></a>A scalar in R represents a single numeric value, such as an integer or a floating-point number.</span>
+<span id="cb71-323"><a href="#cb71-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-326"><a href="#cb71-326" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb71-327"><a href="#cb71-327" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a numeric scalar</span></span>
+<span id="cb71-328"><a href="#cb71-328" aria-hidden="true" tabindex="-1"></a>numeric_scalar <span class="ot">&lt;-</span> <span class="dv">42</span></span>
+<span id="cb71-329"><a href="#cb71-329" aria-hidden="true" tabindex="-1"></a>numeric_scalar</span>
+<span id="cb71-330"><a href="#cb71-330" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb71-331"><a href="#cb71-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-332"><a href="#cb71-332" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2. Character Single Value</span></span>
+<span id="cb71-333"><a href="#cb71-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-334"><a href="#cb71-334" aria-hidden="true" tabindex="-1"></a>A character single value in R is used to store text or strings.</span>
+<span id="cb71-335"><a href="#cb71-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-338"><a href="#cb71-338" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb71-339"><a href="#cb71-339" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a character scalar</span></span>
+<span id="cb71-340"><a href="#cb71-340" aria-hidden="true" tabindex="-1"></a>character_scalar <span class="ot">&lt;-</span> <span class="st">"Hello, R!"</span></span>
+<span id="cb71-341"><a href="#cb71-341" aria-hidden="true" tabindex="-1"></a>character_scalar</span>
+<span id="cb71-342"><a href="#cb71-342" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb71-343"><a href="#cb71-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-344"><a href="#cb71-344" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3. Vector</span></span>
+<span id="cb71-345"><a href="#cb71-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-346"><a href="#cb71-346" aria-hidden="true" tabindex="-1"></a>A vector is a sequence of elements of the same type, commonly used for storing a series of numbers or character strings.</span>
+<span id="cb71-347"><a href="#cb71-347" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-350"><a href="#cb71-350" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb71-351"><a href="#cb71-351" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a numeric vector</span></span>
+<span id="cb71-352"><a href="#cb71-352" aria-hidden="true" tabindex="-1"></a>numeric_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb71-353"><a href="#cb71-353" aria-hidden="true" tabindex="-1"></a>numeric_vector</span>
+<span id="cb71-354"><a href="#cb71-354" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-355"><a href="#cb71-355" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a character vector</span></span>
+<span id="cb71-356"><a href="#cb71-356" aria-hidden="true" tabindex="-1"></a>character_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cherry"</span>)</span>
+<span id="cb71-357"><a href="#cb71-357" aria-hidden="true" tabindex="-1"></a>character_vector</span>
+<span id="cb71-358"><a href="#cb71-358" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb71-359"><a href="#cb71-359" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-360"><a href="#cb71-360" aria-hidden="true" tabindex="-1"></a><span class="fu">### 4. Factor</span></span>
+<span id="cb71-361"><a href="#cb71-361" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-362"><a href="#cb71-362" aria-hidden="true" tabindex="-1"></a>A factor is a special type of vector used to represent categorical data.</span>
+<span id="cb71-363"><a href="#cb71-363" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-366"><a href="#cb71-366" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb71-367"><a href="#cb71-367" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a factor</span></span>
+<span id="cb71-368"><a href="#cb71-368" aria-hidden="true" tabindex="-1"></a>fruit <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"apple"</span>, <span class="st">"cherry"</span>, <span class="st">"banana"</span>)</span>
+<span id="cb71-369"><a href="#cb71-369" aria-hidden="true" tabindex="-1"></a>factor_fruit <span class="ot">&lt;-</span> <span class="fu">factor</span>(fruit)</span>
+<span id="cb71-370"><a href="#cb71-370" aria-hidden="true" tabindex="-1"></a>factor_fruit</span>
+<span id="cb71-371"><a href="#cb71-371" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-372"><a href="#cb71-372" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb71-373"><a href="#cb71-373" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-374"><a href="#cb71-374" aria-hidden="true" tabindex="-1"></a><span class="fu">### 5. Matrix</span></span>
+<span id="cb71-375"><a href="#cb71-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-376"><a href="#cb71-376" aria-hidden="true" tabindex="-1"></a>A matrix is a two-dimensional array where each element is of the same type.</span>
+<span id="cb71-377"><a href="#cb71-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-380"><a href="#cb71-380" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb71-381"><a href="#cb71-381" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a matrix</span></span>
+<span id="cb71-382"><a href="#cb71-382" aria-hidden="true" tabindex="-1"></a>matrix_data <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb71-383"><a href="#cb71-383" aria-hidden="true" tabindex="-1"></a>matrix_data</span>
+<span id="cb71-384"><a href="#cb71-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-385"><a href="#cb71-385" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb71-386"><a href="#cb71-386" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-387"><a href="#cb71-387" aria-hidden="true" tabindex="-1"></a><span class="fu">### 6. Array</span></span>
+<span id="cb71-388"><a href="#cb71-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-389"><a href="#cb71-389" aria-hidden="true" tabindex="-1"></a>An array is a multi-dimensional generalization of a matrix.</span>
+<span id="cb71-390"><a href="#cb71-390" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-393"><a href="#cb71-393" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb71-394"><a href="#cb71-394" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a 3-dimensional array</span></span>
+<span id="cb71-395"><a href="#cb71-395" aria-hidden="true" tabindex="-1"></a>array_data <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>))</span>
+<span id="cb71-396"><a href="#cb71-396" aria-hidden="true" tabindex="-1"></a>array_data</span>
+<span id="cb71-397"><a href="#cb71-397" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-398"><a href="#cb71-398" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb71-399"><a href="#cb71-399" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-400"><a href="#cb71-400" aria-hidden="true" tabindex="-1"></a><span class="fu">### 7. List</span></span>
+<span id="cb71-401"><a href="#cb71-401" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-402"><a href="#cb71-402" aria-hidden="true" tabindex="-1"></a>A list is a flexible data structure that can hold elements of different types.</span>
+<span id="cb71-403"><a href="#cb71-403" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-406"><a href="#cb71-406" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb71-407"><a href="#cb71-407" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a list</span></span>
+<span id="cb71-408"><a href="#cb71-408" aria-hidden="true" tabindex="-1"></a>my_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">name =</span> <span class="st">"John Doe"</span>, <span class="at">age =</span> <span class="dv">30</span>, <span class="at">scores =</span> <span class="fu">c</span>(<span class="dv">90</span>, <span class="dv">85</span>, <span class="dv">88</span>))</span>
+<span id="cb71-409"><a href="#cb71-409" aria-hidden="true" tabindex="-1"></a>my_list</span>
+<span id="cb71-410"><a href="#cb71-410" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-411"><a href="#cb71-411" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb71-412"><a href="#cb71-412" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-413"><a href="#cb71-413" aria-hidden="true" tabindex="-1"></a><span class="fu">### 8. Data Frame</span></span>
+<span id="cb71-414"><a href="#cb71-414" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-415"><a href="#cb71-415" aria-hidden="true" tabindex="-1"></a>A data frame is a table-like structure where each column can contain different types of data.</span>
+<span id="cb71-416"><a href="#cb71-416" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-419"><a href="#cb71-419" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb71-420"><a href="#cb71-420" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a data frame</span></span>
+<span id="cb71-421"><a href="#cb71-421" aria-hidden="true" tabindex="-1"></a>data_frame <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb71-422"><a href="#cb71-422" aria-hidden="true" tabindex="-1"></a>  <span class="at">ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
+<span id="cb71-423"><a href="#cb71-423" aria-hidden="true" tabindex="-1"></a>  <span class="at">Name =</span> <span class="fu">c</span>(<span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Charlie"</span>),</span>
+<span id="cb71-424"><a href="#cb71-424" aria-hidden="true" tabindex="-1"></a>  <span class="at">Score =</span> <span class="fu">c</span>(<span class="dv">85</span>, <span class="dv">92</span>, <span class="dv">88</span>)</span>
+<span id="cb71-425"><a href="#cb71-425" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb71-426"><a href="#cb71-426" aria-hidden="true" tabindex="-1"></a>data_frame</span>
+<span id="cb71-427"><a href="#cb71-427" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-428"><a href="#cb71-428" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb71-429"><a href="#cb71-429" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-430"><a href="#cb71-430" aria-hidden="true" tabindex="-1"></a><span class="fu">### 9. Text Data Objects (e.g., dfm)</span></span>
+<span id="cb71-431"><a href="#cb71-431" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-432"><a href="#cb71-432" aria-hidden="true" tabindex="-1"></a>Text data is increasingly important in social sciences and humanities. In R, specialized data structures like Document-Feature Matrices (dfm) are used for text analysis.</span>
+<span id="cb71-433"><a href="#cb71-433" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-436"><a href="#cb71-436" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb71-437"><a href="#cb71-437" aria-hidden="true" tabindex="-1"></a><span class="co"># Example using the quanteda package to create a dfm</span></span>
+<span id="cb71-438"><a href="#cb71-438" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the quanteda package if not already installed</span></span>
+<span id="cb71-439"><a href="#cb71-439" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("quanteda")</span></span>
+<span id="cb71-440"><a href="#cb71-440" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-441"><a href="#cb71-441" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span>
+<span id="cb71-442"><a href="#cb71-442" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-443"><a href="#cb71-443" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample text data</span></span>
+<span id="cb71-444"><a href="#cb71-444" aria-hidden="true" tabindex="-1"></a>texts <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"This is a sample text"</span>, <span class="st">"Text analysis with R"</span>, <span class="st">"Learning R is fun"</span>)</span>
+<span id="cb71-445"><a href="#cb71-445" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-446"><a href="#cb71-446" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a corpus</span></span>
+<span id="cb71-447"><a href="#cb71-447" aria-hidden="true" tabindex="-1"></a>corpus <span class="ot">&lt;-</span> <span class="fu">dfm</span>(<span class="fu">tokens</span>(texts))</span>
+<span id="cb71-448"><a href="#cb71-448" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-449"><a href="#cb71-449" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a Document-Feature Matrix (dfm)</span></span>
+<span id="cb71-450"><a href="#cb71-450" aria-hidden="true" tabindex="-1"></a>dfm_data <span class="ot">&lt;-</span> <span class="fu">dfm</span>(corpus)</span>
+<span id="cb71-451"><a href="#cb71-451" aria-hidden="true" tabindex="-1"></a>dfm_data</span>
+<span id="cb71-452"><a href="#cb71-452" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-453"><a href="#cb71-453" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb71-454"><a href="#cb71-454" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-455"><a href="#cb71-455" aria-hidden="true" tabindex="-1"></a><span class="fu">### Exercise 1: Creating and Manipulating Vectors</span></span>
+<span id="cb71-456"><a href="#cb71-456" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-457"><a href="#cb71-457" aria-hidden="true" tabindex="-1"></a>Objective: Start creating and manipulating vectors in R.</span>
+<span id="cb71-458"><a href="#cb71-458" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-459"><a href="#cb71-459" aria-hidden="true" tabindex="-1"></a>**Instructions:**</span>
+<span id="cb71-460"><a href="#cb71-460" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-461"><a href="#cb71-461" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Create a numeric vector containing the numbers 10, 20, 30, 40, and 50.</span>
+<span id="cb71-462"><a href="#cb71-462" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Create a character vector containing the names "Alice", "Bob", "Charlie", "David", and "Eve".</span>
+<span id="cb71-463"><a href="#cb71-463" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Use indexing to retrieve the third element from each of these vectors.</span>
+<span id="cb71-464"><a href="#cb71-464" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>Modify the second element in the numeric vector to be 25.</span>
+<span id="cb71-465"><a href="#cb71-465" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>Calculate the sum of all elements in the numeric vector.</span>
+<span id="cb71-466"><a href="#cb71-466" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-467"><a href="#cb71-467" aria-hidden="true" tabindex="-1"></a>**Expected Output:**</span>
+<span id="cb71-468"><a href="#cb71-468" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-469"><a href="#cb71-469" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Numeric vector: <span class="in">`c(10, 25, 30, 40, 50)`</span></span>
+<span id="cb71-470"><a href="#cb71-470" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Character vector: <span class="in">`c("Alice", "Bob", "Charlie", "David", "Eve")`</span></span>
+<span id="cb71-471"><a href="#cb71-471" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Sum of the numeric vector: <span class="in">`155`</span></span>
+<span id="cb71-472"><a href="#cb71-472" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-475"><a href="#cb71-475" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb71-476"><a href="#cb71-476" aria-hidden="true" tabindex="-1"></a><span class="co"># Create numeric and character vectors</span></span>
+<span id="cb71-477"><a href="#cb71-477" aria-hidden="true" tabindex="-1"></a>numeric_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>)</span>
+<span id="cb71-478"><a href="#cb71-478" aria-hidden="true" tabindex="-1"></a>character_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Charlie"</span>, <span class="st">"David"</span>, <span class="st">"Eve"</span>)</span>
+<span id="cb71-479"><a href="#cb71-479" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-480"><a href="#cb71-480" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve the third element</span></span>
+<span id="cb71-481"><a href="#cb71-481" aria-hidden="true" tabindex="-1"></a>numeric_vector[<span class="dv">3</span>]</span>
+<span id="cb71-482"><a href="#cb71-482" aria-hidden="true" tabindex="-1"></a>character_vector[<span class="dv">3</span>]</span>
+<span id="cb71-483"><a href="#cb71-483" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-484"><a href="#cb71-484" aria-hidden="true" tabindex="-1"></a><span class="co"># Modify the second element</span></span>
+<span id="cb71-485"><a href="#cb71-485" aria-hidden="true" tabindex="-1"></a>numeric_vector[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="dv">25</span></span>
+<span id="cb71-486"><a href="#cb71-486" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-487"><a href="#cb71-487" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the sum of all elements</span></span>
+<span id="cb71-488"><a href="#cb71-488" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(numeric_vector)</span>
+<span id="cb71-489"><a href="#cb71-489" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-490"><a href="#cb71-490" aria-hidden="true" tabindex="-1"></a><span class="co"># Try renaming the objects?</span></span>
+<span id="cb71-491"><a href="#cb71-491" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb71-492"><a href="#cb71-492" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-493"><a href="#cb71-493" aria-hidden="true" tabindex="-1"></a><span class="fu">### Exercise 2: Working with Factors</span></span>
+<span id="cb71-494"><a href="#cb71-494" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-495"><a href="#cb71-495" aria-hidden="true" tabindex="-1"></a>**Objective:** Understand how to create and manipulate factors in R.</span>
+<span id="cb71-496"><a href="#cb71-496" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-497"><a href="#cb71-497" aria-hidden="true" tabindex="-1"></a>**Instructions:**</span>
+<span id="cb71-498"><a href="#cb71-498" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-499"><a href="#cb71-499" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Create a factor variable from the following vector: <span class="in">`c("low", "medium", "high", "low", "medium", "high")`</span>.</span>
+<span id="cb71-500"><a href="#cb71-500" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Display the levels of the factor variable.</span>
+<span id="cb71-501"><a href="#cb71-501" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Convert the factor levels to an ordered factor where "low" <span class="sc">\&lt;</span> "medium" <span class="sc">\&lt;</span> "high".</span>
+<span id="cb71-502"><a href="#cb71-502" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>Create a bar plot to visualize the frequency of each level.</span>
+<span id="cb71-503"><a href="#cb71-503" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-504"><a href="#cb71-504" aria-hidden="true" tabindex="-1"></a>**Expected Output:**</span>
+<span id="cb71-505"><a href="#cb71-505" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-506"><a href="#cb71-506" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Levels: <span class="in">`c("low", "medium", "high")`</span></span>
+<span id="cb71-507"><a href="#cb71-507" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Ordered factor levels: <span class="in">`low &lt; medium &lt; high`</span></span>
+<span id="cb71-508"><a href="#cb71-508" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-509"><a href="#cb71-509" aria-hidden="true" tabindex="-1"></a>**R Code:**</span>
+<span id="cb71-510"><a href="#cb71-510" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-513"><a href="#cb71-513" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb71-514"><a href="#cb71-514" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a factor variable</span></span>
+<span id="cb71-515"><a href="#cb71-515" aria-hidden="true" tabindex="-1"></a>factor_variable <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span>, <span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span>))</span>
+<span id="cb71-516"><a href="#cb71-516" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-517"><a href="#cb71-517" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the levels</span></span>
+<span id="cb71-518"><a href="#cb71-518" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(factor_variable)</span>
+<span id="cb71-519"><a href="#cb71-519" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-520"><a href="#cb71-520" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to an ordered factor</span></span>
+<span id="cb71-521"><a href="#cb71-521" aria-hidden="true" tabindex="-1"></a>ordered_factor <span class="ot">&lt;-</span> <span class="fu">factor</span>(factor_variable, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span>), <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb71-522"><a href="#cb71-522" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-523"><a href="#cb71-523" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a bar plot</span></span>
+<span id="cb71-524"><a href="#cb71-524" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(ordered_factor))</span>
+<span id="cb71-525"><a href="#cb71-525" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb71-526"><a href="#cb71-526" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-527"><a href="#cb71-527" aria-hidden="true" tabindex="-1"></a><span class="fu">### Exercise 3: Data Frame Operations</span></span>
+<span id="cb71-528"><a href="#cb71-528" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-529"><a href="#cb71-529" aria-hidden="true" tabindex="-1"></a>**Objective:** Learn how to create, access, and manipulate data frames.</span>
+<span id="cb71-530"><a href="#cb71-530" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-531"><a href="#cb71-531" aria-hidden="true" tabindex="-1"></a>**Instructions:**</span>
+<span id="cb71-532"><a href="#cb71-532" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-533"><a href="#cb71-533" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Create a data frame with the following columns: <span class="in">`ID`</span> (1, 2, 3), <span class="in">`Name`</span> ("Alice", "Bob", "Charlie"), and <span class="in">`Score`</span> (85, 90, 88).</span>
+<span id="cb71-534"><a href="#cb71-534" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Access the <span class="in">`Name`</span> column and print it.</span>
+<span id="cb71-535"><a href="#cb71-535" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Add a new column <span class="in">`Pass`</span> that indicates whether the <span class="in">`Score`</span> is greater than or equal to 90.</span>
+<span id="cb71-536"><a href="#cb71-536" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>Calculate the average <span class="in">`Score`</span> for all students.</span>
+<span id="cb71-537"><a href="#cb71-537" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-538"><a href="#cb71-538" aria-hidden="true" tabindex="-1"></a>**Expected Output:**</span>
+<span id="cb71-539"><a href="#cb71-539" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-540"><a href="#cb71-540" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Data frame with a new <span class="in">`Pass`</span> column</span>
+<span id="cb71-541"><a href="#cb71-541" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Average score: <span class="in">`87.67`</span></span>
+<span id="cb71-542"><a href="#cb71-542" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-543"><a href="#cb71-543" aria-hidden="true" tabindex="-1"></a>**R Code:**</span>
+<span id="cb71-544"><a href="#cb71-544" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-547"><a href="#cb71-547" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb71-548"><a href="#cb71-548" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a data frame</span></span>
+<span id="cb71-549"><a href="#cb71-549" aria-hidden="true" tabindex="-1"></a>data_frame <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb71-550"><a href="#cb71-550" aria-hidden="true" tabindex="-1"></a>  <span class="at">ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
+<span id="cb71-551"><a href="#cb71-551" aria-hidden="true" tabindex="-1"></a>  <span class="at">Name =</span> <span class="fu">c</span>(<span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Charlie"</span>),</span>
+<span id="cb71-552"><a href="#cb71-552" aria-hidden="true" tabindex="-1"></a>  <span class="at">Score =</span> <span class="fu">c</span>(<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">88</span>)</span>
+<span id="cb71-553"><a href="#cb71-553" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb71-554"><a href="#cb71-554" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-555"><a href="#cb71-555" aria-hidden="true" tabindex="-1"></a><span class="co"># Access the Name column</span></span>
+<span id="cb71-556"><a href="#cb71-556" aria-hidden="true" tabindex="-1"></a>data_frame<span class="sc">$</span>Name</span>
+<span id="cb71-557"><a href="#cb71-557" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-558"><a href="#cb71-558" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a new column</span></span>
+<span id="cb71-559"><a href="#cb71-559" aria-hidden="true" tabindex="-1"></a>data_frame<span class="sc">$</span>Pass <span class="ot">&lt;-</span> data_frame<span class="sc">$</span>Score <span class="sc">&gt;=</span> <span class="dv">90</span></span>
+<span id="cb71-560"><a href="#cb71-560" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-561"><a href="#cb71-561" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the average score</span></span>
+<span id="cb71-562"><a href="#cb71-562" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(data_frame<span class="sc">$</span>Score)</span>
+<span id="cb71-563"><a href="#cb71-563" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb71-564"><a href="#cb71-564" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-565"><a href="#cb71-565" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb71-566"><a href="#cb71-566" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-567"><a href="#cb71-567" aria-hidden="true" tabindex="-1"></a><span class="fu">### Exercise 4: Text Data Manipulation with `stringr`</span></span>
+<span id="cb71-568"><a href="#cb71-568" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-569"><a href="#cb71-569" aria-hidden="true" tabindex="-1"></a>**Objective:** Practice manipulating text data using the <span class="in">`stringr`</span> package.</span>
+<span id="cb71-570"><a href="#cb71-570" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-571"><a href="#cb71-571" aria-hidden="true" tabindex="-1"></a>**Instructions:**</span>
+<span id="cb71-572"><a href="#cb71-572" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-573"><a href="#cb71-573" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Load the <span class="in">`stringr`</span> package.</span>
+<span id="cb71-574"><a href="#cb71-574" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Create a character string: <span class="in">`"The quick brown fox jumps over the lazy dog"`</span>.</span>
+<span id="cb71-575"><a href="#cb71-575" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Count the number of words in the string.</span>
+<span id="cb71-576"><a href="#cb71-576" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>Extract the word "quick" from the string.</span>
+<span id="cb71-577"><a href="#cb71-577" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>Replace the word "lazy" with "energetic".</span>
+<span id="cb71-578"><a href="#cb71-578" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-579"><a href="#cb71-579" aria-hidden="true" tabindex="-1"></a>**Expected Output:**</span>
+<span id="cb71-580"><a href="#cb71-580" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-581"><a href="#cb71-581" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Number of words: <span class="in">`9`</span></span>
+<span id="cb71-582"><a href="#cb71-582" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Extracted word: <span class="in">`"quick"`</span></span>
+<span id="cb71-583"><a href="#cb71-583" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Modified string: <span class="in">`"The quick brown fox jumps over the energetic dog"`</span></span>
+<span id="cb71-584"><a href="#cb71-584" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-585"><a href="#cb71-585" aria-hidden="true" tabindex="-1"></a>**R Code:**</span>
+<span id="cb71-586"><a href="#cb71-586" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-589"><a href="#cb71-589" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb71-590"><a href="#cb71-590" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the stringr package</span></span>
+<span id="cb71-591"><a href="#cb71-591" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb71-592"><a href="#cb71-592" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-593"><a href="#cb71-593" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a character string</span></span>
+<span id="cb71-594"><a href="#cb71-594" aria-hidden="true" tabindex="-1"></a>text_string <span class="ot">&lt;-</span> <span class="st">"The quick brown fox jumps over the lazy dog"</span></span>
+<span id="cb71-595"><a href="#cb71-595" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-596"><a href="#cb71-596" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of words</span></span>
+<span id="cb71-597"><a href="#cb71-597" aria-hidden="true" tabindex="-1"></a><span class="fu">str_count</span>(text_string, <span class="st">"</span><span class="sc">\\</span><span class="st">w+"</span>)</span>
+<span id="cb71-598"><a href="#cb71-598" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-599"><a href="#cb71-599" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the word "quick"</span></span>
+<span id="cb71-600"><a href="#cb71-600" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(text_string, <span class="st">"quick"</span>)</span>
+<span id="cb71-601"><a href="#cb71-601" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-602"><a href="#cb71-602" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace "lazy" with "crazy"</span></span>
+<span id="cb71-603"><a href="#cb71-603" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(text_string, <span class="st">"lazy"</span>, <span class="st">"crazy"</span>)</span>
+<span id="cb71-604"><a href="#cb71-604" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-605"><a href="#cb71-605" aria-hidden="true" tabindex="-1"></a><span class="co"># Try the following and count again?</span></span>
+<span id="cb71-606"><a href="#cb71-606" aria-hidden="true" tabindex="-1"></a><span class="co"># text_string &lt;- "The quick brown fox jumps over the lazy dog #"</span></span>
+<span id="cb71-607"><a href="#cb71-607" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb71-608"><a href="#cb71-608" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb71-609"><a href="#cb71-609" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-610"><a href="#cb71-610" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb71-611"><a href="#cb71-611" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-612"><a href="#cb71-612" aria-hidden="true" tabindex="-1"></a><span class="fu">### Exercise 5: Creating and Analyzing a Document-Term Matrix (DTM)</span></span>
+<span id="cb71-613"><a href="#cb71-613" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-614"><a href="#cb71-614" aria-hidden="true" tabindex="-1"></a>**Objective:** Learn how to create and analyze a Document-Term Matrix using text data.</span>
+<span id="cb71-615"><a href="#cb71-615" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-616"><a href="#cb71-616" aria-hidden="true" tabindex="-1"></a>**Instructions:**</span>
+<span id="cb71-617"><a href="#cb71-617" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-618"><a href="#cb71-618" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Load the <span class="in">`tm`</span> package.</span>
+<span id="cb71-619"><a href="#cb71-619" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Create a small corpus using the following text documents:</span>
+<span id="cb71-620"><a href="#cb71-620" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>"R is a programming language for data analysis."</span>
+<span id="cb71-621"><a href="#cb71-621" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>"Data analysis in R is powerful and flexible."</span>
+<span id="cb71-622"><a href="#cb71-622" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>"Learning R can be fun and rewarding."</span>
+<span id="cb71-623"><a href="#cb71-623" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Create a Document-Term Matrix (DTM) from the corpus.</span>
+<span id="cb71-624"><a href="#cb71-624" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>Inspect the DTM to see the term frequency matrix.</span>
+<span id="cb71-625"><a href="#cb71-625" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>Identify the term with the highest frequency across all documents.</span>
+<span id="cb71-626"><a href="#cb71-626" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-627"><a href="#cb71-627" aria-hidden="true" tabindex="-1"></a>**Expected Output:**</span>
+<span id="cb71-628"><a href="#cb71-628" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-629"><a href="#cb71-629" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>A DTM with term frequencies</span>
+<span id="cb71-630"><a href="#cb71-630" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The term with the highest frequency (e.g., "R")</span>
+<span id="cb71-631"><a href="#cb71-631" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-632"><a href="#cb71-632" aria-hidden="true" tabindex="-1"></a>**R Code:**</span>
+<span id="cb71-633"><a href="#cb71-633" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-636"><a href="#cb71-636" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb71-637"><a href="#cb71-637" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the tm package</span></span>
+<span id="cb71-638"><a href="#cb71-638" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tm)</span>
+<span id="cb71-639"><a href="#cb71-639" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-640"><a href="#cb71-640" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a corpus</span></span>
+<span id="cb71-641"><a href="#cb71-641" aria-hidden="true" tabindex="-1"></a>docs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"R is a programming language for data analysis."</span>,</span>
+<span id="cb71-642"><a href="#cb71-642" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Data analysis in R is powerful and flexible."</span>,</span>
+<span id="cb71-643"><a href="#cb71-643" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Learning R can be fun and rewarding."</span>)</span>
+<span id="cb71-644"><a href="#cb71-644" aria-hidden="true" tabindex="-1"></a>corpus <span class="ot">&lt;-</span> <span class="fu">Corpus</span>(<span class="fu">VectorSource</span>(docs))</span>
+<span id="cb71-645"><a href="#cb71-645" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-646"><a href="#cb71-646" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a Document-Term Matrix</span></span>
+<span id="cb71-647"><a href="#cb71-647" aria-hidden="true" tabindex="-1"></a>dtm <span class="ot">&lt;-</span> <span class="fu">DocumentTermMatrix</span>(corpus)</span>
+<span id="cb71-648"><a href="#cb71-648" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-649"><a href="#cb71-649" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect the DTM</span></span>
+<span id="cb71-650"><a href="#cb71-650" aria-hidden="true" tabindex="-1"></a><span class="fu">inspect</span>(dtm)</span>
+<span id="cb71-651"><a href="#cb71-651" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-652"><a href="#cb71-652" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the term with the highest frequency</span></span>
+<span id="cb71-653"><a href="#cb71-653" aria-hidden="true" tabindex="-1"></a>term_frequencies <span class="ot">&lt;-</span> <span class="fu">colSums</span>(<span class="fu">as.matrix</span>(dtm))</span>
+<span id="cb71-654"><a href="#cb71-654" aria-hidden="true" tabindex="-1"></a>most_frequent_term <span class="ot">&lt;-</span> <span class="fu">names</span>(term_frequencies[<span class="fu">which.max</span>(term_frequencies)])</span>
+<span id="cb71-655"><a href="#cb71-655" aria-hidden="true" tabindex="-1"></a>most_frequent_term</span>
+<span id="cb71-656"><a href="#cb71-656" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb71-657"><a href="#cb71-657" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-658"><a href="#cb71-658" aria-hidden="true" tabindex="-1"></a>Reference:</span>
+<span id="cb71-659"><a href="#cb71-659" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-660"><a href="#cb71-660" aria-hidden="true" tabindex="-1"></a>Nahhas, Ramzi W. 2024. <span class="co">[</span><span class="ot">*An Introduction to R for Research*</span><span class="co">](https://bookdown.org/rwnahhas/IntroToR/)</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
