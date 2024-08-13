@@ -1,0 +1,346 @@
+---
+title: "EPPS Math Coding Camp"
+subtitle: "Introduction to Linear Regression"
+author: "Dohyo Jeong"
+date: "August 13, 2024"
+format: 
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: show
+    code-tools: true
+    highlight-style: github
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Session 1: Introduction to Linear Regression
+
+## 1.1 Introduction and Data Overview
+
+### Dataset: Boston from the MASS Package
+
+The Boston dataset, included in the MASS package, contains information about housing in the Boston area, collected by the U.S. Census Service. It includes 506 observations on 14 variables, encompassing various socio-economic and housing factors impacting home values and quality of life in different neighborhoods.
+
+**Key variables:**<br>
+- **crim**: Crime rate per capita by town.<br>
+- **zn**: Proportion of residential land zoned for large lots.<br>
+- **indus**: Proportion of non-retail business acres per town.<br>
+- **chas**: Charles River dummy variable (1 if tract bounds river; 0 otherwise).<br>
+- **nox**: Nitrogen oxides concentration.<br>
+- **rm**: Average number of rooms per dwelling.<br>
+- **age**: Proportion of owner-occupied units built before 1940.<br>
+- **dis**: Distances to Boston employment centers.<br>
+- **rad**: Index of accessibility to radial highways.<br>
+- **tax**: Property tax rate per $10,000.<br>
+- **ptratio**: Pupil-teacher ratio by town.<br>
+- **black**: 1000(Bk - 0.63)^2 where Bk is the proportion of Black residents by town.<br>
+- **lstat**: Percentage of lower status population.<br>
+- **medv**: Median value of owner-occupied homes in $1000s.<br>
+<br>
+
+```{r}
+# Load necessary packages and data
+# install.packages("MASS")
+library(MASS)
+data("Boston")
+
+# Display the first few rows of the dataset
+head(Boston)
+```
+<br>
+
+::: {.callout-note}
+The MASS package contains the Boston dataset. The **head()** function shows the initial rows, providing a quick overview of the dataset's structure and variables.
+:::
+
+
+<br>
+
+## 1.2 Descriptive Statistics
+
+### Overview and Importance
+<br>
+Descriptive statistics provide a summary of the dataset's main features. This step is crucial in understanding the data's central tendencies, dispersion, and overall distribution. Before diving into more complex analyses, it’s essential to identify any potential outliers or anomalies that could affect your results.
+<br>
+
+### Calculating Descriptive Statistics
+
+```{r}
+# Summary statistics for the dataset
+summary(Boston)
+
+# Specific calculations for key variables
+mean_medv <- mean(Boston$medv, na.rm = TRUE)
+mean_medv
+
+sd_medv <- sd(Boston$medv, na.rm = TRUE)
+sd_medv
+
+mean_crim <- mean(Boston$crim, na.rm = TRUE)
+mean_crim
+
+sd_crim <- sd(Boston$crim, na.rm = TRUE)
+sd_crim
+```
+<br>
+
+#### Explanation:
+**summary(Boston)** provides a detailed overview of the dataset, including min, max, median, mean, and quartiles for each variable.<br>
+Calculating means and standard deviations for medv and crim provides insights into typical home values and crime rates, along with their variability.<br>
+<br>
+
+#### Interpreting Results:
+**Mean and Standard Deviation**: The mean provides the average value, while the standard deviation indicates the spread of data around the mean. A high standard deviation relative to the mean suggests greater variability. <br>
+<br>
+
+## 1.3 t-tests and ANOVA
+
+### 1.3.1 t-tests
+A t-test is used to compare the means of two groups to see if they are statistically significantly different from each other. For instance, you might want to test whether homes near the Charles River (chas = 1) have different median values than those further away (chas = 0).<br>
+
+```{r}
+# t-test for medv based on proximity to Charles River
+t_test_result <- t.test(medv ~ chas, data = Boston)
+
+# Displaying the t-test result
+t_test_result
+```
+<br>
+
+#### Explanation:
+The formula **medv ~ chas** specifies that the test compares median home values (medv) between homes near (chas = 1) and not near (chas = 0) the Charles River. <br>
+The output includes the t-statistic, degrees of freedom, and p-value, indicating whether the difference in means is statistically significant.<br>
+<br>
+
+#### Interpreting Results:
+**p-value**: A low p-value (typically < 0.05) suggests a significant difference in means, leading to the rejection of the null hypothesis that the means are equal.<br>
+<br>
+
+### 1.3.2. ANOVA (Analysis of Variance)
+<br>
+ANOVA is used to determine if there are statistically significant differences between the means of three or more independent (unrelated) groups. For example, you can analyze whether median home values (medv) differ across different levels of highway accessibility (rad).<br>
+<br>
+```{r}
+# ANOVA for medv by rad
+anova_result <- aov(medv ~ factor(rad), data = Boston)
+
+# Summary of ANOVA
+summary(anova_result)
+```
+<br>
+
+#### Explanation:
+**medv ~ factor**(rad) treats rad as a categorical variable, analyzing the effect of accessibility to highways on home values. <br>
+**aov()** conducts the ANOVA, and **summary()** provides the F-statistic and p-value.<br>
+
+#### Interpreting Results:
+**F-statistic**: Indicates the ratio of variance between groups to variance within groups. A higher F-value suggests greater differences between group means.<br>
+**p-value**: If the p-value is low, it indicates significant differences in means across the groups.<br>
+<br>
+
+## 1.4 Simple Linear Regression
+
+### Introduction and Purpose
+<br>
+Simple linear regression is a method for quantifying the relationship between two continuous variables. It models the dependent variable (Y) as a linear function of the independent variable (X), allowing for predictions and insights into their relationship.<br>
+<br>
+
+#### Example: Predicting Home Values
+```{r}
+# Linear regression: medv as a function of lstat
+lm_model <- lm(medv ~ lstat, data = Boston)
+
+# Summary of the linear model
+summary(lm_model)
+```
+```{r}
+# Plotting the regression line
+plot(Boston$lstat, Boston$medv, main = "Linear Regression of medv on lstat",
+     xlab = "Percentage of Lower Status Population (lstat)", ylab = "Median Value of Homes (medv)")
+abline(lm_model, col = "red")
+```
+<br>
+
+#### Explanation:
+**medv ~ lstat** specifies the model, predicting median home values (medv) based on the percentage of lower status population (lstat). <br>
+**lm()** fits the model, and **summary()** provides detailed statistics, including coefficients, R-squared value, and p-values.<br>
+<br>
+
+#### Interpreting Results:
+**Coefficients**: The slope coefficient indicates the change in medv for a one-unit increase in lstat. The intercept represents the predicted value of medv when lstat is zero.<br>
+**R-squared**: Measures the proportion of variance in medv explained by lstat. A higher R-squared indicates a better fit.<br>
+**p-value**: Tests the hypothesis that the slope is different from zero. A low p-value indicates a significant relationship.<br>
+<br>
+
+## Difference-in-Differences (DID) Analysis
+
+### Introduction and Purpose
+
+The Difference-in-Differences (DID) method estimates causal relationships, particularly in observational studies where randomized control trials are not feasible. DID compares the changes in outcomes over time between a treatment group and a control group, helping to isolate the effect of a treatment or intervention.
+
+#### Example: Impact of Policy Change on Home Values
+Suppose a new policy was introduced in 1975 that potentially affected home values in certain areas (e.g., stricter zoning laws). The DID approach could help estimate the policy's impact by comparing the change in home values in affected areas (treatment group) to those in unaffected areas (control group).
+
+```{r}
+# Creating a hypothetical policy introduction year and treatment variable
+Boston$year <- sample(1970:1980, nrow(Boston), replace = TRUE)
+Boston$treat <- ifelse(Boston$zn > 15, 1, 0)  # Treatment if zn > 15
+
+head(Boston$year)
+head(Boston$treat)
+```
+```{r}
+# DID Model: Interaction of time and treatment
+did_model <- lm(medv ~ treat * year, data = Boston)
+
+# Summary of the DID model
+summary(did_model)
+```
+
+
+# Session 2: Hands-on Exercises
+
+The diamonds dataset from the ggplot2 package contains data on 53,940 diamonds, with attributes that can be used to explore relationships between price, quality, and physical dimensions.
+
+#### Key Variable Descriptions:
+- **carat**: Weight of the diamond (continuous variable).
+- **cut**: Quality of the cut, categorized as Fair, Good, Very Good, Premium, and Ideal (ordered factor).
+- **color**: Diamond color, with grades from D (best) to J (worst) (ordered factor).
+- **clarity**: Clarity of the diamond, ranging from I1 (worst) to IF (best) (ordered factor).
+- **depth**: Total depth percentage, which is the height of a diamond divided by its average diameter (continuous variable).
+- **table**: Width of the diamond's table expressed as a percentage of its diameter (continuous variable).
+- **price**: Price of the diamond in US dollars (continuous variable).
+
+
+```{r, warning=FALSE}
+# Load the necessary package
+library(ggplot2)
+data("diamonds")
+
+head(diamonds)
+```
+
+### Exercise 1: Descriptive Statistics
+<br>
+
+#### Q1
+1) Calculate the mean and standard deviation of the carat, price, and depth variables.<br>
+2) Use the summary() function to get a detailed summary of the price variable. <br>
+3) Determine the number of diamonds within each cut category using the table() function.
+
+#### Solution
+
+```{r}
+# Step 1: Calculate mean and standard deviation
+mean_carat <- mean(diamonds$carat, na.rm = TRUE)
+sd_carat <- sd(diamonds$carat, na.rm = TRUE)
+mean_price <- mean(diamonds$price, na.rm = TRUE)
+sd_price <- sd(diamonds$price, na.rm = TRUE)
+mean_depth <- mean(diamonds$depth, na.rm = TRUE)
+sd_depth <- sd(diamonds$depth, na.rm = TRUE)
+
+mean_carat
+sd_carat
+mean_price
+sd_price
+mean_depth
+sd_depth
+
+# Step 2: Summary of the price variable
+summary_price <- summary(diamonds$price)
+summary_price
+
+# Step 3: Number of diamonds by cut category
+cut_distribution <- table(diamonds$cut)
+cut_distribution
+
+```
+<br>
+
+### Exercise 2: t-test
+<br>
+
+#### Q2
+1) Subset the diamonds dataset to include only diamonds with an "Ideal" or "Fair" cut. <br>
+2) Perform a t-test to compare the mean prices between these two cut categories. <br>
+3) nterpret the p-value to determine if the difference in mean prices is statistically significant. <br>
+
+#### Solution
+```{r}
+# Subset the data for Ideal and Fair cuts
+diamonds_ideal_fair <- subset(diamonds, cut %in% c("Ideal", "Fair"))
+
+# Perform the t-test
+t_test_result <- t.test(price ~ cut, data = diamonds_ideal_fair)
+t_test_result
+
+```
+
+
+### Exercise 3: ANOVA
+<br>
+
+#### Q3
+1) Perform an ANOVA test to assess the effect of clarity on diamond price. <br>
+2) If significant differences are found, conduct a Tukey's HSD post-hoc test to identify which clarity levels differ from each other. <br>
+
+#### Solution
+```{r}
+# Perform ANOVA on price by clarity
+anova_result <- aov(price ~ clarity, data = diamonds)
+summary(anova_result)
+
+# Post-hoc test if ANOVA is significant
+tukey_result <- TukeyHSD(anova_result)
+tukey_result
+```
+
+
+### Exercise 4: Simple Linear Regression
+<br>
+
+#### Q4
+1) Fit a simple linear regression model with carat as the predictor and price as the response variable. <br>
+2) Display the summary of the regression model, including coefficients, R-squared, and p-value.
+3) Create a scatter plot of price versus carat, and add the regression line to visualize the relationship.
+
+#### Solution
+```{r}
+# Fit the linear regression model
+lm_model <- lm(price ~ carat, data = diamonds)
+summary(lm_model)
+
+# Create a scatter plot and add the regression line
+plot(diamonds$carat, diamonds$price, main = "Linear Regression of Price on Carat",
+     xlab = "Carat", ylab = "Price")
+abline(lm_model, col = "blue")
+```
+
+
+
+# Session 3: Wrapping Up and Q&A
+In this session, we've explored key statistical methods, including descriptive statistics, t-tests, ANOVA, and simple linear regression, using the Boston dataset. These methods are essential for analyzing and interpreting data in various fields.
+<br>
+
+Continue practicing these techniques with different datasets and variables to strengthen your understanding and analytical skills.<br>
+<br>
+
+
+**Q&A**: Please share any questions or challenges encountered during the exercises. Let's discuss solutions and clarify concepts!<br>
+<br>
+
+
+### Reference
+- https://datageneration.io/dataprogrammingwithr/intro
+- Chicago Harris School Coding Camp
+- Data.gov, the U.S. government's open data portal
+- https://cran.r-project.org/web/packages/MASS/MASS.pdf
+- https://ggplot2.tidyverse.org/reference/diamonds.html 
+
+
+
+
+

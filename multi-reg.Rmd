@@ -1,0 +1,267 @@
+---
+title: "EPPS Math Coding Camp"
+subtitle: "Multiple Linear Regression"
+author: "Dohyo Jeong"
+date: "August 13, 2024"
+format: 
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: show
+    code-tools: true
+    highlight-style: github
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Session 1: Multiple Linear Regression
+
+## 1.1 Introduction and Data Overview
+
+#### What is Multiple Linear Regression?
+Multiple linear regression is an extension of simple linear regression in which the relationship between a single dependent variable and two or more independent variables is modeled. This approach helps capture the complexity of real-world data by considering multiple factors that could influence the outcome.
+
+
+### Dataset: Boston from the MASS Package
+
+The Boston dataset from the MASS package provides information on housing in the Boston area, including socio-economic and environmental factors. It contains 506 observations on 14 variables.<br>
+
+**Key variables:**<br>
+- **crim**: Crime rate per capita by town.<br>
+- **zn**: Proportion of residential land zoned for large lots.<br>
+- **indus**: Proportion of non-retail business acres per town.<br>
+- **chas**: Charles River dummy variable (1 if tract bounds river; 0 otherwise).<br>
+- **nox**: Nitrogen oxides concentration.<br>
+- **rm**: Average number of rooms per dwelling.<br>
+- **age**: Proportion of owner-occupied units built before 1940.<br>
+- **dis**: Distances to Boston employment centers.<br>
+- **rad**: Index of accessibility to radial highways.<br>
+- **tax**: Property tax rate per $10,000.<br>
+- **ptratio**: Pupil-teacher ratio by town.<br>
+- **black**: 1000(Bk - 0.63)^2 where Bk is the proportion of Black residents by town.<br>
+- **lstat**: Percentage of lower status population.<br>
+- **medv**: Median value of owner-occupied homes in $1000s.<br>
+<br>
+
+```{r}
+# Load necessary packages and data
+# install.packages("MASS")
+library(MASS)
+data("Boston")
+
+# Display the first few rows of the dataset
+head(Boston)
+```
+<br>
+
+## 1.2 Extending to Multiple Predictors
+
+### Concept and Purpose
+In simple linear regression, we model the relationship between a dependent variable and one independent variable. However, in real-world scenarios, outcomes are often influenced by multiple factors. Multiple linear regression allows us to model the relationship between the dependent variable (in this case, medv) and multiple independent variables, providing a more comprehensive understanding of the factors affecting the outcome.
+<br>
+
+#### Example: Fitting a Multiple Linear Regression Model
+
+```{r}
+# Multiple linear regression model
+multi_lm <- lm(medv ~ crim + rm + age + dis + tax, data = Boston)
+
+# Summary of the model
+summary(multi_lm)
+```
+<br>
+
+#### Explanation:
+The formula **medv ~ crim + rm + age + dis + tax** specifies the response variable (medv) and the predictor variables (crim, rm, age, dis, and tax).<br>
+**lm()** fits the multiple linear regression model, and **summary()** provides detailed output, including coefficients, R-squared, and p-values.<br>
+
+#### Interpreting Results:
+- **Coefficients**: Each coefficient represents the change in the dependent variable (medv) for a one-unit change in the corresponding independent variable, holding all other variables constant.<br>
+  For example, if the coefficient for rm is positive, it indicates that an increase in the average number of rooms per dwelling is associated with an increase in the median home value. <br>
+- **R-squared**: This statistic measures the proportion of the variance in the dependent variable that is explained by the independent variables in the model. A higher R-squared indicates a better fit. <br>
+- **p-values**: These values test the null hypothesis that a given coefficient is equal to zero (i.e., the variable has no effect). A p-value less than 0.05 typically indicates that the variable is statistically significant.
+<br>
+
+## 1.3 Interpreting Coefficients and p-values
+
+### Detailed Interpretation
+Interpreting the coefficients and p-values in a multiple regression model is crucial for understanding the relationships between the variables. <br>
+
+#### Example Interpretation:
+- **crim coefficient**: Suppose the coefficient for crim (crime rate) is -0.2. This negative value suggests that, holding other factors constant, an increase in the crime rate by one unit is associated with a decrease in the median home value by $200 (since the dependent variable medv is in $1000s).
+- **rm coefficient**: If the coefficient for rm is 5.0, it indicates that, on average, each additional room in a dwelling is associated with an increase in the median home value by $5000, holding other variables constant.
+- **age coefficient**: A positive coefficient for age might suggest that older neighborhoods (with a higher proportion of homes built before 1940) are associated with higher median home values, assuming other factors are held constant.<br>
+<br>
+
+#### Significance:
+**p-value < 0.05**: A predictor with a p-value less than 0.05 is considered statistically significant, meaning there is strong evidence that the predictor is associated with the response variable.<br>
+**Confidence Intervals**: These provide a range of values within which the true coefficient is likely to fall, offering insight into the precision of the estimates. <br>
+<br>
+
+## 1.4 Stepwise Regression and Model Selection
+#### Overview
+Stepwise regression selects a subset of variables that contribute the most to predicting the dependent variable. It combines statistical techniques with automated procedures to add or remove predictors based on their significance and impact on model performance. <br>
+
+<br>
+
+### Example 1: Forward Selection
+Forward selection begins with an empty model and adds predictors one at a time, selecting the predictor that improves the model the most at each step. <br>
+
+```{r}
+# install.packages("stats")
+# Forward selection starting from an empty model
+empty_model <- lm(medv ~ 1, data = Boston)
+full_model <- lm(medv ~ ., data = Boston)
+
+forward_model <- stats::step(empty_model, 
+                             scope = list(lower = empty_model, upper = full_model),
+                             direction = "forward")
+summary(forward_model)
+```
+<br>
+- **empty_model**: This is the simplest model, containing only the intercept (no predictors).
+- The basic model starts with all predictors (**lm(medv ~ .)**).<br>
+- The **scope** argument defines the range of models to consider, from the simplest (intercept only) to the full model (all predictors).<br>
+- The **step()** function iteratively adds predictors that reduce the AIC, improving the model fit.<br>
+<br>
+
+#### Example 2: Backward Elimination
+Backward elimination starts with the full model and removes the least significant predictors one by one, based on criteria like AIC.<br>
+<br>
+
+```{r}
+# Backward elimination starting from the full model
+full_model <- lm(medv ~ ., data = Boston)
+backward_model <- stats::step(full_model, direction = "backward")
+summary(backward_model)
+```
+<br>
+
+#### Explanation:
+The model starts with all predictors (**lm(medv ~ .)**).<br>
+The **step()** function removes predictors that contribute least to the model fit, as indicated by the highest AIC.<br>
+<br>
+
+#### Example 3: Bidirectional Elimination
+Bidirectional elimination combines both forward selection and backward elimination, allowing variables to be added or removed based on their significance.<br>
+<br>
+
+```{r}
+# Bidirectional elimination
+empty_model <- lm(medv ~ 1, data = Boston)
+full_model <- lm(medv ~ ., data = Boston)
+
+both_model <- stats::step(empty_model, 
+                          scope = list(lower = empty_model, upper = full_model), 
+                          direction = "both")
+summary(both_model)
+```
+<br>
+
+#### Explanation:
+This approach starts with either an empty model or a full model and considers adding or removing predictors based on the improvement in the criterion.<br>
+<br>
+
+# Session 2: Hands-on Exercises
+
+1) Explore the Boston dataset and select one dependent variable (Y) and at least three independent variables (X1, X2, X3, ...).
+2) Use summary() and str() to explore the dataset and understand available variables.
+Choose a dependent variable (Y) that you think could be influenced by other factors in the dataset.
+3) Select at least three independent variables (X1, X2, X3, etc.) that may impact the dependent variable.
+
+
+```{r}
+# Load necessary package and data
+library(MASS)
+data("Boston")
+```
+
+::: {.callout-note}
+Think about the relationships between variables. For example, does the crime rate (crim) affect the median home value (medv)? Or could a house's number of rooms (rm) predict home value?
+:::
+
+
+::: {.callout-tip}
+Consider using cor() to check the correlations between variables, which might help select predictors.
+:::
+
+#### Solution
+```{r}
+# Exploring the dataset
+summary(Boston)
+str(Boston)
+
+# Example selection (students should choose their own):
+# Dependent variable (Y): medv (Median value of owner-occupied homes)
+# Independent variables (X): crim (crime rate), rm (average number of rooms), tax (property tax rate)
+
+# Check correlations (optional)
+cor(Boston[c("medv", "crim", "rm", "tax")])
+```
+<br>
+
+### Exercise 1: Fitting a Multiple Linear Regression Model
+#### Q1
+
+1) Use the lm() function to create a multiple linear regression model with your selected variables. <br>
+2) Display the summary of the model to interpret the coefficients, R-squared, and p-values. <br>
+3) For each independent variable, interpret the coefficient in terms of its impact on the dependent variable. <br>
+
+```{r}
+# Example based on a hypothetical selection (students should use their own selected variables):
+# Fitting the multiple linear regression model
+model <- lm(medv ~ crim + rm + tax, data = Boston)
+
+# Display the model summary
+summary(model)
+```
+
+
+### Exercise 2: Refining the Model with Stepwise Regression
+#### Q2
+
+1) Apply forward selection, backward elimination, or bidirectional elimination to your model using the step() function. <br>
+2) Compare the new model with your initial model and discuss any differences in the selected variables and model performance. <br>
+
+#### Solution
+```{r}
+# Forward Selection
+forward_model <- step(lm(medv ~ 1, data = Boston), 
+                      scope = list(lower = lm(medv ~ 1, data = Boston), 
+                                   upper = lm(medv ~ crim + rm + tax + age + dis, data = Boston)), 
+                      direction = "forward")
+summary(forward_model)
+
+# Backward Elimination
+backward_model <- step(lm(medv ~ crim + rm + tax + age + dis, data = Boston), 
+                       direction = "backward")
+summary(backward_model)
+
+# Bidirectional Elimination
+both_model <- step(lm(medv ~ 1, data = Boston), 
+                   scope = list(lower = lm(medv ~ 1, data = Boston), 
+                                upper = lm(medv ~ crim + rm + tax + age + dis, data = Boston)), 
+                   direction = "both")
+summary(both_model)
+```
+
+
+# Session 3: Wrapping Up and Q&A
+In this session, we've covered multiple linear regression, extending to multiple predictors, interpreting coefficients and p-values, and using stepwise regression for model selection. These techniques are fundamental for building predictive models and understanding complex relationships in data.
+<br>
+
+Practice these methods with different datasets and variables to better understand and improve your analytical skills. <br>
+<br>
+
+**Q&A**: Please share any questions or challenges encountered during the exercises. Let's discuss solutions and clarify concepts! <br>
+
+
+### Reference
+- https://datageneration.io/dataprogrammingwithr/intro
+- Chicago Harris School Coding Camp
+- Data.gov, the U.S. government's open data portal
+- https://cran.r-project.org/web/packages/MASS/MASS.pdf
+- https://rdrr.io/cran/ISLR/man/Wage.html
+

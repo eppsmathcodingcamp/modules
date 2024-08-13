@@ -1,0 +1,319 @@
+---
+title: "EPPS Math Coding Camp"
+subtitle: "Data Visualization with Basic R"
+instructor: "Xingyuan Zhao"
+date: "August 13, 2024"
+format: 
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: show
+    code-tools: true
+    highlight-style: github
+---
+Instructor: `r rmarkdown::metadata$instructor`
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Session 1: Data Visualization with Base R
+<br>
+
+The **plot()** function in R is a versatile tool for creating various basic plots. Scatter plots, line plots, histograms, and more can be generated depending on the input data and arguments. Users can create informative visual representations of data by specifying different types (e.g., points, lines) and attributes (e.g., colors, labels). 
+
+### Key Concepts
+- **Basic Histogram**: Visualizing data distribution focusing on mean and median. <br>
+- **Boxplot**: Comparing distributions across categories, such as gender.<br>
+- **Scatter Plot**: Displaying relationships between two continuous variables, differentiated by categories.<br>
+- **Line Plot**: Showing trends over time or other continuous variables.<br>
+- **Customizations**: Enhancing plots with colors, legends, labels, and annotations for better clarity and understanding.<br>
+
+## 1.1 Basic Histogram
+
+#### Creating a Basic Histogram
+
+```{r}
+# Reading the CSV file
+life_expectancy_data <- read.csv("US_Life_expectancy.csv")
+```
+
+```{r}
+# Basic histogram of Average Life Expectancy
+hist(life_expectancy_data$Average_Life_Expectancy)
+```
+
+
+```{r}
+# Histogram Parameters
+hist(life_expectancy_data$Average_Life_Expectancy,
+     main = "Histogram of Average Life Expectancy",
+     xlab = "Average Life Expectancy",
+     col = "lightblue",
+     border = "grey")
+```
+<br>
+**main** adds a title to the histogram. <br>
+**xlab** sets the label for the x-axis. <br>
+**col** changes the color of the bars to light blue.<br>
+**border** specifies the color of the bar borders. These options improve the plot's readability and visual appeal.<br>
+<br>
+
+The default colors provided by Rstudio can be found at the link below. <br>
+https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf
+
+
+#### Adding Mean and Median
+
+```{r}
+# Adding mean and median lines
+mean_le <- mean(life_expectancy_data$Average_Life_Expectancy, na.rm = TRUE)
+median_le <- median(life_expectancy_data$Average_Life_Expectancy, na.rm = TRUE)
+```
+<br>
+**mean()** and **median()** functions calculate the mean and median of Average_Life_Expectancy, respectively. <br>
+**na.rm = TRUE** ensures that NA values are ignored in the calculations, preventing errors.<br>
+<br>
+
+```{r}
+# Replotting with mean and median
+hist(life_expectancy_data$Average_Life_Expectancy,
+     main = "Histogram of Average Life Expectancy with Mean and Median",
+     xlab = "Average Life Expectancy",
+     col = "lightblue", border = "black")
+abline(v = mean_le, col = "blue", lwd = 2)
+abline(v = median_le, col = "red", lwd = 2)
+```
+<br>
+**abline()** adds vertical lines for the mean and median.<br>
+**lwd = 2** selects the thickness of the line.<br>
+<br>
+
+
+```{r}
+# adding the legend
+hist(life_expectancy_data$Average_Life_Expectancy,
+     main = "Histogram of Average Life Expectancy with Mean and Median",
+     xlab = "Average Life Expectancy",
+     col = "lightblue", border = "black")
+abline(v = mean_le, col = "blue", lwd = 2)
+abline(v = median_le, col = "red", lwd = 2)
+legend("topleft", legend = c("Mean", "Median"), col = c("blue", "red"), lwd = 2)
+```
+<br>
+**topleft** specifies the position of the legend. Try different ones: topright, bottomleft, bottomright, right, left, top, bottom.
+<br>
+
+## 1.2 Boxplot
+
+#### Creating Basic Boxplot
+
+```{r}
+# Basic boxplot by Gender
+boxplot(Average_Life_Expectancy ~ Gender, data = life_expectancy_data,
+        main = "Boxplot of Life Expectancy by Gender",
+        xlab = "Gender", ylab = "Average Life Expectancy")
+```
+<br>
+The **~** symbol separates the dependent variable (Average_Life_Expectancy) from the independent variable (Gender), indicating a relationship. <br>
+The **boxplot()** function displays the distribution of life expectancy across genders, showing medians, quartiles, and potential outliers.<br>
+<br>
+
+#### Adding Colors
+```{r}
+# Boxplot with colors
+boxplot(Average_Life_Expectancy ~ Gender, data = life_expectancy_data,
+        main = "Boxplot of Life Expectancy by Gender",
+        xlab = "Gender", ylab = "Average Life Expectancy",
+        col = c("lightblue", "lightgreen"))
+```
+<br>
+The **col** parameter assigns different colors to each box.
+<br>
+
+## 1.3 Basic Scatter Plot
+
+#### Scatter Plot with Data Points
+
+```{r}
+# Scatter plot with data points
+plot(life_expectancy_data$Year, life_expectancy_data$Average_Life_Expectancy,
+     xlab = "Year", ylab = "Average Life Expectancy",
+     main = "Scatter Plot of Life Expectancy Over Time",
+     pch = 19)
+```
+<br>
+**plot()** creates a scatter plot with Year on the x-axis and Average_Life_Expectancy on the y-axis.<br>
+**pch** sets different shapes for points. Try out different shapes. <br>
+**pch = 19** specifies the plotting character (point symbol) to use. Different pch values represent different shapes, which you can explore here. <br>
+http://www.sthda.com/english/wiki/r-plot-pch-symbols-the-different-point-shapes-available-in-r
+<br>
+
+#### Coloring Points
+```{r}
+# Scatter plot with gender-colored points
+plot(life_expectancy_data$Year, life_expectancy_data$Average_Life_Expectancy,
+     xlab = "Year", ylab = "Average Life Expectancy",
+     main = "Scatter Plot of Life Expectancy Over Time by Gender",
+     pch = 19, col = ifelse(life_expectancy_data$Gender == "Male", "blue", "red"))
+```
+<br>
+The **col** argument uses an **ifelse()** condition to color points by gender.
+<br>
+
+## 1.4 Line Plot
+
+#### Basic Line Plot
+```{r}
+# Basic line plot of Average Life Expectancy over time
+plot(life_expectancy_data$Year, life_expectancy_data$Average_Life_Expectancy,
+     type = "l", col = "darkgray",
+     xlab = "Year", ylab = "Average Life Expectancy",
+     main = "Line Plot of Life Expectancy Over Time")
+```
+<br>
+**type = "l"** indicates that the plot should be a line plot.<br>
+<br>
+
+#### Line Plot by Gender
+
+```{r}
+# Line plot with lines colored by gender
+male_data <- subset(life_expectancy_data, Gender == "Male")
+female_data <- subset(life_expectancy_data, Gender == "Female")
+
+plot(male_data$Year, male_data$Average_Life_Expectancy,
+     type = "l", col = "blue", lwd = 2,
+     xlab = "Year", ylab = "Average Life Expectancy",
+     main = "Line Plot of Life Expectancy by Gender Over Time",
+     xlim = c(min(life_expectancy_data$Year), max(life_expectancy_data$Year)), 
+     ylim = c(min(life_expectancy_data$Average_Life_Expectancy, na.rm = TRUE), 
+              max(life_expectancy_data$Average_Life_Expectancy, na.rm = TRUE)))
+lines(female_data$Year, female_data$Average_Life_Expectancy, col = "red", lwd = 2)
+```
+<br>
+**subset()** creates separate data frames for male and female data.<br>
+**lines()** adds another line to the existing plot, distinguishing between male and female trends by color.<br>
+**lwd = 2** specifies the line width, making it more distinct.<br>
+The **plot()** function can initialize a plot with just axes, using **xlim** and **ylim** to set axis limits.<br>
+<br>
+
+
+## 1.5 Adding Titles, Labels, and Customizations
+
+```{r}
+# Customized plot with titles and labels
+plot(male_data$Year, male_data$Average_Life_Expectancy,
+     type = "l", col = "blue", lwd = 2,
+     xlab = "Year", ylab = "Average Life Expectancy (years)",
+     main = "Life Expectancy by Gender Over Time",
+     lty = 1,
+     xlim = c(min(life_expectancy_data$Year), max(life_expectancy_data$Year)), 
+     ylim = c(min(life_expectancy_data$Average_Life_Expectancy, na.rm = TRUE), 
+              max(life_expectancy_data$Average_Life_Expectancy, na.rm = TRUE)))
+lines(female_data$Year, female_data$Average_Life_Expectancy, col = "red", lwd = 2, lty = 2)
+```
+<br>
+**lty** specifies line types (solid for males, dashed for females). <br>
+<br>
+
+## 1.6 Adding Legends and Annotations
+
+```{r}
+# Adding legends and annotations
+plot(male_data$Year, male_data$Average_Life_Expectancy,
+     type = "l", col = "blue", lwd = 2,
+     xlab = "Year", ylab = "Average Life Expectancy (years)",
+     main = "Life Expectancy by Gender Over Time",
+     lty = 1,
+     xlim = c(min(life_expectancy_data$Year), max(life_expectancy_data$Year)), 
+     ylim = c(min(life_expectancy_data$Average_Life_Expectancy, na.rm = TRUE), 
+              max(life_expectancy_data$Average_Life_Expectancy, na.rm = TRUE)))
+lines(female_data$Year, female_data$Average_Life_Expectancy, col = "red", lwd = 2, lty = 2)
+
+legend("bottomright", legend = c("Male", "Female"), col = c("blue", "red"), lwd = 2, lty = c(1, 2))
+text(1918, 75, "End of World War I", col = "black")
+abline(v = 1918, col = "black", lwd = 1, lty = 3)
+
+```
+<br>
+**legend()** adds a legend, and **text()** and **abline()** add annotations and vertical lines. <br>
+<br>
+
+# Session 2: Hands-on Exercises
+
+## 2.1 Creating Visualizations for Age-adjusted Death Rate
+
+1) Create a basic histogram of Age_adjusted_Death_Rate with mean and median lines.
+2) Create a boxplot of Age_adjusted_Death_Rate by gender with colors.
+3) Create a scatter plot of Year vs. Age_adjusted_Death_Rate with points colored by gender.
+4) Create a line plot of Year vs. Age_adjusted_Death_Rate with lines for each gender.
+
+::: {.callout-note collapse=true}
+```{r}
+# Your code here
+
+# 1. Histogram
+hist(life_expectancy_data$Age_adjusted_Death_Rate,
+     main = "Histogram of Age-adjusted Death Rate",
+     xlab = "Age-adjusted Death Rate",
+     col = "lightgray", border = "black")
+abline(v = mean(life_expectancy_data$Age_adjusted_Death_Rate, na.rm = TRUE), col = "blue", lwd = 2)
+abline(v = median(life_expectancy_data$Age_adjusted_Death_Rate, na.rm = TRUE), col = "red", lwd = 2)
+```
+:::
+
+::: {.callout-note collapse=true}
+```{r}
+# 2. Boxplot by gender
+boxplot(Age_adjusted_Death_Rate ~ Gender, data = life_expectancy_data,
+        main = "Boxplot of Age-adjusted Death Rate by Gender",
+        xlab = "Gender", ylab = "Age-adjusted Death Rate",
+        col = c("lightblue", "lightgreen"))
+```
+:::
+
+::: {.callout-note collapse=true}
+```{r}
+# 3. Scatter plot
+plot(life_expectancy_data$Year, life_expectancy_data$Age_adjusted_Death_Rate,
+     xlab = "Year", ylab = "Age-adjusted Death Rate",
+     main = "Scatter Plot of Death Rate Over Time by Gender",
+     pch = 19, col = ifelse(life_expectancy_data$Gender == "Male", "blue", "red"))
+```
+:::
+
+::: {.callout-note collapse=true}
+```{r}
+# 4. Line plot by gender
+plot(male_data$Year, male_data$Age_adjusted_Death_Rate,
+     type = "l", col = "blue", lwd = 2,
+     xlab = "Year", ylab = "Age-adjusted Death Rate",
+     main = "Line Plot of Death Rate by Gender Over Time",
+     xlim = c(min(life_expectancy_data$Year), max(life_expectancy_data$Year)), 
+     ylim = c(min(life_expectancy_data$Age_adjusted_Death_Rate, na.rm = TRUE), 
+              max(life_expectancy_data$Age_adjusted_Death_Rate, na.rm = TRUE)))
+lines(female_data$Year, female_data$Age_adjusted_Death_Rate, col = "red", lwd = 2)
+legend("topright", legend = c("Male", "Female"), col = c("blue", "red"), lwd = 2)
+```
+:::
+
+<br>
+
+# Session 3: Wrapping Up and Q&A
+
+In this session, we've explored creating and customizing plots using base R, starting from basic visualizations...to more detailed visualizations by adding elements such as mean and median lines, customizing boxplots by gender, and distinguishing data points and lines by color based on gender. We also covered essential aspects of adding titles, labels, legends, and annotations.<br>
+<br>
+
+Continue experimenting with different plot types and customizations to enhance your data visualization skills.<br>
+<br>
+
+**Q&A**: Share any questions or challenges you've encountered while creating these visualizations. Let's discuss different approaches and solutions!
+<br>
+
+
+### Reference
+- https://datageneration.io/dataprogrammingwithr/intro
+- Chicago Harris School Coding Camp
+- Data.gov, the U.S. government's open data portal
+

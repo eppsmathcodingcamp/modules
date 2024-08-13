@@ -1,0 +1,198 @@
+---
+title: "EPPS Math Coding Camp"
+subtitle: "Advanced Data Manipulation with dplyr"
+instructor: "Xingyuan Zhao"
+date: "August 13, 2024"
+format: 
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: show
+    code-tools: true
+    highlight-style: github
+---
+
+Instructor: `r rmarkdown::metadata$instructor`
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Session 1: Advanced Data Manipulation with dplyr
+
+## 1.1 Introduction
+<br>
+
+**dplyr** is a powerful R package for data manipulation. It provides intuitive and efficient functions for transforming data frames, making it a staple in data analysis workflows. This session will cover key `dplyr` functions, including `group_by()`, `summarize()`, joining data frames, and reshaping data with `tidyr`.
+<br>
+
+## 1.2 Loading the Data
+
+```{r, warning=FALSE}
+# Load necessary packages
+# install.packages("dplyr")
+library(dplyr)
+
+# Reading the CSV file
+life_expectancy_data <- read.csv("US_Life_expectancy.csv")
+
+# View the first few rows of the data
+head(life_expectancy_data)
+```
+<br>
+The read.csv() function loads the dataset, and head() displays the first few rows, providing an overview of the data structure and variables.
+<br>
+
+## 1.3 Grouping and Summarizing Data
+
+#### Grouping Data with group_by()
+
+```{r}
+# Grouping data by Gender
+grouped_data <- life_expectancy_data %>% group_by(Gender)
+```
+<br>
+The **group_by()** function groups the dataset by the specified variable (Gender). <br>
+This operation is essential for performing group-wise computations, such as calculating averages or counts.<br>
+<br>
+
+#### Aggregate Grouped Data with summarize()
+
+```{r}
+# Summarizing Average Life Expectancy by Gender
+summary_data <- grouped_data %>%
+  summarize(Average_Life_Expectancy = mean(Average_Life_Expectancy, na.rm = TRUE),
+            Average_Death_Rate = mean(Age_adjusted_Death_Rate, na.rm = TRUE))
+
+# Viewing the summarized data
+summary_data
+```
+<br>
+The **summarize()** function calculates summary statistics for each group created by **group_by()**. <br>
+Here, it computes the average life expectancy and average death rate for each gender, ignoring NA values with **na.rm = TRUE.** <br>
+This function is highly customizable, allowing for a wide range of summary calculations.<br>
+<br>
+
+### Exercise:
+
+Group the data by Year, Aggregate by sum the Age_adjusted_Death_Rate
+
+::: {.callout-note collapse=true}
+```{r}
+year_summary <- life_expectancy_data %>%
+  group_by(Year) %>%
+  summarize(Total_Death_Rate = sum(Age_adjusted_Death_Rate, na.rm = TRUE))
+head(year_summary)
+```
+:::
+
+## 1.4 Joining Data Frames
+
+#### Introduction to Joins
+<br>
+Joining data frames is crucial when working with related datasets. <br>
+dplyr provides several join functions, such as **inner_join()**, **left_join()**, **right_join()**, and **full_join()**. These functions merge datasets based on common keys.<br>
+<br>
+
+```{r}
+# Creating a sample dataset for joining based on the year 2000
+
+data_to_join <- data.frame(
+  Year = 1800:2010,
+  Year_Category = ifelse(1800:2010 <2010, "Before 2000", "After 2000")
+)
+
+# Joining data frames
+joined_data_l <- left_join(life_expectancy_data, data_to_join, by = c('Year'))
+
+joined_data_r <- right_join(life_expectancy_data, data_to_join, by = c('Year'))
+
+joined_data_i <- inner_join(life_expectancy_data, data_to_join, by = "Year")
+
+joined_data_o <- full_join(life_expectancy_data, data_to_join, by = "Year")
+
+# Viewing the joined data
+head(joined_data_l)
+head(joined_data_r)
+head(joined_data_i)
+head(joined_data_o)
+```
+<br>
+**additional_data_2000** specifies categories for "Before 2000" and "After 2000" for each gender.<br>
+**left_join()** merges life_expectancy_data and additional_data_2000 based on the Gender and Year_Category columns.<br>
+In a left join, all rows from the left data frame are kept, with matching rows from the right data frame added.<br>
+
+**merge()** Or you can use merge(). 
+
+Parameters: merge(x, y, by = "common_column", all = FALSE, all.x = FALSE, all.y = FALSE,...) 
+
+<br>
+
+### Exercise:
+
+Create a new dataset with a column specifying if the year is before or after 1945, and join it ON the original dataset, keeping the original dataset intact and without na values. Hint: which side of join you should use?
+
+::: {.callout-note collapse=true}
+```{r}
+
+additional_data_war <- data.frame(
+  Year = 1900:2020,
+  Year_Category = ifelse(1900:2020 <1945, "Before WW2", "After WW2")
+)
+
+# Joining data frames
+joined_data_ww2 <- left_join(life_expectancy_data, additional_data_war, by = 'Year')
+
+# Viewing the joined data
+head(joined_data_ww2)
+```
+:::
+
+## 1.5 Adding data using function with mutate()
+
+Add a column of calculated values using Mutate
+
+```{r}
+life_expectancy_data_dev <- mutate(
+  life_expectancy_data, 
+  deviation=Average_Life_Expectancy - mean(Average_Life_Expectancy))
+```
+
+### Exercise:
+
+- Normalize the Average_Life_Expectancy between 0 and 1 and store these in a new column named accordingly.
+
+hint: 
+
+$$
+\text{normalized\_value} = \frac{\text{value} - \min(\text{value})}{\max(\text{value}) - \min(\text{value})}
+$$
+
+::: {.callout-note collapse=true}
+```{r}
+life_expectancy_data_norm <- mutate(
+  life_expectancy_data, 
+  life_expectancy_normalized = (Average_Life_Expectancy - min(Average_Life_Expectancy)) / 
+                               (max(Average_Life_Expectancy) - min(Average_Life_Expectancy))
+)
+
+```
+:::
+
+# Session 2: Wrapping Up and Q&A
+In this session, we've explored advanced data manipulation techniques using dplyr, including grouping and summarizing data, joining data frames, and reshaping data with tidyr. These skills are crucial for preparing and analyzing data efficiently.
+<br>
+
+Continue practicing these techniques with different datasets to solidify your understanding and explore new data analysis possibilities.
+<br>
+
+**Q&A**: Please share any questions or challenges you've encountered. Let's discuss different approaches and solutions!
+<br>
+
+### Reference
+- https://datageneration.io/dataprogrammingwithr/intro
+- Chicago Harris School Coding Camp
+- Data.gov, the U.S. government's open data portal
+
+
+
