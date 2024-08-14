@@ -1,0 +1,469 @@
+---
+title: "EPPS Math and Coding Camp"
+subtitle: "Distributions"
+author: "Instructor: Prajyna Barua and Azharul Islam"
+format: 
+  revealjs:
+    theme: [serif, custom.scss]
+    slide-number: true
+    logo: eppslogo.png
+    css: logo.css
+editor: visual
+---
+
+![](check_in.png){fig-align="center" out-width="100%"}
+
+------------------------------------------------------------------------
+
+## 10.1 THE DISTRIBUTION OF A SINGLE CONCEPT(VARIABLE)
+
+::: fragment
+-   There are several ways to characterize the distribution of a concept (variable).
+:::
+
+::: fragment
+### 10.1.2 Random Variables
+:::
+
+::: fragment
+-   A **random variable** is a variable that can take some array of values, with the probability that it takes any particular value defined according to some random process.
+:::
+
+::: fragment
+-   The set of values the variable might take is the **distribution** of the random variable and the function that defines the probability that each value occurs is known as the probability mass function or the probability distribution function, depending on whether or not the distribution of values is discrete or continuous.
+:::
+
+------------------------------------------------------------------------
+
+![](ch13sa1.png){fig-align="center" out-width="100%"}
+
+------------------------------------------------------------------------
+
+::: fragment
+-   A simple example of this would be the roll of a fair die. The random variable corresponding to the die's value would have an equal probability (one-sixth) of having each of the integer values from 1 to 6. This is called a uniform distribution. However, more complicated distributions are allowed, particularly when the random variable can take many values.
+:::
+
+::: fragment
+-   The **realization** of a random variable is a particular value that it takes. When it's not confusing, we often use capital letters, such as $Y$, to correspond to random variables and lowercase letters, such as $y$, to correspond to particular realizations of a random variable. The statement $Pr(Y < y)$ then reads "the probability that $Y$ is less than a particular value $y$."
+:::
+
+::: fragment
+-   The **support** of this distribution is the set of all values for which the probability that the random variable takes on that value is greater than zero. This terminology is commonly used for continuous probability distributions.
+:::
+
+------------------------------------------------------------------------
+
+## 10.2 SAMPLE DISTRIBUTIONS
+
+::: fragment
+-   a **sample distribution** is the distribution of values of a variable resulting from the collection of actual data for a finite number of cases. It turns out that you have encountered many sample distributions in various textbooks, news articles, and other places.
+:::
+
+::: fragment
+### 10.2.1 The Frequency Distribution
+:::
+
+::: fragment
+-   The first sample distribution to consider is the **frequency distribution**. It is a count of the number of members that have a specific value on a variable.
+:::
+
+------------------------------------------------------------------------
+
+::: fragment
+Example of frequency distribution:
+:::
+
+::: fragment
+Lithuanian Parliamentary Seats, 2000
+
+| Party Abbreviation | Seats Won |
+|--------------------|-----------|
+| ABSK               | 51        |
+| LLS                | 33        |
+| NS                 | 28        |
+| TS-LK              | 9         |
+| LVP                | 4         |
+| LKDP               | 2         |
+| LCS                | 2         |
+| LLRA               | 2         |
+| KDS                | 1         |
+| NKS                | 1         |
+| LLS                | 1         |
+| JL/PKS             | 1         |
+:::
+
+------------------------------------------------------------------------
+
+### 10.2.2 The Relative Frequency Distribution
+
+::: fragment
+-   The **relative frequency distribution** is a transformation of the frequency distribution (to reiterate and be specific, we divide the frequency by the total number of cases).
+:::
+
+::: fragment
+-   Because most people are more familiar with percentages than with proportions, relative frequency distributions are sometimes transformed to percentages (this transformation is conducted by multiplying the proportion by 100%).
+:::
+
+::: fragment
+### 10.2.2.1 Histograms
+:::
+
+::: fragment
+-   A **histogram** is a specific representation of the relative frequency distribution: it is a bar chart of the distribution of the relative frequencies in which the area under each bar is equal to the relative frequency for that value. In other words, the sum of the areas of each bar equals 1, and the area of each bar equals the probability that the value represented by the bar would be chosen at random from the sample depicted.
+:::
+
+::: fragment
+-   $Pr(Y = y)$ is the area covered by the bar (i.e., the probability that value $y$ would be drawn at random)
+:::
+
+------------------------------------------------------------------------
+
+![](ch13sa2.png){fig-align="center" out-width="100%"}
+
+------------------------------------------------------------------------
+
+## 10.3 EMPIRICAL JOINT AND MARGINAL DISTRIBUTIONS
+
+::: fragment
+### 10.3.1 The Contingency Table
+:::
+
+::: fragment
+-   A contingency table is the joint frequency distribution for two variables. While it can be created for both discrete and continuous variables, it is of considerably more value for discrete than for continuous variables.
+:::
+
+::: fragment
+-   The resulting matrix provides a quick summary of the joint distribution of the two variables.
+:::
+
+::: fragment
+We have produced such a contingency table here:
+:::
+
+::: fragment
+The Fearon and Laitin (1996) Contingency Table
+
+|             | Ethnic Homogeneity | Ethnic Heterogeneity |
+|-------------|--------------------|----------------------|
+| Cooperation | Rare               | Common               |
+| Conflict    | Rare               | Rare                 |
+:::
+
+------------------------------------------------------------------------
+
+### 10.3.2 Marginal Probabilities
+
+::: fragment
+-   The marginal probability of an event $A$ is the probability that $A$ will occur unconditional on all the other events on which $A$ may depend.
+:::
+
+::: fragment
+-   From the discussion of Bayes' rule in the previous chapter, we know this amounts to writing the marginal probability $Pr(A) = \sum_{i=1}^n Pr(A|B_i)Pr(B_i)$. In words, this means that one averages over other events and focuses on the one event, $A$, of interest.
+:::
+
+::: fragment
+For example, let's say we are interested in the probability of voting, but voting is conditional on whether or not it is raining:
+:::
+
+::: fragment
+-   The conditional probability of voting given rain might be $Pr(V|R) = 0.4$.
+:::
+
+::: fragment
+-   But what about the marginal probability of voting? To get this we need the conditional probability of voting given that it is not raining, as well as the probability of rain.
+:::
+
+::: fragment
+-   Let's say the former is $Pr(V|\sim R) = 0.6$ and $Pr(R) = 0.3$. Then $Pr(\sim R) = 0.7$
+:::
+
+::: fragment
+-   and so the unconditional, marginal probability of voting is $Pr(V) = Pr(V|R)Pr(R) + Pr(V|\sim R)Pr(\sim R) = (0.4)(0.3) + (0.6)(0.7) = 0.54$.
+:::
+
+::: fragment
+-   To find the marginal probabilities, we sum the simple conditional probabilities of one variable across all values of the other variable.
+:::
+
+------------------------------------------------------------------------
+
+## 10.4 THE PROBABILITY MASS FUNCTION
+
+::: fragment
+-   It is possible to develop a number of different probability functions to describe the distribution of a concept (variable), but we limit the discussion to two of them: the probability mass (or distribution) function and the cumulative density function.
+:::
+
+::: fragment
+-   The PMF of a discrete variable is related to the relative frequency distribution.
+:::
+
+::: fragment
+-   The PMF of a discrete (i.e., nominal, ordinal, or integer) variable assigns probabilities to each value being drawn randomly from a population.
+:::
+
+::: fragment
+-   More formally, the PMF of a discrete variable, $Y$, may be written as $p(y_i) = Pr(Y = y_i)$ where $0 \leq p(y_i) \leq 1$ and $\sum p(y_i) = 1$, and $Y$ is the variable and $y_i$ is a specific value of $Y$.
+:::
+
+------------------------------------------------------------------------
+
+::: fragment
+![PMF of a Binomial Distribution, $n = 100$, $p = 0.5$](fig10.4.png)
+:::
+
+------------------------------------------------------------------------
+
+### 10.4.2 Parameters of a PMF
+
+**Parameter and parameter space**
+
+::: fragment
+-   The term "parameter" refers to a term of known or unknown value in the function that specifies the precise mathematical relationship among the variables.
+:::
+
+::: fragment
+-   The parameter space is the set of all values the parameters can take.
+:::
+
+::: fragment
+To illustrate, let's consider the case of voter turnout where we ask, "Which registered voters cast ballots?" There are two outcomes for each voter: (0) did not cast a ballot and (1) cast a ballot. We can write the following PMF:
+:::
+
+::: fragment
+$$p(y_i = 0) = \pi$$
+:::
+
+::: fragment
+$$p(y_i = 1) = 1 - \pi$$
+:::
+
+------------------------------------------------------------------------
+
+#### 10.4.2.1 Location and Scale (Dispersion) Parameters
+
+::: fragment
+-   The **location parameter** specifies the location of the center of the distribution. Thus, as one changes the value of the location parameter, one shifts the graph of the distribution's PMF to the left or right along the horizontal axis.
+:::
+
+::: fragment
+-   For some distributions, also known as the **mean**, the location parameter is often represented in classical (empirical) probability by the Greek letter $\mu$ (mu).
+:::
+
+------------------------------------------------------------------------
+
+::: fragment
+-   Second, the **scale parameter** provides information about the spread (or scale) of the distribution around its central location.
+:::
+
+::: fragment
+-   The scale parameter has an empirical referent known as the **standard deviation**, which is a measure of the distance of the distribution's values from its mean (or average) value.
+:::
+
+::: fragment
+-   Both the scale parameter (classical probability) and the standard deviation (empirical probability) are usually represented with the Greek letter $\sigma$ (sigma).
+:::
+
+::: fragment
+-   The **dispersion parameter** is the square of the scale parameter. As such, it also describes the spread about the central location of the distribution,
+:::
+
+::: fragment
+-   In statistics, the dispersion parameter corresponds to the **variance** of an empirical distribution, and both are typically identified as $\sigma^2$ (sigma squared).
+:::
+
+------------------------------------------------------------------------
+
+## 10.5 THE CUMULATIVE DISTRIBUTION FUNCTION
+
+::: fragment
+-   The **cumulative distribution function (CDF)** describes the function that covers a range of values below a specific value and is defined for both discrete and continuous random variables.
+:::
+
+::: fragment
+-   The CDF for a discrete random variable is:
+:::
+
+::: fragment
+$$Pr(Y \leq y) = \sum_{i \leq y} p(i)$$
+:::
+
+::: fragment
+-   The equation states that we sum the probabilities of each value for all values less than or equal to y. Sometimes you will see the notation $f(x)$ for a probability distribution function (PDF or PMF) and $F(x)$ for a CDF.
+:::
+
+::: fragment
+-   Note that, since the values are mutually exclusive and all the values together are collectively exhaustive, $Pr(Y \leq y) + Pr(Y > y) = 1$, which implies that $Pr(Y > y) = 1 - Pr(Y \leq y)$.
+:::
+
+::: fragment
+-   Further, if $y$ is the highest value that $Y$ can take, then $Pr(Y \leq y) = 1$, since in this case we are adding the probability of all outcomes in the sample space. So all CDFs plateau at one.
+:::
+
+------------------------------------------------------------------------
+
+## 10.6 PROBABILITY DISTRIBUTIONS AND STATISTICAL MODELING
+
+::: fragment
+-   One reason we are interested in probability distributions is that they are formal statements of our conjecture about the **data-generating process (DGP)**.
+:::
+
+::: fragment
+-   The appropriateness of a given statistical model for a given hypothesis depends in large part (though not exclusively) on the distributional assumptions of the statistical model and the distribution of the dependent variable that measures the concept that is hypothesized to be caused by various factors.
+:::
+
+::: fragment
+-   In other words, if one wants to draw valid inferences (and there is little reason to be interested in drawing an invalid inference), then one must match the distributional assumptions of the statistical model to the distribution of one's dependent variable.
+:::
+
+------------------------------------------------------------------------
+
+### 10.6.1 The Bernoulli Distribution
+
+::: fragment
+The first PMF we will consider applies to binary variables only and can be written as
+:::
+
+::: fragment
+$$
+Pr(Y = y|p) = \begin{cases} 
+1-p & \text{for } y = 0, \\
+p & \text{for } y = 1.
+\end{cases}
+$$
+:::
+
+::: fragment
+-   The equation states that the probability that $Y = 0$ is $1-p$ and the probability that $Y = 1$ is $p$, where $0 \leq p \leq 1$ (or $p \in [0,1]$). Put differently, this says that if the probability that $Y = 1$ is 0.4, then the probability that $Y = 0$ is $1 - 0.4$, or 0.6.
+:::
+
+::: fragment
+-   We can also write the PMF for the Bernoulli distribution as
+:::
+
+::: fragment
+$$
+Pr(Y = y|p) = p^y(1-p)^{1-y}
+$$
+:::
+
+::: fragment
+where $y = 0$ or $y = 1$. If we solve equation (10.4) for $y = 0$ and $y = 1$, we get the information provided in equation: $Pr(Y = 0) = p^0(1-p)^{1-0} = 1-p$, and $Pr(Y = 1) = p^1(1-p)^{1-1} = p$.
+:::
+
+------------------------------------------------------------------------
+
+::: fragment
+-   The Bernoulli distribution describes randomly produced binary variables and is generally introduced using the example of flipping coins.
+:::
+
+::: fragment
+-   The Bernoulli distribution describes the frequency of two outcomes over repeated observations.
+:::
+
+::: fragment
+-   The Bernoulli distribution is built on an assumption that the individual events are *independent* of one another.
+:::
+
+::: fragment
+-   So we need to assume that the probability that a given eligible voter casts a ballot in an election is independent of other eligible voters' decisions to cast a ballot.
+:::
+
+------------------------------------------------------------------------
+
+::: fragment
+![Bernoulli Distribution, $p=0.04$](fig10.6.1.png)
+:::
+
+------------------------------------------------------------------------
+
+### 10.6.2 The Binomial Distribution
+
+::: fragment
+-   The PMF for the binomial distribution is defined by the equation:
+:::
+
+::: fragment
+$$
+Pr(Y = y|n,p) = \binom{n}{y}p^y(1-p)^{n-y}
+$$
+:::
+
+::: fragment
+where $n > y$, $n$, and $y$ are positive integers and $0 \leq p \leq 1$. The variables $n$ and $y$ in equation (10.5) represent the number of cases (or observations) and the number of positive outcomes, respectively.
+:::
+
+::: fragment
+-   The binomial distribution can describe any discrete distribution with three or more observations where (1) each observation is composed of a binary outcome, (2) the observations are independent, and (3) we have a record of the number of times one value was obtained (e.g., the sum of positive outcomes).
+:::
+
+::: fragment
+-   To develop the binomial distribution, we start with the Bernoulli distribution, which says that $Pr(Y = 1) = p$ and $Pr(Y = 0) = 1 - p$ . We will assign a unanimous case (U) the value 1 and a divided case (D) the value 0. Since we have assumed that the three cases are independent, the probability that there are zero unanimous (i.e., three divided) cases is the product of the marginal probabilities that each case is divided, or $Pr(Y = 0,0,0): (1-p) \times (1-p) \times (1-p) = (1-p)^3$. This matches the equation when $n = 3$ and $y = 0$.
+:::
+
+------------------------------------------------------------------------
+
+### 10.6.4 Event Count Distributions
+
+::: fragment
+-   Many variables that political scientists have created are integer counts of events: the number of bills passed by a legislature, the number of wars in which a country has participated, the number of executive vetoes, etc.
+:::
+
+::: fragment
+#### 10.6.4.1 The Poisson Distribution
+:::
+
+::: fragment
+-   Its Probability Mass Function (PMF) can be written as:
+:::
+
+::: fragment
+$$
+Pr(Y = y \mid \mu) = \frac{\mu^y}{y! \times e^{-\mu}} 
+$$
+:::
+
+------------------------------------------------------------------------
+
+::: fragment
+-   The graph of the Poisson distribution, displayed in the figure, reveals an asymmetry: these distributions tend to have a long right tail.
+:::
+
+::: fragment
+![PMF of a Poisson Distribution, $\mu=1,3,5$](fig10.4.2.png)
+:::
+
+------------------------------------------------------------------------
+
+## 10.7 EXPECTATIONS OF RANDOM VARIABLES
+
+::: fragment
+-   The **expectation** of a random variable $X$ denoted $E_X[X]$ or simply $E[X]$ when no confusion (in the presence of more than one variable) is possible, is the weighted average value that the random variable can take, where the weights are given by the probability distribution.
+:::
+
+::: fragment
+Let's consider a common example one encounters in game theory and expected utility theory.
+:::
+
+::: fragment
+-   So, if the lottery has potential outcomes \$0, \$1,000, and \$1,000,000, and these occur with probabilities 0.9998999, 0.0001, and 0.0000001 respectively, then the expectation of the lottery's outcome is: $(0.9998999 \cdot \$0) + (0.0001 \cdot \$1,000) + (0.0000001 \cdot \$1,000,000) = \$0 + \$0.1 + \$0.1 = \$0.20$ , or twenty cents.
+:::
+
+::: fragment
+-   This is known as the **expected value** of the lottery. In general, if a discrete random variable $X$ takes on values $x_i$, then the expected value is calculated for $X$ according to the formula:
+:::
+
+::: fragment
+$$
+E_X[X] = \sum_i x_i (Pr(X = x_i))
+$$
+:::
+
+------------------------------------------------------------------------
+
+![](upload_answer){fig-align="center" out-width="100%"}
+
+------------------------------------------------------------------------
+
+**Any Questions?**
+
+[Home](index.html)
