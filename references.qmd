@@ -1,0 +1,37 @@
+---
+title: "References"
+format: 
+  html:
+    css: styles.css
+---
+
+## Math Camp References
+
+- Aragón-Artacho, Francisco J., and Miguel A. Goberna. 2024. *Mathematics in Politics and Governance*. Cham: Springer Nature Switzerland. doi:10.1007/978-3-031-52776-0.
+
+- Fox, John. 2015. *Applied Regression Analysis and Generalized Linear Models*. SAGE Publications.
+
+- Fox, John. 2020. *A Mathematical Primer for Social Statistics*. SAGE Publications.
+
+- Gelman, Andrew, and Aki Vehtari. 2024. *Active Statistics: Stories, Games, Problems, and Hands-on Demonstrations for Applied Regression and Causal Inference*. Cambridge University Press.
+
+- Kropko, Jonathan. 2015. *Mathematics for Social Scientists*. SAGE Publications.
+
+- Moore, Will H., and David A. Siegel. 2013. *A Mathematics Course for Political and Social Research*. doi:10.1515/9781400848614.
+
+## Coding Camp References
+
+- Lafaye de Micheaux, Pierre, Rémy Drouilhet, and Benoit Liquet. 2013. *The R Software: Fundamentals of Programming and Statistical Analysis*. Springer. https://espace.library.uq.edu.au/view/UQ:328604 (August 13, 2024).
+
+- Mailund, Thomas. 2017. *Functional Programming in R: Advanced Statistical Programming for Data Science, Analysis and Finance*. Apress.
+
+- *Mathematics and Programming for Machine Learning with R | From the Gro*. https://www.taylorfrancis.com/books/mono/1
+0.1201/9781003051220/mathematics-programming-machine-learning-william-claster (August 13, 2024).
+
+- Okoye, Kingsley, and Samira Hosseini. 2024. *R Programming: Statistical Data Analysis in Research*. Springer Nature.
+
+- Pace, Larry. 2012. *Beginning R: An Introduction to Statistical Programming*. Apress.
+
+- *Software for Data Analysis*. https://link.springer.com/book/10.1007/978-0-387-75936-4.
+
+- Wiley, Matt, and Joshua F. Wiley. 2019. *Advanced R Statistical Programming and Data Models: Analysis, Machine Learning, and Visualization*. Apress.
