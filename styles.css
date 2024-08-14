@@ -156,3 +156,18 @@ footer a:hover {
 .download-link:hover {
     background-color: var(--utd-green);
 }
+
+.upload-link {
+    display: inline-block;
+    background-color: var(--utd-green);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-decoration: none;
+    margin: 5px 0;
+    transition: background-color 0.3s;
+}
+
+.upload-link:hover {
+    background-color: var(--utd-orange);
+}
